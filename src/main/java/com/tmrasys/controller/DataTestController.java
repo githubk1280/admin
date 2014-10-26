@@ -6,7 +6,9 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.tmrasys.domain.Project;
 import com.tmrasys.service.DataService;
 
 @Controller
@@ -22,9 +24,12 @@ public class DataTestController {
 	}
 
 	@RequestMapping("/load")
-	public String loadProjectById() {
-		logger.info(dataService.loadProjectById(1));
-		return "booking";
+	public ModelAndView loadProjectById() {
+		Project project = dataService.loadProjectById(1);
+		ModelAndView view = new ModelAndView();
+		view.addObject("project", project);
+		view.setViewName("load");
+		return view;
 
 	}
 
