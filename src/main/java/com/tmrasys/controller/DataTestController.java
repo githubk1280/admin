@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tmrasys.domain.Project;
-import com.tmrasys.service.DataService;
+import com.tmrasys.service.ProjectDataService;
 
 @Controller
 @RequestMapping("/project")
 public class DataTestController {
 	Logger logger = Logger.getLogger(getClass());
 	@Autowired
-	DataService dataService;
+	ProjectDataService dataService;
 
 	@PostConstruct
 	public void init() {
