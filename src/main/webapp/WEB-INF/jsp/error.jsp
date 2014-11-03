@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>index</title>
+<title>Exception</title>
 </head>
 <body>
-<h1>Hello World !</h1>
+<h1 style="color:red">Error </h1>
 </body>
 </html>

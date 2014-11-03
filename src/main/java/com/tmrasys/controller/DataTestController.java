@@ -9,21 +9,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tmrasys.domain.Project;
-import com.tmrasys.service.ProjectDataService;
+import com.tmrasys.service.project.ProjectService;
 
 @Controller
 @RequestMapping("/project")
 public class DataTestController {
 	Logger logger = Logger.getLogger(getClass());
+	
 	@Autowired
-	ProjectDataService dataService;
+	ProjectService dataService;
 
 	@PostConstruct
 	public void init() {
 		logger.info("post ----------------------" + dataService);
 	}
 
-	@RequestMapping("/load")
+	@RequestMapping("/load/it")
 	public ModelAndView loadProjectById() {
 		Project project = dataService.loadProjectById(1);
 		ModelAndView view = new ModelAndView();
