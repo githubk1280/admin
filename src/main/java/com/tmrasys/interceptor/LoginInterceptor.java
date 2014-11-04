@@ -15,19 +15,20 @@ public class LoginInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		logger.info("preHandle ..." + handler);
-		if (handler instanceof HandlerMethod) {
-			HandlerMethod method = (HandlerMethod) handler;
-			if ("login".equals(request.getParameter("login"))) {
-				return true;
-			}
-			request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(
-					request, response);
-		} else if (handler instanceof HttpRequestHandler) {
-			response.sendRedirect("/admin/error/404.jsp");
-		}
-
-		return false;
+//		logger.info("preHandle ..." + handler);
+//		if (handler instanceof HandlerMethod) {
+//			HandlerMethod method = (HandlerMethod) handler;
+//			if ("login".equals(request.getParameter("login"))) {
+//				return true;
+//			}
+//			request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(
+//					request, response);
+//		} else if (handler instanceof HttpRequestHandler) {
+//			response.sendRedirect("/admin/error/404.jsp");
+//		}
+//
+//		return false;
+		return true;
 	}
 
 	@Override

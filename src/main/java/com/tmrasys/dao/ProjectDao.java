@@ -9,5 +9,5 @@ import com.tmrasys.domain.Project;
 @Repository
 public interface ProjectDao {
 	Project loadProjectById(int id);
-	List<Project> loadProjectsByEmployee(int privilege);
+	List<Project> loadProjectsByEmployee(int employeeId);
 }

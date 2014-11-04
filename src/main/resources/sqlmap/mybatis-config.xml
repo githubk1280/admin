@@ -3,6 +3,6 @@
 <configuration>
 	<mappers>
 		<mapper resource="sqlmap/mappers/com/tmrasys/dao/ProjectMapper.xml" />
-<!-- 		<mapper resource="sqlmap/mappers/com/tmrasys/dao/EmployeeMapper.xml" /> -->
+		<mapper resource="sqlmap/mappers/com/tmrasys/dao/EmployeeMapper.xml" />
 	</mappers>
 </configuration>	

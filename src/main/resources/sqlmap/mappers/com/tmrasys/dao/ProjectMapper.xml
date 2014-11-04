@@ -6,13 +6,13 @@
 		parameterType="int">
 		SELECT * FROM project
 		WHERE
-		projectId=#{id}
+		project_id=#{id}
 	</select>
 	
 	<select id="loadProjectsByEmployee" resultType="list" resultMap="employeeMapper" parameterType="int">
-		SELECT * FROM PROJECT
-		WHERE
-		FK_PROJECT_PRIVILEGE_ID = #{privilege}
+		SELECT * FROM PROJECT P
+		INNER JOIN PROJECT_EMPLOYEE PE ON P.PROJECT_ID = PE.PROJECT_ID 
+		INNER JOIN EMPLOYEE E ON E.EMPLOYEE_ID = PE.EMPLOYEE_ID AND E.EMPLOYEE_ID = #{employeeId}
 	</select>
 	
 	<resultMap type="com.tmrasys.domain.Project" id="employeeMapper">
