@@ -1,0 +1,161 @@
+.right-box-margin{
+	margin-right:5%;
+}
+
+.navbar-nav-left{
+	margin-left:1.1%;
+}
+
+.navbrand-font{
+	font-size:140%;
+	color:#ffffff;
+}
+
+.fa-envelope-color{
+	color:#d9534f;
+}
+
+.fa-bell-color{
+	color:#f0ad4e;
+}
+
+.sidebar-color{
+	color:red;
+}
+
+.navbar-default-li-a{
+	color:#ffffff;
+}
+
+.navbar-default-color{
+	background-color:#178acc;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: #ffffff;
+}
+
+a {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.nav>li>a {
+	position: relative;
+	display: block;
+	padding: 14px 15px;
+}
+
+.badge{
+	color:#fff;
+	background-color:#d9534f;
+}
+
+
+.sidebar ul li.active {
+	background-color: #5cb85c;
+}
+
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+	color: #555;
+	background-color: #ffffff;
+}
+
+.nav>li>a:hover, .nav>li>a:focus {
+	text-decoration: none;
+	background-color: #7EC0EE;
+}
+
+.sidebar ul li {
+	border-bottom: 2px solid #e7e7e7;
+}
+
+.sidebar {
+	z-index: 1;
+	position: absolute;
+	width: 250px;
+	margin-top: 57px;
+}
+
+.nav>li>a {
+	position: relative;
+	display: block;
+	padding: 18px 15px;
+}
+
+.page-header {
+	padding-bottom: 9px;
+	margin: 20px 0 20px;
+	border-bottom: 2px solid #f0ad4e;
+}
+.table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th {
+	background-color: #f0ad4e;
+}
+
+.table>thead>tr>th {
+	vertical-align: bottom;
+	border-bottom: 2px solid #178acc;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+	padding: 8px;
+	line-height: 1.42857143;
+	vertical-align: top;
+	border-top: 1px solid #178acc;
+}
+
+.sidebar-badge-margin{
+	margin-left:5%;
+}
+
+.red-color{
+	color:#d9534f;
+}
+
+.input-group .form-control {
+	position: relative;
+	z-index: 2;
+	float: right;
+	width: 26%;
+	margin-bottom: 0;	
+}
+
+.form-control{
+	margin-left:1px;
+}
+
+.container{
+	margin-top:40px;
+	width:90%;
+}
+
+.panel_a{
+	float:right;
+}
+
+.form-control_detail{
+	width:50%;
+	height:28px;
+}
+
+.row-margin{
+	margin-top:10px;
+}
+
+select.form-control{
+	width:116px;
+}
+
+.radio-margin{
+	margin-left:11px; 
+}
+
+textarea.form-control{
+	width:212%;
+}
+
+.col-3-from-control{
+	width:123px;
+}
+

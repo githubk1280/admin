@@ -8,6 +8,5 @@
 		WHERE
 		projectid=#{id}
 	</select>
-
 </mapper>
 
