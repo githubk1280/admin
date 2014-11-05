@@ -15,23 +15,25 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 	@Autowired
 	EmployeeService employeeDataService;
 	private Employee employee;
+
 	@Test
 	public void testLoadProjectById() {
 		System.out.println(projectDataService.loadProjectById(1));
 		System.out.println(projectDataService.loadProjectById(2));
 	}
-	
+
 	@Test
 	public void testgetEmployeeByName() {
 		System.out.println(employeeDataService.getEmployeeByName("ivan"));
 		System.out.println(employeeDataService.getEmployeeByName("terry"));
 		System.out.println(employeeDataService.getEmployeeByName("james"));
 	}
-	
+
 	@Test
 	public void testgetProjectByEmployee() {
 		employee = employeeDataService.getEmployeeByName("terry");
-		System.out.println(projectDataService.loadProjectsByEmployee(employee).size());
+		System.out.println(projectDataService.loadProjectsByEmployee(
+				employee.getEmployeeId()).size());
 	}
 
 }

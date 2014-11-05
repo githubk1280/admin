@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tmrasys.dao.ProjectDao;
-import com.tmrasys.domain.Employee;
 import com.tmrasys.domain.Project;
 
 @Service
@@ -20,8 +19,8 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public List<Project> loadProjectsByEmployee(Employee employee) {
-		return projectDao.loadProjectsByEmployee(employee.getEmployeeId());
+	public List<Project> loadProjectsByEmployee(int userId) {
+		return projectDao.loadProjectsByEmployee(userId);
 	}
 
 }
