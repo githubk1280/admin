@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tmrasys.base.AbstractBaseTestConfig;
 import com.tmrasys.domain.Employee;
+import com.tmrasys.domain.OutSource;
 import com.tmrasys.service.employee.EmployeeService;
+import com.tmrasys.service.outSource.OutSourceService;
 import com.tmrasys.service.project.ProjectService;
 
 public class DataServiceTest extends AbstractBaseTestConfig {
@@ -14,6 +16,9 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 	ProjectService projectDataService;
 	@Autowired
 	EmployeeService employeeDataService;
+	@Autowired
+	OutSourceService outSourceService;
+	
 	private Employee employee;
 
 	@Test
@@ -34,6 +39,12 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		employee = employeeDataService.getEmployeeByName("terry");
 		System.out.println(projectDataService.loadProjectsByEmployee(
 				employee.getEmployeeId()).size());
+	}
+	
+	@Test
+	public void testgetOutSourceByProjectId() {
+		OutSource os = outSourceService.getOutSourceByProjectId(2);
+		System.out.println(os);
 	}
 
 }
