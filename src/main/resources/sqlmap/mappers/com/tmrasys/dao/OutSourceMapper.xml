@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tmrasys.dao.OutSourceDao">
+	<select id="getByProjectId" resultMap="outSourceMapper"
+		parameterType="int">
+		SELECT * FROM OUT_SOURCE
+		WHERE
+		FK_PROJECT_ID=#{projectId}
+	</select>
+	
+	<resultMap type="com.tmrasys.domain.OutSource" id="outSourceMapper">
+		<id property="outSourceId" column="OUT_SOURCE_ID"/>
+		<result property="outSourceUnit" column="OUT_SOURCE_UNIT"/>
+		<result property="address" column="ADRESS"/>
+		<result property="sendSampleDate" column="SEND_SAMPLE_DATE"/>
+		<result property="sendSampleCount" column="SEND_SAMPLE_COUNT"/>
+		<result property="isErRecived" column="IS_EXPERIMENT_RESULT_RECIVED"/>
+		<result property="outSourceStatus" column="OUT_SOURCE_STATUS"/>
+		<result property="outSourceType" column="OUT_SOURCE_TYPE"/>
+	</resultMap>
+
+</mapper>
+
