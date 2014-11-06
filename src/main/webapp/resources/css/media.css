@@ -1,0 +1,14 @@
+@media (max-width: 767px) {
+	.btn-user-style{
+		font-size:75%;
+		margin-left:50%;
+	}
+	h2{
+		font-size:130%;
+	}
+	.submit-style{
+		max-width:92%;
+		margin-left:8%;
+	}
+}
+

@@ -38,10 +38,10 @@ public class ProjectController {
 
 	@RequestMapping("/list")
 	public ModelAndView loadAllProjects() {
-		List<Project> project = projectService.loadProjectsByEmployee(1);
+		List<Project> projects = projectService.loadProjectsByEmployee(2);
 		ModelAndView view = new ModelAndView();
-		view.addObject("project", project);
-		view.setViewName("detail");
+		view.addObject("projects", projects);
+		view.setViewName("project/list");
 		return view;
 
 	}
