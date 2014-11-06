@@ -1,5 +1,7 @@
 package com.tmrasys.controller;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import org.apache.log4j.Logger;
@@ -36,7 +38,7 @@ public class ProjectController {
 
 	@RequestMapping("/list")
 	public ModelAndView loadAllProjects() {
-		Project project = projectService.loadProjectsByEmployee(employeeId);
+		List<Project> project = projectService.loadProjectsByEmployee(1);
 		ModelAndView view = new ModelAndView();
 		view.addObject("project", project);
 		view.setViewName("detail");
