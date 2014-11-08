@@ -1,0 +1,14 @@
+<link href="resources/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<link
+	href="resources/css/bootstrap-theme.min.css"
+	rel="stylesheet">
+
+<!-- Timeline CSS -->
+<link href="resources/css/login.css"
+	rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="resources/css/media.css"
+	rel="stylesheet">

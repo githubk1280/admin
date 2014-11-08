@@ -15,6 +15,9 @@ public class Project {
 	private String projectContent;
 	private String potentialExpenditure;
 	private int sampleCount;
+	/**
+	 * 研究方向
+	 */
 	private String researchDirection;
 	private String platformDemand;
 	private boolean hasCorporatedIntention;
