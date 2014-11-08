@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tmrasys.constant.page.PageResourceConstant;
 import com.tmrasys.domain.Project;
 import com.tmrasys.service.project.ProjectService;
 
@@ -41,7 +42,7 @@ public class ProjectController {
 		List<Project> projects = projectService.loadProjectsByEmployee(2);
 		ModelAndView view = new ModelAndView();
 		view.addObject("projects", projects);
-		view.setViewName("project/list");
+		view.setViewName(PageResourceConstant.PROJECT_LIST);
 		return view;
 
 	}

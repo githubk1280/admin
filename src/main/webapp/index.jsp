@@ -27,7 +27,7 @@
 			</div>
 			<div class="col-md-6 login-box">
 				<div class="">
-					<form class="form-signin" role="form">
+					<form class="form-signin" role="form" action="login" method="get">
 						<div>
 							<h3 align="center"
 								class="form-signin-heading hidden-xs hidden-sm">
@@ -45,10 +45,11 @@
 								</button>
 							</div>
 							<div class="col-md-10 col-sm-10 col-xs-9">
-								<input type="email" class="form-control" placeholder="用户名 "
-									maxlength=30 required autofocus>
+								<input type="text" name="userName" class="form-control"
+									placeholder="用户名 " maxlength=30 required autofocus>
 							</div>
 						</div>
+						<br />
 						<div class="row">
 							<div class="col-md-2 col-sm-2 col-xs-3">
 								<button type="button"
@@ -60,8 +61,8 @@
 								</button>
 							</div>
 							<div class="col-md-10 col-sm-10 col-xs-9 ">
-								<input type="password" class="form-control" placeholder="密码"
-									maxlength=20 required>
+								<input type="password" name="password" class="form-control"
+									placeholder="密码" maxlength=20 required>
 							</div>
 						</div>
 						<button class="btn btn-lg btn-primary btn-block submit-style"
@@ -79,6 +80,5 @@
 		</div>
 
 	</div>
-
 </body>
 </html>
