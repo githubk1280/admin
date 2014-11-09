@@ -95,7 +95,7 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 
 	@Test
 	public void testgetProjectProgressByProjectId() {
-		for(ProjectProgress pp : projectProgressService.getByProjectId(1))
+		for(ProjectProgress pp : projectProgressService.getByProjectId(15))
 			System.out.println(pp);
 	}
 	

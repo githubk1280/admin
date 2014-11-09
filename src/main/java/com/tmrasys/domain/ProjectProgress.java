@@ -11,4 +11,5 @@ public class ProjectProgress {
 	private String content;
 	private Date progressDate;
 	private int projectId;
+	private int percentage;
 }
