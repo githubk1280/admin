@@ -1,5 +1,7 @@
 package com.tmrasys.service;
 
+import java.util.Date;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -41,6 +43,23 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		System.out.println(employeeDataService.getEmployeeByName("terry"));
 		System.out.println(employeeDataService.getEmployeeByName("james"));
 	}
+	
+	@Test
+	public void testaddEmployee() {
+		Employee employee = new Employee();
+		employee.setEmployeeRoleId(1);
+		employee.setName("tony");
+		employee.setPassword("123456");
+		employee.setPrivilege(1);
+		employeeDataService.addEmployee(employee);
+	}
+	
+	@Test
+	public void testupdateEmployee() {
+		employee = employeeDataService.getEmployeeByName("Robin");
+		employee.setName("robin");
+		employeeDataService.updateEmployee(employee);
+	}
 
 	@Test
 	public void testgetProjectByEmployee() {
@@ -65,5 +84,15 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 	public void testgetProjectProgressByProjectId() {
 		for(ProjectProgress pp : projectProgressService.getByProjectId(1))
 			System.out.println(pp);
+	}
+	
+	@Test
+	public void testaddProjectProgressByProjectId() {
+		ProjectProgress pp = new ProjectProgress();
+		pp.setContent("test add");
+		pp.setEmployeeName("ivan");
+		pp.setProgressDate(new Date());
+		pp.setProjectId(1);
+		projectProgressService.addProjectProgress(pp);
 	}
 }

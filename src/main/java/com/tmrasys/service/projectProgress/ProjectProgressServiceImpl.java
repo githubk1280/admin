@@ -18,4 +18,9 @@ public class ProjectProgressServiceImpl implements ProjectProgressService {
 		return projectProgressDao.getByProjectId(projectId);
 	}
 
+	@Override
+	public void addProjectProgress(ProjectProgress projectProgress) {
+		projectProgressDao.addProjectProgress(projectProgress);
+	}
+
 }

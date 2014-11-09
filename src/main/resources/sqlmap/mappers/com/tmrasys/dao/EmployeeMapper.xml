@@ -8,11 +8,31 @@
 		WHERE
 		employee_name=#{name}
 	</select>
-<resultMap type="com.tmrasys.domain.Employee" id="employeeMapper">
-	<id property="employeeId" column="EMPLOYEE_ID"/>
-	<result property="name" column="EMPLOYEE_NAME"/>
-	<result property="password" column="PASSWORD"/>
-	<result property="privilege" column="FK_PRIVILEGE_ID"/>
-</resultMap>
+	<insert id="addEmployee" keyProperty="employeeId" parameterMap="employeeParameter"
+		useGeneratedKeys="true">
+		INSERT INTO `employee`
+		(`EMPLOYEE_NAME`,`FK_EMPLOYEE_ROLE_ID`,`FK_PRIVILEGE_ID`,`PASSWORD`)
+		VALUES (#{name}, #{employeeRoleId}, #{privilege}, #{password});
+	</insert>
+	<update id="updateEmployee" parameterMap="employeeParameter" flushCache="true">
+		UPDATE employee
+		SET EMPLOYEE_NAME = #{name}, PASSWORD = #{password} ,FK_PRIVILEGE_ID = #{privilege} ,FK_EMPLOYEE_ROLE_ID = #{employeeRoleId}
+		WHERE employee.EMPLOYEE_ID = #{employeeId}
+		;
+	</update>
+	<resultMap type="com.tmrasys.domain.Employee" id="employeeMapper">
+		<id property="employeeId" column="EMPLOYEE_ID" />
+		<result property="name" column="EMPLOYEE_NAME" />
+		<result property="password" column="PASSWORD" />
+		<result property="privilege" column="FK_PRIVILEGE_ID" />
+		<result property="employeeRoleId" column="FK_EMPLOYEE_ROLE_ID" />
+	</resultMap>
+	<parameterMap type="com.tmrasys.domain.Employee" id="employeeParameter">
+		<parameter property="employeeId" resultMap="EMPLOYEE_ID"/>
+		<parameter property="name" resultMap="EMPLOYEE_NAME" />
+		<parameter property="password" resultMap="PASSWORD" />
+		<parameter property="privilege" resultMap="FK_PRIVILEGE_ID" />
+		<parameter property="employeeRoleId" resultMap="FK_EMPLOYEE_ROLE_ID" />
+	</parameterMap>
 </mapper>
 

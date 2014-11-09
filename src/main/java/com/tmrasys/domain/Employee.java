@@ -8,4 +8,5 @@ public class Employee {
 	private String name;
 	private String password;
 	private int privilege;
+	private int employeeRoleId;
 }
