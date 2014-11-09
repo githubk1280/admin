@@ -95,7 +95,7 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 
 	@Test
 	public void testgetProjectProgressByProjectId() {
-		for(ProjectProgress pp : projectProgressService.getByProjectId(1))
+		for(ProjectProgress pp : projectProgressService.getByProjectId(15))
 			System.out.println(pp);
 	}
 	
@@ -138,9 +138,7 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 	
 	@Test
 	public void testaddReference() {
-		ProjectEmployee projectEmployee = new ProjectEmployee();
-		projectEmployee.setProjectId(1);
-		projectEmployee.setEmployeeId(1);
+		ProjectEmployee projectEmployee = new ProjectEmployee(1,1);
 		projectEmployeeService.addReference(projectEmployee);
 	}
 	
