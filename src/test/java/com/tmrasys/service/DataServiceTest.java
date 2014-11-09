@@ -10,11 +10,13 @@ import com.tmrasys.domain.Customer;
 import com.tmrasys.domain.Employee;
 import com.tmrasys.domain.OutSource;
 import com.tmrasys.domain.Project;
+import com.tmrasys.domain.ProjectEmployee;
 import com.tmrasys.domain.ProjectProgress;
 import com.tmrasys.service.customer.CustomerService;
 import com.tmrasys.service.employee.EmployeeService;
 import com.tmrasys.service.outSource.OutSourceService;
 import com.tmrasys.service.project.ProjectService;
+import com.tmrasys.service.projectEmployee.ProjectEmployeeService;
 import com.tmrasys.service.projectProgress.ProjectProgressService;
 
 public class DataServiceTest extends AbstractBaseTestConfig {
@@ -29,6 +31,8 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 	CustomerService customerService;
 	@Autowired
 	ProjectProgressService projectProgressService;
+	@Autowired
+	ProjectEmployeeService projectEmployeeService;
 	
 	private Employee employee;
 
@@ -124,5 +128,12 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		projectDataService.updateProject(pro);
 	}
 	
+	@Test
+	public void testaddReference() {
+		ProjectEmployee projectEmployee = new ProjectEmployee();
+		projectEmployee.setProjectId(1);
+		projectEmployee.setEmployeeId(1);
+		projectEmployeeService.addReference(projectEmployee);
+	}
 	
 }
