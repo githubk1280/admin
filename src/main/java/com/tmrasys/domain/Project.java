@@ -4,12 +4,16 @@ import java.util.Date;
 
 import lombok.Data;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Data
 public class Project {
 	private int projectId;
 	private String projectName;
 	private int priority;
+	@DateTimeFormat
 	private Date startDate;
+	@DateTimeFormat
 	private Date endDate;
 	private char needPrincipalAssist;
 	private String projectContent;

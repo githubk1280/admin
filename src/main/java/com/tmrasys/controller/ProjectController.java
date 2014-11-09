@@ -19,7 +19,7 @@ import com.tmrasys.service.project.ProjectService;
 
 @Controller
 @RequestMapping("/project")
-public class ProjectController {
+public class ProjectController{
 	Logger logger = Logger.getLogger(getClass());
 
 	@Autowired
@@ -47,6 +47,24 @@ public class ProjectController {
 		ModelAndView view = new ModelAndView();
 		view.addObject("projects", projects);
 		view.setViewName(PageResourceConstant.PROJECT_LIST);
+		return view;
+
+	}
+	
+	@RequestMapping("/add")
+	public ModelAndView add(Project project) {
+		projectService.addProject(project);
+		ModelAndView view = new ModelAndView();
+		view.setViewName("redirect:list");
+		return view;
+	}
+	
+	@RequestMapping("/add-redirect")
+	public ModelAndView addRedirect() {
+		Project project = new Project();
+		ModelAndView view = new ModelAndView();
+		view.addObject(project);
+		view.setViewName(PageResourceConstant.PROJECT_ADD);
 		return view;
 
 	}
