@@ -43,8 +43,7 @@
 														<label>项目编号 </label>
 													</div>
 													<div>
-														<input type="text" placeholder="自动生成" class="form-control"
-															disabled>
+														<form:input path="projectId" class="form-control" />
 													</div>
 												</div>
 												<div class="col-md-6 col-sm-12 col-xs-12">
