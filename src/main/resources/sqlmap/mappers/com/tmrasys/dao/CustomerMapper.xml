@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tmrasys.dao.CustomerDao">
+	<select id="getByProjectId" resultMap="customerMapper" resultType="list"
+		parameterType="int">
+		SELECT * FROM customers
+		WHERE
+		project_id=#{projectId}
+	</select>
+<resultMap type="com.tmrasys.domain.Customer" id="customerMapper">
+	<id property="customerId" column="CUSTOMER_ID"/>
+	<result property="projectId" column="PROJECT_ID"/>
+	<result property="customerName" column="CUSTOMER_NAME"/>
+	<result property="sex" column="SEX"/>
+	<result property="age" column="AGE"/>
+	<result property="phone" column="PHONE"/>
+	<result property="cellphone" column="CELLPHONE"/>
+	<result property="workUnit" column="WORK_UNIT"/>
+	<result property="department" column="DEPARTMENT"/>
+	<result property="position" column="POSITION"/>
+	<result property="email" column="EMAIL"/>
+	<result property="adress" column="ADRESS"/>
+	<result property="resarchDirection" column="RESEARCH_DIRECTION"/>
+	<result property="responsibleArea" column="RESPONSIBLE_AREA"/>
+	<result property="customerLevel" column="CUSTOMER_LEVEL"/>
+	<result property="relationShip" column="RELATIONSHIP"/>
+	<result property="principalNumber" column="PRINCIPAL_NUM"/>
+</resultMap>
+</mapper>
+
