@@ -15,7 +15,7 @@ public class ProjectServiceImpl implements ProjectService {
 
 	@Override
 	public Project loadProjectById(int projectId) {
-		return projectDao.loadProjectById(1);
+		return projectDao.loadProjectById(projectId);
 	}
 
 	@Override

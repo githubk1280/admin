@@ -29,6 +29,27 @@
 		#{sampleCount},#{researchDirection},#{platformDemand},#{hasCorporatedIntention},#{needProjectPlan},
 		#{needSCI},#{projectNote},#{projectName});
 	</insert>
+	
+	<update id="updateProject" parameterMap="projectParameter" flushCache="true">
+		UPDATE project
+		SET 
+		PROJECT_NAME = #{projectName}, 
+		PRIORITY = #{priority},
+		START_DATE = #{startDate}, 
+		END_DATE = #{endDate},
+		NEED_PRINCPAL_ASSIST = #{needPrincipalAssist},
+		PROJECT_CONTENT = #{projectContent},
+		POTENTIAL_EXPENDITURE = #{potentialExpenditure},
+		SAMPLE_COUNT = #{sampleCount},
+		RESEARCH_DIRECTION = #{sampleCount},
+		TECHNOLOGY_PLATFORM_DEMAND = #{platformDemand},
+		HAS_CORPORATED_INTENTION = #{hasCorporatedIntention},
+		NEED_PROJECT_PLAN = #{needProjectPlan},
+		NEED_SCI =#{needSCI},
+		PROJECT_NOTE = #{projectNote},
+		PROJECT_TYPE = #{projectType}
+		WHERE project.PROJECT_ID = #{projectId};
+	</update>
 
 	<parameterMap type="com.tmrasys.domain.Project" id="projectParameter">
 		<parameter property="projectId" resultMap="PROJECT_ID" />

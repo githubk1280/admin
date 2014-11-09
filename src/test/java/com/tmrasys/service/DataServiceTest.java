@@ -109,12 +109,19 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		pro.setPotentialExpenditure("test test etc");
 		pro.setPriority(1);
 		pro.setProjectContent("what a perfect project");
-		pro.setProjectName("ÉúÎïÏîÄ¿");
+		pro.setProjectName("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿");
 		pro.setProjectNote("XXXXXXXXXXXXXXXXXXXXX");
-		pro.setResearchDirection("ÑÀ³Ý");
+		pro.setResearchDirection("ï¿½ï¿½ï¿½ï¿½");
 		pro.setSampleCount(100);
 		pro.setStartDate(new Date());
 		projectDataService.addProject(pro);
+	}
+	
+	@Test
+	public void testupdateProject() {
+		Project pro = projectDataService.loadProjectById(5);
+		pro.setProjectName("ç”Ÿç‰©é¡¹ç›®1");
+		projectDataService.updateProject(pro);
 	}
 	
 	
