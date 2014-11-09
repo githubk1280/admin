@@ -46,6 +46,7 @@
 		<parameter property="needProjectPlan" resultMap="NEED_PROJECT_PLAN" />
 		<parameter property="needSCI" resultMap="NEED_SCI" />
 		<parameter property="projectNote" resultMap="PROJECT_NOTE" />
+		<parameter property="projectType" resultMap="PROJECT_TYPE" />
 	</parameterMap>
 
 	<resultMap type="com.tmrasys.domain.Project" id="employeeMapper">
@@ -64,6 +65,7 @@
 		<result property="needProjectPlan" column="NEED_PROJECT_PLAN" />
 		<result property="needSCI" column="NEED_SCI" />
 		<result property="projectNote" column="PROJECT_NOTE" />
+		<result property="projectType" column="PROJECT_TYPE" />
 	</resultMap>
 
 </mapper>

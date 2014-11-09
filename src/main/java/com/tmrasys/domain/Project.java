@@ -24,4 +24,5 @@ public class Project {
 	private char needProjectPlan;
 	private char needSCI;
 	private String projectNote;
+	private String projectType;
 }
