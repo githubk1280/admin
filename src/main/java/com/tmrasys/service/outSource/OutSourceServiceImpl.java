@@ -17,4 +17,9 @@ public class OutSourceServiceImpl implements OutSourceService {
 		return outSourceDao.getByProjectId(projectId);
 	}
 
+	@Override
+	public void addOutSource(OutSource os) {
+		outSourceDao.addOutSource(os);
+	}
+
 }

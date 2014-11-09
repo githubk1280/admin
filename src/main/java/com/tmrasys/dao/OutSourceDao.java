@@ -7,4 +7,5 @@ import com.tmrasys.domain.OutSource;
 @Repository
 public interface OutSourceDao {
 	OutSource getByProjectId(int projectId);
+	void addOutSource(OutSource os);
 }

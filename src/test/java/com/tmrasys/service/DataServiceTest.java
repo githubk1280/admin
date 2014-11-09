@@ -80,6 +80,14 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 	}
 	
 	@Test
+	public void testaddOutSource() {
+		OutSource os = outSourceService.getOutSourceByProjectId(17);
+		os.setProjectId(15);
+		os.setOutSourceId(0);
+		outSourceService.addOutSource(os);
+	}
+	
+	@Test
 	public void testgetCustomersByProjectId() {
 		for(Customer customer : customerService.getByProjectId(1))
 			System.out.println(customer);
@@ -103,7 +111,7 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 	
 	@Test
 	public void testaddProject() {
-		Project pro = projectDataService.loadProjectById(1);
+		Project pro = new Project();
 		pro.setEndDate(new Date());
 		pro.setHasCorporatedIntention('Y');
 		pro.setNeedPrincipalAssist('N');
@@ -113,9 +121,9 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		pro.setPotentialExpenditure("test test etc");
 		pro.setPriority(1);
 		pro.setProjectContent("what a perfect project");
-		pro.setProjectName("������Ŀ");
-		pro.setProjectNote("XXXXXXXXXXXXXXXXXXXXX");
-		pro.setResearchDirection("����");
+		pro.setProjectName("一个老中医");
+		pro.setProjectNote("一个老中医  专治吹牛X");
+		pro.setResearchDirection("专治各种");
 		pro.setSampleCount(100);
 		pro.setStartDate(new Date());
 		projectDataService.addProject(pro);

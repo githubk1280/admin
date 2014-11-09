@@ -15,4 +15,5 @@ public class OutSource {
 	private boolean isErRecived;
 	private String outSourceStatus;
 	private String outSourceType;
+	private int projectId;
 }

@@ -4,4 +4,5 @@ import com.tmrasys.domain.OutSource;
 
 public interface OutSourceService {
 	OutSource getOutSourceByProjectId(int projectId);
+	void addOutSource(OutSource os);
 }
