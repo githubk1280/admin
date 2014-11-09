@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tmrasys.dao.ProjectEmployeeDao">
+	<insert id="addReference" parameterMap="peParameter">
+		INSERT INTO
+		`project_employee`
+		(`PROJECT_ID`,`EMPLOYEE_ID`)
+		VALUES (#{projectId},#{employeeId});
+	</insert>
+	<parameterMap type="com.tmrasys.domain.ProjectEmployee"
+		id="peParameter">
+		<parameter property="projectId" resultMap="PROJECT_ID" />
+		<parameter property="employeeId" resultMap="EMPLOYEE_ID" />
+	</parameterMap>
+</mapper>
+
