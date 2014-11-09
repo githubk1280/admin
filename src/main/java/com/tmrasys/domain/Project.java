@@ -11,7 +11,7 @@ public class Project {
 	private int priority;
 	private Date startDate;
 	private Date endDate;
-	private boolean needPrincipalAssist;
+	private char needPrincipalAssist;
 	private String projectContent;
 	private String potentialExpenditure;
 	private int sampleCount;
@@ -20,8 +20,8 @@ public class Project {
 	 */
 	private String researchDirection;
 	private String platformDemand;
-	private boolean hasCorporatedIntention;
-	private boolean needProjectPlan;
-	private boolean needSCI;
+	private char hasCorporatedIntention;
+	private char needProjectPlan;
+	private char needSCI;
 	private String projectNote;
 }

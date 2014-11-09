@@ -8,29 +8,62 @@
 		WHERE
 		project_id=#{id}
 	</select>
-	
-	<select id="loadProjectsByEmployee" resultType="list" resultMap="employeeMapper" parameterType="int">
+
+	<select id="loadProjectsByEmployee" resultType="list" resultMap="employeeMapper"
+		parameterType="int">
 		SELECT * FROM PROJECT P
-		INNER JOIN PROJECT_EMPLOYEE PE ON P.PROJECT_ID = PE.PROJECT_ID 
-		INNER JOIN EMPLOYEE E ON E.EMPLOYEE_ID = PE.EMPLOYEE_ID AND E.EMPLOYEE_ID = #{employeeId}
+		INNER JOIN PROJECT_EMPLOYEE PE ON
+		P.PROJECT_ID = PE.PROJECT_ID
+		INNER JOIN EMPLOYEE E ON E.EMPLOYEE_ID = PE.EMPLOYEE_ID AND E.EMPLOYEE_ID =
+		#{employeeId}
 	</select>
-	
+
+	<insert id="addProject" parameterMap="projectParameter"
+		keyProperty="projectId" useGeneratedKeys="true">
+		INSERT INTO `project`
+		(`NEED_PRINCPAL_ASSIST`,`PRIORITY`,`START_DATE`,`END_DATE`,`PROJECT_CONTENT`,`POTENTIAL_EXPENDITURE`,
+		`SAMPLE_COUNT`,`RESEARCH_DIRECTION`,`TECHNOLOGY_PLATFORM_DEMAND`,`HAS_CORPORATED_INTENTION`,`NEED_PROJECT_PLAN`,
+		`NEED_SCI`,`PROJECT_NOTE`,`PROJECT_NAME`)
+		VALUES
+		(#{needPrincipalAssist},#{priority},#{startDate},#{endDate},#{projectContent},#{potentialExpenditure},
+		#{sampleCount},#{researchDirection},#{platformDemand},#{hasCorporatedIntention},#{needProjectPlan},
+		#{needSCI},#{projectNote},#{projectName});
+	</insert>
+
+	<parameterMap type="com.tmrasys.domain.Project" id="projectParameter">
+		<parameter property="projectId" resultMap="PROJECT_ID" />
+		<parameter property="projectName" resultMap="PROJECT_NAME" />
+		<parameter property="priority" resultMap="PRIORITY" />
+		<parameter property="startDate" resultMap="START_DATE" />
+		<parameter property="endDate" resultMap="END_DATE" />
+		<parameter property="needPrincipalAssist" resultMap="NEED_PRINCPAL_ASSIST" />
+		<parameter property="projectContent" resultMap="PROJECT_CONTENT" />
+		<parameter property="potentialExpenditure" resultMap="POTENTIAL_EXPENDITURE" />
+		<parameter property="sampleCount" resultMap="SAMPLE_COUNT" />
+		<parameter property="researchDirection" resultMap="RESEARCH_DIRECTION" />
+		<parameter property="platformDemand" resultMap="TECHNOLOGY_PLATFORM_DEMAND" />
+		<parameter property="hasCorporatedIntention" resultMap="HAS_CORPORATED_INTENTION" />
+		<parameter property="needProjectPlan" resultMap="NEED_PROJECT_PLAN" />
+		<parameter property="needSCI" resultMap="NEED_SCI" />
+		<parameter property="projectNote" resultMap="PROJECT_NOTE" />
+	</parameterMap>
+
 	<resultMap type="com.tmrasys.domain.Project" id="employeeMapper">
-		<id property="projectId" column="PROJECT_ID"/>
-		<result property="projectName" column="PROJECT_NAME"/>
-		<result property="priority" column="PRIORITY"/>
-		<result property="startDate" column="START_DATE"/>
-		<result property="endDate" column="END_DATE"/>
-		<result property="needPrincipalAssist" column="NEED_PRINCPAL_ASSIST"/>
-		<result property="projectContent" column="PROJECT_CONTENT"/>
-		<result property="potentialExpenditure" column="POTENTIAL_EXPENDITURE"/>
-		<result property="sampleCount" column="SAMPLE_COUNT"/>
-		<result property="researchDirection" column="RESEARCH_DIRECTION"/>
-		<result property="platformDemand" column="TECHNOLOGY_PLATFORM_DEMAND"/>
-		<result property="hasCorporatedIntention" column="HAS_CORPORATED_INTENTION"/>
-		<result property="needProjectPlan" column="NEED_PROJECT_PLAN"/>
-		<result property="needSCI" column="NEED_SCI"/>
-		<result property="projectNote" column="PROJECT_NOTE"/>
+		<id property="projectId" column="PROJECT_ID" />
+		<result property="projectName" column="PROJECT_NAME" />
+		<result property="priority" column="PRIORITY" />
+		<result property="startDate" column="START_DATE" />
+		<result property="endDate" column="END_DATE" />
+		<result property="needPrincipalAssist" column="NEED_PRINCPAL_ASSIST" />
+		<result property="projectContent" column="PROJECT_CONTENT" />
+		<result property="potentialExpenditure" column="POTENTIAL_EXPENDITURE" />
+		<result property="sampleCount" column="SAMPLE_COUNT" />
+		<result property="researchDirection" column="RESEARCH_DIRECTION" />
+		<result property="platformDemand" column="TECHNOLOGY_PLATFORM_DEMAND" />
+		<result property="hasCorporatedIntention" column="HAS_CORPORATED_INTENTION" />
+		<result property="needProjectPlan" column="NEED_PROJECT_PLAN" />
+		<result property="needSCI" column="NEED_SCI" />
+		<result property="projectNote" column="PROJECT_NOTE" />
 	</resultMap>
 
 </mapper>

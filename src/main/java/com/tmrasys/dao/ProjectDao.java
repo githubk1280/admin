@@ -10,4 +10,6 @@ import com.tmrasys.domain.Project;
 public interface ProjectDao {
 	Project loadProjectById(int id);
 	List<Project> loadProjectsByEmployee(int employeeId);
+	void updateProject(Project project);
+	void addProject(Project project);
 }

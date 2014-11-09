@@ -9,6 +9,7 @@ import com.tmrasys.base.AbstractBaseTestConfig;
 import com.tmrasys.domain.Customer;
 import com.tmrasys.domain.Employee;
 import com.tmrasys.domain.OutSource;
+import com.tmrasys.domain.Project;
 import com.tmrasys.domain.ProjectProgress;
 import com.tmrasys.service.customer.CustomerService;
 import com.tmrasys.service.employee.EmployeeService;
@@ -95,4 +96,26 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		pp.setProjectId(1);
 		projectProgressService.addProjectProgress(pp);
 	}
+	
+	@Test
+	public void testaddProject() {
+		Project pro = projectDataService.loadProjectById(1);
+		pro.setEndDate(new Date());
+		pro.setHasCorporatedIntention('Y');
+		pro.setNeedPrincipalAssist('N');
+		pro.setNeedProjectPlan('Y');
+		pro.setNeedSCI('Y');
+		pro.setPlatformDemand("plat form A");
+		pro.setPotentialExpenditure("test test etc");
+		pro.setPriority(1);
+		pro.setProjectContent("what a perfect project");
+		pro.setProjectName("生物项目");
+		pro.setProjectNote("XXXXXXXXXXXXXXXXXXXXX");
+		pro.setResearchDirection("牙齿");
+		pro.setSampleCount(100);
+		pro.setStartDate(new Date());
+		projectDataService.addProject(pro);
+	}
+	
+	
 }

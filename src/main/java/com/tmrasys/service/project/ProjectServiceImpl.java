@@ -23,4 +23,14 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectDao.loadProjectsByEmployee(userId);
 	}
 
+	@Override
+	public void updateProject(Project project) {
+		projectDao.updateProject(project);
+	}
+
+	@Override
+	public void addProject(Project project) {
+		projectDao.addProject(project);
+	}
+
 }
