@@ -6,4 +6,11 @@ import lombok.Data;
 public class ProjectEmployee {
 	private int projectId;
 	private int employeeId;
+
+	public ProjectEmployee(int projectId, int employeeId) {
+		super();
+		this.projectId = projectId;
+		this.employeeId = employeeId;
+	}
+
 }

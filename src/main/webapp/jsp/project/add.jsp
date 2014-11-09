@@ -65,6 +65,17 @@
 														<form:input path="projectType" class="form-control" />
 													</div>
 												</div>
+												<div class="col-md-6 col-sm-12 col-xs-12">
+													<div>
+														<label>是否需要发SCI文章</label>
+													</div>
+													<div class="pull-left">
+														<label><form:radiobutton path="needSCI" value="Y" />需要
+														</label> <label> <form:radiobutton path="needSCI"
+																value="N" />不需要
+														</label> 
+													</div>
+												</div>
 											</div>
 											<div class="row row-margin">
 												<div class="col-md-6 col-sm-12 col-xs-12">

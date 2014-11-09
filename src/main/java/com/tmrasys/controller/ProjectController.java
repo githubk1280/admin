@@ -15,7 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.tmrasys.constant.page.PageResourceConstant;
 import com.tmrasys.domain.Employee;
 import com.tmrasys.domain.Project;
+import com.tmrasys.domain.ProjectEmployee;
 import com.tmrasys.service.project.ProjectService;
+import com.tmrasys.service.projectEmployee.ProjectEmployeeService;
 
 @Controller
 @RequestMapping("/project")
@@ -23,7 +25,10 @@ public class ProjectController {
 	Logger logger = Logger.getLogger(getClass());
 
 	@Autowired
-	ProjectService projectService;
+	private ProjectService projectService;
+
+	@Autowired
+	private ProjectEmployeeService projectEmployeeService;
 
 	@PostConstruct
 	public void init() {
@@ -52,8 +57,12 @@ public class ProjectController {
 	}
 
 	@RequestMapping("/add")
-	public ModelAndView add(Project project) {
+	public ModelAndView add(Project project, HttpSession session) {
+		Employee employee = (Employee) session.getAttribute("user");
+		int employeeId = employee.getEmployeeId();
 		projectService.addProject(project);
+		projectEmployeeService.addReference(new ProjectEmployee(project
+				.getProjectId(), employeeId));
 		return new ModelAndView("redirect:list");
 	}
 

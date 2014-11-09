@@ -23,11 +23,11 @@
 		INSERT INTO `project`
 		(`NEED_PRINCPAL_ASSIST`,`PRIORITY`,`START_DATE`,`END_DATE`,`PROJECT_CONTENT`,`POTENTIAL_EXPENDITURE`,
 		`SAMPLE_COUNT`,`RESEARCH_DIRECTION`,`TECHNOLOGY_PLATFORM_DEMAND`,`HAS_CORPORATED_INTENTION`,`NEED_PROJECT_PLAN`,
-		`NEED_SCI`,`PROJECT_NOTE`,`PROJECT_NAME`)
+		`NEED_SCI`,`PROJECT_NOTE`,`PROJECT_NAME`,`PROJECT_TYPE`)
 		VALUES
 		(#{needPrincipalAssist},#{priority},#{startDate},#{endDate},#{projectContent},#{potentialExpenditure},
 		#{sampleCount},#{researchDirection},#{platformDemand},#{hasCorporatedIntention},#{needProjectPlan},
-		#{needSCI},#{projectNote},#{projectName});
+		#{needSCI},#{projectNote},#{projectName},#{projectType});
 	</insert>
 	
 	<update id="updateProject" parameterMap="projectParameter" flushCache="true">
