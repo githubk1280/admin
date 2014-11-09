@@ -57,7 +57,7 @@
 							<c:forEach items="${projects}" var="project" varStatus="status">
 								<tr>
 									<td>${project.projectId}</td>
-									<td>${project.projectName}</td>
+									<td><a href="${project.projectId}" class="project_link">${project.projectName}</a></td>
 									<td>意向/实施</td>
 									<td>${project.researchDirection}</td>
 									<td><fmt:formatDate value="${project.startDate}"

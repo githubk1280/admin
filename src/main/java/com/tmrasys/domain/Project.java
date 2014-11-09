@@ -13,12 +13,21 @@ public class Project {
 	private Date endDate;
 	private char needPrincipalAssist;
 	private String projectContent;
+	/**
+	 * 潜在经费
+	 */
 	private String potentialExpenditure;
+	/**
+	 * 样本数量
+	 */
 	private int sampleCount;
 	/**
 	 * 研究方向
 	 */
 	private String researchDirection;
+	/**
+	 * 技术平台
+	 */
 	private String platformDemand;
 	private char hasCorporatedIntention;
 	private char needProjectPlan;
