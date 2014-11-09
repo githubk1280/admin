@@ -1,8 +1,6 @@
 package com.tmrasys.controller;
 
-import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,23 +8,28 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.tmrasys.service.project.ProjectService;
+import com.tmrasys.domain.Employee;
+import com.tmrasys.service.employee.EmployeeService;
+import com.tmrasys.utils.FailedUtils;
 
 @Controller
 public class LoginController {
 	Logger logger = Logger.getLogger(getClass());
 
 	@Autowired
-	ProjectService projectService;
-
-	@PostConstruct
-	public void init() {
-	}
+	EmployeeService employeeService;
 
 	@RequestMapping("/login")
 	public ModelAndView login(String userName, String password,
-			HttpServletRequest request, HttpServletResponse response) {
+			HttpSession session) {
+		Employee user = employeeService.getEmployeeByName(userName);
 		ModelAndView view = new ModelAndView();
+		if (null == user) {
+			view.setViewName("redirect:"
+					+ FailedUtils.getLoginErrorMessage("用户不存在"));
+			return view;
+		}
+		session.setAttribute("user", user);
 		view.setViewName("redirect:/project/list");
 		return view;
 	}

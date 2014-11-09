@@ -3,6 +3,7 @@ package com.tmrasys.controller;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tmrasys.constant.page.PageResourceConstant;
+import com.tmrasys.domain.Employee;
 import com.tmrasys.domain.Project;
 import com.tmrasys.service.project.ProjectService;
 
@@ -38,7 +40,8 @@ public class ProjectController {
 	}
 
 	@RequestMapping("/list")
-	public ModelAndView loadAllProjects() {
+	public ModelAndView loadAllProjectsByUser(HttpSession session) {
+		Employee employee = (Employee) session.getAttribute("user");
 		List<Project> projects = projectService.loadProjectsByEmployee(2);
 		ModelAndView view = new ModelAndView();
 		view.addObject("projects", projects);
