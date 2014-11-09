@@ -85,7 +85,8 @@
 		</div>
 		<!-- /.navbar-static-side --> </nav>
 		<div id="page-wrapper">
-			<h1 style="color: red">页面不存在，请使用正确地址</h1>
+			<h3 style="color: red">Status Code : 400</h3>
+			<h5 style="color: red">请输入正确地址</h5>
 		</div>
 	</div>
 	<!-- /#wrapper -->

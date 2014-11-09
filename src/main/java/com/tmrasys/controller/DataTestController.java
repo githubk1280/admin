@@ -12,7 +12,7 @@ import com.tmrasys.domain.Project;
 import com.tmrasys.service.project.ProjectService;
 
 @Controller
-@RequestMapping("/project")
+@RequestMapping("/test")
 public class DataTestController {
 	Logger logger = Logger.getLogger(getClass());
 	
