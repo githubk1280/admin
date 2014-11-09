@@ -49,6 +49,16 @@
 												</div>
 												<div class="col-md-6 col-sm-12 col-xs-12">
 													<div>
+														<label>项目名 </label>
+													</div>
+													<div>
+														<form:input path="projectName" class="form-control" />
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-6 col-sm-12 col-xs-12">
+													<div>
 														<label>项目类型 </label>
 													</div>
 													<div>

@@ -11,9 +11,9 @@ public class Project {
 	private int projectId;
 	private String projectName;
 	private int priority;
-	@DateTimeFormat
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date startDate;
-	@DateTimeFormat
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date endDate;
 	private char needPrincipalAssist;
 	private String projectContent;

@@ -19,6 +19,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		if (null == request.getSession().getAttribute("user")) {
 			response.sendRedirect(request.getContextPath()
 					+ FailedUtils.getLoginErrorMessage("请先登录!"));
+			return false;
 		}
 		return true;
 	}

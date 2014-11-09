@@ -27,8 +27,7 @@
 					<div class="col-lg-12">
 						<h2 class="page-header form-group input-group">
 							<strong>项目基本信息</strong>
-							<a href="add-redirect">创建</a>
-							<button class="btn btn-default btn-primary"
+							<button class="btn btn-default btn-primary" id="create"
 								style="margin-left: 10px;">创建新的项目</button>
 							<input type="text" class="form-control" placeholder="请输入项目编号">
 							<span class="input-group-btn">
@@ -90,17 +89,9 @@
 							</c:forEach>
 						</tbody>
 					</table>
-					<div class="pull-right">
-						<ul class="pagination">
-							<li><a href="#"><strong>上一页</strong></a></li>
-							<li class="active"><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#"><strong>下一页</strong></a></li>
-						</ul>
-					</div>
+					<c:if test="${projects.size()>10}">
+						<%@ include file="../common/pagnation.jsp"%>
+					</c:if>
 				</div>
 			</div>
 			<!-- /#page-wrapper -->
@@ -144,7 +135,12 @@
 			$("#projectStatusBadge").click(function() {
 				alert($("#projectStatusBadge").text());
 				$("#projectStatusBadge").text("");
-			})
+			});
+			
+			$("#create").click(function() {
+				window.location.replace("http://"+window.location.host+"/admin/project/add-redirect");
+				return false;
+			});
 
 		});
 	</script>

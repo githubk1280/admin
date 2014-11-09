@@ -31,7 +31,7 @@
 	<!-- navbar tabs -->
 	<ul
 		class="nav navbar-nav navbar-default nav-pills navbar-nav-left navbar-default-color">
-		<li id="tab1" class="active"><a href="#"><i
+		<li id="tab1" class="active"><a href="project/list"><i
 				class="fa fa-tasks fa-fw "></i><strong>项目管理</strong></a></li>
 		<li id="tab2"><a href="#"><i class="fa fa-tasks fa-fw"></i><strong>文档管理</strong></a></li>
 		<li id="tab3"><a href="#"><i class="fa fa-tasks fa-fw"></i><strong>财务管理</strong></a></li>
