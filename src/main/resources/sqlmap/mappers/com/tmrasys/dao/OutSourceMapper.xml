@@ -8,16 +8,39 @@
 		WHERE
 		FK_PROJECT_ID=#{projectId}
 	</select>
-	
+
+	<insert id="addOutSource" parameterMap="outSourceParameter"
+		keyProperty="outSourceId" useGeneratedKeys="true">
+		INSERT INTO 
+		`out_source`
+		(`OUT_SOURCE_UNIT`,`ADRESS`,`SEND_SAMPLE_DATE`,`SEND_SAMPLE_COUNT`,`IS_EXPERIMENT_RESULT_RECIVED`,`OUT_SOURCE_STATUS`,`FK_PROJECT_ID`,`OUT_SOURCE_TYPE`)
+		VALUES
+		(#{outSourceUnit},#{address},#{sendSampleDate},#{sendSampleCount},#{isErRecived},#{outSourceStatus}
+		,#{projectId},#{outSourceType});
+	</insert>
+
+	<parameterMap type="com.tmrasys.domain.OutSource" id="outSourceParameter">
+		<parameter property="outSourceId" resultMap="OUT_SOURCE_ID" />
+		<parameter property="outSourceUnit" resultMap="OUT_SOURCE_UNIT" />
+		<parameter property="address" resultMap="ADRESS" />
+		<parameter property="sendSampleDate" resultMap="SEND_SAMPLE_DATE" />
+		<parameter property="sendSampleCount" resultMap="SEND_SAMPLE_COUNT" />
+		<parameter property="isErRecived" resultMap="IS_EXPERIMENT_RESULT_RECIVED" />
+		<parameter property="outSourceStatus" resultMap="OUT_SOURCE_STATUS" />
+		<parameter property="outSourceType" resultMap="OUT_SOURCE_TYPE" />
+		<parameter property="projectId" resultMap="FK_PROJECT_ID"/>
+	</parameterMap>
+
 	<resultMap type="com.tmrasys.domain.OutSource" id="outSourceMapper">
-		<id property="outSourceId" column="OUT_SOURCE_ID"/>
-		<result property="outSourceUnit" column="OUT_SOURCE_UNIT"/>
-		<result property="address" column="ADRESS"/>
-		<result property="sendSampleDate" column="SEND_SAMPLE_DATE"/>
-		<result property="sendSampleCount" column="SEND_SAMPLE_COUNT"/>
-		<result property="isErRecived" column="IS_EXPERIMENT_RESULT_RECIVED"/>
-		<result property="outSourceStatus" column="OUT_SOURCE_STATUS"/>
-		<result property="outSourceType" column="OUT_SOURCE_TYPE"/>
+		<id property="outSourceId" column="OUT_SOURCE_ID" />
+		<result property="outSourceUnit" column="OUT_SOURCE_UNIT" />
+		<result property="address" column="ADRESS" />
+		<result property="sendSampleDate" column="SEND_SAMPLE_DATE" />
+		<result property="sendSampleCount" column="SEND_SAMPLE_COUNT" />
+		<result property="isErRecived" column="IS_EXPERIMENT_RESULT_RECIVED" />
+		<result property="outSourceStatus" column="OUT_SOURCE_STATUS" />
+		<result property="outSourceType" column="OUT_SOURCE_TYPE" />
+		<result property="projectId" column="FK_PROJECT_ID" />
 	</resultMap>
 
 </mapper>
