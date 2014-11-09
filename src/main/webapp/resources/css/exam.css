@@ -152,10 +152,23 @@ select.form-control{
 }
 
 textarea.form-control{
-	width:212%;
+	width:180%;
 }
 
 .col-3-from-control{
 	width:123px;
+}
+
+.detailPage{
+	margin-left: 230px;
+}
+
+.panel-body {
+	padding: 5px;
+}
+
+.project_link{
+	color:black;
+	text-decoration: underline;
 }
 

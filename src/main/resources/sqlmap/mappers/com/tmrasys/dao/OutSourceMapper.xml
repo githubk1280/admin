@@ -4,7 +4,7 @@
 <mapper namespace="com.tmrasys.dao.OutSourceDao">
 	<select id="getByProjectId" resultMap="outSourceMapper"
 		parameterType="int">
-		SELECT * FROM OUT_SOURCE
+		SELECT * FROM out_source
 		WHERE
 		FK_PROJECT_ID=#{projectId}
 	</select>

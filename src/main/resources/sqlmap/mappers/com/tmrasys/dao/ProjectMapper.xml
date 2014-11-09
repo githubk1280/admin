@@ -11,10 +11,10 @@
 
 	<select id="loadProjectsByEmployee" resultType="list" resultMap="employeeMapper"
 		parameterType="int">
-		SELECT * FROM PROJECT P
-		INNER JOIN PROJECT_EMPLOYEE PE ON
+		SELECT * FROM project P
+		INNER JOIN project_employee PE ON
 		P.PROJECT_ID = PE.PROJECT_ID
-		INNER JOIN EMPLOYEE E ON E.EMPLOYEE_ID = PE.EMPLOYEE_ID AND E.EMPLOYEE_ID =
+		INNER JOIN employee E ON E.EMPLOYEE_ID = PE.EMPLOYEE_ID AND E.EMPLOYEE_ID =
 		#{employeeId}
 	</select>
 

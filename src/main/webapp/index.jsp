@@ -27,7 +27,7 @@
 			</div>
 			<div class="col-md-6 login-box">
 				<div class="">
-					<form class="form-signin" role="form" action="login" method="get">
+					<form class="form-signin" role="form" action="login" method="post">
 						<div>
 							<h3 align="center"
 								class="form-signin-heading hidden-xs hidden-sm">

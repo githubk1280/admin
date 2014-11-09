@@ -26,8 +26,12 @@
 				<form role="form">
 					<div class="col-lg-12">
 						<h2 class="page-header form-group input-group">
-							<strong>项目基本信息</strong> <input type="text" class="form-control"
-								placeholder="请输入项目编号"> <span class="input-group-btn">
+							<strong>项目基本信息</strong>
+							<a href="add-redirect">创建</a>
+							<button class="btn btn-default btn-primary"
+								style="margin-left: 10px;">创建新的项目</button>
+							<input type="text" class="form-control" placeholder="请输入项目编号">
+							<span class="input-group-btn">
 								<button class="btn btn-default btn-primary" type="button">
 									<i class="fa fa-search"></i>
 								</button>
@@ -57,7 +61,7 @@
 							<c:forEach items="${projects}" var="project" varStatus="status">
 								<tr>
 									<td>${project.projectId}</td>
-									<td>${project.projectName}</td>
+									<td><a href="${project.projectId}" class="project_link">${project.projectName}</a></td>
 									<td>意向/实施</td>
 									<td>${project.researchDirection}</td>
 									<td><fmt:formatDate value="${project.startDate}"
