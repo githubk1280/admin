@@ -27,6 +27,7 @@
 						<th>结束日期</th>
 						<th>项目进度</th>
 						<th>优先级</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
