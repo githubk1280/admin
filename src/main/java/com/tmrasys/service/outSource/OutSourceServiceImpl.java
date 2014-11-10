@@ -30,4 +30,9 @@ public class OutSourceServiceImpl implements OutSourceService {
 		return outSourceDao.getByEmployee(employeeId);
 	}
 
+	@Override
+	public OutSource getById(int osId) {
+		return outSourceDao.getById(osId);
+	}
+
 }

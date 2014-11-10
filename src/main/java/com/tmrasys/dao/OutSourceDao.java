@@ -12,4 +12,5 @@ public interface OutSourceDao {
 	public OutSource getByProjectId(int projectId);
 	public void addOutSource(OutSource os);
 	public List<ProjectOutSource> getByEmployee(int employeeId);
+	public OutSource getById(int osId);
 }

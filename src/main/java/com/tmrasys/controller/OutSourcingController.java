@@ -2,7 +2,6 @@ package com.tmrasys.controller;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -14,11 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tmrasys.constant.page.PageResourceConstant;
 import com.tmrasys.domain.Employee;
-import com.tmrasys.domain.Project;
+import com.tmrasys.domain.OutSource;
 import com.tmrasys.domain.ProjectOutSource;
 import com.tmrasys.service.outSource.OutSourceService;
-import com.tmrasys.service.project.ProjectService;
-import com.tmrasys.service.projectEmployee.ProjectEmployeeService;
 
 @Controller
 @RequestMapping("/outsource")
@@ -26,20 +23,14 @@ public class OutSourcingController {
 	Logger logger = Logger.getLogger(getClass());
 
 	@Autowired
-	private ProjectService projectService;
-
-	@Autowired
-	private ProjectEmployeeService projectEmployeeService;
-
-	@Autowired
 	private OutSourceService outSourceService;
 
 	@RequestMapping("/{osId}")
 	public ModelAndView loadProjectById(@PathVariable int osId) {
-		// Project project = projectService.loadProjectById(projectId);
+		OutSource outsource = outSourceService.getById(osId);
 		ModelAndView view = new ModelAndView();
-		// view.addObject("project", project);
-		view.setViewName(PageResourceConstant.PROJECT_DETAIL);
+		 view.addObject("outsource", outsource);
+		view.setViewName(PageResourceConstant.OS_DETAIL);
 		return view;
 
 	}
@@ -52,21 +43,6 @@ public class OutSourcingController {
 		ModelAndView view = new ModelAndView();
 		view.addObject("outsources", outsources);
 		view.setViewName(PageResourceConstant.OS_LIST);
-		return view;
-
-	}
-
-	@RequestMapping("/add")
-	public ModelAndView add(Project project, HttpSession session) {
-		return new ModelAndView("redirect:list");
-	}
-
-	@RequestMapping("/add-redirect")
-	public ModelAndView addRedirect() {
-		Project project = new Project();
-		ModelAndView view = new ModelAndView();
-		view.addObject(project);
-		view.setViewName(PageResourceConstant.PROJECT_ADD);
 		return view;
 
 	}

@@ -11,7 +11,7 @@ public class OutSource {
 	private String address;
 	private Date sendSampleDate;
 	private int sendSampleCount;
-	private boolean isErRecived;
+	private boolean exprResultRecived;
 	private String outSourceStatus;
 	private String outSourceType;
 	private int projectId;

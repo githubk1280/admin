@@ -31,7 +31,7 @@
 	<!-- navbar tabs -->
 	<ul
 		class="nav navbar-nav navbar-default nav-pills navbar-nav-left navbar-default-color">
-		<li id="tab1" class="active"><a href="list"><i
+		<li id="tab1" class="active"><a href="<spring:url value="project/list"/>"><i
 				class="fa fa-tasks fa-fw "></i><strong>项目管理</strong></a></li>
 		<li id="tab2"><a href="#"><i class="fa fa-tasks fa-fw"></i><strong>文档管理</strong></a></li>
 		<li id="tab3"><a href="#"><i class="fa fa-tasks fa-fw"></i><strong>财务管理</strong></a></li>
@@ -48,11 +48,11 @@
 
 		<div class="sidebar-nav ">
 			<ul class="nav" id="side-menu">
-				<li class="active"><a id="link_pro" href="list"><i
+				<li class="active"><a id="link_pro" href="<spring:url value="project/list"/>"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>项目基本信息</strong></a></li>
 				<li><a id="link_customer" href="#"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>客户基本信息</strong></a></li>
-				<li><a id="link_outsource" href="/outsource/list"><i
+				<li><a id="link_outsource" href="<spring:url value="outsource/list"/>"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>外包信息</strong></a></li>
 				<li><a id="link_proStatus" href="#"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>项目进度</strong><span
