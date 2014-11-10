@@ -19,4 +19,14 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerDao.getByProjectId(projectId);
 	}
 
+	@Override
+	public void addCustomer(Customer customer) {
+		customerDao.addCustomer(customer);
+	}
+
+	@Override
+	public void updateCustomer(Customer customer) {
+		customerDao.updateCustomer(customer);
+	}
+
 }

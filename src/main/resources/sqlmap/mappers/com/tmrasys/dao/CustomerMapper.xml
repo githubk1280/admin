@@ -2,30 +2,78 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.tmrasys.dao.CustomerDao">
-	<select id="getByProjectId" resultMap="customerMapper" resultType="list"
-		parameterType="int">
+	<select id="getByProjectId" resultMap="customerMapper"
+		resultType="list" parameterType="int">
 		SELECT * FROM customers
 		WHERE
 		project_id=#{projectId}
 	</select>
-<resultMap type="com.tmrasys.domain.Customer" id="customerMapper">
-	<id property="customerId" column="CUSTOMER_ID"/>
-	<result property="projectId" column="PROJECT_ID"/>
-	<result property="customerName" column="CUSTOMER_NAME"/>
-	<result property="sex" column="SEX"/>
-	<result property="age" column="AGE"/>
-	<result property="phone" column="PHONE"/>
-	<result property="cellphone" column="CELLPHONE"/>
-	<result property="workUnit" column="WORK_UNIT"/>
-	<result property="department" column="DEPARTMENT"/>
-	<result property="position" column="POSITION"/>
-	<result property="email" column="EMAIL"/>
-	<result property="adress" column="ADRESS"/>
-	<result property="resarchDirection" column="RESEARCH_DIRECTION"/>
-	<result property="responsibleArea" column="RESPONSIBLE_AREA"/>
-	<result property="customerLevel" column="CUSTOMER_LEVEL"/>
-	<result property="relationShip" column="RELATIONSHIP"/>
-	<result property="principalNumber" column="PRINCIPAL_NUM"/>
-</resultMap>
+
+	<insert id="addCustomer" keyProperty="customerId"
+		useGeneratedKeys="true" parameterMap="customerParameter">
+		INSERT INTO `customers`
+		(`CUSTOMER_NAME`,`SEX`,`AGE`,`PHONE`,`CELLPHONE`,
+		`WORK_UNIT`,`DEPARTMENT`,`POSITION`,`EMAIL`,`ADRESS`,`RESEARCH_DIRECTION`,
+		`RESPONSIBLE_AREA`,`CUSTOMER_LEVEL`,`PRINCIPAL_ID`,`PROJECT_ID`,`RELATIONSHIP`,`PRINCIPAL_NUM`)
+		VALUES
+		(#{customerName},#{sex},#{age},#{phone},#{cellphone},
+		#{workUnit},#{department},#{position},#{email},
+		#{adress},#{resarchDirection},#{responsibleArea},#{customerLevel},#{principalId},
+		#{projectId},#{relationShip},#{principalNumber});
+	</insert>
+
+	<update id="updateCustomer" parameterMap="customerParameter" flushCache="true">
+		UPDATE customers 
+		SET CUSTOMER_NAME=#{customerName},SEX=#{sex},
+		AGE=#{age},PHONE=#{phone},
+		CELLPHONE=#{cellphone},WORK_UNIT=#{workUnit},
+		DEPARTMENT=#{department},POSITION=#{position},
+		EMAIL=#{email},ADRESS=#{adress},
+		RESEARCH_DIRECTION=#{resarchDirection},RESPONSIBLE_AREA=#{responsibleArea},
+		CUSTOMER_LEVEL=#{customerLevel},PRINCIPAL_ID=#{principalId},
+		PROJECT_ID=#{projectId},RELATIONSHIP=#{relationShip},PRINCIPAL_NUM=#{principalNumber}
+		WHERE CUSTOMER_ID = #{customerId}
+	</update>
+	<resultMap type="com.tmrasys.domain.Customer" id="customerMapper">
+		<id property="customerId" column="CUSTOMER_ID" />
+		<result property="projectId" column="PROJECT_ID" />
+		<result property="customerName" column="CUSTOMER_NAME" />
+		<result property="sex" column="SEX" />
+		<result property="age" column="AGE" />
+		<result property="phone" column="PHONE" />
+		<result property="cellphone" column="CELLPHONE" />
+		<result property="workUnit" column="WORK_UNIT" />
+		<result property="department" column="DEPARTMENT" />
+		<result property="position" column="POSITION" />
+		<result property="email" column="EMAIL" />
+		<result property="adress" column="ADRESS" />
+		<result property="resarchDirection" column="RESEARCH_DIRECTION" />
+		<result property="responsibleArea" column="RESPONSIBLE_AREA" />
+		<result property="customerLevel" column="CUSTOMER_LEVEL" />
+		<result property="relationShip" column="RELATIONSHIP" />
+		<result property="principalNumber" column="PRINCIPAL_NUM" />
+		<result property="principalId" column="PRINCIPAL_ID" />
+	</resultMap>
+
+	<parameterMap type="com.tmrasys.domain.Customer" id="customerParameter">
+		<parameter property="customerId" resultMap="CUSTOMER_ID" />
+		<parameter property="projectId" resultMap="PROJECT_ID" />
+		<parameter property="customerName" resultMap="CUSTOMER_NAME" />
+		<parameter property="sex" resultMap="SEX" />
+		<parameter property="age" resultMap="AGE" />
+		<parameter property="phone" resultMap="PHONE" />
+		<parameter property="cellphone" resultMap="CELLPHONE" />
+		<parameter property="workUnit" resultMap="WORK_UNIT" />
+		<parameter property="department" resultMap="DEPARTMENT" />
+		<parameter property="position" resultMap="POSITION" />
+		<parameter property="email" resultMap="EMAIL" />
+		<parameter property="adress" resultMap="ADRESS" />
+		<parameter property="resarchDirection" resultMap="RESEARCH_DIRECTION" />
+		<parameter property="responsibleArea" resultMap="RESPONSIBLE_AREA" />
+		<parameter property="customerLevel" resultMap="CUSTOMER_LEVEL" />
+		<parameter property="relationShip" resultMap="RELATIONSHIP" />
+		<parameter property="principalNumber" resultMap="PRINCIPAL_NUM" />
+		<parameter property="principalId" resultMap="PRINCIPAL_ID" />
+	</parameterMap>
 </mapper>
 
