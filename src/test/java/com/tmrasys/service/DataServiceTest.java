@@ -158,4 +158,10 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		customerService.updateCustomer(customer);
 	}
 	
+	@Test
+	public void testgetCustomersByEmployee() {
+		for(Customer customer : customerService.getByEmployee(3))
+			System.out.println(customer);
+	}
+	
 }

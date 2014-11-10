@@ -34,6 +34,17 @@
 		PROJECT_ID=#{projectId},RELATIONSHIP=#{relationShip},PRINCIPAL_NUM=#{principalNumber}
 		WHERE CUSTOMER_ID = #{customerId}
 	</update>
+	
+	<select id="getByEmployee" resultMap="customerMapper" resultType="list" parameterType="int">
+		select * from customers c
+		where c.PROJECT_ID in 
+		(select PE.project_id FROM project_employee PE
+		INNER JOIN
+		project P on PE.PROJECT_ID = P.PROJECT_ID and PE.EMPLOYEE_ID=#{employeeId}
+		)
+		ORDER BY CUSTOMER_ID;
+	</select>
+	
 	<resultMap type="com.tmrasys.domain.Customer" id="customerMapper">
 		<id property="customerId" column="CUSTOMER_ID" />
 		<result property="projectId" column="PROJECT_ID" />

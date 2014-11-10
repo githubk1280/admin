@@ -9,4 +9,5 @@ public interface CustomerDao {
 	List<Customer> getByProjectId(int projectId);
 	void addCustomer(Customer customer);
 	void updateCustomer(Customer customer);
+	List<Customer> getByEmployee(int employeeId);
 }
