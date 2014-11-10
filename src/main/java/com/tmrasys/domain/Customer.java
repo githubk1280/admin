@@ -21,4 +21,8 @@ public class Customer {
 	private int customerLevel;
 	private String relationShip;
 	private int principalNumber;
+	/**
+	 *  找到第一负责人
+	 */
+	private int principalId;
 }

@@ -142,4 +142,20 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		projectEmployeeService.addReference(projectEmployee);
 	}
 	
+	@Test
+	public void testaddCustomer() {
+		Customer customer = customerService.getByProjectId(1).get(0);
+		customer.setCustomerName("gary");
+		customer.setCustomerId(0);
+		customerService.addCustomer(customer);
+	}
+	
+	@Test
+	public void testupdateCustomer() {
+		Customer customer = customerService.getByProjectId(15).get(0);
+		customer.setCustomerName("ivan");
+		customer.setProjectId(16);
+		customerService.updateCustomer(customer);
+	}
+	
 }
