@@ -29,4 +29,9 @@ public class CustomerServiceImpl implements CustomerService {
 		customerDao.updateCustomer(customer);
 	}
 
+	@Override
+	public List<Customer> getByEmployee(int employeeId) {
+		return customerDao.getByEmployee(employeeId);
+	}
+
 }
