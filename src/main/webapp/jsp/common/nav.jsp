@@ -50,14 +50,14 @@
 			<ul class="nav" id="side-menu">
 				<li class="active"><a id="link_pro" href="<%=request.getContextPath()%>/project/list"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>项目基本信息</strong></a></li>
-				<li><a id="link_customer" href="#"><i
+				<li><a id="link_customer" href="<%=request.getContextPath()%>/customer/list"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>客户基本信息</strong></a></li>
 				<li><a id="link_outsource" href="<%=request.getContextPath()%>/outsource/list"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>外包信息</strong></a></li>
-				<li><a id="link_proStatus" href="#"><i
-						class="fa fa-bar-chart-o fa-fw"></i> <strong>项目进度</strong><span
-						id="projectStatusBadge" class="badge sidebar-badge-margin">1</span></a>
-				</li>
+<!-- 				<li><a id="link_proStatus" href="#"><i -->
+<!-- 						class="fa fa-bar-chart-o fa-fw"></i> <strong>项目进度</strong><span -->
+<!-- 						id="projectStatusBadge" class="badge sidebar-badge-margin">1</span></a> -->
+<!-- 				</li> -->
 				<li><a id="link_customCalling" href="#"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>客户联系记录</strong></a></li>
 			</ul>

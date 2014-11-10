@@ -26,7 +26,7 @@
 				<form role="form">
 					<div class="col-lg-12">
 						<h2 class="page-header form-group input-group">
-							<strong>外包基本信息</strong> <input type="text" class="form-control"
+							<strong>客户基本信息</strong> <input type="text" class="form-control"
 								placeholder="请输入编号"> <span class="input-group-btn">
 								<button class="btn btn-default btn-primary" type="button">
 									<i class="fa fa-search"></i>
@@ -42,31 +42,30 @@
 					<table class="table table-hover">
 						<thead>
 							<tr>
-								<th>外包编号</th>
-								<th>外包类型</th>
+								<th>负责人</th>
+								<th>单位</th>
+								<th>部门</th>
+								<th>职位</th>
 								<th>所属项目编号</th>
-								<th>所属项目名称</th>
-								<th>外包状态</th>
-								<th>送样数量</th>
-								<th>送样日期</th>
+								<th>研究方向 </th>
+								<th>负责内容</th>
 								<th></th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${outsources}" var="outsource"
+							<c:forEach items="${customers}" var="customer"
 								varStatus="status">
 								<tr>
-									<td><a href="${outsource.outSourceId}" target="_blank"
-										class="project_link">${outsource.outSourceId}</a></td>
-									<td>${outsource.outSourceType}</td>
-									<td><a href="<%=request.getContextPath()%>/project/${outsource.projectId}" target="_blank"
-										class="project_link">${outsource.projectId}</a></td>
-									<td>${outsource.projectName}</td>
-									<td>${outsource.outSourceStatus}</td>
-									<td>${outsource.sendSampleCount}</td>
-									<td><fmt:formatDate value="${outsource.sendSampleDate}"
-											pattern="yyyy-MM-dd" /></td>
-									<td><a href="${outsource.outSourceId}" target="_blank"
+									<td><a href="${customer.customerId}" target="_blank"
+										class="project_link">${customer.customerName}</a></td>
+									<td>${customer.workUnit}</td>
+									<td>${customer.department}</td>
+									<td>${customer.position}</td>
+									<td><a href="<%=request.getContextPath()%>/project/${customer.projectId}" target="_blank"
+										class="project_link">${customer.projectId}</a></td>
+									<td>${customer.resarchDirection}</td>
+									<td>${customer.responsibleArea}</td>
+									<td><a href="${customer.customerId}" target="_blank"
 										class="project_link">进入详情页</a></td>
 								</tr>
 							</c:forEach>
