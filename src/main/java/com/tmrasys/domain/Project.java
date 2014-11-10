@@ -38,4 +38,8 @@ public class Project {
 	private char needSCI;
 	private String projectNote;
 	private String projectType;
+	/**
+	 * 项目百分比
+	 */
+	private int projectStatusPercentage;
 }

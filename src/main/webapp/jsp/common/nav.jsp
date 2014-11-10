@@ -52,7 +52,7 @@
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>项目基本信息</strong></a></li>
 				<li><a id="link_customer" href="#"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>客户基本信息</strong></a></li>
-				<li><a id="link_outsource" href="#"><i
+				<li><a id="link_outsource" href="/outsource/list"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>外包信息</strong></a></li>
 				<li><a id="link_proStatus" href="#"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>项目进度</strong><span

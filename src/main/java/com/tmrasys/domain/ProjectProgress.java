@@ -12,4 +12,17 @@ public class ProjectProgress {
 	private Date progressDate;
 	private int projectId;
 	private int percentage;
+
+	public ProjectProgress(String employeeName, String content,
+			Date progressDate, int projectId, int percentage) {
+		this.employeeName = employeeName;
+		this.content = content;
+		this.progressDate = progressDate;
+		this.projectId = projectId;
+		this.percentage = percentage;
+	}
+
+	public ProjectProgress() {
+	}
+
 }

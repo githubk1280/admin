@@ -1,6 +1,5 @@
 package com.tmrasys.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -16,15 +15,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.tmrasys.constant.page.PageResourceConstant;
 import com.tmrasys.domain.Employee;
 import com.tmrasys.domain.Project;
-import com.tmrasys.domain.ProjectEmployee;
-import com.tmrasys.domain.ProjectProgress;
+import com.tmrasys.domain.ProjectOutSource;
+import com.tmrasys.service.outSource.OutSourceService;
 import com.tmrasys.service.project.ProjectService;
 import com.tmrasys.service.projectEmployee.ProjectEmployeeService;
-import com.tmrasys.service.projectProgress.ProjectProgressService;
 
 @Controller
-@RequestMapping("/project")
-public class ProjectController {
+@RequestMapping("/outsource")
+public class OutSourcingController {
 	Logger logger = Logger.getLogger(getClass());
 
 	@Autowired
@@ -34,17 +32,13 @@ public class ProjectController {
 	private ProjectEmployeeService projectEmployeeService;
 
 	@Autowired
-	private ProjectProgressService projectProgressService;
+	private OutSourceService outSourceService;
 
-	@PostConstruct
-	public void init() {
-	}
-
-	@RequestMapping("/{projectId}")
-	public ModelAndView loadProjectById(@PathVariable int projectId) {
-		Project project = projectService.loadProjectById(projectId);
+	@RequestMapping("/{osId}")
+	public ModelAndView loadProjectById(@PathVariable int osId) {
+		// Project project = projectService.loadProjectById(projectId);
 		ModelAndView view = new ModelAndView();
-		view.addObject("project", project);
+		// view.addObject("project", project);
 		view.setViewName(PageResourceConstant.PROJECT_DETAIL);
 		return view;
 
@@ -53,25 +47,17 @@ public class ProjectController {
 	@RequestMapping("/list")
 	public ModelAndView loadAllProjectsByUser(HttpSession session) {
 		Employee employee = (Employee) session.getAttribute("user");
-		List<Project> projects = projectService.loadProjectsByEmployee(employee
-				.getEmployeeId());
+		List<ProjectOutSource> outsources = outSourceService
+				.getByEmployee(employee.getEmployeeId());
 		ModelAndView view = new ModelAndView();
-		view.addObject("projects", projects);
-		view.setViewName(PageResourceConstant.PROJECT_LIST);
+		view.addObject("outsources", outsources);
+		view.setViewName(PageResourceConstant.OS_LIST);
 		return view;
 
 	}
 
 	@RequestMapping("/add")
 	public ModelAndView add(Project project, HttpSession session) {
-		Employee employee = (Employee) session.getAttribute("user");
-		int employeeId = employee.getEmployeeId();
-		projectService.addProject(project);
-		int projectId = project.getProjectId();
-		projectEmployeeService.addReference(new ProjectEmployee(projectId,
-				employeeId));
-		projectProgressService.addProjectProgress(new ProjectProgress(employee
-				.getName(), "项目创建", new Date(), projectId, 0));
 		return new ModelAndView("redirect:list");
 	}
 

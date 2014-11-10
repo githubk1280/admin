@@ -1,11 +1,15 @@
 package com.tmrasys.dao;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.tmrasys.domain.OutSource;
+import com.tmrasys.domain.ProjectOutSource;
 
 @Repository
 public interface OutSourceDao {
-	OutSource getByProjectId(int projectId);
-	void addOutSource(OutSource os);
+	public OutSource getByProjectId(int projectId);
+	public void addOutSource(OutSource os);
+	public List<ProjectOutSource> getByEmployee(int employeeId);
 }

@@ -9,15 +9,54 @@
 		FK_PROJECT_ID=#{projectId}
 	</select>
 
+	<select id="getByEmployee" resultMap="outSourceMapperByEmployee"
+		parameterType="int">
+		SELECT
+		P.PROJECT_ID AS
+		FK_PROJECT_ID,P.PROJECT_NAME AS
+		PROJECT_NAME,OS.OUT_SOURCE_ID AS OUT_SOURCE_ID,
+		OS.OUT_SOURCE_TYPE AS
+		OUT_SOURCE_TYPE,OS.OUT_SOURCE_UNIT AS
+		OUT_SOURCE_UNIT,OS.SEND_SAMPLE_COUNT AS
+		SEND_SAMPLE_COUNT,OS.SEND_SAMPLE_DATE AS SEND_SAMPLE_DATE,
+		OS.OUT_SOURCE_STATUS AS OUT_SOURCE_STATUS
+		FROM project_employee PE
+		INNER
+		JOIN
+		project P on PE.PROJECT_ID =
+		P.PROJECT_ID
+		INNER JOIN
+		out_source
+		OS on
+		P.PROJECT_ID = OS.FK_PROJECT_ID
+		WHERE
+		PE.EMPLOYEE_ID=#{employeeId}
+		ORDER
+		BY OS.OUT_SOURCE_ID DESC
+	</select>
+
 	<insert id="addOutSource" parameterMap="outSourceParameter"
 		keyProperty="outSourceId" useGeneratedKeys="true">
-		INSERT INTO 
+		INSERT INTO
 		`out_source`
 		(`OUT_SOURCE_UNIT`,`ADRESS`,`SEND_SAMPLE_DATE`,`SEND_SAMPLE_COUNT`,`IS_EXPERIMENT_RESULT_RECIVED`,`OUT_SOURCE_STATUS`,`FK_PROJECT_ID`,`OUT_SOURCE_TYPE`)
 		VALUES
 		(#{outSourceUnit},#{address},#{sendSampleDate},#{sendSampleCount},#{isErRecived},#{outSourceStatus}
 		,#{projectId},#{outSourceType});
 	</insert>
+
+	<resultMap type="com.tmrasys.domain.ProjectOutSource" id="outSourceMapperByEmployee">
+		<result property="outSourceId" column="OUT_SOURCE_ID" />
+		<result property="outSourceUnit" column="OUT_SOURCE_UNIT" />
+		<result property="address" column="ADRESS" />
+		<result property="sendSampleDate" column="SEND_SAMPLE_DATE" />
+		<result property="sendSampleCount" column="SEND_SAMPLE_COUNT" />
+		<result property="isErRecived" column="IS_EXPERIMENT_RESULT_RECIVED" />
+		<result property="outSourceStatus" column="OUT_SOURCE_STATUS" />
+		<result property="outSourceType" column="OUT_SOURCE_TYPE" />
+		<result property="projectId" column="FK_PROJECT_ID" />
+		<result property="projectName" column="PROJECT_NAME" />
+	</resultMap>
 
 	<parameterMap type="com.tmrasys.domain.OutSource" id="outSourceParameter">
 		<parameter property="outSourceId" resultMap="OUT_SOURCE_ID" />
@@ -28,7 +67,7 @@
 		<parameter property="isErRecived" resultMap="IS_EXPERIMENT_RESULT_RECIVED" />
 		<parameter property="outSourceStatus" resultMap="OUT_SOURCE_STATUS" />
 		<parameter property="outSourceType" resultMap="OUT_SOURCE_TYPE" />
-		<parameter property="projectId" resultMap="FK_PROJECT_ID"/>
+		<parameter property="projectId" resultMap="FK_PROJECT_ID" />
 	</parameterMap>
 
 	<resultMap type="com.tmrasys.domain.OutSource" id="outSourceMapper">

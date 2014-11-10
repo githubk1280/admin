@@ -6,7 +6,6 @@ import lombok.Data;
 
 @Data
 public class OutSource {
-	
 	private int outSourceId;
 	private String outSourceUnit;
 	private String address;
