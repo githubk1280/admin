@@ -61,8 +61,7 @@
 														<label>用户名已经存在，请重试!</label>
 													</div>
 													<div>
-														<label><a
-															href="<%=request.getContextPath()%>/user/add-redirect">返回</a></label>
+														<a href="<%=request.getContextPath()%>/user/add-redirect" style="color:black">返回</a>
 													</div>
 												</div>
 												<div class="col-md-4  col-sm-12 col-xs-12"></div>
