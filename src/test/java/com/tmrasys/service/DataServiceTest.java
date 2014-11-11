@@ -164,4 +164,10 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 			System.out.println(customer);
 	}
 	
+	@Test
+	public void testupdatePrivilege() {
+		employee = employeeDataService.getEmployeeByName("ivan");
+		employeeDataService.updatePrivilege(employee, "研究员");
+	}
+	
 }

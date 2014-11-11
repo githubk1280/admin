@@ -8,5 +8,6 @@
 		<mapper resource="sqlmap/mappers/com/tmrasys/dao/CustomerMapper.xml" />
 		<mapper resource="sqlmap/mappers/com/tmrasys/dao/ProjectProgressMapper.xml" />
 		<mapper resource="sqlmap/mappers/com/tmrasys/dao/ProjectEmployeeMapper.xml" />
+		<mapper resource="sqlmap/mappers/com/tmrasys/dao/PrivilegeMapper.xml" />
 	</mappers>
 </configuration>	

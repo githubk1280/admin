@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tmrasys.dao.PrivilegeDao">
+	<select id="getAllPrivileges" resultMap="privilegeResult" 
+		resultType="list">
+		SELECT 
+		*
+		FROM privilege
+	</select>
+	<resultMap type="com.tmrasys.domain.Privilege" id="privilegeResult">
+		<id property="privilegeId" column="PRIVILEGE_ID"/>
+		<result property="privilegeCode" column="PRIVILEGE_CODE" />
+		<result property="description" column="DESCRIPTION" />
+	</resultMap>
+</mapper>
+
