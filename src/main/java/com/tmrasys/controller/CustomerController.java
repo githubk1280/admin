@@ -24,12 +24,12 @@ public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 
-	@RequestMapping("/{osId}")
-	public ModelAndView loadProjectById(@PathVariable int osId) {
-		// OutSource outsource = outSourceService.getById(osId);
+	@RequestMapping("/{customerId}")
+	public ModelAndView loadProjectById(@PathVariable int customerId) {
+		Customer customer = customerService.getById(customerId);
 		ModelAndView view = new ModelAndView();
-		// view.addObject("outsource", outsource);
-		view.setViewName(PageResourceConstant.OS_DETAIL);
+		view.addObject("customer", customer);
+		view.setViewName(PageResourceConstant.CUSTOMER_DETAIL);
 		return view;
 
 	}

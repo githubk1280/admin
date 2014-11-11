@@ -9,4 +9,5 @@ public interface CustomerService {
 	void addCustomer(Customer customer);
 	void updateCustomer(Customer customer);
 	List<Customer> getByEmployee(int employeeId);
+	public Customer getById(int customerId);
 }

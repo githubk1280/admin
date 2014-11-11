@@ -172,3 +172,14 @@ textarea.form-control{
 	text-decoration: underline;
 }
 
+.a-color{
+	color:#428bca;
+}
+#proStatusHis:hover,#newStatus:hover{
+	color:#2a6496;
+}
+
+.p_borderline{
+	border-bottom:1px solid #178acc;
+}
+

@@ -2,6 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.tmrasys.dao.CustomerDao">
+	<select id="getById" parameterType="int" resultMap="customerMapper">
+		SELECT * FROM customers
+		WHERE CUSTOMER_ID=#{customerId}
+	</select>
+
 	<select id="getByProjectId" resultMap="customerMapper"
 		resultType="list" parameterType="int">
 		SELECT * FROM customers
