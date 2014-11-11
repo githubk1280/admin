@@ -10,4 +10,7 @@ public class PageResourceConstant {
 
 	public static final String CUSTOMER_LIST = "customer/list";
 	public static final String CUSTOMER_DETAIL = "customer/detail";
+	
+	public static final String USER_ADD = "usermgnt/add";
+	public static final String USER_ADD_RESULT = "usermgnt/add-result";
 }
