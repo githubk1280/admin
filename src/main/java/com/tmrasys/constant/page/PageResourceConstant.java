@@ -13,4 +13,6 @@ public class PageResourceConstant {
 	
 	public static final String USER_ADD = "usermgnt/add";
 	public static final String USER_ADD_RESULT = "usermgnt/add-result";
+	public static final String USER_MODIFY = "usermgnt/update-password";
+	public static final String USER_MODIFY_SUCCESS = "usermgnt/update-success";
 }
