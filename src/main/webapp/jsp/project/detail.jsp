@@ -216,75 +216,136 @@
 							</div>
 							<!-------------------------------------------project basic data end ------------------------------------------>
 							<!----------------------------------------project status start ------------------------->
-							<div class="panel panel-default panel-info">
+							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h3 class="panel-title">
 										<strong>项目进度</strong> <a data-toggle="collapse"
-											href="#collapseTwo" class="panel_a"><strong>link</strong></a>
+											href="#collapseTwo" class="panel_a"> <span
+											id="arrowProStatus" class="glyphicon glyphicon-chevron-down"
+											style="color: rgb(0, 0, 0);"></span>
+										</a>
+										<!--  <button id="saveProStatus" value="1" class="btn btn-default btn-success" style="margin-left:10px;">修改</button>
+	                                            	<button id="cancelProStatus" value="2" class="btn btn-default btn-success" style="margin-left:10px;display:none">取消</button>-->
 									</h3>
 
 								</div>
 								<div id="collapseTwo" class="panel-collapse collapse">
-									<div class="panel-body">
-										<div id="projectStatusDiv">
-											<div class="row">
-												<div class="col-md-12">
-													<div class="pull-left">
-														<h4>
-															<strong>进度1</strong>
-														</h4>
-													</div>
+									<div id="panelProStatus" class="panel-body">
+										<div class="row row-margin">
+											<div class="col-md-3 col-sm-12 col-xs-12">
+												<div>
+													<a href="../page/proStatusHistory.html" target="_blank"><label
+														id="proStatusHis" class="a-color">项目进度历史 </label></a>
 												</div>
 											</div>
-											<div class="row row-margin">
-												<div class="col-md-4 col-sm-12 col-xs-12">
-													<div class="pull-left">
-														<span class="label label-default">项目编号 </span>
-													</div>
-													<div class="pull-left">
-														<input type="text" class="form-control" disabled>
-													</div>
+											<div class="col-md-3 col-sm-12 col-xs-12">
+												<div>
+													<a id="link_newStatus"><label id="newStatus"
+														class="a-color" style="margin-left: -20px;">添加新的进度记录
+													</label></a>
 												</div>
-												<div class="col-md-4 col-sm-12 col-xs-12">
-													<div class="pull-left">
-														<span class="label label-default">日期 </span>
-													</div>
-													<div class="pull-left">
-														<input type="text" class="form-control"
-															style="margin-left: 23px" disabled>
-													</div>
+											</div>
+										</div>
+										<div class="row row-margin">
+											<div class="col-md-6 col-sm-12 col-xs-12">
+												<div>
+													<label>项目编号 </label>
 												</div>
-												<div class="col-md-4 col-sm-12 col-xs-12">
-													<div class="pull-left">
-														<span class="label label-default">优先级 </span>
-													</div>
-													<div class="pull-left radio-margin">
-														<label><input type="radio" name="optionsRadios12"
-															id="optionsRadios12" value="option12" checked disabled>高
-														</label> <label><input type="radio" name="optionsRadios13"
-															id="optionsRadios13" value="option13" disabled>中
-														</label> <label><input type="radio" name="optionsRadios14"
-															id="optionsRadios14" value="option14" disabled>低
-														</label>
+												<div>
+													<input id="" type="text" class="form-control">
+												</div>
+											</div>
+										</div>
+										<div class="row row-margin">
+											<div class="col-md-6 col-sm-12 col-xs-12">
+												<div>
+													<label>项目当前进度 </label>
+												</div>
+												<div class="progress">
+													<div class="progress-bar progress-bar-danger"
+														role="progressbar" aria-valuenow="60" aria-valuemin="0"
+														aria-valuemax="100" style="width: 90%;">
+														<span class="sr-only">60% Complete</span>90%
 													</div>
 												</div>
 											</div>
 										</div>
+										<!-- add new pro status start  -->
+										<div id="proStatusDate" class="row row-margin"
+											style="align: center; display: none">
+											<div class="col-md-6  col-sm-12 col-xs-12">
+												<div>
+													<label>进度日期</label>
+												</div>
+												<div>
+													<input id="inputProStatusDate" type="text"
+														class="form-control">
+												</div>
+											</div>
+										</div>
+										<div id="proStatusUpdate" class="row row-margin"
+											style="display: none">
+											<div class="col-md-6 col-sm-12 col-xs-12">
+												<div>
+													<label>需要修改进度</label>
+												</div>
+												<div>
+													<label><input id="radioProStatus1" type="radio"
+														name="optionsRadios4" value="option4" checked>30%
+													</label> <label><input id="radioProStatus2" type="radio"
+														name="optionsRadios5" value="option5">60% </label> <label><input
+														id="radioProStatus3" type="radio" name="optionsRadios6"
+														value="option6">90% </label> <label><input
+														id="radioProStatus4" type="radio" name="optionsRadios6"
+														value="option6">100% </label>
+												</div>
+											</div>
+										</div>
+										<div id="proStatusContent" class="row row-margin"
+											style="display: none">
+											<div class="col-md-6 col-sm-12 col-xs-12">
+												<div>
+													<label>进度内容 </label>
+												</div>
+												<div>
+													<textarea id="inpuProStatusContent" class="form-control"
+														rows="8" cols="4"></textarea>
+												</div>
+											</div>
+										</div>
+										<div id="proStatusBtn" class="row"
+											style="margin-top: 30px; display: none">
+											<div class="col-md-6 col-sm-12 col-xs-12">
+												<button id="btnSave" class="btn btn-default btn-primary">保存</button>
+												<button id="btnCancel" class="btn btn-default btn-primary">取消</button>
+											</div>
+										</div>
+										<!-- add new pro status end  -->
+
 									</div>
 								</div>
 							</div>
 							<!----------------------------------------project status end ------------------------->
 							<!----------------------------------------outsource start ------------------------->
-							<div class="panel panel-default panel-info">
+							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h3 class="panel-title">
 										<strong>外包信息</strong> <a data-toggle="collapse"
-											href="#collapseThree" class="panel_a"><strong>link</strong></a>
+											href="#collapseThree" class="panel_a"> <span
+											id="arrowOutsource" class="glyphicon glyphicon-chevron-down"
+											style="color: rgb(0, 0, 0);"></span>
+										</a>
+										<button id="saveOutsource" value="1"
+											class="btn btn-default btn-success"
+											style="margin-left: 10px;">修改</button>
+										<button id="cancelOutsource" value="2"
+											class="btn btn-default btn-success"
+											style="margin-left: 10px; display: none">取消</button>
 									</h3>
 								</div>
 
 								<div id="collapseThree" class="panel-collapse collapse" style="">
-									<div class="panel-body">
+									<div id="panelOutsource" class="panel-body">
 										<div class="row">
 											<div class="col-md-12">
 												<div class="pull-left page-header">
@@ -300,16 +361,17 @@
 													<label>项目编号 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input id="outsourceProjectID" type="text"
+														class="form-control">
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
 												<div>
 													<label>外包单位</label>
 												</div>
-												<div>
-													<input type="text" class="form-control" disabled>
-												</div>
+											</div>
+											<div>
+												<input type="text" class="form-control">
 											</div>
 										</div>
 										<div class="row row-margin">
@@ -318,7 +380,7 @@
 													<label>联系人</label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -326,7 +388,7 @@
 													<label>联系人电话</label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -337,7 +399,7 @@
 													<label>合同金额</label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -345,7 +407,7 @@
 													<label>送样日期</label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -357,9 +419,9 @@
 												<div>
 													<div class="pull-left">
 														<label><input type="radio" name="optionsRadios6"
-															id="optionsRadios6" value="option6" disabled>是 </label> <label><input
+															id="optionsRadios6" value="option6">是 </label> <label><input
 															type="radio" name="optionsRadios7" id="optionsRadios7"
-															value="option7" checked disabled>否 </label>
+															value="option7" checked>否 </label>
 													</div>
 												</div>
 											</div>
@@ -369,7 +431,7 @@
 												</div>
 												<div>
 													<div>
-														<input type="text" class="form-control" disabled>
+														<input type="text" class="form-control">
 													</div>
 												</div>
 											</div>
@@ -380,7 +442,7 @@
 													<label>合同信息</label>
 												</div>
 												<div>
-													<textarea class="form-control" rows="8" disabled></textarea>
+													<textarea class="form-control" rows="8"></textarea>
 												</div>
 											</div>
 										</div>
@@ -390,7 +452,7 @@
 													<label>地址 </label>
 												</div>
 												<div>
-													<textarea class="form-control" rows="8" disabled></textarea>
+													<textarea class="form-control" rows="8"></textarea>
 												</div>
 											</div>
 										</div>
@@ -409,7 +471,7 @@
 													<label>项目编号 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -417,7 +479,7 @@
 													<label>外包单位</label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -427,7 +489,7 @@
 													<label>联系人</label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -435,7 +497,7 @@
 													<label>联系人电话</label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -445,7 +507,7 @@
 													<label>地址 </label>
 												</div>
 												<div>
-													<textarea class="form-control" rows="8" disabled></textarea>
+													<textarea class="form-control" rows="8"></textarea>
 												</div>
 											</div>
 										</div>
@@ -455,15 +517,25 @@
 							</div>
 							<!----------------------------------------outsource end ------------------------->
 							<!----------------------------------------custom info start ------------------------->
-							<div class="panel panel-default panel-info">
+							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h3 class="panel-title">
 										<strong>客户信息</strong> <a data-toggle="collapse"
-											href="#collapseFour" class="panel_a"><strong>link</strong></a>
+											href="#collapseFour" class="panel_a"> <span
+											id="arrowCustomerInfo"
+											class="glyphicon glyphicon-chevron-down"
+											style="color: rgb(0, 0, 0);"></span>
+										</a>
+										<button id="saveCustomInfo" value="1"
+											class="btn btn-default btn-success"
+											style="margin-left: 10px;">修改</button>
+										<button id="cancelCustomInfo" value="2"
+											class="btn btn-default btn-success"
+											style="margin-left: 10px; display: none">取消</button>
 									</h3>
 								</div>
 								<div id="collapseFour" class="panel-collapse collapse" style="">
-									<div class="panel-body">
+									<div id="panelCustomerInfo" class="panel-body">
 										<div class="row">
 											<div class="col-md-6">
 												<div>
@@ -471,11 +543,11 @@
 												</div>
 												<div class="pull-left">
 													<label><input type="radio" name="optionsRadios17"
-														id="optionsRadios17" value="option17" checked disabled>高
-													</label> <label><input type="radio" name="optionsRadios18"
-														id="optionsRadios18" value="option18" disabled>中 </label>
-													<label><input type="radio" name="optionsRadios19"
-														id="optionsRadios19" value="option19" disabled>低 </label>
+														id="optionsRadios17" value="option17" checked>高 </label> <label><input
+														type="radio" name="optionsRadios18" id="optionsRadios18"
+														value="option18">中 </label> <label><input
+														type="radio" name="optionsRadios19" id="optionsRadios19"
+														value="option19">低 </label>
 												</div>
 											</div>
 										</div>
@@ -494,7 +566,8 @@
 													<label>项目编号 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input id="customerProjectID" type="text"
+														class="form-control">
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -502,7 +575,7 @@
 													<label>姓名</label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -513,9 +586,9 @@
 												</div>
 												<div>
 													<label><input type="radio" name="optionsRadios18"
-														id="optionsRadios18" value="option18" disabled>男</label> <label><input
+														id="optionsRadios18" value="option18">男</label> <label><input
 														type="radio" name="optionsRadios19" id="optionsRadios19"
-														value="option19" disabled>女 </label>
+														value="option19">女 </label>
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -523,7 +596,7 @@
 													<label>年龄</label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -533,7 +606,7 @@
 													<label>联系电话</label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -541,7 +614,7 @@
 													<label>联系手机</label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -551,7 +624,7 @@
 													<label>工作单位 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -559,7 +632,7 @@
 													<label>科室/部门</label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -569,7 +642,7 @@
 													<label>职位 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -577,7 +650,7 @@
 													<label>电子邮件</label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -587,7 +660,7 @@
 													<label>联系地址 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -595,7 +668,7 @@
 													<label>研究方向 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -616,7 +689,7 @@
 													<label>项目编号 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -624,7 +697,7 @@
 													<label>姓名 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -634,7 +707,7 @@
 													<label>性别 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -642,7 +715,7 @@
 													<label>年龄 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -652,7 +725,7 @@
 													<label>联系电话 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -660,7 +733,7 @@
 													<label>联系手机 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -670,7 +743,7 @@
 													<label>工作单位 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -678,7 +751,7 @@
 													<label>科室/部门 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -688,7 +761,7 @@
 													<label>职位 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -696,7 +769,7 @@
 													<label>电子邮件 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -706,7 +779,7 @@
 													<label>联系地址 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -714,7 +787,7 @@
 													<label>研究方向 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -724,7 +797,7 @@
 													<label>与负责人关系 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -732,15 +805,10 @@
 													<label>负责内容 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 										</div>
-
-
-
-
-
 
 										<div class="row">
 											<div class="col-md-12">
@@ -757,7 +825,7 @@
 													<label>项目编号 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -765,7 +833,7 @@
 													<label>姓名 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -775,7 +843,7 @@
 													<label>性别 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -783,7 +851,7 @@
 													<label>年龄 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -793,7 +861,7 @@
 													<label>联系电话 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -801,7 +869,7 @@
 													<label>联系手机 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -811,7 +879,7 @@
 													<label>工作单位 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -819,7 +887,7 @@
 													<label>科室/部门 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -829,7 +897,7 @@
 													<label>职位 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -837,7 +905,7 @@
 													<label>电子邮件 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -847,7 +915,7 @@
 													<label>联系地址 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -855,7 +923,7 @@
 													<label>研究方向 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -865,7 +933,7 @@
 													<label>与负责人关系 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -873,7 +941,7 @@
 													<label>负责内容 </label>
 												</div>
 												<div>
-													<input type="text" class="form-control" disabled>
+													<input type="text" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -882,11 +950,14 @@
 								</div>
 							</div>
 							<!----------------------------------------custom info end ------------------------->
-							<div class="panel panel-default panel-info">
+							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h3 class="panel-title">
 										<strong>客户联系记录</strong> <a data-toggle="collapse"
-											href="#collapseFive" class="panel_a"><strong>link</strong></a>
+											href="#collapseFive" class="panel_a"> <span id="arrow5"
+											class="glyphicon glyphicon-chevron-down"
+											style="color: rgb(0, 0, 0);"></span>
+										</a>
 									</h3>
 								</div>
 								<div id="collapseFive" class="panel-collapse collapse" style="">
@@ -913,58 +984,232 @@
 
 		<%@ include file="../comm-fragement/main-js"%>
 		<script type="text/javascript">
-			$(document).ready(
-					function() {
-
-						$("nav li").click(
-								function() {
-									$(this).addClass('active').siblings()
-											.removeClass('active');
-								});
-
-						$("#link_pro").click(
-								function() {
-									$("#mainframe").attr("src",
-											"../page/projectBasicData.html");
-								});
-
-						$("#link_customer").click(
-								function() {
-									$("#mainframe").attr("src",
-											"../page/customInfo.html");
-								});
-
-						$("#link_outsource").click(
-								function() {
-									$("#mainframe").attr("src",
-											"../page/outsource.html");
-								});
-
-						$("#link_proStatus").click(
-								function() {
-									$("#mainframe").attr("src",
-											"../page/proStatus.html");
-								});
-
-						$("#link_customCalling").click(
-								function() {
-									$("#mainframe").attr("src",
-											"../page/customCalling.html");
-								});
-
-						$(".pagination li ").click(
-								function() {
-									$(this).addClass('active').siblings()
-											.removeClass('active');
-								});
-
-						$("#projectStatusBadge").click(function() {
-							alert($("#projectStatusBadge").text());
-							$("#projectStatusBadge").text("");
-						})
-
-					});
-		</script>
+	    $(document).ready(function(){
+	    	$(".pagination li ").click(function(){
+    		  $(this).addClass('active')
+    	        .siblings().removeClass('active');
+    	  	});
+	    	$("#arrow5").click(function(){
+	    		if($(this).attr("class")==("glyphicon glyphicon-chevron-down")){
+	    			$(this).attr("class","glyphicon glyphicon-chevron-up");
+	    		}else{
+	    			$(this).attr("class","glyphicon glyphicon-chevron-down");
+	    		}
+             });
+	    	$("#arrowCustomerInfo").click(function(){
+	    		if($(this).attr("class")==("glyphicon glyphicon-chevron-down")){
+	    			$(this).attr("class","glyphicon glyphicon-chevron-up");
+	    		}else{
+	    			$(this).attr("class","glyphicon glyphicon-chevron-down");
+	    		}
+	    	});
+	    	$("#arrowOutsource").click(function(){
+	    		if($(this).attr("class")==("glyphicon glyphicon-chevron-down")){
+	    			$(this).attr("class","glyphicon glyphicon-chevron-up");
+	    		}else{
+	    			$(this).attr("class","glyphicon glyphicon-chevron-down");
+	    		}
+	    	});
+	    	$("#arrowProStatus").click(function(){
+	    		if($(this).attr("class")==("glyphicon glyphicon-chevron-down")){
+	    			$(this).attr("class","glyphicon glyphicon-chevron-up");
+	    		}else{
+	    			$(this).attr("class","glyphicon glyphicon-chevron-down");
+	    		}
+	    	});
+	    	$("#arrowProBasicData").click(function(){
+	    		if($(this).attr("class")==("glyphicon glyphicon-chevron-down")){
+	    			$(this).attr("class","glyphicon glyphicon-chevron-up");
+	    		}else{
+	    			$(this).attr("class","glyphicon glyphicon-chevron-down");
+	    		}
+	    	});
+	    	/************switch save button and  cancel button****/
+	    	$("#saveProBasicData").click(function(){
+	    		if($(this).attr("value")=="1"){
+	    			$(this).attr("value","3");
+	    			$("#panelProBasicData input").attr("disabled",false);
+	    			$("#panelProBasicData radio").attr("disabled",false);
+	    			$("#panelProBasicData select").attr("disabled",false);
+	    			$("#panelProBasicData textarea").attr("disabled",false);
+	    			$("#proBasicProjectID").attr("disabled",true);
+	    			$(this).text("保存");
+	    			$("#cancelProBasicData").show();
+	    		}else if($(this).attr("value")=="2"){
+	    			$(this).text("修改");
+	    			$("#panelProBasicData input").attr("disabled",true);
+	    			$("#panelProBasicData radio").attr("disabled",true);
+	    			$("#panelProBasicData select").attr("disabled",true);
+	    			$("#panelProBasicData textarea").attr("disabled",true);
+	    		}else if($(this).attr("value")=="3"){
+	    			$(this).attr("value","1");
+	    			$(this).text("修改");
+	    			$("#panelProBasicData input").attr("disabled",true);
+	    			$("#panelProBasicData radio").attr("disabled",true);
+	    			$("#panelProBasicData select").attr("disabled",true);
+	    			$("#panelProBasicData textarea").attr("disabled",true);
+	    			$("#cancelProBasicData").hide();
+	    		}
+	    	});
+	    	$("#cancelProBasicData").click(function(){
+	    		if($(this).attr("value")=="2"){
+	    			$("#saveProBasicData").attr("value","1");
+	    			$("#saveProBasicData").text("修改");
+	    			$("#panelProBasicData input").attr("disabled",true);
+	    			$("#panelProBasicData radio").attr("disabled",true);
+	    			$("#panelProBasicData select").attr("disabled",true);
+	    			$("#panelProBasicData textarea").attr("disabled",true);
+	    			$("#cancelProBasicData").hide();
+	    		}
+	    	});
+	    	
+	    	$("#saveProStatus").click(function(){
+	    		if($(this).attr("value")=="1"){
+	    			$(this).attr("value","3");
+	    			$("#panelProStatus input").attr("disabled",false);
+	    			$("#panelProStatus radio").attr("disabled",false);
+	    			$("#panelProStatus select").attr("disabled",false);
+	    			$("#panelProStatus textarea").attr("disabled",false);
+	    			$(this).text("保存");
+	    			$("#cancelProStatus").show();
+	    		}else if($(this).attr("value")=="2"){
+	    			$(this).text("修改");
+	    		}else if($(this).attr("value")=="3"){
+	    			$(this).attr("value","1");
+	    			$(this).text("修改");
+	    			$("#panelProStatus input").attr("disabled",false);
+	    			$("#panelProStatus radio").attr("disabled",false);
+	    			$("#panelProStatus select").attr("disabled",false);
+	    			$("#panelProStatus textarea").attr("disabled",false);
+	    			$("#cancelProStatus").hide();
+	    		}
+	    	});
+	    	$("#cancelProStatus").click(function(){
+	    		if($(this).attr("value")=="2"){
+	    			$("#saveProStatus").attr("value","1");
+	    			$("#saveProStatus").text("修改");
+	    			$("#panelProStatus input").attr("disabled",false);
+	    			$("#panelProStatus radio").attr("disabled",false);
+	    			$("#panelProStatus select").attr("disabled",false);
+	    			$("#panelProStatus textarea").attr("disabled",false);
+	    			$("#cancelProStatus").hide();
+	    		}
+	    	});
+	    	
+	    	$("#saveOutsource").click(function(){
+	    		if($(this).attr("value")=="1"){
+	    			$(this).attr("value","3");
+	    			$("#panelOutsource input").attr("disabled",false);
+	    			$("#panelOutsource radio").attr("disabled",false);
+	    			$("#panelOutsource select").attr("disabled",false);
+	    			$("#panelOutsource textarea").attr("disabled",false);
+	    			$("#outsourceProjectID").attr("disabled",true);
+	    			$(this).text("保存");
+	    			$("#cancelOutsource").show();
+	    		}else if($(this).attr("value")=="2"){
+	    			$(this).text("修改");
+	    			$("#panelOutsource input").attr("disabled",true);
+	    			$("#panelOutsource radio").attr("disabled",true);
+	    			$("#panelOutsource select").attr("disabled",true);
+	    			$("#panelOutsource textarea").attr("disabled",true);
+	    		}else if($(this).attr("value")=="3"){
+	    			$(this).attr("value","1");
+	    			$(this).text("修改");
+	    			$("#panelOutsource input").attr("disabled",true);
+	    			$("#panelOutsource radio").attr("disabled",true);
+	    			$("#panelOutsource select").attr("disabled",true);
+	    			$("#panelOutsource textarea").attr("disabled",true);
+	    			$("#cancelOutsource").hide();
+	    		}
+	    	});
+	    	$("#cancelOutsource").click(function(){
+	    		if($(this).attr("value")=="2"){
+	    			$("#saveOutsource").attr("value","1");
+	    			$("#saveOutsource").text("修改");
+	    			$("#panelOutsource input").attr("disabled",true);
+	    			$("#panelOutsource radio").attr("disabled",true);
+	    			$("#panelOutsource select").attr("disabled",true);
+	    			$("#panelOutsource textarea").attr("disabled",true);
+	    			$("#cancelOutsource").hide();
+	    		}
+	    	});
+	    	
+	    	$("#saveCustomInfo").click(function(){
+	    		if($(this).attr("value")=="1"){
+	    			$(this).attr("value","3");
+	    			$("#panelCustomerInfo input").attr("disabled",false);
+	    			$("#panelCustomerInfo radio").attr("disabled",false);
+	    			$("#panelCustomerInfo select").attr("disabled",false);
+	    			$("#panelCustomerInfo textarea").attr("disabled",false);
+	    			$("#customerProjectID").attr("disabled",true);
+	    			//panelCustomerInfo
+	    			$(this).text("保存");
+	    			$("#cancelCustomInfo").show();
+	    		}else if($(this).attr("value")=="2"){
+	    			$(this).text("修改");
+	    			$("#panelCustomerInfo input").attr("disabled",true);
+	    			$("#panelCustomerInfo radio").attr("disabled",true);
+	    			$("#panelCustomerInfo select").attr("disabled",true);
+	    			$("#panelCustomerInfo textarea").attr("disabled",true);
+	    		}else if($(this).attr("value")=="3"){
+	    			$(this).attr("value","1");
+	    			$(this).text("修改");
+	    			$("#panelCustomerInfo input").attr("disabled",true);
+	    			$("#panelCustomerInfo radio").attr("disabled",true);
+	    			$("#panelCustomerInfo select").attr("disabled",true);
+	    			$("#panelCustomerInfo textarea").attr("disabled",true);
+	    			$("#cancelCustomInfo").hide();
+	    		}
+	    	});
+	    	$("#cancelCustomInfo").click(function(){
+	    		if($(this).attr("value")=="2"){
+	    			$("#saveCustomInfo").attr("value","1");
+	    			$("#saveCustomInfo").text("修改");
+	    			$("#panelCustomerInfo input").attr("disabled",true);
+	    			$("#panelCustomerInfo radio").attr("disabled",true);
+	    			$("#panelCustomerInfo select").attr("disabled",true);
+	    			$("#panelCustomerInfo textarea").attr("disabled",true);
+	    			$("#cancelCustomInfo").hide();
+	    		}
+	    	});
+	    	
+	    /* give a judgement of disabled on each field*/
+	    	if(($("#proBasicProjectID").val()=="")||($("#proBasicProjectID").val()==null)||($("#proBasicProjectID").val()==undefined)){
+				$("input").attr("disabled",false);
+				$("radio").attr("disabled",false);
+				$("select").attr("disabled",false);
+				$("textarea").attr("disabled",false);
+			}else{
+				$("input").attr("disabled",true);
+				$("radio").attr("disabled",true);
+				$("select").attr("disabled",true);
+				$("textarea").attr("disabled",true);
+			}
+	    	
+			$("#link_newStatus").click(function(){
+				$("#proStatusDate").css("display","block");		
+				$("#proStatusUpdate").css("display","block");
+				$("#proStatusContent").css("display","block");
+				$("#proStatusBtn").css("display","block");
+				$("#inputProStatusDate").attr("disabled",false);
+				$("#radioProStatus1").attr("disabled",false);
+				$("#radioProStatus2").attr("disabled",false);
+				$("#radioProStatus3").attr("disabled",false);
+				$("#radioProStatus4").attr("disabled",false);
+				$("#inpuProStatusContent").attr("disabled",false);
+			});
+			
+			$("#btnCancel").click(function(){
+				$("#proStatusDate").css("display","none");		
+				$("#proStatusUpdate").css("display","none");
+				$("#proStatusContent").css("display","none");
+				$("#proStatusBtn").css("display","none");
+			});
+	    	
+	   	});
+	    
+	    	
+    </script>
 </body>
 
 </html>
