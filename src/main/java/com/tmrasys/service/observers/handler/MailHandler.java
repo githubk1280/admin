@@ -1,11 +1,12 @@
 package com.tmrasys.service.observers.handler;
 
-public class MailHandler implements Handler<T> {
+public class MailHandler implements Handler {
+
 
 	@Override
-	public void handle(T t) {
-		// TODO Auto-generated method stub
+	public <T> void handle(T t) {
 		
 	}
+
 
 }
