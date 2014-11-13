@@ -1,44 +1,45 @@
 package com.tmrasys.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
-
-import javax.annotation.PostConstruct;
-
 import org.apache.log4j.Logger;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tmrasys.event.Message;
+import com.tmrasys.event.StatusChangedEvent;
 import com.tmrasys.service.employee.EmployeeService;
-import com.tmrasys.service.observers.ObserverFactory;
 
 @Controller
 @RequestMapping("/status")
-public class ProjectStatusController extends Observable {
+public class ProjectStatusController implements ApplicationContextAware {
 	Logger logger = Logger.getLogger(getClass());
-	List<Observer> observers = new ArrayList<Observer>();
+
+	private ApplicationContext applicationContext;
 
 	@Autowired
 	private EmployeeService employeeService;
 
-	@Autowired
-	private ObserverFactory observerFactory;
-
-	@PostConstruct
-	public void init() {
-		observers.addAll(observerFactory.getObserversForProjectStatus());
+	@RequestMapping("/{projectId}")
+	public void load(@PathVariable int projectId) {
+		
 	}
 
 	@RequestMapping("/add")
 	public void add() {
 		// insert
-
 		//
-		this.setChanged();
 		// this.notifyObservers(arg); userId,projectId,percentage,content
+		applicationContext.publishEvent(new StatusChangedEvent(new Message()));
+	}
+
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext)
+			throws BeansException {
+		this.applicationContext = applicationContext;
 	}
 
 }
