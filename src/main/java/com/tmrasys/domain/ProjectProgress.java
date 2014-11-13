@@ -2,6 +2,8 @@ package com.tmrasys.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Data
@@ -9,6 +11,7 @@ public class ProjectProgress {
 	private int projectProgressId;
 	private String employeeName;
 	private String content;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date progressDate;
 	private int projectId;
 	private int percentage;

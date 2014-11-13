@@ -24,7 +24,7 @@
 				<li><a href="<%=request.getContextPath()%>/user/add-redirect"><i class="fa fa-user fa-fw"></i> 用户信息</a></li>
 				<li><a href="<%=request.getContextPath()%>/user/modify-redirect"><i class="fa fa-gear fa-fw"></i>修改密码</a></li>
 				<li class="divider"></li>
-				<li><a href="" data-toggle="modal" data-target="#logoutModal"><i
+				<li><a href="<%=request.getContextPath()%>/logout" ><i
 						class="fa fa-sign-out fa-fw"></i> 退出</a></li>
 			</ul> <!-- /.dropdown-user --></li>
 	</ul>
