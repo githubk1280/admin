@@ -869,6 +869,7 @@
 				</div>
 			</div>
 		</div>
+		</div>
 		<!-- /#wrapper -->
 		<%@ include file="../common/modal.jsp"%>
 
@@ -900,23 +901,7 @@
 	    			$(this).attr("class","glyphicon glyphicon-chevron-down");
 	    		}
 	    	});
-	    	$("#arrowProStatus").click(function(){
-	    		if($(this).attr("class")==("glyphicon glyphicon-chevron-down")){
-	    			$.ajax({
-	    	             type: "get",
-	    	             url: "/admin/status/ajax/${project.projectId}",
-	    	             success: function(data){
-	    	            	 alert(data);
-	    	             },
-	    	             error:function(data){
-	    	            	 alert("请求失败，请重试!");
-	    	             }
-	    	             });
-	    			$(this).attr("class","glyphicon glyphicon-chevron-up");
-	    		}else{
-	    			$(this).attr("class","glyphicon glyphicon-chevron-down");
-	    		}
-	    	});
+	    	
 	    	$("#arrowProBasicData").click(function(){
 	    		if($(this).attr("class")==("glyphicon glyphicon-chevron-down")){
 	    			$(this).attr("class","glyphicon glyphicon-chevron-up");
@@ -1108,7 +1093,37 @@
 	    	
 	   	});
 	    
+	    function projectStatusController($scope) {
+	    	$scope.psToggle = function(){
+	    		var target = $("#arrowProStatus");
+	    		var result = "";
+	    		if(target.attr("class")==("glyphicon glyphicon-chevron-down")){
+	    			$.ajax({
+	    	             type: "get",
+	    	             url: "/admin/status/ajax/${project.projectId}",
+	    	             success: function(response){
+	    	            	 var jsonResponse = JSON.parse(response);
+	    	            	 if(jsonResponse.success == "true"){
+	    	            		 result = JSON.parse(jsonResponse.data);
+	    	            	 }else{
+	    	            		 alert("请求失败，请重试");
+	    	            	 }
+	    	             },
+	    	             error:function(data){
+	    	            	 alert("请求失败，请重试!");
+	    	             }
+	    	             });
+	    			$scope.progress = result;
+	    			target.attr("class","glyphicon glyphicon-chevron-up");
+	    		}else{
+	    			target.attr("class","glyphicon glyphicon-chevron-down");
+	    		}
+	    	};
 	    	
+// 	    	$SCOPE.SLEEP = FUNCTION SLEEP(SLEEPTIME) {
+// 	    	       FOR(VAR START = DATE.NOW(); DATE.NOW() - START <= SLEEPTIME; ) { }
+// 	    	};
+	    }
     </script>
 </body>
 
