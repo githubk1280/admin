@@ -1,6 +1,7 @@
 package com.tmrasys.controller;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,25 @@ public class UserController {
 		view.addObject("newuser", employee);
 		view.setViewName(PageResourceConstant.USER_ADD);
 		return view;
+	}
 
+	@RequestMapping("/modify-redirect")
+	public ModelAndView modifyRedirect() {
+		ModelAndView view = new ModelAndView();
+		Employee modifyUser = new Employee();
+		view.addObject("modifyUser", modifyUser);
+		view.setViewName(PageResourceConstant.USER_MODIFY);
+		return view;
+	}
+
+	@RequestMapping("/update")
+	public ModelAndView update(Employee modifyUser, HttpSession session) {
+		Employee employee = (Employee) session.getAttribute("user");
+		employee.setPassword(modifyUser.getPassword());
+		ModelAndView view = new ModelAndView();
+		employeeService.updateEmployee(employee);
+		view.setViewName(PageResourceConstant.USER_MODIFY_SUCCESS);
+		return view;
 	}
 
 }
