@@ -103,7 +103,7 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 	public void testaddProjectProgressByProjectId() {
 		ProjectProgress pp = new ProjectProgress();
 		pp.setContent("test add");
-		pp.setEmployeeName("ivan");
+		pp.setEmployeeId(1);
 		pp.setProgressDate(new Date());
 		pp.setProjectId(1);
 		pp.setPercentage(0);

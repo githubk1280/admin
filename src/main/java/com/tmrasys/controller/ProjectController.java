@@ -71,7 +71,7 @@ public class ProjectController {
 		projectEmployeeService.addReference(new ProjectEmployee(projectId,
 				employeeId));
 		projectProgressService.addProjectProgress(new ProjectProgress(employee
-				.getName(), "项目创建", new Date(), projectId, 0));
+				.getEmployeeId(), "项目创建", new Date(), projectId, 0));
 		return new ModelAndView("redirect:list");
 	}
 

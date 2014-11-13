@@ -7,26 +7,27 @@
 		SELECT * FROM project_progress
 		WHERE
 		project_id=#{projectId}
+		ORDER BY PROGRESS_DATE DESC
 	</select>
 	<insert id="addProjectProgress" keyProperty="projectProgressId"
 		parameterMap="ppParameter" useGeneratedKeys="true">
 		INSERT INTO
 		`project_progress`
-		(`EMPLOYEE_NAME`,`PROGRESS_CONTENT`,`PROGRESS_DATE`,`PROJECT_ID`,`PERCENTAGE`)
+		(`EMPLOYEE_ID`,`PROGRESS_CONTENT`,`PROGRESS_DATE`,`PROJECT_ID`,`PERCENTAGE`)
 		VALUES 
-		(#{employeeName},#{content},#{progressDate},#{projectId},#{percentage});
+		(#{employeeId},#{content},#{progressDate},#{projectId},#{percentage});
 	</insert>
 	<resultMap type="com.tmrasys.domain.ProjectProgress" id="projectProgressMapper">
 		<id property="projectProgressId" column="PROJECT_PROGRESS_ID" />
 		<result property="projectId" column="PROJECT_ID" />
-		<result property="employeeName" column="EMPLOYEE_NAME" />
+		<result property="employeeId" column="EMPLOYEE_ID" />
 		<result property="content" column="PROGRESS_CONTENT" />
 		<result property="progressDate" column="PROGRESS_DATE" />
 		<result property="percentage" column="PERCENTAGE" />
 	</resultMap>
 	<parameterMap type="com.tmrasys.domain.ProjectProgress"
 		id="ppParameter">
-		<parameter property="employeeName" resultMap="EMPLOYEE_NAME" />
+		<parameter property="employeeId" resultMap="EMPLOYEE_ID" />
 		<parameter property="content" resultMap="PROGRESS_CONTENT" />
 		<parameter property="progressDate" resultMap="PROGRESS_DATE" />
 		<parameter property="projectId" resultMap="PROJECT_ID" />
