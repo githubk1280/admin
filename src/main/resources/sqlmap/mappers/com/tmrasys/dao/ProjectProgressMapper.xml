@@ -12,8 +12,9 @@
 		parameterMap="ppParameter" useGeneratedKeys="true">
 		INSERT INTO
 		`project_progress`
-		(`EMPLOYEE_NAME`,`PROGRESS_CONTENT`,`PROGRESS_DATE`,`PROJECT_ID`,'PERCENTAGE')
-		VALUES (#{employeeName},#{content},#{progressDate},#{projectId},#{PERCENTAGE});
+		(`EMPLOYEE_NAME`,`PROGRESS_CONTENT`,`PROGRESS_DATE`,`PROJECT_ID`,`PERCENTAGE`)
+		VALUES 
+		(#{employeeName},#{content},#{progressDate},#{projectId},#{percentage});
 	</insert>
 	<resultMap type="com.tmrasys.domain.ProjectProgress" id="projectProgressMapper">
 		<id property="projectProgressId" column="PROJECT_PROGRESS_ID" />

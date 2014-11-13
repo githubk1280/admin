@@ -106,6 +106,7 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		pp.setEmployeeName("ivan");
 		pp.setProgressDate(new Date());
 		pp.setProjectId(1);
+		pp.setPercentage(0);
 		projectProgressService.addProjectProgress(pp);
 	}
 	
