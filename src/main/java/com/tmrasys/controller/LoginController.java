@@ -28,9 +28,21 @@ public class LoginController {
 			view.setViewName("redirect:"
 					+ FailedUtils.getLoginErrorMessage("用户不存在"));
 			return view;
+		} else if (password == null || !password.equals(user.getPassword())) {
+			view.setViewName("redirect:"
+					+ FailedUtils.getLoginErrorMessage("请输入正确的密码"));
+			return view;
 		}
 		session.setAttribute("user", user);
 		view.setViewName("redirect:/project/list");
+		return view;
+	}
+	
+	@RequestMapping("/logout")
+	public ModelAndView logout(HttpSession session) {
+		ModelAndView view = new ModelAndView();
+		session.removeAttribute("user");
+		view.setViewName("redirect:/");
 		return view;
 	}
 
