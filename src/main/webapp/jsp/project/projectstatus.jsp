@@ -36,7 +36,6 @@
 												</div>
 												<div>
 													<input id="" type="text" class="form-control" value="${project.projectId }">
-													<p>{{progress}}</p>
 												</div>
 											</div>
 										</div>
