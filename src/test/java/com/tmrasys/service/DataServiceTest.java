@@ -1,17 +1,20 @@
 package com.tmrasys.service;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tmrasys.base.AbstractBaseTestConfig;
+import com.tmrasys.domain.Contract;
 import com.tmrasys.domain.Customer;
 import com.tmrasys.domain.Employee;
 import com.tmrasys.domain.OutSource;
 import com.tmrasys.domain.Project;
 import com.tmrasys.domain.ProjectEmployee;
 import com.tmrasys.domain.ProjectProgress;
+import com.tmrasys.service.contract.ContractService;
 import com.tmrasys.service.customer.CustomerService;
 import com.tmrasys.service.employee.EmployeeService;
 import com.tmrasys.service.outSource.OutSourceService;
@@ -33,6 +36,8 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 	ProjectProgressService projectProgressService;
 	@Autowired
 	ProjectEmployeeService projectEmployeeService;
+	@Autowired
+	ContractService contractService;
 	
 	private Employee employee;
 
@@ -169,6 +174,19 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 	public void testupdatePrivilege() {
 		employee = employeeDataService.getEmployeeByName("ivan");
 		employeeDataService.updatePrivilege(employee, "研究员");
+	}
+	
+	@Test
+	public void testgetContractByEmployee() {
+		employee = employeeDataService.getEmployeeByName("terry");
+		List<Contract> list = contractService.getByEmployee(employee.getEmployeeId());
+		for(Contract c : list) 
+			System.out.println(c);
+		Contract contract = list.get(0);
+		contract.setContractId(0);
+		contractService.addContract(contract);
+		contract.setSignPersonNameA("james");
+		contractService.updateContract(contract);
 	}
 	
 }

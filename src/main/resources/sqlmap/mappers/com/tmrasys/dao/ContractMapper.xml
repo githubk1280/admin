@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tmrasys.dao.ContractDao">
+	<select id="getByEmployee" resultMap="contractMapper"
+		resultType="list" parameterType="int">
+		select * from `test`.`contract` c
+		where
+		c.PROJECT_ID in
+		(select PE.project_id FROM project_employee PE
+		INNER JOIN
+		project P on
+		PE.PROJECT_ID = P.PROJECT_ID and PE.EMPLOYEE_ID=#{employeeId}
+		)
+		ORDER BY
+		contract_id;
+	</select>
+	<insert id="addContract" keyProperty="contractId" parameterMap="contractParameter"
+		useGeneratedKeys="true">
+		INSERT INTO `contract` (`SIGN_PERSON_A`, `SIGN_PERSON_B`,
+		`SIGN_DATE`, `ADVANCED_AMOUNT`, `ADVANCED_AMOUNT_DATE`,
+		`BALANCED_AMOUNT`, `BALANCED_AMOUNT_DATE`, `ADVANCED_AMOUNT_STATUS`,
+		`BALANCED_AMOUNT_STATUS`, `PROJECT_ID`, `CONTRACT_PAPER_ID`, `CONTRACT_TYPE`) 
+		VALUES
+		(#{signPersonNameA}, #{signPersonNameB}, #{signDate}, #{advancedAmount}, #{advancedAmountDate}, 
+		#{balancedAmount},
+		#{balancedAmountDate}, #{advancedAmountStatus}, #{balancedAmountStatus}, #{projectId},
+		#{contractPaperId}, #{contractType});
+	</insert>
+	<update id="updateContract" parameterMap="contractParameter" flushCache="true">
+		UPDATE `contract`
+		SET `SIGN_PERSON_A`=#{signPersonNameA},
+		`SIGN_PERSON_B`=#{signPersonNameB},
+		`SIGN_DATE`=#{signDate}, `ADVANCED_AMOUNT`=#{advancedAmount}, `ADVANCED_AMOUNT_DATE`=#{advancedAmountDate},
+		`BALANCED_AMOUNT`=#{balancedAmount}, `BALANCED_AMOUNT_DATE`=#{balancedAmountDate}, `ADVANCED_AMOUNT_STATUS`=#{advancedAmountStatus},
+		`BALANCED_AMOUNT_STATUS`=#{balancedAmountStatus}, `PROJECT_ID`=#{projectId}, 
+		`CONTRACT_PAPER_ID`=#{contractPaperId}, `CONTRACT_TYPE`=#{contractType}
+		WHERE contract_id = #{contractId}
+	</update>
+
+	<resultMap type="com.tmrasys.domain.Contract" id="contractMapper">
+		<id property="contractId" column="CONTRACT_ID" />
+		<result property="signPersonNameA" column="SIGN_PERSON_A" />
+		<result property="signPersonNameB" column="SIGN_PERSON_B" />
+		<result property="signDate" column="SIGN_DATE" />
+		<result property="advancedAmount" column="ADVANCED_AMOUNT" />
+		<result property="advancedAmountDate" column="ADVANCED_AMOUNT_DATE" />
+		<result property="balancedAmount" column="BALANCED_AMOUNT" />
+		<result property="balancedAmountDate" column="BALANCED_AMOUNT_DATE" />
+		<result property="advancedAmountStatus" column="ADVANCED_AMOUNT_STATUS" />
+		<result property="balancedAmountStatus" column="BALANCED_AMOUNT_STATUS" />
+		<result property="projectId" column="PROJECT_ID" />
+		<result property="contractPaperId" column="CONTRACT_PAPER_ID" />
+		<result property="contractType" column="CONTRACT_TYPE" />
+	</resultMap>
+	<parameterMap type="com.tmrasys.domain.Contract" id="contractParameter">
+		<parameter property="contractId" resultMap="CONTRACT_ID" />
+		<parameter property="signPersonNameA" resultMap="SIGN_PERSON_A" />
+		<parameter property="signPersonNameB" resultMap="SIGN_PERSON_B" />
+		<parameter property="signDate" resultMap="SIGN_DATE" />
+		<parameter property="advancedAmount" resultMap="ADVANCED_AMOUNT" />
+		<parameter property="advancedAmountDate" resultMap="ADVANCED_AMOUNT_DATE" />
+		<parameter property="balancedAmount" resultMap="BALANCED_AMOUNT" />
+		<parameter property="balancedAmountDate" resultMap="BALANCED_AMOUNT_DATE" />
+		<parameter property="advancedAmountStatus" resultMap="ADVANCED_AMOUNT_STATUS" />
+		<parameter property="balancedAmountStatus" resultMap="BALANCED_AMOUNT_STATUS" />
+		<parameter property="projectId" resultMap="PROJECT_ID" />
+		<parameter property="contractPaperId" resultMap="CONTRACT_PAPER_ID" />
+		<parameter property="contractType" resultMap="CONTRACT_TYPE" />
+	</parameterMap>
+</mapper>
+
