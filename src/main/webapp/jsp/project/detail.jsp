@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+﻿<%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -1092,61 +1092,56 @@
 			});
 	    	
 	   	});
-	    
-	    function projectStatusController($scope,$http) {
-	    	$scope.psToggle = function(){
-	    		var target = $("#arrowProStatus");
-	    		var result = "";
-	    		if(target.attr("class")==("glyphicon glyphicon-chevron-down")){
-// 	    			$.ajax({
-// 	    	             type: "get",
-// 	    	             url: "/admin/status/ajax/${project.projectId}",
-// 	    	             success: function(response){
-// 	    	            	 var jsonResponse = JSON.parse(response);
-// 	    	            	 if(jsonResponse.success == "true"){
-// 	    	            		 result = JSON.parse(jsonResponse.data);
-// 	    	            	 }else{
-// 	    	            		 alert("请求失败，请重试");
-// 	    	            	 }
-// 	    	             },
-// 	    	             error:function(data){
-// 	    	            	 alert("请求失败，请重试!");
-// 	    	             }
-// 	    	             });
-					$http.get("/admin/status/ajax/${project.projectId}")
-					.success(function(data) {
-	   	            	 if(data.success == "true"){
-	   	            		$scope.progress = JSON.parse(data.data);
-	   	            	 }
-	   	            	$scope.progress.progressDate = $scope.getTimeString($scope.progress.progressDate);
-						});
-	    			target.attr("class","glyphicon glyphicon-chevron-up");
-	    		}else{
-	    			target.attr("class","glyphicon glyphicon-chevron-down");
-	    		}
-	    	};
-	    	
-	    	$scope.getTimeString = function (longTimes){
-	            var d = new Date (longTimes);
-	            var result ="";
-	            result += d.getFullYear();
-	            result += "-";
-	            result += d.getMonth();
-	            result += "-";
-	            result += d.getDay()>10?d.getDay():"0"+d.getDay();
-	            result += " ";
-	            result += d.getHours()>10?d.getHours():"0"+d.getHours();
-	            result += ":";
-	            result += d.getMinutes()>10?d.getMinutes():"0"+d.getMinutes();
-	            result += ":";
-	            result += d.getSeconds()>10?d.getSeconds():"0"+d.getSeconds();
-	            return result;
-	        };
-	    	
-// 	    	$SCOPE.SLEEP = FUNCTION SLEEP(SLEEPTIME) {
-// 	    	       FOR(VAR START = DATE.NOW(); DATE.NOW() - START <= SLEEPTIME; ) { }
-// 	    	};
-	    }
+	    function projectStatusController($scope, $http) {
+			$scope.psToggle = function() {
+				var target = $("#arrowProStatus");
+				if (target.attr("class") == ("glyphicon glyphicon-chevron-down")) {
+					$http.get("/admin/status/ajax/${project.projectId}").success(
+						function(data) {
+							if (data.success == true) {
+								$scope.progress = JSON.parse(data.data);
+							}
+							// format
+							$scope.progress.progressDate = $scope
+									.getTimeString($scope.progress.progressDate);
+						}).error(function(err) {
+						alert("获取失败，请重试!");
+					});
+					target.attr("class", "glyphicon glyphicon-chevron-up");
+				} else {
+					target.attr("class", "glyphicon glyphicon-chevron-down");
+				}
+			};
+		
+			$scope.getTimeString = function(longTimes) {
+				var d = new Date(longTimes);
+				var result = "";
+				result += d.getFullYear();
+				result += "-";
+				result += d.getMonth();
+				result += "-";
+				result += d.getDay() > 10 ? d.getDay() : "0" + d.getDay();
+				result += " ";
+				result += d.getHours() > 10 ? d.getHours() : "0" + d.getHours();
+				result += ":";
+				result += d.getMinutes() > 10 ? d.getMinutes() : "0" + d.getMinutes();
+				result += ":";
+				result += d.getSeconds() > 10 ? d.getSeconds() : "0" + d.getSeconds();
+				return result;
+			};
+		
+			$scope.saveProjectStatus = function() {
+				$http({
+		            method:'post',
+		            url:'/admin/status/ajax/add',
+		            data: $scope.progress
+				}).success(function (data){
+					alert(data);
+				}).error(function (err){
+					alert(err);
+				});
+			};
+		}
     </script>
 </body>
 
