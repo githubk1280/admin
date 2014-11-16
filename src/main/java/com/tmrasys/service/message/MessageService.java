@@ -13,4 +13,6 @@ public interface MessageService {
 	public MessageText getMessageTextById(int msgTextId);
 
 	public List<Message> getMessagesByReceiveId(int receiveId);
+	
+	public int getMessagesCountByReceiveId(int receiveId);
 }

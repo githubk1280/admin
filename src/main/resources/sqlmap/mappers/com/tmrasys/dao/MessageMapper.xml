@@ -7,14 +7,15 @@
 		keyProperty="messageId" useGeneratedKeys="true">
 		INSERT INTO
 		message
-		(SenderId, ReceiverId, SendTime, Status,
+		(SenderId,
+		ReceiverId, SendTime, Status,
 		MsgTextId)
 		VALUES
 		(#{senderId},#{receiveId},#{sendTime},#{status},#{msgTextId})
 	</insert>
 
 	<insert id="addMessageText" parameterMap="messageTextParameter"
-		keyProperty="id" >
+		keyProperty="id">
 		INSERT INTO
 		message_text
 		(MessageText)
@@ -35,9 +36,19 @@
 		SELECT *
 		FROM message
 		WHERE
-		ReceiverId = #{msgTextId}
+		ReceiverId = #{receiveId}
 		ORDER BY
 		SendTime DESC
+	</select>
+
+	<select id="getMessagesCountByReceiveId" parameterType="int"
+		resultType="int">
+		SELECT count(id)
+		FROM message
+		WHERE
+		ReceiverId = #{receiveId}
+		AND
+		Status = 0
 	</select>
 
 	<parameterMap type="com.tmrasys.domain.MessageText" id="messageTextParameter">

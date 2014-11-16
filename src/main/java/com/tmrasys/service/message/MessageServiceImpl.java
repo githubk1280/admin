@@ -34,4 +34,9 @@ public class MessageServiceImpl implements MessageService {
 		return messageDao.getMessagesByReceiveId(receiveId);
 	}
 
+	@Override
+	public int getMessagesCountByReceiveId(int receiveId) {
+		return messageDao.getMessagesCountByReceiveId(receiveId);
+	}
+
 }
