@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.stereotype.Component;
 
+import com.tmrasys.domain.Message;
 import com.tmrasys.domain.MessageText;
 import com.tmrasys.event.StatusChangedEvent;
 import com.tmrasys.event.StatusMessage;
@@ -18,7 +19,11 @@ public class SendMessageListenerImpl implements TmrasysListener {
 	public void onApplicationEvent(ApplicationEvent event) {
 		if (event instanceof StatusChangedEvent) {
 			StatusMessage msg = (StatusMessage) event.getSource();
-			messageService.addMessageText(new MessageText(msg.getContent()));
+			String content = String.format(msg.getContent());
+			MessageText msgText = new MessageText(content);
+			messageService.addMessageText(msgText);
+			int msgTextId = msgText.getId();
+			Message message = new Message ();
 		}
 	}
 

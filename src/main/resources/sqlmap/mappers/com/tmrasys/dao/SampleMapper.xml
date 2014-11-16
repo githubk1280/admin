@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tmrasys.dao.SampleDao">
+	<select id="getByEmployee" resultMap="sampleMapper"
+		resultType="list" parameterType="int">
+		select * from `test`.`sample` s
+		where
+		s.PROJECT_ID in
+		(select PE.project_id FROM project_employee PE
+		INNER JOIN
+		project P on
+		PE.PROJECT_ID = P.PROJECT_ID and PE.EMPLOYEE_ID=#{employeeId}
+		)
+		ORDER BY
+		sample_id;
+	</select>
+	<select id="getById" resultMap="sampleMapper" parameterType="int">
+		select * from `test`.`sample` s
+		where
+		sample_id = #{sampleId};
+	</select>
+	<update id="updateSample" parameterMap="sampleParameter" flushCache="true">
+		UPDATE `sample`
+		SET `PROJECT_ID`=#{projectId},
+		`SAMPLE_PRINCRIPAL`=#{samplePrincripal},
+		`PROJECT_PRINCRIPAL`=#{projectPrincripal}, 
+		`SOURCE_UNIT`=#{sourceUnit}, 
+		`RECIVED_DATE`=#{reciveDate},
+		`REPORT_DATE`=#{reportDate}, 
+		`DISK_LOCATION`=#{diskLocation}, 
+		`SAMPLE_AMOUNT`=#{sampleAmount},
+		`DELIVERY_NUM`=#{deliveryNum}, 
+		`SAMPLE_TYPE`=#{deliveryType}, 
+		`IS_DELIVERY`=#{isDelivery}
+		WHERE sample_id = #{sampleId}
+	</update>
+	
+	<insert id="addSample" keyProperty="sampleId" parameterMap="sampleParameter"
+		useGeneratedKeys="true">
+		INSERT INTO `sample` (`PROJECT_ID`, `SAMPLE_PRINCRIPAL`,
+		`PROJECT_PRINCRIPAL`, `SOURCE_UNIT`, 
+		`RECIVED_DATE`, `REPORT_DATE`, 
+		`DISK_LOCATION`, `SAMPLE_AMOUNT`,
+		`DELIVERY_NUM`, `SAMPLE_TYPE`, 
+		`IS_DELIVERY`) 
+		VALUES
+		(#{projectId}, #{samplePrincripal}, #{projectPrincripal}, #{sourceUnit}, #{reciveDate}, 
+		#{reportDate},
+		#{diskLocation}, #{sampleAmount}, #{deliveryNum}, #{deliveryType},
+		#{isDelivery});
+	</insert>
+
+	<resultMap type="com.tmrasys.domain.Sample" id="sampleMapper">
+		<id property="sampleId" column="SAMPLE_ID" />
+		<result property="projectId" column="PROJECT_ID" />
+		<result property="samplePrincripal" column="SAMPLE_PRINCRIPAL" />
+		<result property="projectPrincripal" column="PROJECT_PRINCRIPAL" />
+		<result property="sourceUnit" column="SOURCE_UNIT" />
+		<result property="reciveDate" column="RECIVED_DATE" />
+		<result property="reportDate" column="REPORT_DATE" />
+		<result property="diskLocation" column="DISK_LOCATION" />
+		<result property="sampleAmount" column="SAMPLE_AMOUNT" />
+		<result property="deliveryNum" column="DELIVERY_NUM" />
+		<result property="deliveryType" column="SAMPLE_TYPE" />
+		<result property="isDelivery" column="IS_DELIVERY" />
+	</resultMap>
+	<parameterMap type="com.tmrasys.domain.Sample" id="sampleParameter">
+		<parameter property="sampleId" resultMap="SAMPLE_ID" />
+		<parameter property="projectId" resultMap="PROJECT_ID" />
+		<parameter property="samplePrincripal" resultMap="SAMPLE_PRINCRIPAL" />
+		<parameter property="projectPrincripal" resultMap="PROJECT_PRINCRIPAL" />
+		<parameter property="sourceUnit" resultMap="SOURCE_UNIT" />
+		<parameter property="reciveDate" resultMap="RECIVED_DATE" />
+		<parameter property="reportDate" resultMap="REPORT_DATE" />
+		<parameter property="diskLocation" resultMap="DISK_LOCATION" />
+		<parameter property="sampleAmount" resultMap="SAMPLE_AMOUNT" />
+		<parameter property="deliveryNum" resultMap="DELIVERY_NUM" />
+		<parameter property="deliveryType" resultMap="SAMPLE_TYPE" />
+		<parameter property="isDelivery" resultMap="IS_DELIVERY" />
+		
+	</parameterMap>
+</mapper>
+

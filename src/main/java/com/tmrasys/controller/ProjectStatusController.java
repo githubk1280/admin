@@ -86,10 +86,12 @@ public class ProjectStatusController implements ApplicationContextAware {
 		p.setProjectStatusPercentage(progress.getPercentage());
 		projectService.updateProject(p);
 		// 3.publish userId,projectId,percentage,content
-		applicationContext.publishEvent(new StatusChangedEvent(new StatusMessage(
-				projectId, progress.getEmployeeName(),
-				progress.getPercentage(), messageContentMap.get(progress
-						.getPercentage()))));
+		int percentage = progress.getPercentage();
+		applicationContext.publishEvent(new StatusChangedEvent(
+				new StatusMessage(projectId, 
+						percentage, String.format(
+								messageContentMap.get(percentage),
+								progress.getEmployeeName()))));
 	}
 
 	// @RequestMapping(value = "/ajax/add",consumes="application/json")
