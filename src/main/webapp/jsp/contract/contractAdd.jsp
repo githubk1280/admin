@@ -24,7 +24,7 @@
 						<div id="page-wrapper" class="detailPage">
 							<div class="row">
 								<div class="col-lg-12">
-								<form:form action="update" method="post" commandName="contract">
+								<form:form action="add" method="post" commandName="contract">
 									<div class="panel-body">
 										<div class="panel-group" id="accordion">
 											<div class="panel panel-default">
@@ -48,27 +48,25 @@
 																	<label>项目编号 </label> <label class="warning-style">该字段不允许为空</label>
 																</div>
 																<div>
-																	<form:input path="projectId" class="form-control" readonly="true"/>
+																	<form:input path="projectId" class="form-control" />
 																</div>
 															</div>
 															<div class="col-md-6 col-sm-12 col-xs-12">
 																<div>
-																	<label>合同编号 </label> <label id="projectTypeLbl"
-																		class="warning-style">该字段不允许为空</label>
+																	<label>合同编号 </label>
 																</div>
 																<div>
-																	<form:input path="contractId" class="form-control" readonly="true"/>
+																	<input type="text" class="form-control" readonly="readonly" value="自动生成"/>
 																</div>
 															</div>
 														</div>
-														
 														<div class="row">
 															<div class="col-md-6 col-sm-12 col-xs-12">
 																<div>
 																	<label>合同签订人 </label>
 																</div>
 																<div>
-																	<form:input path="signPersonNameB" class="form-control" readonly="true"/>
+																	<form:input path="signPersonNameB" class="form-control" />
 																</div>
 															</div>
 															<div class="col-md-6 col-sm-12 col-xs-12">
@@ -90,7 +88,7 @@
 																	<label id="startdateDiffLbl" class="warning-style">结束日期不能小于开始日期</label>
 																</div>
 																<div>
-																	<form:input path="contractPaperId" class="form-control" readonly="true"/>
+																	<form:input path="contractPaperId" class="form-control" />
 																</div>
 															</div>
 															<div class="col-md-6 col-sm-12 col-xs-12">
@@ -100,7 +98,7 @@
 																		id="enddateDiffLbl" class="warning-style">结束日期不能小于开始日期</label>
 																</div>
 																<div>
-																	<form:input path="signDate" class="form-control" readonly="true"/>
+																	<form:input path="signDate" class="form-control" />
 																</div>
 															</div>
 														</div>
@@ -112,7 +110,7 @@
 																</div>
 																<div>
 																	<div>
-																		<form:input path="startDate" class="form-control" readonly="true"/>
+																		<form:input path="startDate" class="form-control" />
 																	</div>
 																</div>
 															</div>
@@ -123,7 +121,7 @@
 																</div>
 																<div>
 																	<div>
-																		<form:input path="endDate" class="form-control" readonly="true"/>
+																		<form:input path="endDate" class="form-control" />
 																	</div>
 																</div>
 															</div>
@@ -136,7 +134,7 @@
 																</div>
 																<div>
 																	<div>
-																		<form:input path="totalAmount" class="form-control" readonly="true"/>
+																		<form:input path="totalAmount" class="form-control" />
 																	</div>
 																</div>
 															</div>

@@ -13,65 +13,65 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tmrasys.constant.page.PageResourceConstant;
-import com.tmrasys.domain.Contract;
 import com.tmrasys.domain.Employee;
-import com.tmrasys.service.contract.ContractService;
+import com.tmrasys.domain.Sample;
+import com.tmrasys.service.sample.SampleService;
 
 @Controller
-@RequestMapping("/contract")
-public class ContractController {
+@RequestMapping("/sample")
+public class SampleController {
 	Logger logger = Logger.getLogger(getClass());
 
 	@Autowired
-	private ContractService contractService;
+	private SampleService sampleService;
 
 	@PostConstruct
 	public void init() {
 	}
 
-	@RequestMapping("/{contractId}")
-	public ModelAndView loadProjectById(@PathVariable int contractId) {
-		Contract contract = contractService.getById(contractId);
+	@RequestMapping("/{sampleId}")
+	public ModelAndView loadProjectById(@PathVariable int sampleId) {
+		Sample sample = sampleService.getById(sampleId);
 		ModelAndView view = new ModelAndView();
-		view.addObject("contract", contract);
-		view.setViewName(PageResourceConstant.CONTRACT_DETAIL);
+		view.addObject("sample", sample);
+		view.setViewName(PageResourceConstant.SAMPLE_DETAIL);
 		return view;
 
 	}
 
 	@RequestMapping("/list")
-	public ModelAndView loadAllContractsByUser(HttpSession session) {
+	public ModelAndView loadAllSamplesByUser(HttpSession session) {
 		Employee employee = (Employee) session.getAttribute("user");
-		List<Contract> contracts = contractService.getByEmployee(employee
+		List<Sample> samples = sampleService.getByEmployee(employee
 				.getEmployeeId());
 		ModelAndView view = new ModelAndView();
-		view.addObject("contracts", contracts);
-		view.setViewName(PageResourceConstant.CONTRACT_LIST);
+		view.addObject("samples", samples);
+		view.setViewName(PageResourceConstant.SAMPLE_LIST);
 		return view;
 
 	}
 
 	@RequestMapping("/add")
-	public ModelAndView add(Contract contract, HttpSession session) {
-		contractService.addContract(contract);
+	public ModelAndView add(Sample sample, HttpSession session) {
+		sampleService.addSample(sample);
 		return new ModelAndView("redirect:list");
 	}
 
 	@RequestMapping("/add-redirect")
 	public ModelAndView addRedirect() {
-		Contract contract = new Contract();
+		Sample sample = new Sample();
 		ModelAndView view = new ModelAndView();
-		view.addObject(contract);
-		view.setViewName(PageResourceConstant.CONTRACT_ADD);
+		view.addObject("sample", sample);
+		view.setViewName(PageResourceConstant.SAMPLE_ADD);
 		return view;
 	}
 	
 	@RequestMapping("/update")
-	public ModelAndView update(Contract contract) {
-		contractService.updateContract(contract);
+	public ModelAndView update(Sample sample) {
+		sampleService.updateSample(sample);
 		ModelAndView view = new ModelAndView();
-		view.addObject(contract);
-		view.setViewName(PageResourceConstant.CONTRACT_DETAIL);
+		view.addObject(sample);
+		view.setViewName(PageResourceConstant.SAMPLE_DETAIL);
 		return view;
 	}
 

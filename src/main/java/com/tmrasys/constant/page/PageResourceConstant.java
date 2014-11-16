@@ -18,5 +18,9 @@ public class PageResourceConstant {
 	
 	public static final String CONTRACT_LIST = "contract/contractBasicInfo";
 	public static final String CONTRACT_DETAIL = "contract/contractDetail";
-	public static final String CONTRACT_ADD = "contract/add";
+	public static final String CONTRACT_ADD = "contract/contractAdd";
+	
+	public static final String SAMPLE_LIST = "sample/sampleBasicInfo";
+	public static final String SAMPLE_DETAIL = "sample/sampleDetail";
+	public static final String SAMPLE_ADD = "sample/sampleAdd";
 }
