@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tmrasys.dao.MessageDao">
+
+	<insert id="addMessage" parameterMap="messageParameter"
+		keyProperty="messageId" useGeneratedKeys="true">
+		INSERT INTO
+		message
+		(SenderId, ReceiverId, SendTime, Status,
+		MsgTextId)
+		VALUES
+		(#{senderId},#{receiveId},#{sendTime},#{status},#{msgTextId})
+	</insert>
+
+	<insert id="addMessageText" parameterMap="messageTextParameter"
+		keyProperty="id" >
+		INSERT INTO
+		message_text
+		(MessageText)
+		VALUES
+		(#{msgText})
+	</insert>
+
+	<select id="getMessageTextById" parameterType="int"
+		resultMap="messageTextResultMapper">
+		SELECT *
+		FROM message_text
+		WHERE
+		id = #{msgTextId}
+	</select>
+
+	<select id="getMessagesByReceiveId" parameterType="int"
+		resultMap="messageResultMapper">
+		SELECT *
+		FROM message
+		WHERE
+		ReceiverId = #{msgTextId}
+		ORDER BY
+		SendTime DESC
+	</select>
+
+	<parameterMap type="com.tmrasys.domain.MessageText" id="messageTextParameter">
+		<parameter property="id" resultMap="ID" />
+		<parameter property="msgText" resultMap="MessageText" />
+	</parameterMap>
+
+	<resultMap type="com.tmrasys.domain.MessageText" id="messageTextResultMapper">
+		<id property="id" column="ID" />
+		<result property="msgText" column="MessageText" />
+	</resultMap>
+
+	<parameterMap type="com.tmrasys.domain.Message" id="messageParameter">
+		<parameter property="messageId" resultMap="ID" />
+		<parameter property="senderId" resultMap="SenderId" />
+		<parameter property="receiveId" resultMap="ReceiverId" />
+		<parameter property="sendTime" resultMap="SendTime" />
+		<parameter property="status" resultMap="Status" />
+		<parameter property="msgTextId" resultMap="MsgTextId" />
+	</parameterMap>
+
+	<resultMap type="com.tmrasys.domain.Message" id="messageResultMapper">
+		<id property="messageId" column="ID" />
+		<result property="senderId" column="SenderId" />
+		<result property="receiveId" column="ReceiverId" />
+		<result property="sendTime" column="SendTime" />
+		<result property="status" column="Status" />
+		<result property="msgTextId" column="MsgTextId" />
+	</resultMap>
+</mapper>
+

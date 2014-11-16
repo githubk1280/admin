@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.alibaba.fastjson.JSON;
 import com.tmrasys.domain.Project;
 import com.tmrasys.domain.ProjectProgress;
-import com.tmrasys.event.Message;
+import com.tmrasys.event.StatusMessage;
 import com.tmrasys.event.StatusChangedEvent;
 import com.tmrasys.service.project.ProjectService;
 import com.tmrasys.service.projectProgress.ProjectProgressService;
@@ -86,7 +86,7 @@ public class ProjectStatusController implements ApplicationContextAware {
 		p.setProjectStatusPercentage(progress.getPercentage());
 		projectService.updateProject(p);
 		// 3.publish userId,projectId,percentage,content
-		applicationContext.publishEvent(new StatusChangedEvent(new Message(
+		applicationContext.publishEvent(new StatusChangedEvent(new StatusMessage(
 				projectId, progress.getEmployeeName(),
 				progress.getPercentage(), messageContentMap.get(progress
 						.getPercentage()))));
