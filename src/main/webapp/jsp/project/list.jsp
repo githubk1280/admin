@@ -70,13 +70,15 @@
 									<td>
 										<div class="progress">
 											<div
-												class="progress-bar 
-											<c:if test="${(status.index+1)*20<=30}">progress-bar-warning</c:if>
-											<c:if test="${(status.index+1)*20>60}">progress-bar-danger</c:if>"
+												class="progress-bar
+											<c:if test="${project.projectStatusPercentage<=30}">progress-bar-danger</c:if>
+											<c:if test="${(project.projectStatusPercentage<=60) && 
+											project.projectStatusPercentage>=30}">progress-bar-warning</c:if>
+											<c:if test="${project.projectStatusPercentage==100}">progress-bar-success</c:if>"
 												role="progressbar" aria-valuenow="60" aria-valuemin="0"
-												aria-valuemax="100" style="width: ${(status.index+1)*20}%;">
-												<span class="sr-only">${(status.index+1)*20}%
-													Complete</span>${(status.index+1)*20}%
+												aria-valuemax="100" style="width: ${project.projectStatusPercentage}%;">
+												<span class="sr-only">${project.projectStatusPercentage}%
+													Complete</span>${project.projectStatusPercentage}%
 											</div>
 										</div>
 									</td>
