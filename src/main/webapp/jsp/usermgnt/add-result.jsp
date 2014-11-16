@@ -16,8 +16,7 @@
 <title>生物信息管理系统-创建用户</title>
 <%@ include file="../comm-fragement/main-css"%>
 </head>
-
-<body>
+<body ng-app="">
 
 	<div id="wrapper">
 		<%@ include file="../common/nav.jsp"%>

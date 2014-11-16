@@ -17,8 +17,7 @@
 <%@ include file="../comm-fragement/main-css"%>
 </head>
 
-<body>
-
+<body ng-app="">
 	<div id="wrapper">
 		<%@ include file="../common/nav.jsp"%>
 		<div id="page-wrapper"> 

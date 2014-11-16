@@ -6,7 +6,7 @@
 		<a class="navbar-brand"><strong class="navbrand-font">生物信息管理系统</strong></a>
 	</div>
 	<ng-view>
-	<div ng-app="" ng-controller="msgController">
+	<div ng-controller="msgController">
 	<ul class="nav navbar-top-links  navbar-right" >
 		<li><a href="#"> <i class="fa fa-envelope fa-fw"></i><span
 				id="messageBadge" class="badge message-badge-margin">{{msgNum}}</span>

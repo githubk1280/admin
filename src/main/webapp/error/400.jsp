@@ -14,7 +14,7 @@
 <%@ include file="../jsp/comm-fragement/main-css"%>
 </head>
 
-<body>
+<body ng-app="">
 
 	<div id="wrapper">
 		<!-- Navigation -->
