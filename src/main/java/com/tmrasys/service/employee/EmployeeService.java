@@ -9,5 +9,5 @@ public interface EmployeeService {
 	void addEmployee(Employee employee);
 	void updateEmployee(Employee employee);
 	void updatePrivilege(Employee employee, String privilegeCode);
-	public List<Employee> getEmployeesByProjectId(int projectId);
+	public List<Integer> getEmployeesByProjectId(int projectId);
 }

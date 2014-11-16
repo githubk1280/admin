@@ -1136,7 +1136,9 @@
 		            url:'/admin/status/ajax/add',
 		            data: $scope.progress
 				}).success(function (data){
-					alert(data);
+					if(data.success == true){
+						alert("状态更新成功!");
+					}
 				}).error(function (err){
 					alert(err);
 				});

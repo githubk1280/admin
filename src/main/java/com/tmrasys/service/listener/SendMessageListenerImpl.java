@@ -1,29 +1,25 @@
 package com.tmrasys.service.listener;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.stereotype.Component;
 
-import com.tmrasys.domain.Message;
-import com.tmrasys.domain.MessageText;
 import com.tmrasys.event.StatusChangedEvent;
 import com.tmrasys.event.StatusMessage;
-import com.tmrasys.service.message.MessageService;
+import com.tmrasys.service.handler.Handler;
 
 @Component
 public class SendMessageListenerImpl implements TmrasysListener {
+	@Qualifier("messageHandler")
 	@Autowired
-	private MessageService messageService;
+	private Handler handler;
 
 	@Override
 	public void onApplicationEvent(ApplicationEvent event) {
 		if (event instanceof StatusChangedEvent) {
 			StatusMessage msg = (StatusMessage) event.getSource();
-			String content = String.format(msg.getContent());
-			MessageText msgText = new MessageText(content);
-			messageService.addMessageText(msgText);
-			int msgTextId = msgText.getId();
-			Message message = new Message ();
+			handler.handle(msg);
 		}
 	}
 

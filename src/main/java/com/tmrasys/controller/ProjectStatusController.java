@@ -48,10 +48,10 @@ public class ProjectStatusController implements ApplicationContextAware {
 	@PostConstruct
 	public void init() {
 		messageContentMap = new HashMap<Integer, String>();
-		messageContentMap.put(30, "%s 更新了状态，更新内容 ：预付款已打.当前项目进度百分比为 30%");
-		messageContentMap.put(60, "%s 更新了状态，更新内容 ：xxx.当前项目进度百分比为 60%");
-		messageContentMap.put(90, "%s 更新了状态，更新内容 ：尾款款已打.当前项目进度百分比为 90%");
-		messageContentMap.put(100, "%s 更新了状态，更新内容 ：项目完成.当前项目进度百分比为 100%");
+		messageContentMap.put(30, "%s 更新了状态，更新内容 ：预付款已打.当前项目进度百分比为 30");
+		messageContentMap.put(60, "%s 更新了状态，更新内容 ：xxx.当前项目进度百分比为 60");
+		messageContentMap.put(90, "%s 更新了状态，更新内容 ：尾款款已打.当前项目进度百分比为 90");
+		messageContentMap.put(100, "%s 更新了状态，更新内容 ：项目完成.当前项目进度百分比为 100");
 	}
 
 	@RequestMapping("/ajax/{projectId}")
@@ -60,14 +60,15 @@ public class ProjectStatusController implements ApplicationContextAware {
 		List<ProjectProgress> progresses = projectProgressService
 				.getByProjectId(projectId);
 		if (!CollectionUtils.isEmpty(progresses)) {
-			ProjectProgress progress = progresses.get(progresses.size() - 1);
+			ProjectProgress progress = progresses.get(0);
 			request.setAttribute("projectStatus", progress);
 			JsonResponseUtils.returnJsonResponse(response, progress, true, 200);
 		}
 	}
 
 	@RequestMapping(value = "/ajax/add")
-	public void add(HttpServletRequest request) throws IOException {
+	public void add(HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
 		BufferedReader in = request.getReader();
 		String s = in.readLine();
 		StringBuffer sb = new StringBuffer();
@@ -87,11 +88,11 @@ public class ProjectStatusController implements ApplicationContextAware {
 		projectService.updateProject(p);
 		// 3.publish userId,projectId,percentage,content
 		int percentage = progress.getPercentage();
+		String content = String.format(messageContentMap.get(percentage),
+				progress.getEmployeeName())+"%";
 		applicationContext.publishEvent(new StatusChangedEvent(
-				new StatusMessage(projectId, 
-						percentage, String.format(
-								messageContentMap.get(percentage),
-								progress.getEmployeeName()))));
+				new StatusMessage(projectId, percentage, content)));
+		JsonResponseUtils.returnJsonResponse(response, progress, true, 200);
 	}
 
 	// @RequestMapping(value = "/ajax/add",consumes="application/json")

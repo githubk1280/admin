@@ -11,5 +11,5 @@ public interface EmployeeDao {
 	Employee getEmployeeByName(String name);
 	void addEmployee(Employee employee);
 	void updateEmployee(Employee employee);
-	public List<Employee> getEmployeesByProjectId(int projectId);
+	public List<Integer> getEmployeesByProjectId(int projectId);
 }

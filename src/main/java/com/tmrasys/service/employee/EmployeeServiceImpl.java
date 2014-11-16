@@ -49,7 +49,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public List<Employee> getEmployeesByProjectId(int projectId) {
+	public List<Integer> getEmployeesByProjectId(int projectId) {
 		return employeeDao.getEmployeesByProjectId(projectId);
 	}
 
