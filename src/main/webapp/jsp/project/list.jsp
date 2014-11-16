@@ -84,7 +84,7 @@
 									</td>
 									<td><span class="glyphicon glyphicon-ok"
 										style="color: rgb(0, 211, 0);"></span> ${project.priority}</td>
-									<td><a href="../page/projectDetailData.html"
+									<td><a href="${project.projectId}"
 										target="_blank"><i class="fa fa-bar-chart-o fa-fw"
 											style="color: rgb(0, 0, 0);"></i></a></td>
 								</tr>

@@ -45,7 +45,7 @@
 													<label>项目当前进度 </label>
 												</div>
 												<div class="progress">
-													<div class="progress-bar progress-bar-danger"
+													<div class="progress-bar progress-bar"
 														role="progressbar" aria-valuenow="60" aria-valuemin="0"
 														aria-valuemax="100" style="width: {{progress.percentage}}%;">
 														<span class="sr-only">{{progress.percentage}}% Complete</span>{{progress.percentage}}%
