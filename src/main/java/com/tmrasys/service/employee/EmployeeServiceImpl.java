@@ -1,6 +1,7 @@
 package com.tmrasys.service.employee;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 		int privilegeId = privileges.get(privilegeCode);
 		employee.setPrivilege(privilegeId);
 		employeeDao.updateEmployee(employee);
+	}
+
+	@Override
+	public List<Integer> getEmployeesByProjectId(int projectId) {
+		return employeeDao.getEmployeesByProjectId(projectId);
 	}
 
 }

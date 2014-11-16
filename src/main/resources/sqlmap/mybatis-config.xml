@@ -10,6 +10,7 @@
 		<mapper resource="sqlmap/mappers/com/tmrasys/dao/ProjectEmployeeMapper.xml" />
 		<mapper resource="sqlmap/mappers/com/tmrasys/dao/PrivilegeMapper.xml" />
 		<mapper resource="sqlmap/mappers/com/tmrasys/dao/ContractMapper.xml" />
+		<mapper resource="sqlmap/mappers/com/tmrasys/dao/MessageMapper.xml" />
 		<mapper resource="sqlmap/mappers/com/tmrasys/dao/SampleMapper.xml" />
 	</mappers>
 </configuration>	

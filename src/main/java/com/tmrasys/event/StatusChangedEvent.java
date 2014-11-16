@@ -5,7 +5,7 @@ import org.springframework.context.ApplicationEvent;
 public class StatusChangedEvent extends ApplicationEvent {
 	private static final long serialVersionUID = -4458501723843345182L;
 
-	public StatusChangedEvent(Message message) {
+	public StatusChangedEvent(StatusMessage message) {
 		super(message);
 	}
 

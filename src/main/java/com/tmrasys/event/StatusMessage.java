@@ -3,21 +3,20 @@ package com.tmrasys.event;
 import lombok.Data;
 
 @Data
-public class Message {
+public class StatusMessage {
 	private int projectId;
-	private int userId;
 	private int percentage;
 	private String content;
 
-	public Message(int projectId, int userId, int percentage, String content) {
+	public StatusMessage(int projectId, int percentage,
+			String content) {
 		super();
 		this.projectId = projectId;
-		this.userId = userId;
 		this.percentage = percentage;
 		this.content = content;
 	}
 
-	public Message() {
+	public StatusMessage() {
 	}
 
 }
