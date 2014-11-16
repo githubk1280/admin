@@ -34,7 +34,7 @@
 		<li id="tab1" class="active"><a href="<%=request.getContextPath()%>/project/list"><i
 				class="fa fa-tasks fa-fw "></i><strong>项目管理</strong></a></li>
 		<li id="tab2"><a href="#"><i class="fa fa-tasks fa-fw"></i><strong>文档管理</strong></a></li>
-		<li id="tab3"><a href="#"><i class="fa fa-tasks fa-fw"></i><strong>财务管理</strong></a></li>
+		<li id="tab3"><a href="<%=request.getContextPath()%>/contract/list"><i class="fa fa-tasks fa-fw"></i><strong>财务管理</strong></a></li>
 		<li id="tab4"><a href="#"><i class="fa fa-tasks fa-fw"></i><strong>样品管理</strong></a></li>
 		<li id="tab5"><a href="#"><i class="fa fa-tasks fa-fw"></i><strong>文献管理</strong></a></li>
 	</ul>

@@ -15,17 +15,24 @@
 		ORDER BY
 		contract_id;
 	</select>
+	<select id="getById" resultMap="contractMapper" parameterType="int">
+		select * from `test`.`contract` c
+		where
+		contract_id = #{contractId};
+	</select>
 	<insert id="addContract" keyProperty="contractId" parameterMap="contractParameter"
 		useGeneratedKeys="true">
 		INSERT INTO `contract` (`SIGN_PERSON_A`, `SIGN_PERSON_B`,
 		`SIGN_DATE`, `ADVANCED_AMOUNT`, `ADVANCED_AMOUNT_DATE`,
 		`BALANCED_AMOUNT`, `BALANCED_AMOUNT_DATE`, `ADVANCED_AMOUNT_STATUS`,
-		`BALANCED_AMOUNT_STATUS`, `PROJECT_ID`, `CONTRACT_PAPER_ID`, `CONTRACT_TYPE`) 
+		`BALANCED_AMOUNT_STATUS`, `PROJECT_ID`, `CONTRACT_PAPER_ID`, `CONTRACT_TYPE`,
+		`TOTAL_AMOUNT`, `START_DATE`, `END_DATE`) 
 		VALUES
 		(#{signPersonNameA}, #{signPersonNameB}, #{signDate}, #{advancedAmount}, #{advancedAmountDate}, 
 		#{balancedAmount},
 		#{balancedAmountDate}, #{advancedAmountStatus}, #{balancedAmountStatus}, #{projectId},
-		#{contractPaperId}, #{contractType});
+		#{contractPaperId}, #{contractType},
+		#{totalAmount}, #{startDate}, #{endDate});
 	</insert>
 	<update id="updateContract" parameterMap="contractParameter" flushCache="true">
 		UPDATE `contract`
@@ -35,6 +42,7 @@
 		`BALANCED_AMOUNT`=#{balancedAmount}, `BALANCED_AMOUNT_DATE`=#{balancedAmountDate}, `ADVANCED_AMOUNT_STATUS`=#{advancedAmountStatus},
 		`BALANCED_AMOUNT_STATUS`=#{balancedAmountStatus}, `PROJECT_ID`=#{projectId}, 
 		`CONTRACT_PAPER_ID`=#{contractPaperId}, `CONTRACT_TYPE`=#{contractType}
+		`TOTAL_AMOUNT`=#{totalAmount}, `START_DATE`=#{startDate}, `END_DATE`=#{endDate}
 		WHERE contract_id = #{contractId}
 	</update>
 
@@ -52,6 +60,9 @@
 		<result property="projectId" column="PROJECT_ID" />
 		<result property="contractPaperId" column="CONTRACT_PAPER_ID" />
 		<result property="contractType" column="CONTRACT_TYPE" />
+		<result property="totalAmount" column="TOTAL_AMOUNT" />
+		<result property="startDate" column="START_DATE" />
+		<result property="endDate" column="END_DATE" />
 	</resultMap>
 	<parameterMap type="com.tmrasys.domain.Contract" id="contractParameter">
 		<parameter property="contractId" resultMap="CONTRACT_ID" />
@@ -67,6 +78,9 @@
 		<parameter property="projectId" resultMap="PROJECT_ID" />
 		<parameter property="contractPaperId" resultMap="CONTRACT_PAPER_ID" />
 		<parameter property="contractType" resultMap="CONTRACT_TYPE" />
+		<parameter property="totalAmount" resultMap="TOTAL_AMOUNT" />
+		<parameter property="startDate" resultMap="START_DATE" />
+		<parameter property="endDate" resultMap="END_DATE" />
 	</parameterMap>
 </mapper>
 

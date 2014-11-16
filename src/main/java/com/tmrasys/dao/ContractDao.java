@@ -11,4 +11,5 @@ public interface ContractDao {
 	List<Contract> getByEmployee(int employeeId);
 	void addContract(Contract contract);
 	void updateContract(Contract contract);
+	Contract getById(int contractId);
 }

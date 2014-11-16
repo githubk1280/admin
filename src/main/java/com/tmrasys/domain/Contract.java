@@ -23,6 +23,9 @@ public class Contract {
 	private String advancedAmountStatus;
 	private String balancedAmountStatus;
 	private int projectId;
+	private int totalAmount;
+	private Date startDate;
+	private Date endDate;
 	/**
 	 * 纸质项目编号
 	 */

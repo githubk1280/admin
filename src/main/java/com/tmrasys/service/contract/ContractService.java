@@ -8,4 +8,5 @@ public interface ContractService {
 	List<Contract> getByEmployee(int employeeId);
 	void addContract(Contract contract);
 	void updateContract(Contract contract);
+	Contract getById(int contractId);
 }
