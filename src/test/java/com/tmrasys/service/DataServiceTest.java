@@ -189,8 +189,8 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		for (Contract c : list)
 			System.out.println(c);
 		Contract contract = list.get(0);
-		contract.setContractId(0);
-		contractService.addContract(contract);
+//		contract.setContractId(0);
+//		contractService.addContract(contract);
 		contract.setSignPersonNameA("james");
 		contractService.updateContract(contract);
 	}

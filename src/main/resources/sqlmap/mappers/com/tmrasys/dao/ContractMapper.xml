@@ -41,7 +41,7 @@
 		`SIGN_DATE`=#{signDate}, `ADVANCED_AMOUNT`=#{advancedAmount}, `ADVANCED_AMOUNT_DATE`=#{advancedAmountDate},
 		`BALANCED_AMOUNT`=#{balancedAmount}, `BALANCED_AMOUNT_DATE`=#{balancedAmountDate}, `ADVANCED_AMOUNT_STATUS`=#{advancedAmountStatus},
 		`BALANCED_AMOUNT_STATUS`=#{balancedAmountStatus}, `PROJECT_ID`=#{projectId}, 
-		`CONTRACT_PAPER_ID`=#{contractPaperId}, `CONTRACT_TYPE`=#{contractType}
+		`CONTRACT_PAPER_ID`=#{contractPaperId}, `CONTRACT_TYPE`=#{contractType},
 		`TOTAL_AMOUNT`=#{totalAmount}, `START_DATE`=#{startDate}, `END_DATE`=#{endDate}
 		WHERE contract_id = #{contractId}
 	</update>

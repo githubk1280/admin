@@ -25,10 +25,7 @@
             <div class="row">
             <form role="form">
                 <div class="col-lg-12">
-                    <h2 class="page-header form-group input-group">
-                    	<strong>财务合同基本信息</strong>
-                    	<button class="btn btn-default btn-primary" id="create"
-								style="margin-left: 10px;">创建合同</button>
+                    <h2 class="page-header form-group input-group"><strong>样本基本信息</strong>
                     	<input type="text" class="form-control" placeholder="请输入项目编号">
 	                    <span class="input-group-btn">
 	                        <button class="btn btn-default btn-primary" type="button"><i class="fa fa-search"></i></button>
@@ -43,29 +40,27 @@
             <table class="table table-hover">
               <thead>
                 <tr>
-                  <th>合同编号</th>
+                  <th>样本编号</th>
                   <th>项目编号</th>
-                  <th>合同状态</th>
-                  <th>合同签订人</th>
-                  <th>签订日期</th>
-                  <th>合同金额</th>
+                  <th>项目负责人</th>
+                  <th>收样日期</th>
+                  <th>存放位置</th>
                 </tr>
               </thead>
               <tbody>
-              	<c:forEach items="${contracts}" var="contract" varStatus="status">
+              	<c:forEach items="${samples}" var="sample" varStatus="status">
               		<tr>
-						<td><a href="${contract.contractId}" target="_blank" class="project_link">${contract.contractId}</a></td>
-						<td>${contract.projectId}</td>
-						<td>${contract.contractType}</td>
-						<td>${contract.signPersonNameB}</td>
-						<td><fmt:formatDate value="${contract.signDate}"
+						<td><a href="${sample.sampleId}" target="_blank" class="project_link">${sample.sampleId}</a></td>
+						<td>${sample.projectId}</td>
+						<td>${sample.projectPrincripal}</td>
+						<td><fmt:formatDate value="${sample.reciveDate}"
 											pattern="yyyy-MM-dd" /></td>
-						<td>${contract.totalAmount}</td>
+						<td>${sample.diskLocation}</td>
               		</tr>
               	</c:forEach>
               </tbody>
             </table>
-            <c:if test="${projects.size()>10}">
+            <c:if test="${samples.size()>10}">
 						<%@ include file="../common/pagnation.jsp"%>
 			</c:if>
  </div>
@@ -111,7 +106,7 @@
 			});
 			
 			$("#create").click(function() {
-				window.location.replace("http://"+window.location.host+"/admin/contract/add-redirect");
+				window.location.replace("http://"+window.location.host+"/admin/project/add-redirect");
 				return false;
 			});
 
