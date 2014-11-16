@@ -14,6 +14,7 @@ import com.tmrasys.domain.OutSource;
 import com.tmrasys.domain.Project;
 import com.tmrasys.domain.ProjectEmployee;
 import com.tmrasys.domain.ProjectProgress;
+import com.tmrasys.domain.Sample;
 import com.tmrasys.service.contract.ContractService;
 import com.tmrasys.service.customer.CustomerService;
 import com.tmrasys.service.employee.EmployeeService;
@@ -21,6 +22,7 @@ import com.tmrasys.service.outSource.OutSourceService;
 import com.tmrasys.service.project.ProjectService;
 import com.tmrasys.service.projectEmployee.ProjectEmployeeService;
 import com.tmrasys.service.projectProgress.ProjectProgressService;
+import com.tmrasys.service.sample.SampleService;
 
 public class DataServiceTest extends AbstractBaseTestConfig {
 
@@ -38,6 +40,8 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 	ProjectEmployeeService projectEmployeeService;
 	@Autowired
 	ContractService contractService;
+	@Autowired
+	SampleService sampleService;
 	
 	private Employee employee;
 
@@ -189,4 +193,13 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		contractService.updateContract(contract);
 	}
 	
+	@Test
+	public void testCRUDsample() {
+		for(Sample sample : sampleService.getByEmployee(2)) {
+			System.out.println(sample);
+		}
+		Sample sample = sampleService.getById(1);
+		sample.setProjectId(37);
+		sampleService.addSample(sample);
+	}
 }
