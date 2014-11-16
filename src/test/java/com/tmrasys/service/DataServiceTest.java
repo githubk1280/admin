@@ -42,7 +42,7 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 	ContractService contractService;
 	@Autowired
 	SampleService sampleService;
-	
+
 	private Employee employee;
 
 	@Test
@@ -56,8 +56,9 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		System.out.println(employeeDataService.getEmployeeByName("ivan"));
 		System.out.println(employeeDataService.getEmployeeByName("terry"));
 		System.out.println(employeeDataService.getEmployeeByName("james"));
+		System.out.println(employeeDataService.getEmployeesByProjectId(29));
 	}
-	
+
 	@Test
 	public void testaddEmployee() {
 		Employee employee = new Employee();
@@ -67,7 +68,7 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		employee.setPrivilege(1);
 		employeeDataService.addEmployee(employee);
 	}
-	
+
 	@Test
 	public void testupdateEmployee() {
 		employee = employeeDataService.getEmployeeByName("Robin");
@@ -81,13 +82,13 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		System.out.println(projectDataService.loadProjectsByEmployee(
 				employee.getEmployeeId()).size());
 	}
-	
+
 	@Test
 	public void testgetOutSourceByProjectId() {
 		OutSource os = outSourceService.getOutSourceByProjectId(2);
 		System.out.println(os);
 	}
-	
+
 	@Test
 	public void testaddOutSource() {
 		OutSource os = outSourceService.getOutSourceByProjectId(17);
@@ -95,19 +96,19 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		os.setOutSourceId(0);
 		outSourceService.addOutSource(os);
 	}
-	
+
 	@Test
 	public void testgetCustomersByProjectId() {
-		for(Customer customer : customerService.getByProjectId(1))
+		for (Customer customer : customerService.getByProjectId(1))
 			System.out.println(customer);
 	}
 
 	@Test
 	public void testgetProjectProgressByProjectId() {
-		for(ProjectProgress pp : projectProgressService.getByProjectId(15))
+		for (ProjectProgress pp : projectProgressService.getByProjectId(15))
 			System.out.println(pp);
 	}
-	
+
 	@Test
 	public void testaddProjectProgressByProjectId() {
 		ProjectProgress pp = new ProjectProgress();
@@ -118,7 +119,7 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		pp.setPercentage(0);
 		projectProgressService.addProjectProgress(pp);
 	}
-	
+
 	@Test
 	public void testaddProject() {
 		Project pro = new Project();
@@ -138,20 +139,20 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		pro.setStartDate(new Date());
 		projectDataService.addProject(pro);
 	}
-	
+
 	@Test
 	public void testupdateProject() {
 		Project pro = projectDataService.loadProjectById(5);
 		pro.setProjectName("生物项目1");
 		projectDataService.updateProject(pro);
 	}
-	
+
 	@Test
 	public void testaddReference() {
-		ProjectEmployee projectEmployee = new ProjectEmployee(1,1);
+		ProjectEmployee projectEmployee = new ProjectEmployee(1, 1);
 		projectEmployeeService.addReference(projectEmployee);
 	}
-	
+
 	@Test
 	public void testaddCustomer() {
 		Customer customer = customerService.getByProjectId(1).get(0);
@@ -159,7 +160,7 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		customer.setCustomerId(0);
 		customerService.addCustomer(customer);
 	}
-	
+
 	@Test
 	public void testupdateCustomer() {
 		Customer customer = customerService.getByProjectId(15).get(0);
@@ -167,24 +168,25 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		customer.setProjectId(16);
 		customerService.updateCustomer(customer);
 	}
-	
+
 	@Test
 	public void testgetCustomersByEmployee() {
-		for(Customer customer : customerService.getByEmployee(3))
+		for (Customer customer : customerService.getByEmployee(3))
 			System.out.println(customer);
 	}
-	
+
 	@Test
 	public void testupdatePrivilege() {
 		employee = employeeDataService.getEmployeeByName("ivan");
 		employeeDataService.updatePrivilege(employee, "研究员");
 	}
-	
+
 	@Test
 	public void testgetContractByEmployee() {
 		employee = employeeDataService.getEmployeeByName("terry");
-		List<Contract> list = contractService.getByEmployee(employee.getEmployeeId());
-		for(Contract c : list) 
+		List<Contract> list = contractService.getByEmployee(employee
+				.getEmployeeId());
+		for (Contract c : list)
 			System.out.println(c);
 		Contract contract = list.get(0);
 		contract.setContractId(0);
@@ -192,10 +194,10 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		contract.setSignPersonNameA("james");
 		contractService.updateContract(contract);
 	}
-	
+
 	@Test
 	public void testCRUDsample() {
-		for(Sample sample : sampleService.getByEmployee(2)) {
+		for (Sample sample : sampleService.getByEmployee(2)) {
 			System.out.println(sample);
 		}
 		Sample sample = sampleService.getById(1);
