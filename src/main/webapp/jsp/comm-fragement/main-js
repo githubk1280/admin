@@ -11,3 +11,19 @@
 	<!-- Custom Theme JavaScript -->
 	<script src="<spring:url value="/resources/js/sb-admin-2.js"/>"></script>
 	<script src="<spring:url value="/resources/js/angular.js"/>"></script>
+	<script type="text/javascript">
+		function msgController($scope, $http) {
+		 	$scope.$watch('$viewContentLoaded', function() {
+		 		$scope.msgNum = "";
+		 		$http.get("/admin/message/ajax/query").success(
+						function(data) {
+							if (data.success == true) {
+								$scope.msgNum = data.data;
+							}
+						}).error(function(err) {
+						//alert("获取失败，请重试!");
+				});
+		 	});
+		 };
+	</script>
+	

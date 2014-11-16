@@ -5,9 +5,11 @@
 	<div class="navbar-header">
 		<a class="navbar-brand"><strong class="navbrand-font">生物信息管理系统</strong></a>
 	</div>
-	<ul class="nav navbar-top-links  navbar-right">
+	<ng-view>
+	<div ng-app="" ng-controller="msgController">
+	<ul class="nav navbar-top-links  navbar-right" >
 		<li><a href="#"> <i class="fa fa-envelope fa-fw"></i><span
-				id="messageBadge" class="badge message-badge-margin">999+</span>
+				id="messageBadge" class="badge message-badge-margin">{{msgNum}}</span>
 		</a></li>
 		<!-- /.dropdown 
 			                <li class="">
@@ -28,6 +30,8 @@
 						class="fa fa-sign-out fa-fw"></i> 退出</a></li>
 			</ul> <!-- /.dropdown-user --></li>
 	</ul>
+	</ng-view>
+	</div>
 	<!-- navbar tabs -->
 	<ul
 		class="nav navbar-nav navbar-default nav-pills navbar-nav-left navbar-default-color">
