@@ -20,6 +20,7 @@
 <body ng-app="">
 	<div id="wrapper">
 		<%@ include file="../common/nav.jsp"%>
+	</div>
 		<div id="page-wrapper" class="detailPage">
 			<div class="row">
 				<div class="col-lg-12">
@@ -31,20 +32,21 @@
 							<div class="panel panel-default">
 								<div class="panel-heading ">
 									<h3 class="panel-title">
-										<strong>添加新的项目信息</strong>
-										<button id="cancelProBasicData" value="2"
-											class="btn btn-default btn-success pull-right"
-											style="margin-left: 10px; margin-right: 10px; display: none" type="reset">取消</button>
+										<strong>项目基本信息</strong>
+										<a  data-toggle="collapse"  href="#collapseOne" class="panel_a" >
+											<span id="arrowProBasicData" class="glyphicon glyphicon-chevron-up" style="color: rgb(0, 0, 0);"></span>
+	                                    </a>
+										<button id="cancelProBasicData" class="btn btn-default btn-success pull-right" 
+										 style="margin-left: 10px; margin-right: 10px; display: none" type="reset">取消</button>
 										<button id="update" value="1"
-											class="btn btn-default btn-success pull-right"
-											style="margin-left: 10px; margin-right: 10px" type="submit">保存</button>
+										  class="btn btn-default btn-success pull-right"
+										  style="margin-left: 10px; margin-right: 10px;display:none" type="submit">保存</button>
 										<button id="create" class="btn btn-default btn-success"
 											style="margin-left: 10px;">修改</button>
 									</h3>
 								</div>
 								<div id="collapseOne" class="panel-collapse collapse in">
 									<div class="panel-body">
-										
 											<div class="row">
 												<div class="col-md-6 col-sm-12 col-xs-12">
 													<div>
@@ -218,21 +220,17 @@
 													</div>
 												</div>
 											</div>
-										</form:form>
-									</div>
+										</div>
 								</div>
 							</div>
-							<!-------------------------------------------project basic data end ------------------------------------------>
-							<%@ include file="projectstatus.jsp"%>
-							<!----------------------------------------outsource start ------------------------->
-							<%@ include file="projectOutSource.jsp"%>
-							<!----------------------------------------outsource end ------------------------->
-							<!----------------------------------------custom info start ------------------------->
-							<div class="panel panel-default">
-							<form:form action="add" method="post" commandName="customers">
+						 </div>
+						</form:form>
+						<%@ include file="projectstatus.jsp"%>
+						<%@ include file="projectOutSource.jsp"%>
+						<div class="panel panel-default">
 								<div class="panel-heading">
 									<h3 class="panel-title">
-										<strong>客户信息</strong> <a data-toggle="collapse"
+										<strong>客户信息</strong> <a data-toggle="collapse"s
 											href="#collapseFour" class="panel_a"> <span
 											id="arrowCustomerInfo"
 											class="glyphicon glyphicon-chevron-down"
@@ -660,39 +658,14 @@
 
 									</div>
 								</div>
-							</form:form>
 							</div>
-							<!----------------------------------------custom info end ------------------------->
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h3 class="panel-title">
-										<strong>客户联系记录</strong> <a data-toggle="collapse"
-											href="#collapseFive" class="panel_a"> <span id="arrow5"
-											class="glyphicon glyphicon-chevron-down"
-											style="color: rgb(0, 0, 0);"></span>
-										</a>
-									</h3>
-								</div>
-								<div id="collapseFive" class="panel-collapse collapse" style="">
-									<div class="panel-body">Lorem ipsum dolor sit amet,
-										consectetur adipisicing elit, sed do eiusmod tempor incididunt
-										ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-										quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-										ea commodo consequat. Duis aute irure dolor in reprehenderit
-										in voluptate velit esse cillum dolore eu fugiat nulla
-										pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-										in culpa qui officia deserunt mollit anim id est laborum.</div>
-								</div>
-							</div>
-						</div>
-
-						
-					</div>
-					<!-- /.panel -->
+					
 				</div>
-			</div>
-		</div>
-		</div>
+			</div>							
+      </div>
+</div>
+
+		
 		<!-- /#wrapper -->
 		<%@ include file="../common/modal.jsp"%>
 

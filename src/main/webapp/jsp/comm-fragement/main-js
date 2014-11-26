@@ -11,6 +11,8 @@
 	<!-- Custom Theme JavaScript -->
 	<script src="<spring:url value="/resources/js/sb-admin-2.js"/>"></script>
 	<script src="<spring:url value="/resources/js/angular.js"/>"></script>
+	<script src="<spring:url value="/resources/js/bootstrap-datetimepicker.js"/>"></script>
+	<script src="<spring:url value="/resources/js/bootstrap-datetimepicker.zh-CN.js"/>"></script>
 	<script type="text/javascript">
 		function msgController($scope, $http) {
 		 	$scope.$watch('$viewContentLoaded', function() {
