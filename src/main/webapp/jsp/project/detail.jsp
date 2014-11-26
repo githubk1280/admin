@@ -26,17 +26,25 @@
 					<!-- .panel-heading -->
 					<div class="panel-body">
 						<!----------------------------------------project basic data start ------------------------->
+						<form:form action="update" method="post" commandName="project">
 						<div class="panel-group" id="accordion">
 							<div class="panel panel-default">
 								<div class="panel-heading ">
 									<h3 class="panel-title">
-										<strong>项目信息</strong> <a data-toggle="collapse"
-											href="#collapseOne" class="panel_a"><strong>link</strong></a>
+										<strong>添加新的项目信息</strong>
+										<button id="cancelProBasicData" value="2"
+											class="btn btn-default btn-success pull-right"
+											style="margin-left: 10px; margin-right: 10px; display: none" type="reset">取消</button>
+										<button id="update" value="1"
+											class="btn btn-default btn-success pull-right"
+											style="margin-left: 10px; margin-right: 10px" type="submit">保存</button>
+										<button id="create" class="btn btn-default btn-success"
+											style="margin-left: 10px;">修改</button>
 									</h3>
 								</div>
 								<div id="collapseOne" class="panel-collapse collapse in">
 									<div class="panel-body">
-										<form:form action="add" method="post" commandName="project">
+										
 											<div class="row">
 												<div class="col-md-6 col-sm-12 col-xs-12">
 													<div>
@@ -863,7 +871,7 @@
 							</div>
 						</div>
 
-						<!-- .panel-body -->
+						
 					</div>
 					<!-- /.panel -->
 				</div>

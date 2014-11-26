@@ -85,5 +85,15 @@ public class ProjectController {
 		return view;
 
 	}
+	
+	@RequestMapping("/update")
+	public ModelAndView addRedirect(Project project) {
+		projectService.updateProject(project);
+		ModelAndView view = new ModelAndView();
+		view.addObject(project);
+		view.setViewName(PageResourceConstant.PROJECT_DETAIL);
+		return view;
+
+	}
 
 }
