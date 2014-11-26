@@ -117,7 +117,7 @@ a {
 	position: relative;
 	z-index: 2;
 	float: right;
-	width: 26%;
+	width: 100%;
 	margin-bottom: 0;	
 }
 
@@ -181,5 +181,16 @@ textarea.form-control{
 
 .p_borderline{
 	border-bottom:1px solid #178acc;
+}
+
+.warning-style{
+	color:#d9534f;
+	font-size:5px;
+	display:none;
+}
+
+.amountFieldStyle{
+
+	width:26%;	
 }
 

@@ -92,9 +92,9 @@ function outSourcingController($scope, $http) {
 					<div>
 						<label>外包单位</label>
 					</div>
-				</div>
-				<div>
-					<input type="text" class="form-control" ng-model="experimentOS.outSourceUnit">
+					<div>
+						<input type="text" class="form-control" ng-model="experimentOS.outSourceUnit">
+					</div>
 				</div>
 			</div>
 			<div class="row row-margin">
