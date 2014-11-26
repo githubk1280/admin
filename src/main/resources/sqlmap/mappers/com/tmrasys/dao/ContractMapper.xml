@@ -15,6 +15,14 @@
 		ORDER BY
 		contract_id;
 	</select>
+	
+	<select id="getByProject" resultMap="contractMapper"
+		resultType="list" parameterType="int">
+		select * from `test`.`contract` c
+		where
+		c.PROJECT_ID = #{projectId};
+	</select>
+	
 	<select id="getById" resultMap="contractMapper" parameterType="int">
 		select * from `test`.`contract` c
 		where

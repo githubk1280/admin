@@ -9,4 +9,5 @@ public interface ContractService {
 	void addContract(Contract contract);
 	void updateContract(Contract contract);
 	Contract getById(int contractId);
+	List<Contract> getByProject(int projectId);
 }

@@ -225,197 +225,11 @@
 							<!-------------------------------------------project basic data end ------------------------------------------>
 							<%@ include file="projectstatus.jsp"%>
 							<!----------------------------------------outsource start ------------------------->
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h3 class="panel-title">
-										<strong>外包信息</strong> <a data-toggle="collapse"
-											href="#collapseThree" class="panel_a"> <span
-											id="arrowOutsource" class="glyphicon glyphicon-chevron-down"
-											style="color: rgb(0, 0, 0);"></span>
-										</a>
-										<button id="saveOutsource" value="1"
-											class="btn btn-default btn-success"
-											style="margin-left: 10px;">修改</button>
-										<button id="cancelOutsource" value="2"
-											class="btn btn-default btn-success"
-											style="margin-left: 10px; display: none">取消</button>
-									</h3>
-								</div>
-
-								<div id="collapseThree" class="panel-collapse collapse" style="">
-									<div id="panelOutsource" class="panel-body">
-										<div class="row">
-											<div class="col-md-12">
-												<div class="pull-left page-header">
-													<h5>
-														<strong>实验外包信息</strong>
-													</h5>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6 col-sm-12 col-xs-12">
-												<div>
-													<label>项目编号 </label>
-												</div>
-												<div>
-													<input id="outsourceProjectID" type="text"
-														class="form-control">
-												</div>
-											</div>
-											<div class="col-md-6 col-sm-12 col-xs-12">
-												<div>
-													<label>外包单位</label>
-												</div>
-											</div>
-											<div>
-												<input type="text" class="form-control">
-											</div>
-										</div>
-										<div class="row row-margin">
-											<div class="col-md-6 col-sm-12 col-xs-12">
-												<div>
-													<label>联系人</label>
-												</div>
-												<div>
-													<input type="text" class="form-control">
-												</div>
-											</div>
-											<div class="col-md-6 col-sm-12 col-xs-12">
-												<div>
-													<label>联系人电话</label>
-												</div>
-												<div>
-													<input type="text" class="form-control">
-												</div>
-											</div>
-										</div>
-
-										<div class="row row-margin">
-											<div class="col-md-6 col-sm-12 col-xs-12">
-												<div>
-													<label>合同金额</label>
-												</div>
-												<div>
-													<input type="text" class="form-control">
-												</div>
-											</div>
-											<div class="col-md-6 col-sm-12 col-xs-12">
-												<div>
-													<label>送样日期</label>
-												</div>
-												<div>
-													<input type="text" class="form-control">
-												</div>
-											</div>
-										</div>
-										<div class="row row-margin">
-											<div class="col-md-6 col-sm-12 col-xs-12">
-												<div>
-													<label>结果是否收到</label>
-												</div>
-												<div>
-													<div class="pull-left">
-														<label><input type="radio" name="optionsRadios6"
-															id="optionsRadios6" value="option6">是 </label> <label><input
-															type="radio" name="optionsRadios7" id="optionsRadios7"
-															value="option7" checked>否 </label>
-													</div>
-												</div>
-											</div>
-											<div class="col-md-6 col-sm-12 col-xs-12">
-												<div>
-													<label>样本数量</label>
-												</div>
-												<div>
-													<div>
-														<input type="text" class="form-control">
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="row row-margin">
-											<div class="col-md-6 col-sm-12 col-xs-12">
-												<div>
-													<label>合同信息</label>
-												</div>
-												<div>
-													<textarea class="form-control" rows="8"></textarea>
-												</div>
-											</div>
-										</div>
-										<div class="row row-margin">
-											<div class="col-md-6 col-sm-12 col-xs-12">
-												<div>
-													<label>地址 </label>
-												</div>
-												<div>
-													<textarea class="form-control" rows="8"></textarea>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-12">
-												<div class="pull-left page-header">
-													<h5>
-														<strong>数据分析外包信息</strong>
-													</h5>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6 col-sm-12 col-xs-12">
-												<div>
-													<label>项目编号 </label>
-												</div>
-												<div>
-													<input type="text" class="form-control">
-												</div>
-											</div>
-											<div class="col-md-6 col-sm-12 col-xs-12">
-												<div>
-													<label>外包单位</label>
-												</div>
-												<div>
-													<input type="text" class="form-control">
-												</div>
-											</div>
-										</div>
-										<div class="row row-margin">
-											<div class="col-md-6 col-sm-12 col-xs-12">
-												<div>
-													<label>联系人</label>
-												</div>
-												<div>
-													<input type="text" class="form-control">
-												</div>
-											</div>
-											<div class="col-md-6 col-sm-12 col-xs-12">
-												<div>
-													<label>联系人电话</label>
-												</div>
-												<div>
-													<input type="text" class="form-control">
-												</div>
-											</div>
-										</div>
-										<div class="row row-margin">
-											<div class="col-md-6 col-sm-12 col-xs-12">
-												<div>
-													<label>地址 </label>
-												</div>
-												<div>
-													<textarea class="form-control" rows="8"></textarea>
-												</div>
-											</div>
-										</div>
-
-									</div>
-								</div>
-							</div>
+							<%@ include file="projectOutSource.jsp"%>
 							<!----------------------------------------outsource end ------------------------->
 							<!----------------------------------------custom info start ------------------------->
 							<div class="panel panel-default">
+							<form:form action="add" method="post" commandName="customers">
 								<div class="panel-heading">
 									<h3 class="panel-title">
 										<strong>客户信息</strong> <a data-toggle="collapse"
@@ -426,7 +240,7 @@
 										</a>
 										<button id="saveCustomInfo" value="1"
 											class="btn btn-default btn-success"
-											style="margin-left: 10px;">修改</button>
+											style="margin-left: 10px;" type="submit">修改</button>
 										<button id="cancelCustomInfo" value="2"
 											class="btn btn-default btn-success"
 											style="margin-left: 10px; display: none">取消</button>
@@ -846,6 +660,7 @@
 
 									</div>
 								</div>
+							</form:form>
 							</div>
 							<!----------------------------------------custom info end ------------------------->
 							<div class="panel panel-default">
@@ -902,13 +717,7 @@
 	    			$(this).attr("class","glyphicon glyphicon-chevron-down");
 	    		}
 	    	});
-	    	$("#arrowOutsource").click(function(){
-	    		if($(this).attr("class")==("glyphicon glyphicon-chevron-down")){
-	    			$(this).attr("class","glyphicon glyphicon-chevron-up");
-	    		}else{
-	    			$(this).attr("class","glyphicon glyphicon-chevron-down");
-	    		}
-	    	});
+	    	
 	    	
 	    	$("#arrowProBasicData").click(function(){
 	    		if($(this).attr("class")==("glyphicon glyphicon-chevron-down")){
@@ -1152,6 +961,8 @@
 				});
 			};
 		}
+	    
+	    
     </script>
 </body>
 

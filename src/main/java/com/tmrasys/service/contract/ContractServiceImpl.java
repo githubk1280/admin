@@ -33,4 +33,9 @@ public class ContractServiceImpl implements ContractService {
 	public Contract getById(int contractId) {
 		return contractDao.getById(contractId);
 	}
+
+	@Override
+	public List<Contract> getByProject(int projectId) {
+		return contractDao.getByProject(projectId);
+	}
 }

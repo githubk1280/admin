@@ -6,7 +6,7 @@ import com.tmrasys.domain.OutSource;
 import com.tmrasys.domain.ProjectOutSource;
 
 public interface OutSourceService {
-	OutSource getOutSourceByProjectId(int projectId);
+	List<OutSource> getOutSourceByProjectId(int projectId);
 
 	void addOutSource(OutSource os);
 

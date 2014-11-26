@@ -1,5 +1,6 @@
 package com.tmrasys.service.outSource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,18 @@ public class OutSourceServiceImpl implements OutSourceService {
 	private OutSourceDao outSourceDao;
 	
 	@Override
-	public OutSource getOutSourceByProjectId(int projectId) {
-		return outSourceDao.getByProjectId(projectId);
+	public List<OutSource> getOutSourceByProjectId(int projectId) {
+		List<OutSource> list = new ArrayList<OutSource>();
+		OutSource exOS = new OutSource(), dataOS = new OutSource();
+		for(OutSource os : outSourceDao.getByProjectId(projectId)) {
+			if("实验外包".equals(os.getOutSourceType()))
+				exOS = os;
+			else
+				dataOS = os;
+		}
+		list.add(exOS);
+		list.add(dataOS);
+		return list;
 	}
 
 	@Override

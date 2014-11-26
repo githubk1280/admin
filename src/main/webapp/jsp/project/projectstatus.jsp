@@ -2,7 +2,8 @@
 							<div class="panel panel-default" ng-controller="projectStatusController">
 								<div class="panel-heading">
 									<h3 class="panel-title">
-										<strong>项目进度</strong> <a data-toggle="collapse"
+										<strong>项目进度</strong> 
+										<a data-toggle="collapse"
 											href="#collapseTwo" class="panel_a" ng-click="psToggle()"> <span
 											id="arrowProStatus" class="glyphicon glyphicon-chevron-down"
 											style="color: rgb(0, 0, 0);"></span>
