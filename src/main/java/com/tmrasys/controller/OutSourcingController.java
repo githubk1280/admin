@@ -1,6 +1,8 @@
 package com.tmrasys.controller;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,11 +17,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSON;
 import com.tmrasys.constant.page.PageResourceConstant;
 import com.tmrasys.domain.Contract;
 import com.tmrasys.domain.Employee;
 import com.tmrasys.domain.OutSource;
+import com.tmrasys.domain.PageOutSource;
+import com.tmrasys.domain.Project;
 import com.tmrasys.domain.ProjectOutSource;
+import com.tmrasys.domain.ProjectProgress;
+import com.tmrasys.event.StatusChangedEvent;
+import com.tmrasys.event.StatusMessage;
 import com.tmrasys.service.outSource.OutSourceService;
 import com.tmrasys.utils.JsonResponseUtils;
 
@@ -58,13 +66,42 @@ public class OutSourcingController {
 			HttpServletResponse response) throws IOException {
 		List<OutSource> pos = outSourceService.getOutSourceByProjectId(projectId);
 		if (!CollectionUtils.isEmpty(pos)) {
-			OutSource experimentOS = pos.get(0);
-			request.setAttribute("os1", pos.get(0));
-			if(pos.size()>1) {
-				request.setAttribute("os2", pos.get(1));
-			}
-			JsonResponseUtils.returnJsonResponse(response, pos, true, 200);
+			PageOutSource pgos = new PageOutSource();
+			pgos.setExperimentOS(pos.get(0));
+			pgos.setDataOS(pos.get(1));
+			JsonResponseUtils.returnJsonResponse(response, pgos, true, 200);
 		}
+	}
+	
+	@RequestMapping(value = "/ajax/saveOrUpdate")
+	public void saveOrUpdate(HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
+		BufferedReader in = request.getReader();
+		String s = in.readLine();
+		StringBuffer sb = new StringBuffer();
+		while (s != null) {
+			sb.append(s);
+			s = in.readLine();
+		}
+		PageOutSource pgos = JSON.parseObject(sb.toString(),
+				PageOutSource.class);
+		OutSource experimentOS = pgos.getExperimentOS();
+		OutSource dataOS = pgos.getDataOS();
+		if(experimentOS.getOutSourceId() == 0) {
+			experimentOS.setOutSourceType("实验外包");
+			outSourceService.addOutSource(experimentOS);
+		} else {
+			outSourceService.updateOutSource(experimentOS);
+		}
+		if(dataOS.getOutSourceId() == 0) {
+			dataOS.setOutSourceType("数据分析外包");
+			outSourceService.addOutSource(dataOS);
+		} else {
+			outSourceService.updateOutSource(dataOS);
+		}
+		pgos.setExperimentOS(experimentOS);
+		pgos.setDataOS(dataOS);
+		JsonResponseUtils.returnJsonResponse(response, pgos, true, 200);
 	}
 
 }
