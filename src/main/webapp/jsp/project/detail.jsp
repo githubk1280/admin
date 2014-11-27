@@ -72,7 +72,7 @@
 														<label id="projectTypeLbl" class="warning-style">该字段不允许为空</label>
 													</div>
 													<div>
-														<form:input path="projectType" class="form-control" maxlength="3"/>
+														<form:input id="projectType" path="projectType" class="form-control" maxlength="3"/>
 													</div>
 												</div>
 												<div class="col-md-6 col-sm-12 col-xs-12">
@@ -120,7 +120,7 @@
 														<label id="isstartDateLbl" class="warning-style">您输入的日期不存在</label>
 													</div>
 													<div>
-														<form:input path="startDate" class="form-control form_date"  maxlength="10"/>
+														<form:input id="startDate" path="startDate" class="form-control form_date"  maxlength="10"/>
 													</div>
 												</div>
 												<div class="col-md-6 col-sm-12 col-xs-12">
@@ -132,7 +132,7 @@
 														<label id="isendDateLbl" class="warning-style">您输入的日期不存在</label>
 													</div>
 													<div>
-														<form:input path="endDate" class="form-control form_date"  maxlength="10"/>
+														<form:input id="endDate" path="endDate" class="form-control form_date"  maxlength="10"/>
 													</div>
 												</div>
 											</div>
@@ -146,7 +146,7 @@
 													<div>
 														<div class="input-group">
 															<span class="input-group-addon">￥</span>
-															<form:input path="potentialExpenditure"  maxlength="15" class="form-control" />
+															<form:input id="potentialExpenditure" path="potentialExpenditure"  maxlength="15" class="form-control" />
 															<span class="input-group-addon"> .00</span>
 														</div>
 													</div>
@@ -159,7 +159,7 @@
 													</div>
 													<div>
 														<div>
-															<form:input path="sampleCount" class="form-control" maxlength="10"/>
+															<form:input id="sampleCount" path="sampleCount" class="form-control" maxlength="10"/>
 														</div>
 													</div>
 												</div>
@@ -172,7 +172,7 @@
 													</div>
 													<div>
 														<div>
-															<form:input path="platformDemand" class="form-control" maxlength="10"/>
+															<form:input id="platformDemand" path="platformDemand" class="form-control" maxlength="10"/>
 														</div>
 													</div>
 												</div>
@@ -182,7 +182,7 @@
 														<label id="researchDirectionLbl" class="warning-style">该字段不允许为空</label>
 													</div>
 													<div>
-														<form:input path="researchDirection" class="form-control" maxlength="10"/>
+														<form:input id="researchDirection" path="researchDirection" class="form-control" maxlength="10"/>
 													</div>
 												</div>
 											</div>
@@ -193,8 +193,8 @@
 													</div>
 													<div>
 														<div class="pull-left">
-															<label><form:radiobutton
-																	path="hasCorporatedIntention" value="Y" />是 </label> <label><form:radiobutton
+															<label><form:radiobutton id="hasCorporatedIntention1"
+																	path="hasCorporatedIntention" value="Y" />是 </label> <label><form:radiobutton id="hasCorporatedIntention2"
 																	path="hasCorporatedIntention" value="N" />否 </label>
 														</div>
 													</div>
@@ -205,8 +205,8 @@
 													</div>
 													<div>
 														<div class="pull-left">
-															<label><form:radiobutton path="needProjectPlan"
-																	value="Y" />需要 </label> <label><form:radiobutton
+															<label><form:radiobutton id="needProjectPlan1" path="needProjectPlan"
+																	value="Y" />需要 </label> <label><form:radiobutton id="needProjectPlan2"
 																	path="needProjectPlan" value="N" />不需要 </label>
 														</div>
 													</div>
@@ -220,7 +220,7 @@
 														<label id="projectContentLbl" class="warning-style">该字段不允许为空</label>
 													</div>
 													<div>
-														<form:textarea path="projectContent" class="form-control"
+														<form:textarea id="projectContent" path="projectContent" class="form-control"
 															rows="8" />
 													</div>
 												</div>
@@ -687,6 +687,7 @@
 		<%@ include file="../common/modal.jsp"%>
 
 		<%@ include file="../comm-fragement/main-js"%>
+		<%@ include file="../comm-fragement/projectVal-js"%>
 		<script type="text/javascript">
 	    $(document).ready(function(){
 	    	$(".pagination li ").click(function(){

@@ -31,21 +31,24 @@
 												<div class="panel-heading ">
 													<h3 class="panel-title">
 														<strong>合同信息</strong>
-														<button id="update" value="1"
+														<button id="modifyBtn" value="1"
 															class="btn btn-default btn-success"
-															style="margin-left: 10px; margin-right: 10px" type="submit">修改</button>
-														<button id="reset" value="2"
+															style="margin-left: 10px; margin-right: 10px" type="button">修改</button>
+														<button id="save" value="1"
+															class="btn btn-default btn-success"
+															style="margin-left: 10px; margin-right: 10px;display: none" type="submit">保存</button>
+														<button id="cancelBtn"  value="2"
 															class="btn btn-default btn-success "
 															style="margin-left: 10px; margin-right: 10px; display: none" type="reset">取消</button>
 													</h3>
 												</div>
 												<div id="collapseOne" class="panel-collapse collapse in">
 													
-													<div id="panelProBasicData" class="panel-body">
+													<div id="panelContractData" class="panel-body">
 														<div class="row">
 															<div class="col-md-6 col-sm-12 col-xs-12">
 																<div>
-																	<label>项目编号 </label> <label class="warning-style">该字段不允许为空</label>
+																	<label>项目编号 </label>
 																</div>
 																<div>
 																	<form:input path="projectId" class="form-control" readonly="true"/>
@@ -53,8 +56,7 @@
 															</div>
 															<div class="col-md-6 col-sm-12 col-xs-12">
 																<div>
-																	<label>合同编号 </label> <label id="projectTypeLbl"
-																		class="warning-style">该字段不允许为空</label>
+																	<label>合同编号 </label>
 																</div>
 																<div>
 																	<form:input path="contractId" class="form-control" readonly="true"/>
@@ -76,7 +78,7 @@
 																	<label>合同状态</label>
 																</div>
 																<div>
-																	<form:input path="contractType" class="form-control" />
+																	<form:input path="contractType" class="form-control" readonly="true"/>
 																</div>
 															</div>
 														</div>
@@ -84,10 +86,7 @@
 														<div class="row row-margin">
 															<div class="col-md-6 col-sm-12 col-xs-12">
 																<div>
-																	<label>纸质合同编号 </label> <label id="startDateLbl"
-																		class="warning-style">该字段不允许为空</label> <label
-																		id="dateFormatLbl" class="warning-style">日期格式不正确(请修改成'yyyy-mm-dd')</label>
-																	<label id="startdateDiffLbl" class="warning-style">结束日期不能小于开始日期</label>
+																	<label>纸质合同编号 </label>
 																</div>
 																<div>
 																	<form:input path="contractPaperId" class="form-control" readonly="true"/>
@@ -95,9 +94,7 @@
 															</div>
 															<div class="col-md-6 col-sm-12 col-xs-12">
 																<div>
-																	<label>签订日期</label> <label id="endDateLbl"
-																		class="warning-style">该字段不允许为空</label> <label
-																		id="enddateDiffLbl" class="warning-style">结束日期不能小于开始日期</label>
+																	<label>签订日期</label>
 																</div>
 																<div>
 																	<form:input path="signDate" class="form-control" readonly="true"/>
@@ -107,8 +104,7 @@
 														<div class="row row-margin">
 															<div class="col-md-6 col-sm-12 col-xs-12">
 																<div>
-																	<label>开始日期</label> <label id="potentialExpendLbl"
-																		class="warning-style">该字段不允许为空</label>
+																	<label>开始日期</label>
 																</div>
 																<div>
 																	<div>
@@ -118,8 +114,7 @@
 															</div>
 															<div class="col-md-6 col-sm-12 col-xs-12">
 																<div>
-																	<label>结束日期</label> <label id="sampleCountLbl"
-																		class="warning-style">该字段不允许为空</label>
+																	<label>结束日期</label>
 																</div>
 																<div>
 																	<div>
@@ -131,12 +126,11 @@
 														<div class="row row-margin">
 															<div class="col-md-6 col-sm-12 col-xs-12">
 																<div>
-																	<label>合同金额</label> <label id="tecPlatformLbl"
-																		class="warning-style">该字段不允许为空</label>
+																	<label>合同金额</label>
 																</div>
 																<div>
 																	<div>
-																		<form:input path="totalAmount" class="form-control" readonly="true"/>
+																		<form:input id="totalAmount" path="totalAmount" class="form-control" readonly="true"/>
 																	</div>
 																</div>
 															</div>
@@ -146,10 +140,15 @@
 															<div class="col-md-6 col-sm-12 col-xs-12">
 																<div>
 																	<label>预付款金额</label>
+																	<label id="advancedAmountLbl" class="warning-style">该字段不允许为空</label>
+																	<label id="checkAdvancedAmountLbl" class="warning-style">请输入正确的金额</label>
+																	<label id="advancedAmountComparedTotalAmountLbl" class="warning-style">预付款金额不能大于合同金额</label>
 																</div>
 																<div>
-																	<div>
-																		<form:input path="advancedAmount" class="form-control" />
+																	<div class="input-group">
+																		<span class="input-group-addon">￥</span>
+																		<form:input id="advancedAmount" path="advancedAmount" class="form-control"  readonly="true"/>
+																		<span class="input-group-addon"> .00</span>
 																	</div>
 																</div>
 
@@ -159,8 +158,8 @@
 																	<label>预付款状态</label>
 																</div>
 																<div class="pull-left">
-																	<label><form:radiobutton path="advancedAmountStatus"
-																		value="未收" />未收</label> <label> <form:radiobutton
+																	<label><form:radiobutton path="advancedAmountStatus" id="advancedAmountStatus1"
+																		value="未收" checked="true"/>未收</label> <label> <form:radiobutton id="advancedAmountStatus2"
 																		path="advancedAmountStatus" value="已收" />已收
 																	</label>
 																</div>
@@ -170,10 +169,15 @@
 															<div class="col-md-6 col-sm-12 col-xs-12">
 																<div>
 																	<label>尾款金额</label>
+																	<label id="balancedAmountLbl" class="warning-style">该字段不允许为空</label>
+																	<label id="checkBalancedAmountLbl" class="warning-style">请输入正确的金额</label>
+																	<label id="balancedAmountComparedTotalAmountLbl" class="warning-style">尾款金额不能大于合同金额</label>
 																</div>
 																<div>
-																	<div>
-																		<form:input path="balancedAmount" class="form-control" />
+																	<div class="input-group">
+																		<span class="input-group-addon">￥</span>
+																		<form:input id="balancedAmount" path="balancedAmount" class="form-control"  readonly="true"/>
+																		<span class="input-group-addon"> .00</span>
 																	</div>
 																</div>
 															</div>
@@ -183,8 +187,8 @@
 																</div>
 																<div>
 																	<div class="pull-left">
-																		<label><form:radiobutton path="balancedAmountStatus"
-																			value="未收" />未收</label> <label> <form:radiobutton
+																		<label><form:radiobutton path="balancedAmountStatus" id="balancedAmountStatus1"
+																			value="未收" checked="true"/>未收</label> <label> <form:radiobutton id="balancedAmountStatus2"
 																			path="balancedAmountStatus" value="已收" />已收
 																		</label>
 																	</div>
@@ -209,6 +213,7 @@
 	<%@ include file="../common/modal.jsp"%>
 
 	<%@ include file="../comm-fragement/main-js"%>
+	<%@ include file="../comm-fragement/modifyContractVal-js"%>
 	
 </body>
 

@@ -30,8 +30,7 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h3 class="panel-title">
-									<strong>外包信息</strong> <a data-toggle="collapse"
-										href="#collapseThree" class="panel_a"><strong>link</strong></a>
+									<strong>外包信息</strong>
 								</h3>
 							</div>
 

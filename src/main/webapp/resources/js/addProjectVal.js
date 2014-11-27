@@ -2,15 +2,6 @@
  * 
  */
 
-$("#arrowProBasicData").click(function(){
-	    		if($(this).attr("class")==("glyphicon glyphicon-chevron-down")){
-	    			$(this).attr("class","glyphicon glyphicon-chevron-up");
-	    		}else{
-	    			$(this).attr("class","glyphicon glyphicon-chevron-down");
-	    		}
-});
-
-
 $(".form_date").datetimepicker({
 	language:"zh-CN",
 	minView: "month",
@@ -18,85 +9,6 @@ $(".form_date").datetimepicker({
     todayHighlight:true,
     autoclose: true
 });
-/****button switch of project basic data start***/
-if($("#modifyProBasicData").css('display')=="inline-block"){
-	$("#panelProBasicData input").attr("readonly",true);
-	$("#panelProBasicData textarea").attr("readonly",true);
-	$("#needSCI1").attr("disabled",true);
-	$("#needSCI2").attr("disabled",true);
-	$("#priority1").attr("disabled",true);
-	$("#priority2").attr("disabled",true);
-	$("#priority3").attr("disabled",true);
-	$("#needPrincipalAssist1").attr("disabled",true);
-	$("#needPrincipalAssist2").attr("disabled",true);
-	$("#hasCorporatedIntention1").attr("disabled",true);
-	$("#hasCorporatedIntention2").attr("disabled",true);
-	$("#needProjectPlan1").attr("disabled",true);
-	$("#needProjectPlan2").attr("disabled",true);
-	
-}else{
-	$("#panelProBasicData input").attr("readonly",false);
-	$("#panelProBasicData textarea").attr("readonly",false);
-}
-
-$("#modifyProBasicData").click(function(){
-	$("#saveProBasicData").css('display','block');
-	$("#cancelProBasicData").css('display','block');
-	$("#modifyProBasicData").css('display','none');
-	$("#panelProBasicData input").attr("readonly",false);
-	$("#panelProBasicData textarea").attr("readonly",false);
-	$("#needSCI1").attr("disabled",false);
-	$("#needSCI2").attr("disabled",false);
-	$("#priority1").attr("disabled",false);
-	$("#priority2").attr("disabled",false);
-	$("#priority3").attr("disabled",false);
-	$("#needPrincipalAssist1").attr("disabled",false);
-	$("#needPrincipalAssist2").attr("disabled",false);
-	$("#hasCorporatedIntention1").attr("disabled",false);
-	$("#hasCorporatedIntention2").attr("disabled",false);
-	$("#needProjectPlan1").attr("disabled",false);
-	$("#needProjectPlan2").attr("disabled",false);
-	$("#proBasicProjectID").attr("readonly",true);
-	$("#projectName").attr("readonly",true);
-	
-});
-
-$("#cancelProBasicData").click(function(){
-	$("#saveProBasicData").css('display','none');
-	$("#modifyProBasicData").css('display','block');
-	$("#cancelProBasicData").css('display','none');
-	$("#panelProBasicData input").attr("readonly",true);
-	$("#panelProBasicData textarea").attr("readonly",true);
-	$("#needSCI1").attr("disabled",true);
-	$("#needSCI2").attr("disabled",true);
-	$("#priority1").attr("disabled",true);
-	$("#priority2").attr("disabled",true);
-	$("#priority3").attr("disabled",true);
-	$("#needPrincipalAssist1").attr("disabled",true);
-	$("#needPrincipalAssist2").attr("disabled",true);
-	$("#hasCorporatedIntention1").attr("disabled",true);
-	$("#hasCorporatedIntention2").attr("disabled",true);
-	$("#needProjectPlan1").attr("disabled",true);
-	$("#needProjectPlan2").attr("disabled",true);
-	$("#projectNameLbl").hide();
-	$("#projectTypeLbl").hide();
-	$("#projectNameLbl").hide();
-	$("#startDateFormatLbl").hide();
-	$("#endDateLbl").hide();
-	$("#endDateFormatLbl").hide();
-	$("#projectNameLbl").hide();
-	$("#isendDateLbl").hide();
-	$("#potentialExpenditureLbl").hide();
-	$("#checkAmountLbl").hide();
-	$("#sampleCountLbl").hide();
-	$("#checkAmountLbl").hide();
-	$("#platformDemandLbl").hide();
-	$("#researchDirectionLbl").hide();
-	$("#projectContentLbl").hide();
-	
-});
-
-
 
 $("#saveProBasicData").click(function(){
 	$("#saveProBasicData").attr("type","submit");
@@ -108,8 +20,9 @@ $("#saveProBasicData").click(function(){
 		startDate = $.trim(startDate);
 	var endDate = $("#endDate").val();
 		endDate = $.trim(endDate);
-	var potentialExpenditure = $("#potentialExpenditure").val();
+	var potentialExpenditure = $("#potentialExpenditure").val().replace(/,/g,"");
 		potentialExpenditure = $.trim(potentialExpenditure);
+		$("#potentialExpenditure").val(potentialExpenditure);
 	var sampleCount = $("#sampleCount").val();
 		sampleCount = $.trim(sampleCount);
 	var platformDemand = $("#platformDemand").val();
@@ -223,16 +136,13 @@ $("#saveProBasicData").click(function(){
 	
 });
 
+/****format amount field*****/
 $("#potentialExpenditure").blur(function(){
-	var potentialExpenditureAmount = $("#potentialExpenditure");
-	amountFormat(potentialExpenditureAmount);
+	var potentialExpenditure = $("#potentialExpenditure").val().replace(/,/g,"");
+	var amount = potentialExpenditure.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+	$("#potentialExpenditure").val(amount);
 });
 
-/****format amount field*****/
-function amountFormat(obj){
-	var amount = obj.val().toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-	obj.val(amount);
-}
 
 /***validate number float  dot negative***/
 function isAmountNumber(obj){
@@ -302,4 +212,3 @@ function isEndDateComparedStartDate(startDate,endDate){
 		$("#dateComparedLbl").hide();
 	}
 };
-
