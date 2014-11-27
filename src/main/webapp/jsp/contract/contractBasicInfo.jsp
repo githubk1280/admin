@@ -78,43 +78,8 @@
 	<%@ include file="../comm-fragement/main-js"%>
 	<script type="text/javascript">
 		$(document).ready(function() {
-
 			$("nav li").click(function() {
 				$(this).addClass('active').siblings().removeClass('active');
-			});
-
-			$("#link_pro").click(function() {
-				$("#mainframe").attr("src", "../page/projectBasicData.html");
-			});
-
-			$("#link_customer").click(function() {
-				$("#mainframe").attr("src", "../page/customInfo.html");
-			});
-
-			$("#link_outsource").click(function() {
-				$("#mainframe").attr("src", "../page/outsource.html");
-			});
-
-			$("#link_proStatus").click(function() {
-				$("#mainframe").attr("src", "../page/proStatus.html");
-			});
-
-			$("#link_customCalling").click(function() {
-				$("#mainframe").attr("src", "../page/customCalling.html");
-			});
-
-			$(".pagination li ").click(function() {
-				$(this).addClass('active').siblings().removeClass('active');
-			});
-
-			$("#projectStatusBadge").click(function() {
-				alert($("#projectStatusBadge").text());
-				$("#projectStatusBadge").text("");
-			});
-			
-			$("#create").click(function() {
-				window.location.replace("http://"+window.location.host+"/admin/contract/add-redirect");
-				return false;
 			});
 
 		});
