@@ -347,14 +347,18 @@
 				}
 			};
 		
-			$scope.saveProjectStatus = function() {
+			$scope.updateCustomer = function() {
+				var customers = [];
+				($scope.customer0) && customers.push($scope.customer0);
+				($scope.customer1) && customers.push($scope.customer1);
+				($scope.customer2) && customers.push($scope.customer2);
 				$http({
 		            method:'post',
-		            url:'/admin/status/ajax/add',
-		            data: $scope.progress
+		            url:'/admin/customer/ajax/update',
+		            data: customers,
 				}).success(function (data){
 					if(data.success == true){
-						alert("状态更新成功!");
+						alert("更新成功!");
 					}
 				}).error(function (err){
 					alert(err);

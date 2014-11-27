@@ -8,7 +8,7 @@
 			</a>
 			<button id="saveCustomInfo" value="1"
 				class="btn btn-default btn-success" style="margin-left: 10px;"
-				type="submit">修改</button>
+				type="submit" ng-click="updateCustomer()">修改</button>
 			<button id="cancelCustomInfo" value="2"
 				class="btn btn-default btn-success"
 				style="margin-left: 10px; display: none">取消</button>
