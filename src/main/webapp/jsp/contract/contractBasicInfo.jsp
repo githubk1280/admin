@@ -70,6 +70,8 @@
 			</c:if>
  </div>
 	</div>
+	</div>
+	</div>
 	<!-- /#wrapper -->
 	<%@ include file="../common/modal.jsp"%>
 
