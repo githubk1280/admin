@@ -255,6 +255,8 @@
 		<%@ include file="../common/modal.jsp"%>
 		<%@ include file="../comm-fragement/main-js"%>
 		<%@ include file="../comm-fragement/projectVal-js"%>
+		<%@ include file="../comm-fragement/modifyOutsourceVal-js"%>
+		
 		<script type="text/javascript">
 	    $(document).ready(function(){
 	    	$(".pagination li ").click(function(){
