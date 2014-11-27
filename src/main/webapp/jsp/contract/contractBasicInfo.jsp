@@ -29,7 +29,7 @@
                     	<strong>财务合同基本信息</strong>
                     	<button class="btn btn-default btn-primary" id="create"
 								style="margin-left: 10px;">创建合同</button>
-                    	<input type="text" class="form-control" placeholder="请输入项目编号">
+                    	<input type="text" class="form-control" style="width:26%;" placeholder="请输入项目编号">
 	                    <span class="input-group-btn">
 	                        <button class="btn btn-default btn-primary" type="button"><i class="fa fa-search"></i></button>
 	                    </span>
