@@ -10,10 +10,9 @@
 	<ul class="nav navbar-top-links  navbar-right" >
 		<li class="<%=request.getContextPath()%>/user/add-redirect">
                  <a href="<%=request.getContextPath()%>/user/add-redirect">
-                     <i class="fa fa-bell fa-fw fa-bell-color"></i>
+                     <i class="fa fa-sitemap fa-fw"></i>
                  </a>
 		 </li>
-	
 		<li><a href="#"> <i class="fa fa-envelope fa-fw"></i><span
 				id="messageBadge" class="badge message-badge-margin">{{msgNum}}</span>
 		</a></li>
