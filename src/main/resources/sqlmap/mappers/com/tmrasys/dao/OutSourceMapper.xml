@@ -46,11 +46,25 @@
 		keyProperty="outSourceId" useGeneratedKeys="true">
 		INSERT INTO
 		`out_source`
-		(`OUT_SOURCE_UNIT`,`ADRESS`,`SEND_SAMPLE_DATE`,`SEND_SAMPLE_COUNT`,`IS_EXPERIMENT_RESULT_RECIVED`,`OUT_SOURCE_STATUS`,`FK_PROJECT_ID`,`OUT_SOURCE_TYPE`)
+		(`OUT_SOURCE_UNIT`,`ADRESS`,`SEND_SAMPLE_DATE`,`SEND_SAMPLE_COUNT`,`IS_EXPERIMENT_RESULT_RECIVED`,
+		`OUT_SOURCE_STATUS`,`FK_PROJECT_ID`,`OUT_SOURCE_TYPE`
+		,`CONTACT_PERSON`,`CONTACT_PHONE`,`CONTRACT_AMOUNT`,`CONTRACT_INFO`)
 		VALUES
 		(#{outSourceUnit},#{address},#{sendSampleDate},#{sendSampleCount},#{exprResultRecived},#{outSourceStatus}
-		,#{projectId},#{outSourceType});
+		,#{projectId},#{outSourceType},
+		#{contactPerson},#{contactPhone},#{contractAmount},#{contactInfo});
 	</insert>
+	
+	<update id="updateOutSource" parameterMap="outSourceParameter" flushCache="true">
+		UPDATE `out_source`
+		SET `OUT_SOURCE_UNIT`=#{outSourceUnit},
+		`ADRESS`=#{address},`SEND_SAMPLE_DATE`=#{sendSampleDate},`SEND_SAMPLE_COUNT`=#{sendSampleCount}
+		,`IS_EXPERIMENT_RESULT_RECIVED`=#{exprResultRecived},
+		`OUT_SOURCE_STATUS`=#{outSourceStatus},`FK_PROJECT_ID`=#{projectId},`OUT_SOURCE_TYPE`=#{outSourceType},
+		`CONTACT_PERSON`=#{contactPerson},`CONTACT_PHONE`=#{contactPhone},
+		`CONTRACT_AMOUNT`=#{contractAmount},`CONTRACT_INFO`=#{contactInfo}
+		WHERE OUT_SOURCE_ID=#{outSourceId}
+	</update>
 
 	<resultMap type="com.tmrasys.domain.ProjectOutSource" id="outSourceMapperByEmployee">
 		<result property="outSourceId" column="OUT_SOURCE_ID" />
@@ -75,6 +89,10 @@
 		<parameter property="outSourceStatus" resultMap="OUT_SOURCE_STATUS" />
 		<parameter property="outSourceType" resultMap="OUT_SOURCE_TYPE" />
 		<parameter property="projectId" resultMap="FK_PROJECT_ID" />
+		<parameter property="contactPerson" resultMap="CONTACT_PERSON" />
+		<parameter property="contactPhone" resultMap="CONTACT_PHONE" />
+		<parameter property="contractAmount" resultMap="CONTRACT_AMOUNT" />
+		<parameter property="contactInfo" resultMap="CONTRACT_INFO" />
 	</parameterMap>
 
 	<resultMap type="com.tmrasys.domain.OutSource" id="outSourceMapper">
@@ -87,6 +105,10 @@
 		<result property="outSourceStatus" column="OUT_SOURCE_STATUS" />
 		<result property="outSourceType" column="OUT_SOURCE_TYPE" />
 		<result property="projectId" column="FK_PROJECT_ID" />
+		<result property="contactPerson" column="CONTACT_PERSON" />
+		<result property="contactPhone" column="CONTACT_PHONE" />
+		<result property="contractAmount" column="CONTRACT_AMOUNT" />
+		<result property="contactInfo" column="CONTRACT_INFO" />
 	</resultMap>
 
 </mapper>

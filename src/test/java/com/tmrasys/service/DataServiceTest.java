@@ -85,16 +85,18 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 
 	@Test
 	public void testgetOutSourceByProjectId() {
-//		OutSource os = outSourceService.getOutSourceByProjectId(2);
-//		System.out.println(os);
+		OutSource os = outSourceService.getOutSourceByProjectId(36).get(0);
+		System.out.println(os);
+		os.setContactInfo("AAAAAAAAAAAAAAAAAAAAAA");
+		outSourceService.updateOutSource(os);
 	}
 
 	@Test
 	public void testaddOutSource() {
-//		OutSource os = outSourceService.getOutSourceByProjectId(17);
-//		os.setProjectId(15);
-//		os.setOutSourceId(0);
-//		outSourceService.addOutSource(os);
+		OutSource os = outSourceService.getOutSourceByProjectId(36).get(1);
+		os.setProjectId(37);
+		os.setOutSourceId(0);
+		outSourceService.addOutSource(os);
 	}
 
 	@Test

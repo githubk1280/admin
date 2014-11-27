@@ -13,4 +13,6 @@ public interface OutSourceService {
 	public List<ProjectOutSource> getByEmployee(int employeeId);
 
 	public OutSource getById(int osId);
+	
+	void updateOutSource(OutSource outSource);
 }
