@@ -252,7 +252,16 @@
 
 	<%@ include file="../comm-fragement/main-js"%>
 	<%@ include file="../comm-fragement/addProjecVal-js"%>
-	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#cancelProBasicData").click(function() {
+				window.location.replace("http://"+window.location.host+"/admin/project/list");			
+				return false;
+			});
+		
+		
+	});
+	</script>
 
 </body>
 
