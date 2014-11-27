@@ -41,9 +41,10 @@
 												<div class="col-md-4  col-sm-12 col-xs-12">
 													<div>
 														<label>用户名</label>
+														<label id="nameLbl" class="warning-style">该字段不允许为空</label>
 													</div>
 													<div>
-														<form:input path="name" class="form-control" />
+														<form:input id="name" path="name" class="form-control" />
 													</div>
 												</div>
 												<div class="col-md-4  col-sm-12 col-xs-12"></div>
@@ -55,7 +56,7 @@
 														<label>用户角色</label>
 													</div>
 													<div>
-														<label><form:radiobutton path="employeeRoleId" value="1" />主管
+														<label><form:radiobutton path="employeeRoleId" value="1" checked="true"/>主管
 														</label> 
 														<label><form:radiobutton path="employeeRoleId" value="2" />普通员工
 														</label>
@@ -68,9 +69,10 @@
 												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>输入密码</label>
+														<label id="passwordLbl" class="warning-style">该字段不允许为空</label>
 													</div>
 													<div>
-														<form:input path="password" class="form-control" type="password" />
+														<form:input id="password" path="password" class="form-control" type="password" />
 													</div>
 												</div>
 												<div class="col-md-4  col-sm-12 col-xs-12"></div>
@@ -80,9 +82,11 @@
 												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>再次输入密码</label>
+														<label id="retryPasswordLbl" class="warning-style">该字段不允许为空</label>
+														<label id="notEqualLbl" class="warning-style">输入密码不相同</label>
 													</div>
 													<div>
-														<input class="form-control" type="password" />
+														<input id="retryPassword" class="form-control" type="password" />
 													</div>
 												</div>
 												<div class="col-md-4  col-sm-12 col-xs-12"></div>
@@ -90,9 +94,8 @@
 											<div class="row" style="margin-top: 30px">
 												<div class="col-md-4  col-sm-12 col-xs-12"></div>
 												<div class="col-md-4 col-sm-12 col-xs-12">
-													<input type="submit" class="btn btn-default btn-primary" value="提交" />
-													<input id="cancel" type="button"
-														class="btn btn-default btn-primary" value="取消">
+													<input id="save" type="submit" class="btn btn-default btn-primary" value="提交" />
+													<input id="cancel" type="button" class="btn btn-default btn-primary" value="取消">
 												</div>
 												<div class="col-md-4  col-sm-12 col-xs-12"></div>
 											</div>
@@ -114,6 +117,40 @@
 	<%@ include file="../comm-fragement/main-js"%>
 	<script type="text/javascript">
 		$(document).ready(function() {
+			$("#save").click(function(){
+				$("#save").attr("type","submit");
+				var password = $("#password").val();
+				var retryPassword = $("#retryPassword").val();
+				var name = $("#name").val();
+					name = $.trim(name);
+				if(name.length<1){
+					$("#nameLbl").show();
+					$("#save").attr("type","button");
+				}else{
+					$("#nameLbl").hide();
+				}
+					
+				if(password.length<1){
+					$("#passwordLbl").show();
+					$("#save").attr("type","button");
+				}else{
+					$("#passwordLbl").hide();
+				}
+				
+				if(retryPassword.length<1){
+					$("#retryPasswordLbl").show();
+					$("#save").attr("type","button");
+				}else{
+					$("#retryPasswordLbl").hide();
+					if(password!=retryPassword){
+						$("#notEqualLbl").show();
+						$("#save").attr("type","button");
+					}else{
+						$("#notEqualLbl").hide();
+					}
+				}
+			});
+			
 			$("#cancel").click(function() {
 				window.location.replace("http://"+window.location.host+"/admin/project/list");			
 				return false;

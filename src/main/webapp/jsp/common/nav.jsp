@@ -8,12 +8,11 @@
 	<ng-view>
 	<div ng-controller="msgController">
 	<ul class="nav navbar-top-links  navbar-right" >
-		<li class="<%=request.getContextPath()%>/user/add-redirect">
+		<li>
                  <a href="<%=request.getContextPath()%>/user/add-redirect">
-                     <i class="fa fa-bell fa-fw fa-bell-color"></i>
+                     <i class="fa fa-sitemap fa-fw"></i>
                  </a>
 		 </li>
-	
 		<li><a href="#"> <i class="fa fa-envelope fa-fw"></i><span
 				id="messageBadge" class="badge message-badge-margin">{{msgNum}}</span>
 		</a></li>
@@ -25,7 +24,7 @@
 				<i class="fa fa-caret-down"></i>
 		</a>
 			<ul class="dropdown-menu dropdown-user">
-				<li><a href="<%=request.getContextPath()%>/user/add-redirect"><i class="fa fa-user fa-fw"></i> 用户信息</a></li>
+			   <!--  <li><a href="<%=request.getContextPath()%>/user/add-redirect"><i class="fa fa-user fa-fw"></i> 用户信息</a></li>-->
 				<li><a href="<%=request.getContextPath()%>/user/modify-redirect"><i class="fa fa-gear fa-fw"></i>修改密码</a></li>
 				<li class="divider"></li>
 				<li><a href="<%=request.getContextPath()%>/logout" ><i
@@ -64,8 +63,8 @@
 <!-- 						class="fa fa-bar-chart-o fa-fw"></i> <strong>项目进度</strong><span -->
 <!-- 						id="projectStatusBadge" class="badge sidebar-badge-margin">1</span></a> -->
 <!-- 				</li> -->
-				<li><a id="link_customCalling" href="#"><i
-						class="fa fa-bar-chart-o fa-fw"></i> <strong>客户联系记录</strong></a></li>
+				<!--<li><a id="link_customCalling" href="#"><i
+						class="fa fa-bar-chart-o fa-fw"></i> <strong>客户联系记录</strong></a></li> -->
 			</ul>
 		</div>
 		<!-- /.sidebar-collapse -->
