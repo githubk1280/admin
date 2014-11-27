@@ -63,8 +63,8 @@
 <!-- 						class="fa fa-bar-chart-o fa-fw"></i> <strong>项目进度</strong><span -->
 <!-- 						id="projectStatusBadge" class="badge sidebar-badge-margin">1</span></a> -->
 <!-- 				</li> -->
-				<li><a id="link_customCalling" href="#"><i
-						class="fa fa-bar-chart-o fa-fw"></i> <strong>客户联系记录</strong></a></li>
+				<!--<li><a id="link_customCalling" href="#"><i
+						class="fa fa-bar-chart-o fa-fw"></i> <strong>客户联系记录</strong></a></li> -->
 			</ul>
 		</div>
 		<!-- /.sidebar-collapse -->
