@@ -3,12 +3,17 @@ function outSourcingController($scope, $http) {
 	$scope.poToggle = function() {
 		var target = $("#arrowOutsource");
 		if (target.attr("class") == ("glyphicon glyphicon-chevron-down")) {
+			var projectId = ${project.projectId};
 			$http.get("/admin/outsource/ajax/${project.projectId}").success(
 				function(data) {
 					if (data.success == true) {
-						$scope.array = JSON.parse(data.data);
-						$scope.experimentOS = $scope.array[0];
-						$scope.dataOS = $scope.array[1];
+						$scope.pgos = JSON.parse(data.data);
+						$scope.pgos.experimentOS.projectId = projectId;
+						$scope.pgos.dataOS.projectId = projectId;
+						if($scope.pgos.experimentOS.sendSampleDate != null) {
+							$scope.pgos.experimentOS.sendSampleDate = $scope
+							.getTimeString($scope.pgos.experimentOS.sendSampleDate);
+						}
 					}
 					
 				}).error(function(err) {
@@ -21,27 +26,24 @@ function outSourcingController($scope, $http) {
 	};
 
 	$scope.getTimeString = function(longTimes) {
-		var d = new Date(longTimes);
+		var date = new Date(longTimes);
 		var result = "";
-		result += d.getFullYear();
+		result += date.getFullYear();
 		result += "-";
-		result += d.getMonth();
+		result += date.getMonth();
 		result += "-";
-		result += d.getDay() > 10 ? d.getDay() : "0" + d.getDay();
+		result += date.getDay() > 10 ? date.getDay() : "0" + date.getDay();
 		result += " ";
-		result += d.getHours() > 10 ? d.getHours() : "0" + d.getHours();
-		result += ":";
-		result += d.getMinutes() > 10 ? d.getMinutes() : "0" + d.getMinutes();
-		result += ":";
-		result += d.getSeconds() > 10 ? d.getSeconds() : "0" + d.getSeconds();
-		return result;
+		
+		//return result;
+		return (date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate()).replace(/\b(\d)\b/g, "0$1");
 	};
 
-	$scope.saveOurSource = function() {
+	$scope.saveOutSource = function() {
 		$http({
             method:'post',
-            url:'/admin/outsource/ajax/add',
-            data: $scope.progress
+            url:'/admin/outsource/ajax/saveOrUpdate',
+            data: $scope.pgos
 		}).success(function (data){
 			if(data.success == true){
 				alert("状态更新成功!");
@@ -85,7 +87,7 @@ function outSourcingController($scope, $http) {
 						<label>项目编号 </label>
 					</div>
 					<div>
-						<input id="outsourceProjectID" type="text" class="form-control" ng-model="experimentOS.projectId">
+						<input id="outsourceProjectID" type="text" class="form-control" ng-model="pgos.experimentOS.projectId" value="${project.projectId }">
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -93,7 +95,7 @@ function outSourcingController($scope, $http) {
 						<label>外包单位</label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="experimentOS.outSourceUnit">
+						<input type="text" class="form-control" ng-model="pgos.experimentOS.outSourceUnit">
 					</div>
 				</div>
 			</div>
@@ -103,7 +105,7 @@ function outSourcingController($scope, $http) {
 						<label>联系人</label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="experimentOS.outSourceUnit">
+						<input type="text" class="form-control" ng-model="pgos.experimentOS.contactPerson">
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -111,7 +113,7 @@ function outSourcingController($scope, $http) {
 						<label>联系人电话</label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="experimentOS.outSourceUnit">
+						<input type="text" class="form-control" ng-model="pgos.experimentOS.contactPhone">
 					</div>
 				</div>
 			</div>
@@ -122,7 +124,7 @@ function outSourcingController($scope, $http) {
 						<label>合同金额</label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="experimentOS.outSourceUnit">
+						<input type="text" class="form-control" ng-model="pgos.experimentOS.contractAmount">
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -130,7 +132,7 @@ function outSourcingController($scope, $http) {
 						<label>送样日期</label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="experimentOS.outSourceUnit">
+						<input type="text" class="form-control" ng-model="pgos.experimentOS.sendSampleDate">
 					</div>
 				</div>
 			</div>
@@ -142,9 +144,9 @@ function outSourcingController($scope, $http) {
 					<div>
 						<div class="pull-left">
 							<label><input type="radio" name="optionsRadios6"
-								id="optionsRadios6" value="option6">是 </label> <label><input
+								id="optionsRadios6" value="1" ng-model="pgos.experimentOS.exprResultRecived">是 </label> <label><input
 								type="radio" name="optionsRadios7" id="optionsRadios7"
-								value="option7" checked>否 </label>
+								value="2" ng-model="pgos.experimentOS.exprResultRecived">否 </label>
 						</div>
 					</div>
 				</div>
@@ -154,7 +156,7 @@ function outSourcingController($scope, $http) {
 					</div>
 					<div>
 						<div>
-							<input type="text" class="form-control" ng-model="experimentOS.sendSampleCount">
+							<input type="text" class="form-control" ng-model="pgos.experimentOS.sendSampleCount">
 						</div>
 					</div>
 				</div>
@@ -165,7 +167,7 @@ function outSourcingController($scope, $http) {
 						<label>合同信息</label>
 					</div>
 					<div>
-						<textarea class="form-control" rows="8"></textarea>
+						<textarea class="form-control" rows="8" ng-model="pgos.experimentOS.contactInfo"></textarea>
 					</div>
 				</div>
 			</div>
@@ -175,7 +177,7 @@ function outSourcingController($scope, $http) {
 						<label>地址 </label>
 					</div>
 					<div>
-						<textarea class="form-control" rows="8" ng-model="experimentOS.address"></textarea>
+						<textarea class="form-control" rows="8" ng-model="pgos.experimentOS.address"></textarea>
 					</div>
 				</div>
 			</div>
@@ -194,7 +196,7 @@ function outSourcingController($scope, $http) {
 						<label>项目编号 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="dataOS.projectId">
+						<input type="text" class="form-control" ng-model="pgos.dataOS.projectId" value="${project.projectId}" >
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -202,7 +204,7 @@ function outSourcingController($scope, $http) {
 						<label>外包单位</label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="dataOS.outSourceUnit">
+						<input type="text" class="form-control" ng-model="pgos.dataOS.outSourceUnit">
 					</div>
 				</div>
 			</div>
@@ -212,7 +214,7 @@ function outSourcingController($scope, $http) {
 						<label>联系人</label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="pgos.dataOS.contactPerson">
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -220,7 +222,7 @@ function outSourcingController($scope, $http) {
 						<label>联系人电话</label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="pgos.dataOS.contactPhone">
 					</div>
 				</div>
 			</div>
@@ -230,15 +232,15 @@ function outSourcingController($scope, $http) {
 						<label>地址 </label>
 					</div>
 					<div>
-						<textarea class="form-control" rows="8" ng-model="dataOS.outSourceUnit"></textarea>
+						<textarea class="form-control" rows="8" ng-model="pgos.dataOS.address"></textarea>
 					</div>
 				</div>
 			</div>
 			<div id="proStatusBtn" class="row"
-				style="margin-top: 30px; display: none">
+				style="margin-top: 30px; ">
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<button id="btnSave" class="btn btn-default btn-primary"
-						ng-click="saveProjectStatus()">保存</button>
+						ng-click="saveOutSource()">保存</button>
 					<button id="btnCancel" class="btn btn-default btn-primary">取消</button>
 				</div>
 			</div>
