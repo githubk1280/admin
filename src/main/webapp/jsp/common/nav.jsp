@@ -70,24 +70,3 @@
 	</div>
 	<!-- /.navbar-static-side -->
 </nav>
-
-
-
-<script type="text/javascript">
-	$("#tab1").click(function(){
-		$(this).addClass('active').siblings().removeClass('active');
-	});
-	$("#tab2").click(function(){
-		$(this).addClass('active').siblings().removeClass('active');
-	});
-	$("#tab3").click(function(){
-		$(this).addClass('active').siblings().removeClass('active');
-	});
-	$("#tab4").click(function(){
-		$(this).addClass('active').siblings().removeClass('active');
-	});
-	$("#tab5").click(function(){
-		$(this).addClass('active').siblings().removeClass('active');
-	});
-	
-</script>

@@ -329,7 +329,39 @@
 				});
 			};
 		}
-	    
+	    function projectCustomerController($scope, $http) {
+			$scope.csToggle = function() {
+				var target = $("#arrowCustomerInfo");
+				if (target.attr("class") == ("glyphicon glyphicon-chevron-down")) {
+					$http.get("/admin/customer/ajax/${project.projectId}").success(
+						function(data) {
+							if (data.success == true) {
+								$scope.customers = JSON.parse(data.data);
+							}
+							// format
+						}).error(function(err) {
+						alert("获取失败，请重试!");
+					});
+					target.attr("class", "glyphicon glyphicon-chevron-up");
+				} else {
+					target.attr("class", "glyphicon glyphicon-chevron-down");
+				}
+			};
+		
+			$scope.saveProjectStatus = function() {
+				$http({
+		            method:'post',
+		            url:'/admin/status/ajax/add',
+		            data: $scope.progress
+				}).success(function (data){
+					if(data.success == true){
+						alert("状态更新成功!");
+					}
+				}).error(function (err){
+					alert(err);
+				});
+			};
+		}
 	    
     </script>
 </body>

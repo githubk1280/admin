@@ -2,7 +2,7 @@
 	<div class="panel-heading">
 		<h3 class="panel-title">
 			<strong>客户信息</strong> <a data-toggle="collapse"
-				href="#collapseFour" class="panel_a"> <span
+				href="#collapseFour" class="panel_a" ng-click="csToggle()"> <span
 				id="arrowCustomerInfo" class="glyphicon glyphicon-chevron-down"
 				style="color: rgb(0, 0, 0);"></span>
 			</a>
