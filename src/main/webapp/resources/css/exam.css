@@ -113,7 +113,7 @@ a {
 	color:#d9534f;
 }
 
-.input-group .form-control {
+.input-group .form-control{
 	position: relative;
 	z-index: 2;
 	float: right;
@@ -123,6 +123,7 @@ a {
 
 .form-control{
 	margin-left:1px;
+
 }
 
 .container{
