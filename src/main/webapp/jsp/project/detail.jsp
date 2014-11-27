@@ -268,13 +268,6 @@
 	    			$(this).attr("class","glyphicon glyphicon-chevron-down");
 	    		}
              });
-	    	$("#arrowCustomerInfo").click(function(){
-	    		if($(this).attr("class")==("glyphicon glyphicon-chevron-down")){
-	    			$(this).attr("class","glyphicon glyphicon-chevron-up");
-	    		}else{
-	    			$(this).attr("class","glyphicon glyphicon-chevron-down");
-	    		}
-	    	});
 	    	
 	   	});
 	    function projectStatusController($scope, $http) {
@@ -338,7 +331,13 @@
 							if (data.success == true) {
 								$scope.customers = JSON.parse(data.data);
 							}
-							// format
+							if($scope.customers){
+								if($scope.customers.length>0){
+									$scope.customer0 = $scope.customers[0];
+									if($scope.customers.length>1)$scope.customer1 = $scope.customers[1];
+									if($scope.customers.length>2)$scope.customer2 = $scope.customers[2];
+								}
+							}
 						}).error(function(err) {
 						alert("获取失败，请重试!");
 					});

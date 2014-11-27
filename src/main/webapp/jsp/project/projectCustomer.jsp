@@ -46,15 +46,15 @@
 						<label>项目编号 </label>
 					</div>
 					<div>
-						<input id="customerProjectID" type="text" class="form-control">
+						<input type="text" class="form-control" value="${project.projectId }">
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div>
-						<label>姓名</label>
+						<label>姓名 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer0.customerName"/>
 					</div>
 				</div>
 			</div>
@@ -64,36 +64,33 @@
 						<label>性别 </label>
 					</div>
 					<div>
-						<label><input type="radio" name="optionsRadios18"
-							id="optionsRadios18" value="option18">男</label> <label><input
-							type="radio" name="optionsRadios19" id="optionsRadios19"
-							value="option19">女 </label>
+						<input type="text" class="form-control" ng-model="customer0.sex"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div>
-						<label>年龄</label>
+						<label>年龄 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer0.age"/>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div>
-						<label>联系电话</label>
+						<label>联系电话 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer0.phone"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div>
-						<label>联系手机</label>
+						<label>联系手机 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer0.cellphone"/>
 					</div>
 				</div>
 			</div>
@@ -103,15 +100,15 @@
 						<label>工作单位 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer0.workUnit"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div>
-						<label>科室/部门</label>
+						<label>科室/部门 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer0.department"/>
 					</div>
 				</div>
 			</div>
@@ -121,15 +118,15 @@
 						<label>职位 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer0.position"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div>
-						<label>电子邮件</label>
+						<label>电子邮件 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer0.email"/>
 					</div>
 				</div>
 			</div>
@@ -139,7 +136,7 @@
 						<label>联系地址 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer0.adress"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -147,7 +144,25 @@
 						<label>研究方向 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer0.resarchDirection"/>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-sm-12 col-xs-12">
+					<div>
+						<label>与负责人关系 </label>
+					</div>
+					<div>
+						<input type="text" class="form-control" ng-model="customer0.relationShip"/>
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-12 col-xs-12">
+					<div>
+						<label>负责内容 </label>
+					</div>
+					<div>
+						<input type="text" class="form-control"  ng-model="customer0.responsibleArea">
 					</div>
 				</div>
 			</div>
@@ -168,7 +183,7 @@
 						<label>项目编号 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" value="${project.projectId }">
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -176,7 +191,7 @@
 						<label>姓名 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer1.customerName"/>
 					</div>
 				</div>
 			</div>
@@ -186,7 +201,7 @@
 						<label>性别 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer1.sex"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -194,7 +209,7 @@
 						<label>年龄 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer1.age"/>
 					</div>
 				</div>
 			</div>
@@ -204,7 +219,7 @@
 						<label>联系电话 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer1.phone"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -212,7 +227,7 @@
 						<label>联系手机 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer1.cellphone"/>
 					</div>
 				</div>
 			</div>
@@ -222,7 +237,7 @@
 						<label>工作单位 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer1.workUnit"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -230,7 +245,7 @@
 						<label>科室/部门 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer1.department"/>
 					</div>
 				</div>
 			</div>
@@ -240,7 +255,7 @@
 						<label>职位 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer1.position"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -248,7 +263,7 @@
 						<label>电子邮件 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer1.email"/>
 					</div>
 				</div>
 			</div>
@@ -258,7 +273,7 @@
 						<label>联系地址 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer1.adress"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -266,7 +281,7 @@
 						<label>研究方向 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer1.resarchDirection"/>
 					</div>
 				</div>
 			</div>
@@ -276,7 +291,7 @@
 						<label>与负责人关系 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer1.relationShip"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -284,11 +299,13 @@
 						<label>负责内容 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control"  ng-model="customer1.responsibleArea">
 					</div>
 				</div>
 			</div>
-
+			
+			
+			<!-- start  -->
 			<div class="row">
 				<div class="col-md-12">
 					<div class="pull-left page-header">
@@ -304,7 +321,7 @@
 						<label>项目编号 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" value="${project.projectId }">
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -312,7 +329,7 @@
 						<label>姓名 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer2.customerName"/>
 					</div>
 				</div>
 			</div>
@@ -322,7 +339,7 @@
 						<label>性别 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer2.sex"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -330,7 +347,7 @@
 						<label>年龄 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer2.age"/>
 					</div>
 				</div>
 			</div>
@@ -340,7 +357,7 @@
 						<label>联系电话 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer2.phone"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -348,7 +365,7 @@
 						<label>联系手机 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer2.cellphone"/>
 					</div>
 				</div>
 			</div>
@@ -358,7 +375,7 @@
 						<label>工作单位 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer2.workUnit"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -366,7 +383,7 @@
 						<label>科室/部门 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer2.department"/>
 					</div>
 				</div>
 			</div>
@@ -376,7 +393,7 @@
 						<label>职位 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer2.position"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -384,7 +401,7 @@
 						<label>电子邮件 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer2.email"/>
 					</div>
 				</div>
 			</div>
@@ -394,7 +411,7 @@
 						<label>联系地址 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer2.adress"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -402,7 +419,7 @@
 						<label>研究方向 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer2.resarchDirection"/>
 					</div>
 				</div>
 			</div>
@@ -412,7 +429,7 @@
 						<label>与负责人关系 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" ng-model="customer2.relationShip"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -420,7 +437,7 @@
 						<label>负责内容 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control"  ng-model="customer2.responsibleArea">
 					</div>
 				</div>
 			</div>
