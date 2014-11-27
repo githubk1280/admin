@@ -199,6 +199,16 @@
 
 	<%@ include file="../comm-fragement/main-js"%>
 	<%@ include file="../comm-fragement/modifySampleVal-js"%>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#create").click(function() {
+			window.location.replace("http://"+window.location.host+"/admin/sample/add-redirect");
+			return false;
+		});
+		
+		
+	});
+	</script>
 
 </body>
 

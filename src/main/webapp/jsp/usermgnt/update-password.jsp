@@ -41,9 +41,10 @@
 												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>输入新密码</label>
+														<label id="newPasswordLbl" class="warning-style">该字段不允许为空</label>
 													</div>
 													<div>
-														<form:input path="password" class="form-control" type="password" />
+														<form:input id="newPassword" path="password" class="form-control" type="password" />
 													</div>
 												</div>
 												<div class="col-md-4  col-sm-12 col-xs-12"></div>
@@ -53,9 +54,11 @@
 												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>再次输入新密码</label>
+														<label id="retryNewPasswordLbl" class="warning-style">该字段不允许为空</label>
+														<label id="notEqualLbl" class="warning-style">输入密码不相同</label>
 													</div>
 													<div>
-														<input class="form-control" type="password" />
+														<input id="retryNewPassword" class="form-control" type="password" />
 													</div>
 												</div>
 												<div class="col-md-4  col-sm-12 col-xs-12"></div>
@@ -63,8 +66,8 @@
 											<div class="row" style="margin-top: 30px">
 												<div class="col-md-4  col-sm-12 col-xs-12"></div>
 												<div class="col-md-4 col-sm-12 col-xs-12">
-													<input type="submit" class="btn btn-default btn-primary" value="提交" />
-													<input id="resetBtn" type="reset"
+													<input id="save" type="submit" class="btn btn-default btn-primary" value="提交" />
+													<input id="cancel" type="button"
 														class="btn btn-default btn-primary" value="取消">
 												</div>
 												<div class="col-md-4  col-sm-12 col-xs-12"></div>
@@ -87,40 +90,37 @@
 	<%@ include file="../comm-fragement/main-js"%>
 	<script type="text/javascript">
 		$(document).ready(function() {
-
-			$("nav li").click(function() {
-				$(this).addClass('active').siblings().removeClass('active');
-			});
-
-			$("#link_pro").click(function() {
-				$("#mainframe").attr("src", "../page/projectBasicData.html");
-			});
-
-			$("#link_customer").click(function() {
-				$("#mainframe").attr("src", "../page/customInfo.html");
-			});
-
-			$("#link_outsource").click(function() {
-				$("#mainframe").attr("src", "../page/outsource.html");
-			});
-
-			$("#link_proStatus").click(function() {
-				$("#mainframe").attr("src", "../page/proStatus.html");
-			});
-
-			$("#link_customCalling").click(function() {
-				$("#mainframe").attr("src", "../page/customCalling.html");
-			});
-
-			$(".pagination li ").click(function() {
-				$(this).addClass('active').siblings().removeClass('active');
-			});
-
-			$("#projectStatusBadge").click(function() {
-				alert($("#projectStatusBadge").text());
-				$("#projectStatusBadge").text("");
+			$("#save").click(function(){
+				$("#save").attr("type","submit");
+				var newPassword = $("#newPassword").val();
+				var retryNewPassword = $("#retryNewPassword").val();
+				if(newPassword.length<1){
+					$("#newPasswordLbl").show();
+					$("#save").attr("type","button");
+				}else{
+					$("#newPasswordLbl").hide();
+				}
+				if(retryNewPassword.length<1){
+					$("#retryNewPasswordLbl").show();
+					$("#save").attr("type","button");
+				}else{
+					$("#retryNewPasswordLbl").hide();
+					alert(newPassword.toString());
+					alert(retryNewPassword.toString());
+					if(newPassword!=retryNewPassword){
+						$("#notEqualLbl").show();
+						$("#save").attr("type","button");
+					}else{
+						$("#notEqualLbl").hide();
+					}
+				}
+				
 			});
 			
+			$("#cancel").click(function() {
+				window.location.replace("http://"+window.location.host+"/admin/project/list");			
+				return false;
+			});
 		});
 	</script>
 

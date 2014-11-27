@@ -174,7 +174,7 @@
 										<div class="row row-margin">
 											<div class="col-md-6 col-sm-12 col-xs-12">
 												<button id="save" class="btn btn-default btn-primary" type="submit">保存</button>
-												<button id="cancel" class="btn btn-default btn-primary" type="reset">取消</button>
+												<button id="cancel" class="btn btn-default btn-primary" type="button">取消</button>
 											</div>
 										</div>
 									</div>
@@ -193,7 +193,16 @@
 
 	<%@ include file="../comm-fragement/main-js"%>
 	<%@ include file="../comm-fragement/addSampleVal-js"%>
-	
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#cancel").click(function() {
+			window.location.replace("http://"+window.location.host+"/admin/sample/list");			
+			return false;
+		});
+		
+		
+	});
+	</script>
 
 
 </body>

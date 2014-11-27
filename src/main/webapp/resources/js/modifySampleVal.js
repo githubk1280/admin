@@ -8,6 +8,10 @@ $(".form_date").datetimepicker({
     todayHighlight:true,
     autoclose: true
 });
+if($("#reportDate").readOnly==true){
+	alert("come int");
+	$("#reportDate").removeClass("form_date");
+}
 
 if($("#modify").css('display')=="block"){
 	$("#sampleType1").attr("disabled",true);

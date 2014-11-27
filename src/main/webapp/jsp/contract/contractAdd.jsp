@@ -137,7 +137,7 @@
 																	<div class="input-group">
 																		<span class="input-group-addon">￥</span>
 																		<form:input id="totalAmount" path="totalAmount" class="form-control" />
-																		<span class="input-group-addon"> .00</span>
+																		
 																	</div>
 																</div>
 															</div>
@@ -155,7 +155,7 @@
 																	<div class="input-group">
 																		<span class="input-group-addon">￥</span>
 																		<form:input id="advancedAmount" path="advancedAmount" class="form-control" />
-																		<span class="input-group-addon"> .00</span>
+																		
 																	</div>
 																</div>
 
@@ -184,7 +184,7 @@
 																	<div class="input-group">
 																		<span class="input-group-addon">￥</span>
 																		<form:input id="balancedAmount" path="balancedAmount" class="form-control" />
-																		<span class="input-group-addon"> .00</span>
+																		
 																	</div>
 																</div>
 															</div>
@@ -227,7 +227,16 @@
 
 	<%@ include file="../comm-fragement/main-js"%>
 	<%@ include file="../comm-fragement/addContractVal-js"%>
-	
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#cancel").click(function() {
+			window.location.replace("http://"+window.location.host+"/admin/contract/list");			
+			return false;
+		});
+		
+		
+	});
+	</script>
 </body>
 
 </html>
