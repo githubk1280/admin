@@ -91,7 +91,7 @@
 												<div class="col-md-4  col-sm-12 col-xs-12"></div>
 												<div class="col-md-4 col-sm-12 col-xs-12">
 													<input type="submit" class="btn btn-default btn-primary" value="提交" />
-													<input id="resetBtn" type="reset"
+													<input id="cancel" type="button"
 														class="btn btn-default btn-primary" value="取消">
 												</div>
 												<div class="col-md-4  col-sm-12 col-xs-12"></div>
@@ -114,40 +114,10 @@
 	<%@ include file="../comm-fragement/main-js"%>
 	<script type="text/javascript">
 		$(document).ready(function() {
-
-			$("nav li").click(function() {
-				$(this).addClass('active').siblings().removeClass('active');
+			$("#cancel").click(function() {
+				window.location.replace("http://"+window.location.host+"/admin/project/list");			
+				return false;
 			});
-
-			$("#link_pro").click(function() {
-				$("#mainframe").attr("src", "../page/projectBasicData.html");
-			});
-
-			$("#link_customer").click(function() {
-				$("#mainframe").attr("src", "../page/customInfo.html");
-			});
-
-			$("#link_outsource").click(function() {
-				$("#mainframe").attr("src", "../page/outsource.html");
-			});
-
-			$("#link_proStatus").click(function() {
-				$("#mainframe").attr("src", "../page/proStatus.html");
-			});
-
-			$("#link_customCalling").click(function() {
-				$("#mainframe").attr("src", "../page/customCalling.html");
-			});
-
-			$(".pagination li ").click(function() {
-				$(this).addClass('active').siblings().removeClass('active');
-			});
-
-			$("#projectStatusBadge").click(function() {
-				alert($("#projectStatusBadge").text());
-				$("#projectStatusBadge").text("");
-			});
-
 		});
 	</script>
 

@@ -28,7 +28,7 @@
 							<strong>外包基本信息</strong> <input type="text" class="form-control"
 								placeholder="请输入编号"> <span class="input-group-btn">
 								<button class="btn btn-default btn-primary" type="button">
-									<i class="fa fa-search"></i>
+									<i class="fa fa-search" style="font-size:130%"></i>
 								</button>
 							</span>
 						</h2>

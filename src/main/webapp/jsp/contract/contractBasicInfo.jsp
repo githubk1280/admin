@@ -31,7 +31,7 @@
 								style="margin-left: 10px;">创建合同</button>
                     	<input type="text" class="form-control" style="width:26%;" placeholder="请输入项目编号">
 	                    <span class="input-group-btn">
-	                        <button class="btn btn-default btn-primary" type="button"><i class="fa fa-search"></i></button>
+	                        <button class="btn btn-default btn-primary" type="button"><i class="fa fa-search" style="font-size:130%"></i></button>
 	                    </span>
                     </h2>
                 </div>
@@ -78,8 +78,9 @@
 	<%@ include file="../comm-fragement/main-js"%>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$("nav li").click(function() {
-				$(this).addClass('active').siblings().removeClass('active');
+			$("#create").click(function() {
+				window.location.replace("http://"+window.location.host+"/admin/contract/add-redirect");			
+				return false;
 			});
 
 		});
