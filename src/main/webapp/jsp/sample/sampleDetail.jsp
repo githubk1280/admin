@@ -30,7 +30,7 @@
 							<div class="panel panel-default">
 								<div class="panel-heading ">
 									<h3 class="panel-title">
-										<strong>添加新的项目信息</strong>
+										<strong>样本基本信息</strong>
 										<button id="cancel" value="2"
 											class="btn btn-default btn-success pull-right"
 											style="margin-left: 10px; margin-right: 10px; display: none" type="reset">取消</button>
