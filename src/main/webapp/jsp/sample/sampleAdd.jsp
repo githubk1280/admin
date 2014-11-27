@@ -30,7 +30,7 @@
 							<div class="panel panel-default">
 								<div class="panel-heading ">
 									<h3 class="panel-title">
-										<strong>添加新的项目信息</strong>
+										<strong>添加样本基本信息</strong>
 										<!-- <a  data-toggle="collapse"  href="#collapseOne" class="panel_a"><strong>link</strong></a> -->
 									</h3>
 								</div>
@@ -40,13 +40,14 @@
 											<div class="col-md-6 col-sm-12 col-xs-12">
 												<div>
 													<label>所属项目编号:</label>
+													<label id="projectIdLbl" class="warning-style">该字段不允许为空</label>
 												</div>
 												<div>
-													<form:input path="projectId" class="form-control" />
+													<form:input id="projectId" path="projectId" class="form-control" />
 												</div>
 											</div>
 										</div>
-										<div class="row">
+										<div class="row row-margin">
 											<div class="col-md-6 col-sm-12 col-xs-12">
 												<div>
 													<label>样品编号 </label>
@@ -59,9 +60,10 @@
 											<div class="col-md-6 col-sm-12 col-xs-12">
 												<div>
 													<label>样品来源单位 </label>
+													<label id="sourceUnitLbl" class="warning-style">该字段不允许为空</label>
 												</div>
 												<div>
-													<form:input path="sourceUnit" class="form-control" />
+													<form:input id="sourceUnit" path="sourceUnit" class="form-control" />
 												</div>
 											</div>
 										</div>
@@ -69,17 +71,19 @@
 											<div class="col-md-6 col-sm-12 col-xs-12">
 												<div>
 													<label>样品负责人</label>
+													<label id="samplePrincripalLbl" class="warning-style">该字段不允许为空</label>
 												</div>
 												<div>
-													<form:input path="samplePrincripal" class="form-control"/>
+													<form:input id="samplePrincripal" path="samplePrincripal" class="form-control"/>
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
 												<div>
 													<label>项目负责人</label>
+													<label id="projectPrincripalLbl" class="warning-style">该字段不允许为空</label>
 												</div>
 												<div>
-													<form:input path="projectPrincripal" class="form-control"/>
+													<form:input id="projectPrincripal" path="projectPrincripal" class="form-control"/>
 												</div>
 											</div>
 										</div>
@@ -89,9 +93,9 @@
 													<label>是否外送</label>
 												</div>
 												<div class="pull-left">
-													<label><input type="radio" name="optionsRadios1"
-														id="optionsRadios1" value="Y" checked>是 </label> <label><input
-														type="radio" name="optionsRadios2" id="optionsRadios2"
+													<label><input type="radio" 
+														id="sended1" value="Y" checked>是 </label> <label><input
+														type="radio"  id="sended2"
 														value="N">否 </label>
 												</div>
 											</div>
@@ -100,9 +104,9 @@
 													<label>样本类型</label>
 												</div>
 												<div class="pull-left">
-													<label><input type="radio" name="optionsRadios4"
-														id="optionsRadios4" value="A" checked>A </label> <label><input
-														type="radio" name="optionsRadios5" id="optionsRadios5"
+													<label><input type="radio"
+														id="sampleType1" value="A" checked>A </label> <label><input
+														type="radio"  id="sampleType12"
 														value="B">B </label>
 												</div>
 											</div>
@@ -111,17 +115,20 @@
 											<div class="col-md-6 col-sm-12 col-xs-12">
 												<div>
 													<label>样品数量 </label>
+													<label id="sampleAmountLbl" class="warning-style">该字段不允许为空</label>
+													<label id="checkSampleAmountLbl" class="warning-style">请输入正确的样本数量</label>
 												</div>
 												<div>
-													<form:input path="sampleAmount" class="form-control" />
+													<form:input id="sampleAmount" path="sampleAmount" class="form-control" />
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
 												<div>
 													<label>外送编号</label>
+													<label id="deliveryNumLbl" class="warning-style">该字段不允许为空</label>
 												</div>
 												<div>
-													<form:input path="deliveryNum" class="form-control" />
+													<form:input id="deliveryNum" path="deliveryNum" class="form-control" />
 												</div>
 											</div>
 										</div>
@@ -129,20 +136,26 @@
 											<div class="col-md-6 col-sm-12 col-xs-12">
 												<div>
 													<label>收样日期</label>
+													<label id="reciveDateLbl" class="warning-style">该字段不允许为空</label>
+													<label id="reciveDateFormatLbl" class="warning-style">日期格式不正确</label>
+													<label id="isreciveDateLbl" class="warning-style">您输入的日期不存在</label>
 												</div>
 												<div>
 													<div>
-														<form:input path="reciveDate" class="form-control" />
+														<form:input id="reciveDate" path="reciveDate" class="form-control form_date" />
 													</div>
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
 												<div>
 													<label>报告日期</label>
+													<label id="reportDateLbl" class="warning-style">该字段不允许为空</label>
+													<label id="reportDateFormatLbl" class="warning-style">日期格式不正确</label>
+													<label id="isreportDateLbl" class="warning-style">您输入的日期不存在</label>
 												</div>
 												<div>
 													<div>
-														<form:input path="reportDate" class="form-control" />
+														<form:input id="reportDate" path="reportDate" class="form-control form_date" />
 													</div>
 												</div>
 											</div>
@@ -151,16 +164,17 @@
 											<div class="col-md-6 col-sm-12 col-xs-12">
 												<div>
 													<label>存放位置</label>
+													<label id="locationLbl" class="warning-style">该字段不允许为空</label>
 												</div>
 												<div>
-													<form:input path="diskLocation" class="form-control"/>
+													<form:input id="location" path="diskLocation" class="form-control"/>
 												</div>
 											</div>
 										</div>
 										<div class="row row-margin">
 											<div class="col-md-6 col-sm-12 col-xs-12">
-												<button class="btn btn-default btn-primary" type="submit">保存</button>
-												<button class="btn btn-default btn-primary" type="reset">取消</button>
+												<button id="save" class="btn btn-default btn-primary" type="submit">保存</button>
+												<button id="cancel" class="btn btn-default btn-primary" type="reset">取消</button>
 											</div>
 										</div>
 									</div>
@@ -178,44 +192,8 @@
 	<%@ include file="../common/modal.jsp"%>
 
 	<%@ include file="../comm-fragement/main-js"%>
-	<script type="text/javascript">
-		$(document).ready(function() {
-
-			$("nav li").click(function() {
-				$(this).addClass('active').siblings().removeClass('active');
-			});
-
-			$("#link_pro").click(function() {
-				$("#mainframe").attr("src", "../page/projectBasicData.html");
-			});
-
-			$("#link_customer").click(function() {
-				$("#mainframe").attr("src", "../page/customInfo.html");
-			});
-
-			$("#link_outsource").click(function() {
-				$("#mainframe").attr("src", "../page/outsource.html");
-			});
-
-			$("#link_proStatus").click(function() {
-				$("#mainframe").attr("src", "../page/proStatus.html");
-			});
-
-			$("#link_customCalling").click(function() {
-				$("#mainframe").attr("src", "../page/customCalling.html");
-			});
-
-			$(".pagination li ").click(function() {
-				$(this).addClass('active').siblings().removeClass('active');
-			});
-
-			$("#projectStatusBadge").click(function() {
-				alert($("#projectStatusBadge").text());
-				$("#projectStatusBadge").text("");
-			})
-
-		});
-	</script>
+	<%@ include file="../comm-fragement/addSampleVal-js"%>
+	
 
 
 </body>

@@ -1,0 +1,1 @@
+<script src="<spring:url value="/resources/js/modifySampleVal.js"/>"></script>
