@@ -24,17 +24,15 @@
 		<div id="page-wrapper">
 			<div class="row">
 				<form role="form">
-					<div class="col-lg-12">
+					<div class="col-lg-12 col-md-12">
 						<h2 class="page-header form-group input-group">
 							<strong>项目基本信息</strong>
 							<button class="btn btn-default btn-primary" id="create"
-								style="margin-left: 10px;">创建新的项目</button>
-							<input type="text" class="form-control" placeholder="请输入项目编号">
+								style="margin-left: 10px;">创建新的项目</button> 
+							<input class="form-control" style="width:26%;" placeholder="请输入项目编号">
 							<span class="input-group-btn">
-								<button class="btn btn-default btn-primary" type="button">
-									<i class="fa fa-search"></i>
-								</button>
-							</span>
+		                        <button class="btn btn-default btn-primary " type="button"><i class="fa fa-search"></i></button>
+		                    </span>
 						</h2>
 					</div>
 				</form>
