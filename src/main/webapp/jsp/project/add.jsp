@@ -258,8 +258,6 @@
 				window.location.replace("http://"+window.location.host+"/admin/project/list");			
 				return false;
 			});
-		
-		
 	});
 	</script>
 
