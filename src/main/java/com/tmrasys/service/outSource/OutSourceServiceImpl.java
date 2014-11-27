@@ -46,4 +46,9 @@ public class OutSourceServiceImpl implements OutSourceService {
 		return outSourceDao.getById(osId);
 	}
 
+	@Override
+	public void updateOutSource(OutSource outSource) {
+		outSourceDao.updateOutSource(outSource);
+	}
+
 }

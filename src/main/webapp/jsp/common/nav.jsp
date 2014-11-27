@@ -35,7 +35,7 @@
 	<!-- navbar tabs -->
 	<ul
 		class="nav navbar-nav navbar-default nav-pills navbar-nav-left navbar-default-color">
-		<li id="tab1" class="active"><a href="<%=request.getContextPath()%>/project/list"><i
+		<li id="tab1"><a href="<%=request.getContextPath()%>/project/list"><i
 				class="fa fa-tasks fa-fw "></i><strong>项目管理</strong></a></li>
 		<li id="tab2"><a href="#"><i class="fa fa-tasks fa-fw"></i><strong>文档管理</strong></a></li>
 		<li id="tab3"><a href="<%=request.getContextPath()%>/contract/list"><i class="fa fa-tasks fa-fw"></i><strong>财务管理</strong></a></li>
@@ -52,7 +52,7 @@
 
 		<div class="sidebar-nav ">
 			<ul class="nav" id="side-menu">
-				<li class="active"><a id="link_pro" href="<%=request.getContextPath()%>/project/list"><i
+				<li><a id="link_pro" href="<%=request.getContextPath()%>/project/list"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>项目基本信息</strong></a></li>
 				<li><a id="link_customer" href="<%=request.getContextPath()%>/customer/list"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>客户基本信息</strong></a></li>
@@ -70,3 +70,24 @@
 	</div>
 	<!-- /.navbar-static-side -->
 </nav>
+
+
+
+<script type="text/javascript">
+	$("#tab1").click(function(){
+		$(this).addClass('active').siblings().removeClass('active');
+	});
+	$("#tab2").click(function(){
+		$(this).addClass('active').siblings().removeClass('active');
+	});
+	$("#tab3").click(function(){
+		$(this).addClass('active').siblings().removeClass('active');
+	});
+	$("#tab4").click(function(){
+		$(this).addClass('active').siblings().removeClass('active');
+	});
+	$("#tab5").click(function(){
+		$(this).addClass('active').siblings().removeClass('active');
+	});
+	
+</script>
