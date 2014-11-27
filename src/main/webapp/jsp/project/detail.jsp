@@ -348,21 +348,30 @@
 			};
 		
 			$scope.updateCustomer = function() {
+				//for add
+				if(($scope.customer0) && !($scope.customer0.projectId)){
+					var pId = $('#projectIdForCustomerAdd').val();
+					if($scope.customer0) $scope.customer0.projectId = pId;
+					if($scope.customer1) $scope.customer1.projectId = pId;
+					if($scope.customer2) $scope.customer2.projectId = pId;
+				}
 				var customers = [];
 				($scope.customer0) && customers.push($scope.customer0);
 				($scope.customer1) && customers.push($scope.customer1);
 				($scope.customer2) && customers.push($scope.customer2);
-				$http({
-		            method:'post',
-		            url:'/admin/customer/ajax/update',
-		            data: customers,
-				}).success(function (data){
-					if(data.success == true){
-						alert("更新成功!");
-					}
-				}).error(function (err){
-					alert(err);
-				});
+				if(customers.length >0){
+					$http({
+			            method:'post',
+			            url:'/admin/customer/ajax/update',
+			            data: customers,
+					}).success(function (data){
+						if(data.success == true){
+							alert("更新成功!");
+						}
+					}).error(function (err){
+						alert(err);
+					});
+				}
 			};
 		}
 	    

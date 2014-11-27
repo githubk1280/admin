@@ -46,7 +46,7 @@
 						<label>项目编号 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" value="${project.projectId }">
+						<input id="projectIdForCustomerAdd" type="text" class="form-control" value="${project.projectId }">
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">

@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -77,7 +76,11 @@ public class CustomerController {
 		List<Customer>customers = JSON.parseArray(sb.toString(), Customer.class);
 		if (!CollectionUtils.isEmpty(customers)) {
 			for(Customer c : customers){
-				customerService.updateCustomer(c);
+				if(customerService.getById(c.getCustomerId()) == null){
+					customerService.addCustomer(c);
+				}else{
+					customerService.updateCustomer(c);
+				}
 			}
 		}
 		JsonResponseUtils.returnJsonResponse(response, "", true, 200);
