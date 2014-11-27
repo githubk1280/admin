@@ -8,7 +8,7 @@
 	<ng-view>
 	<div ng-controller="msgController">
 	<ul class="nav navbar-top-links  navbar-right" >
-		<li class="<%=request.getContextPath()%>/user/add-redirect">
+		<li>
                  <a href="<%=request.getContextPath()%>/user/add-redirect">
                      <i class="fa fa-sitemap fa-fw"></i>
                  </a>
@@ -24,7 +24,7 @@
 				<i class="fa fa-caret-down"></i>
 		</a>
 			<ul class="dropdown-menu dropdown-user">
-				<li><a href="<%=request.getContextPath()%>/user/add-redirect"><i class="fa fa-user fa-fw"></i> 用户信息</a></li>
+			   <!--  <li><a href="<%=request.getContextPath()%>/user/add-redirect"><i class="fa fa-user fa-fw"></i> 用户信息</a></li>-->
 				<li><a href="<%=request.getContextPath()%>/user/modify-redirect"><i class="fa fa-gear fa-fw"></i>修改密码</a></li>
 				<li class="divider"></li>
 				<li><a href="<%=request.getContextPath()%>/logout" ><i
