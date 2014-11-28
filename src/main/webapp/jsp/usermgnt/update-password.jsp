@@ -105,8 +105,6 @@
 					$("#save").attr("type","button");
 				}else{
 					$("#retryNewPasswordLbl").hide();
-					alert(newPassword.toString());
-					alert(retryNewPassword.toString());
 					if(newPassword!=retryNewPassword){
 						$("#notEqualLbl").show();
 						$("#save").attr("type","button");
