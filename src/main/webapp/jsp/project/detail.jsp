@@ -256,6 +256,7 @@
 		<%@ include file="../comm-fragement/main-js"%>
 		<%@ include file="../comm-fragement/projectVal-js"%>
 		<%@ include file="../comm-fragement/modifyOutsourceVal-js"%>
+		<%@ include file="../comm-fragement/modifyCustomerVal-js"%>
 		
 		<script type="text/javascript">
 	    $(document).ready(function(){
@@ -348,30 +349,52 @@
 					target.attr("class", "glyphicon glyphicon-chevron-down");
 				}
 			};
+			
+			$scope.cancelClick = function(){
+				$http.get("/admin/customer/ajax/${project.projectId}").success(
+						function(data) {
+							if (data.success == true) {
+								$scope.customers = JSON.parse(data.data);
+							}
+							if($scope.customers){
+								if($scope.customers.length>0){
+									$scope.customer0 = $scope.customers[0];
+									if($scope.customers.length>1)$scope.customer1 = $scope.customers[1];
+									if($scope.customers.length>2)$scope.customer2 = $scope.customers[2];
+								}
+							}
+						}).error(function(err) {
+						alert("获取失败，请重试!");
+					});
+			}
 		
 			$scope.updateCustomer = function() {
 				//for add
-				var pId = $('#projectIdForCustomerAdd').val();
-				if($scope.customer0)$scope.customer0.projectId = pId;
-				if($scope.customer1)$scope.customer1.projectId = pId;
-				if($scope.customer2)$scope.customer2.projectId = pId;
-				var customers = [];
-				($scope.customer0) && customers.push($scope.customer0);
-				($scope.customer1) && customers.push($scope.customer1);
-				($scope.customer2) && customers.push($scope.customer2);
-				if(customers.length >0){
-					$http({
-			            method:'post',
-			            url:'/admin/customer/ajax/update',
-			            data: customers,
-					}).success(function (data){
-						if(data.success == true){
-							alert("更新成功!");
-						}
-					}).error(function (err){
-						alert(err);
-					});
+				var saveCustomInfoType = $("#saveCustomInfo").attr("type");
+				if(saveCustomInfoType!="button"){
+					var pId = $('#projectIdForCustomerAdd').val();
+					if($scope.customer0)$scope.customer0.projectId = pId;
+					if($scope.customer1)$scope.customer1.projectId = pId;
+					if($scope.customer2)$scope.customer2.projectId = pId;
+					var customers = [];
+					($scope.customer0) && customers.push($scope.customer0);
+					($scope.customer1) && customers.push($scope.customer1);
+					($scope.customer2) && customers.push($scope.customer2);
+					if(customers.length >0){
+						$http({
+				            method:'post',
+				            url:'/admin/customer/ajax/update',
+				            data: customers,
+						}).success(function (data){
+							if(data.success == true){
+								//alert("更新成功!");
+							}
+						}).error(function (err){
+							alert(err);
+						});
+					}
 				}
+				
 			};
 		}
 	    

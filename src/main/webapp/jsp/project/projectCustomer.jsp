@@ -6,12 +6,15 @@
 				id="arrowCustomerInfo" class="glyphicon glyphicon-chevron-down"
 				style="color: rgb(0, 0, 0);"></span>
 			</a>
-			<button id="saveCustomInfo" value="1"
+			<button id="modifyCustomInfo" value="1"
 				class="btn btn-default btn-success" style="margin-left: 10px;"
-				type="submit" ng-click="updateCustomer()">修改</button>
+				type="submit">修改</button>
 			<button id="cancelCustomInfo" value="2"
 				class="btn btn-default btn-success"
-				style="margin-left: 10px; display: none">取消</button>
+				style="margin-left: 10px; display: none" ng-click="cancelClick()">取消</button>
+			<button id="saveCustomInfo" value="2"
+				class="btn btn-default btn-success"
+				style="margin-left: 10px; display: none" type="submit" ng-click="updateCustomer()">保存</button>
 		</h3>
 	</div>
 	<div id="collapseFour" class="panel-collapse collapse" style="">
@@ -22,11 +25,11 @@
 						<label>客户级别</label>
 					</div>
 					<div class="pull-left">
-						<label><input type="radio" name="optionsRadios17"
-							id="optionsRadios17" value="option17" checked>高 </label> <label><input
-							type="radio" name="optionsRadios18" id="optionsRadios18"
+						<label><input type="radio" 
+							id="customerLevel1"  checked>高 </label> <label><input
+							type="radio"  id="customerLevel2"
 							value="option18">中 </label> <label><input type="radio"
-							name="optionsRadios19" id="optionsRadios19" value="option19">低
+							 id="customerLevel3" value="option19">低
 						</label>
 					</div>
 				</div>
@@ -46,7 +49,7 @@
 						<label>项目编号 </label>
 					</div>
 					<div>
-						<input id="projectIdForCustomerAdd" type="text" class="form-control" value="${project.projectId }">
+						<input id="projectIdForCustomerAdd" type="text" class="form-control" value="${project.projectId }" readonly="true">
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -54,7 +57,7 @@
 						<label>姓名 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer0.customerName"/>
+						<input type="text" class="form-control" ng-model="customer0.customerName" readonly="true"/>
 					</div>
 				</div>
 			</div>
@@ -64,15 +67,16 @@
 						<label>性别 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer0.sex"/>
+						<input type="text" class="form-control" ng-model="customer0.sex" readonly="true"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div>
 						<label>年龄 </label>
+						<label id="principalAgeLbl" class="warning-style">请输入正确的年龄</label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer0.age"/>
+						<input id="principalAge" type="text" class="form-control" ng-model="customer0.age" readonly="true"/>
 					</div>
 				</div>
 			</div>
@@ -80,17 +84,19 @@
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div>
 						<label>联系电话 </label>
+						<label id="principalPhoneLbl" class="warning-style">请输入正确的号码</label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer0.phone"/>
+						<input id="principalPhone" type="text" class="form-control" ng-model="customer0.phone" readonly="true"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div>
 						<label>联系手机 </label>
+						<label id="principalCellPhoneLbl" class="warning-style">请输入正确的号码</label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer0.cellphone"/>
+						<input id="principalCellPhone" type="text" class="form-control" ng-model="customer0.cellphone" readonly="true"/>
 					</div>
 				</div>
 			</div>
@@ -100,7 +106,7 @@
 						<label>工作单位 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer0.workUnit"/>
+						<input type="text" class="form-control" ng-model="customer0.workUnit" readonly="true"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -108,7 +114,7 @@
 						<label>科室/部门 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer0.department"/>
+						<input type="text" class="form-control" ng-model="customer0.department" readonly="true"/>
 					</div>
 				</div>
 			</div>
@@ -118,15 +124,16 @@
 						<label>职位 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer0.position"/>
+						<input type="text" class="form-control" ng-model="customer0.position" readonly="true"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div>
 						<label>电子邮件 </label>
+						<label id="principalMailLbl" class="warning-style">请输入正确的邮箱</label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer0.email"/>
+						<input id="principalMail" type="text" class="form-control" ng-model="customer0.email" readonly="true"/>
 					</div>
 				</div>
 			</div>
@@ -136,7 +143,7 @@
 						<label>联系地址 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer0.adress"/>
+						<input type="text" class="form-control" ng-model="customer0.adress" readonly="true"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -144,30 +151,11 @@
 						<label>研究方向 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer0.resarchDirection"/>
+						<input type="text" class="form-control" ng-model="customer0.resarchDirection" readonly="true"/>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-6 col-sm-12 col-xs-12">
-					<div>
-						<label>与负责人关系 </label>
-					</div>
-					<div>
-						<input type="text" class="form-control" ng-model="customer0.relationShip"/>
-					</div>
-				</div>
-				<div class="col-md-6 col-sm-12 col-xs-12">
-					<div>
-						<label>负责内容 </label>
-					</div>
-					<div>
-						<input type="text" class="form-control"  ng-model="customer0.responsibleArea">
-					</div>
-				</div>
-			</div>
-
-
+			
 			<div class="row">
 				<div class="col-md-12">
 					<div class="pull-left  page-header">
@@ -183,7 +171,7 @@
 						<label>项目编号 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" value="${project.projectId }">
+						<input id="firstCustomerProjectId" type="text" class="form-control" value="${project.projectId }" readonly="true">
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -191,7 +179,7 @@
 						<label>姓名 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer1.customerName"/>
+						<input type="text" class="form-control" ng-model="customer1.customerName" readonly="true"/>
 					</div>
 				</div>
 			</div>
@@ -201,15 +189,16 @@
 						<label>性别 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer1.sex"/>
+						<input type="text" class="form-control" ng-model="customer1.sex" readonly="true"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div>
 						<label>年龄 </label>
+						<label id="firstAgeLbl" class="warning-style">请输入正确的年龄</label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer1.age"/>
+						<input id="firstAge" type="text" class="form-control" ng-model="customer1.age" readonly="true"/>
 					</div>
 				</div>
 			</div>
@@ -217,17 +206,19 @@
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div>
 						<label>联系电话 </label>
+						<label id="firstPhoneLbl" class="warning-style">请输入正确的号码</label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer1.phone"/>
+						<input id="firstPhone" type="text" class="form-control" ng-model="customer1.phone" readonly="true"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div>
 						<label>联系手机 </label>
+						<label id="firstCellphoneLbl" class="warning-style">请输入正确的号码</label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer1.cellphone"/>
+						<input id="firstCellphone" type="text" class="form-control" ng-model="customer1.cellphone" readonly="true"/>
 					</div>
 				</div>
 			</div>
@@ -237,7 +228,7 @@
 						<label>工作单位 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer1.workUnit"/>
+						<input type="text" class="form-control" ng-model="customer1.workUnit" readonly="true"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -245,7 +236,7 @@
 						<label>科室/部门 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer1.department"/>
+						<input type="text" class="form-control" ng-model="customer1.department" readonly="true"/>
 					</div>
 				</div>
 			</div>
@@ -255,15 +246,16 @@
 						<label>职位 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer1.position"/>
+						<input type="text" class="form-control" ng-model="customer1.position" readonly="true"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div>
 						<label>电子邮件 </label>
+						<label id="firstMailLbl" class="warning-style">请输入正确的邮箱</label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer1.email"/>
+						<input id="firstMail" type="text" class="form-control" ng-model="customer1.email" readonly="true"/>
 					</div>
 				</div>
 			</div>
@@ -273,7 +265,7 @@
 						<label>联系地址 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer1.adress"/>
+						<input type="text" class="form-control" ng-model="customer1.adress" readonly="true"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -281,7 +273,7 @@
 						<label>研究方向 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer1.resarchDirection"/>
+						<input type="text" class="form-control" ng-model="customer1.resarchDirection" readonly="true"/>
 					</div>
 				</div>
 			</div>
@@ -291,7 +283,7 @@
 						<label>与负责人关系 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer1.relationShip"/>
+						<input type="text" class="form-control" ng-model="customer1.relationShip" readonly="true"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -299,7 +291,7 @@
 						<label>负责内容 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control"  ng-model="customer1.responsibleArea">
+						<input type="text" class="form-control"  ng-model="customer1.responsibleArea" readonly="true"/>
 					</div>
 				</div>
 			</div>
@@ -321,7 +313,7 @@
 						<label>项目编号 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" value="${project.projectId }">
+						<input id="secondCustomerProjectId" type="text" class="form-control" value="${project.projectId }" readonly="true"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -329,7 +321,7 @@
 						<label>姓名 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer2.customerName"/>
+						<input type="text" class="form-control" ng-model="customer2.customerName" readonly="true"/>
 					</div>
 				</div>
 			</div>
@@ -339,15 +331,16 @@
 						<label>性别 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer2.sex"/>
+						<input type="text" class="form-control" ng-model="customer2.sex" readonly="true"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div>
 						<label>年龄 </label>
+						<label id="secondAgeLbl" class="warning-style">请输入正确的年龄</label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer2.age"/>
+						<input id="secondAge" type="text" class="form-control" ng-model="customer2.age" readonly="true"/>
 					</div>
 				</div>
 			</div>
@@ -355,17 +348,19 @@
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div>
 						<label>联系电话 </label>
+						<label id="secondPhoneLbl" class="warning-style">请输入正确的号码</label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer2.phone"/>
+						<input id="secondPhone" type="text" class="form-control" ng-model="customer2.phone" readonly="true"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div>
 						<label>联系手机 </label>
+						<label id="secondCellphoneLbl" class="warning-style">请输入正确的号码</label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer2.cellphone"/>
+						<input id="secondCellphone" type="text" class="form-control" ng-model="customer2.cellphone" readonly="true"/>
 					</div>
 				</div>
 			</div>
@@ -375,7 +370,7 @@
 						<label>工作单位 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer2.workUnit"/>
+						<input type="text" class="form-control" ng-model="customer2.workUnit" readonly="true"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -383,7 +378,7 @@
 						<label>科室/部门 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer2.department"/>
+						<input type="text" class="form-control" ng-model="customer2.department" readonly="true"/>
 					</div>
 				</div>
 			</div>
@@ -393,15 +388,16 @@
 						<label>职位 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer2.position"/>
+						<input type="text" class="form-control" ng-model="customer2.position" readonly="true"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div>
 						<label>电子邮件 </label>
+						<label id="secondMailLbl" class="warning-style">请输入正确的邮箱</label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer2.email"/>
+						<input id="secondMail" type="text" class="form-control" ng-model="customer2.email" readonly="true"/>
 					</div>
 				</div>
 			</div>
@@ -411,7 +407,7 @@
 						<label>联系地址 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer2.adress"/>
+						<input type="text" class="form-control" ng-model="customer2.adress" readonly="true"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -419,7 +415,7 @@
 						<label>研究方向 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer2.resarchDirection"/>
+						<input type="text" class="form-control" ng-model="customer2.resarchDirection" readonly="true"/>
 					</div>
 				</div>
 			</div>
@@ -429,7 +425,7 @@
 						<label>与负责人关系 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer2.relationShip"/>
+						<input type="text" class="form-control" ng-model="customer2.relationShip" readonly="true"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -437,7 +433,7 @@
 						<label>负责内容 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control"  ng-model="customer2.responsibleArea">
+						<input type="text" class="form-control"  ng-model="customer2.responsibleArea" readonly="true"/>
 					</div>
 				</div>
 			</div>

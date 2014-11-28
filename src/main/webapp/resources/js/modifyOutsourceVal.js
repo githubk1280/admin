@@ -48,20 +48,20 @@ $("#saveOutsource").click(function(){
 	var dataContactPhone = $("#dataContactPhone").val();
 		dataContactPhone = $.trim(dataContactPhone);
 		
-	if(contactPhone.length>1){
+	if(contactPhone.length>0){
 		outsource_isPositiveInteger(contactPhone);
 	}
 	
-	if(contractAmount.length>1){
+	if(contractAmount.length>0){
 		var tempAmount = $("#contractAmount").val().replace(/,/g,"");
 		var flag = outsource_isAmountNumber(tempAmount);
 	}
 	
-	if(sendSampleDate.length>1){
+	if(sendSampleDate.length>0){
 		var flag = outsource_isDateFormat($("#sendSampleDate"));
 	}
 	
-	if(dataContactPhone.length>1){
+	if(dataContactPhone.length>0){
 		outsource_isDataContactPhone_PositiveInteger(dataContactPhone);
 	}
 	
