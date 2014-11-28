@@ -29,9 +29,9 @@
 							<strong>项目基本信息</strong>
 							<button class="btn btn-default btn-primary" id="create"
 								style="margin-left: 10px;">创建新的项目</button> 
-							<input class="form-control" style="width:26%;" placeholder="请输入项目编号">
+							<input id="searchInput" class="form-control" style="width:26%;" placeholder="请输入项目编号">
 							<span class="input-group-btn">
-		                        <button class="btn btn-default btn-primary"  type="button"><i class="fa fa-search" style="font-size:130%"></i></button>
+		                        <button id="searchBtn" class="btn btn-default btn-primary"  type="button"><i class="fa fa-search" style="font-size:130%"></i></button>
 		                    </span>
 						</h2>
 					</div>
