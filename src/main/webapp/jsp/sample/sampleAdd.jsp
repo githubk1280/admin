@@ -42,7 +42,7 @@
 													<label id="projectIdLbl" class="warning-style">该字段不允许为空</label>
 												</div>
 												<div>
-													<form:select ng-model="selected" ng-options="m.projectId for m in idAndPrincipal" path="projectId" class="form-control">
+													<form:select  ng-model="selected" ng-options="m.projectId for m in idAndPrincipal" path="projectId" class="form-control">
 													    <option value="">-- 请选择 --</option>
 													</form:select>
 												</div>
@@ -75,7 +75,7 @@
 													<label id="samplePrincripalLbl" class="warning-style">该字段不允许为空</label>
 												</div>
 												<div>
-													<form:input id="samplePrincripal" path="samplePrincripal" class="form-control" ng-model="selected.principal" readonly="true" />
+													<form:input id="samplePrincripal" path="samplePrincripal" class="form-control"  />
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -84,7 +84,7 @@
 													<label id="projectPrincripalLbl" class="warning-style">该字段不允许为空</label>
 												</div>
 												<div>
-													<form:input id="projectPrincripal" path="projectPrincripal" class="form-control"/>
+													<form:input id="projectPrincripal" path="projectPrincripal" ng-model="selected.principal" readonly="true" class="form-control"/>
 												</div>
 											</div>
 										</div>

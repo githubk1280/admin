@@ -42,7 +42,7 @@
 																	<label id="projectIDLbl" class="warning-style">该字段不允许为空</label>
 																</div>
 																<div>
-																	<form:select ng-model="selected" ng-options="m.projectId for m in idAndPrincipal" path="projectId" >
+																	<form:select class="form-control" ng-model="selected" ng-options="m.projectId for m in idAndPrincipal" path="projectId" >
 																   		<option value="">-- 请选择 --</option>
 																	</form:select>
 																</div>

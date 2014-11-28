@@ -35,7 +35,7 @@ public class UserController {
 			view.addObject("newuser", employee);
 		} else {
 			view.setViewName("redirect:"
-					+ FailedUtils.getLoginErrorMessage("用户已存在"));
+					+ FailedUtils.getLoginErrorMessage("failed"));
 			return view;
 		}
 		view.setViewName(PageResourceConstant.USER_ADD_RESULT);
