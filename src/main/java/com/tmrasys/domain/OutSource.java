@@ -15,7 +15,7 @@ public class OutSource {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date sendSampleDate;
 	private int sendSampleCount;
-	private int exprResultRecived;
+	private boolean exprResultRecived;
 	private String outSourceStatus;
 	private String outSourceType;
 	private int projectId;
