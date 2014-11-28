@@ -40,18 +40,18 @@ public class DataTestController {
 		Project project = dataService.loadProjectById(1);
 		ModelAndView view = new ModelAndView();
 		view.addObject("project", project);
-		view.setViewName("load");
+		view.setViewName("/upload/upload");
 		return view;
 
 	}
 	
-	@RequestMapping("/upload")
+	@RequestMapping("test/upload")
 	public String uploadFile(@RequestParam("file") MultipartFile file,
 			HttpServletRequest request, ModelMap model) {
-		String path = "c:/upload";
+		String path = "e:/upload";
 		String fileName = file.getOriginalFilename();
 		// String fileName = new Date().getTime()+".jpg";
-		System.out.println(path);
+		System.out.println("::::::::::::::::::::::::::::::::::::::::"+path);
 		File targetFile = new File(path, fileName);
 		if (!targetFile.exists()) {
 			targetFile.mkdirs();
