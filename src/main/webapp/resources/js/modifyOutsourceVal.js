@@ -11,7 +11,7 @@ $(".form_date").datetimepicker({
 
 
 
-if($("#modifyOutsource").css('display')=="inline-block"){
+if($("#modifyOutsource").css('display')=="block"){
 	$("#panelOutsource input").attr("readonly",true);
 	$("#panelOutsource textarea").attr("readonly",true);
 	$("#resultReceived1").attr("disabled",true);

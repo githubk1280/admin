@@ -19,7 +19,7 @@ $(".form_date").datetimepicker({
     autoclose: true
 });
 /****button switch of project basic data start***/
-if($("#modifyProBasicData").css('display')=="inline-block"){
+if($("#modifyProBasicData").css('display')=="block"){	
 	$("#panelProBasicData input").attr("readonly",true);
 	$("#panelProBasicData textarea").attr("readonly",true);
 	$("#needSCI1").attr("disabled",true);

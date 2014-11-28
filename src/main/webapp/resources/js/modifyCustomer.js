@@ -3,7 +3,7 @@
  */
 
 /****button switch of project basic data start***/
-if($("#modifyCustomInfo").css('display')=="inline-block"){
+if($("#modifyCustomInfo").css('display')=="block"){
 	$("#panelCustomerInfo input").attr("readonly",true);
 	$("#panelCustomerInfo textarea").attr("readonly",true);
 	$("#customerLevel1").attr("disabled",true);
