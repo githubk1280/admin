@@ -38,13 +38,48 @@ $("#modifyOutsource").click(function(){
 });
 
 $("#saveOutsource").click(function(){
-	$("#saveOutsource").css('display','none');
-	$("#cancelOutsource").css('display','none');
-	$("#modifyOutsource").css('display','block');
-	$("#panelOutsource input").attr("readonly",true);
-	$("#panelOutsource textarea").attr("readonly",true);
-	$("#resultReceived1").attr("disabled",true);
-	$("#resultReceived2").attr("disabled",true);
+	$("#saveOutsource").attr("type","submit");
+	var contactPhone = $("#contactPhone").val();
+		contactPhone =$.trim(contactPhone);
+	var contractAmount = $("#contractAmount").val();
+		contractAmount = $.trim(contractAmount);
+	var sendSampleDate = $("sendSampleDate").val();
+		sendSampleDate = $.trim(sendSampleDate);
+	var dataContactPhone = $("#dataContactPhone").val();
+		dataContactPhone = $.trim(dataContactPhone);
+		
+	if(contactPhone.length>1){
+		outsource_isPositiveInteger(contactPhone);
+	}
+	
+	if(contractAmount.length>1){
+		var tempAmount = $("#contractAmount").val().replace(/,/g,"");
+		var flag = outsource_isAmountNumber(tempAmount);
+	}
+	
+	if(sendSampleDate.length>1){
+		var flag = outsource_isDateFormat($("#sendSampleDate"));
+	}
+	
+	if(dataContactPhone.length>1){
+		outsource_isDataContactPhone_PositiveInteger(dataContactPhone);
+	}
+	
+	var saveOutsourceType = $("#saveOutsource").attr("type");
+	if(saveOutsourceType!="button"){
+		$("#saveOutsource").css('display','none');
+		$("#cancelOutsource").css('display','none');
+		$("#modifyOutsource").css('display','block');
+		$("#panelOutsource input").attr("readonly",true);
+		$("#panelOutsource textarea").attr("readonly",true);
+		$("#resultReceived1").attr("disabled",true);
+		$("#resultReceived2").attr("disabled",true);
+		$("#contactPhoneLbl").hide();
+		$("#contractAmountLbl").hide();
+		$("#sendSampleDateLbl").hide();
+		$("#issendSampleDateLbl").hide();
+		$("#dataContactPhoneLbl").hide();
+	}
 	
 });
 
@@ -56,5 +91,79 @@ $("#cancelOutsource").click(function(){
 	$("#panelOutsource textarea").attr("readonly",true);
 	$("#resultReceived1").attr("disabled",true);
 	$("#resultReceived2").attr("disabled",true);
+	$("#contactPhoneLbl").hide();
+	$("#contractAmountLbl").hide();
+	$("#sendSampleDateLbl").hide();
+	$("#issendSampleDateLbl").hide();
+	$("#dataContactPhoneLbl").hide();
 	
 });
+
+
+/***validate positive number***/
+function outsource_isPositiveInteger(obj){
+	var reg = /^[0-9]*[0-9][0-9]*$/;
+	if(!reg.test(obj)){
+		$("#contactPhoneLbl").show();
+		$("#saveOutsource").attr("type","button");
+		return "failed";
+	}else{
+		$("#contactPhoneLbl").hide();
+		return "success";
+	};
+};
+
+function outsource_isDataContactPhone_PositiveInteger(obj){
+	var reg = /^[0-9]*[0-9][0-9]*$/;
+	if(!reg.test(obj)){
+		$("#dataContactPhoneLbl").show();
+		$("#saveOutsource").attr("type","button");
+		return "failed";
+	}else{
+		$("#dataContactPhoneLbl").hide();
+		return "success";
+	};
+};
+
+/***validate number float  dot negative***/
+function outsource_isAmountNumber(obj){
+	var reg = /^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$/;
+	if(!reg.test(obj)){
+		$("#contractAmountLbl").show();
+		$("#saveOutsource").attr("type","button");
+		return "failed";
+	}else{
+		$("#contractAmountLbl").hide();
+		return "success";
+	};
+};
+
+/**validate date format***/
+function outsource_isDateFormat(dateField){
+	var dateFieldId = dateField.attr("id");
+	var DATE_FORMAT = /^[0-9]{4}-[0-1]?[0-9]{1}-[0-3]?[0-9]{1}$/;
+	if(!DATE_FORMAT.test(dateField.val())){
+		$("#"+dateFieldId+"FormatLbl").show();
+		$("#saveOutsource").attr("type","button");
+		return "failed";
+	}else{
+		$("#"+dateFieldId+"FormatLbl").hide();
+		outsource_isDate(dateField);
+		return "success";
+	};
+}
+
+/*****validate date effective or not**/
+function outsource_isDate(dateField){
+	var regex = new RegExp("^(?:(?:([0-9]{4}(-|\/)(?:(?:0?[1,3-9]|1[0-2])(-|\/)(?:29|30)|((?:0?[13578]|1[02])(-|\/)31)))|([0-9]{4}(-|\/)(?:0?[1-9]|1[0-2])(-|\/)(?:0?[1-9]|1\\d|2[0-8]))|(((?:(\\d\\d(?:0[48]|[2468][048]|[13579][26]))|(?:0[48]00|[2468][048]00|[13579][26]00))(-|\/)0?2(-|\/)29))))$");
+	var dateValue = dateField.val();
+	var dateFieldId = dateField.attr("id");
+	
+	if(!regex.test(dateValue)){
+		$("#is"+dateFieldId+"Lbl").show();
+		$("#saveOutsource").attr("type","button");
+	}else{
+		$("#is"+dateFieldId+"Lbl").hide();
+	}
+}
+

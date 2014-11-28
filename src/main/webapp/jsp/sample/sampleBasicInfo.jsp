@@ -25,6 +25,7 @@
             <form role="form">
                 <div class="col-lg-12">
                     <h2 class="page-header form-group input-group"><strong>样本基本信息</strong>
+                    <button id="create" class="btn btn-default btn-primary" style="margin-left: 10px;">创建新的样本</button>
                     	<input type="text" class="form-control" style="width:26%;" placeholder="请输入项目编号">
 	                    <span class="input-group-btn">
 	                        <button class="btn btn-default btn-primary" type="button"><i class="fa fa-search" style="font-size:130%"></i></button>
@@ -74,41 +75,9 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 
-			$("nav li").click(function() {
-				$(this).addClass('active').siblings().removeClass('active');
-			});
-
-			$("#link_pro").click(function() {
-				$("#mainframe").attr("src", "../page/projectBasicData.html");
-			});
-
-			$("#link_customer").click(function() {
-				$("#mainframe").attr("src", "../page/customInfo.html");
-			});
-
-			$("#link_outsource").click(function() {
-				$("#mainframe").attr("src", "../page/outsource.html");
-			});
-
-			$("#link_proStatus").click(function() {
-				$("#mainframe").attr("src", "../page/proStatus.html");
-			});
-
-			$("#link_customCalling").click(function() {
-				$("#mainframe").attr("src", "../page/customCalling.html");
-			});
-
-			$(".pagination li ").click(function() {
-				$(this).addClass('active').siblings().removeClass('active');
-			});
-
-			$("#projectStatusBadge").click(function() {
-				alert($("#projectStatusBadge").text());
-				$("#projectStatusBadge").text("");
-			});
 			
 			$("#create").click(function() {
-				window.location.replace("http://"+window.location.host+"/admin/project/add-redirect");
+				window.location.replace("http://"+window.location.host+"/admin/sample/add-redirect");
 				return false;
 			});
 

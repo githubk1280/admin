@@ -32,16 +32,14 @@
 									<h3 class="panel-title">
 										<strong>样本基本信息</strong>
 										<button id="cancel" value="2"
-											class="btn btn-default btn-success pull-right"
+											class="btn btn-default btn-success"
 											style="margin-left: 10px; margin-right: 10px; display: none" type="reset">取消</button>
 										<button id="modify" value="1"
-											class="btn btn-default btn-success pull-right"
+											class="btn btn-default btn-success "
 											style="margin-left: 10px; margin-right: 10px" type="button">修改</button>
 										<button id="save" value="1"
-											class="btn btn-default btn-success pull-right"
+											class="btn btn-default btn-success"
 											style="margin-left: 10px; margin-right: 10px;display: none" type="submit">保存</button>
-										<button id="create" class="btn btn-default btn-success"
-											style="margin-left: 10px;">创建新的样本</button>
 										<!-- <a  data-toggle="collapse"  href="#collapseOne" class="panel_a"><strong>link</strong></a> -->
 									</h3>
 								</div>
@@ -54,7 +52,7 @@
 												</div>
 												<div>
 													<form:input  type="text"  class="form-control" path="projectId" readonly="true"/>
-												</div>
+												</div> 
 											</div>
 										</div>
 										<div class="row row-margin">
@@ -201,10 +199,7 @@
 	<%@ include file="../comm-fragement/modifySampleVal-js"%>
 	<script type="text/javascript">
 	$(document).ready(function() {
-		$("#create").click(function() {
-			window.location.replace("http://"+window.location.host+"/admin/sample/add-redirect");
-			return false;
-		});
+		
 		
 		
 	});
