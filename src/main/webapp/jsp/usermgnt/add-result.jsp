@@ -83,7 +83,7 @@
 	<%@ include file="../comm-fragement/main-js"%>
 	<script type="text/javascript">
 		$(document).ready(function() {
-
+			alert($("#sp_ids").val());
 			$("nav li").click(function() {
 				$(this).addClass('active').siblings().removeClass('active');
 			});

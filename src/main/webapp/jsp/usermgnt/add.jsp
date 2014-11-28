@@ -106,6 +106,7 @@
 						</div>
 					</div>
 					<!-- .panel-body -->
+					 
 				</div>
 				<!-- /.panel -->
 			</div>
@@ -117,6 +118,7 @@
 	<%@ include file="../comm-fragement/main-js"%>
 	<script type="text/javascript">
 		$(document).ready(function() {
+			
 			$("#save").click(function(){
 				$("#save").attr("type","submit");
 				var password = $("#password").val();
