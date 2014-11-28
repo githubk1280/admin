@@ -7,14 +7,14 @@
 				style="color: rgb(0, 0, 0);"></span>
 			</a>
 			<button id="modifyCustomInfo" value="1"
-				class="btn btn-default btn-success" style="margin-left: 10px;"
+				class="btn btn-default btn-success" style="margin-right: 10px;float:right; padding:1px 12px"
 				type="submit">修改</button>
 			<button id="cancelCustomInfo" value="2"
 				class="btn btn-default btn-success"
-				style="margin-left: 10px; display: none" ng-click="cancelClick()">取消</button>
+				style="margin-left: 10px; margin-right: 10px;float:right; padding:1px 12px; display: none" ng-click="cancelClick()">取消</button>
 			<button id="saveCustomInfo" value="2"
 				class="btn btn-default btn-success"
-				style="margin-left: 10px; display: none" type="submit" ng-click="updateCustomer()">保存</button>
+				style="margin-left: 10px; margin-right: 10px;float:right; padding:1px 12px; display: none" type="submit" ng-click="updateCustomer()">保存</button>
 		</h3>
 	</div>
 	<div id="collapseFour" class="panel-collapse collapse" style="">

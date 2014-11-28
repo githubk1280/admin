@@ -31,18 +31,21 @@
 						<div class="panel-group" id="accordion">
 							<div class="panel panel-default">
 								<div class="panel-heading ">
+								
 									<h3 class="panel-title">
 										<strong>项目基本信息</strong>
+										
 										<a  data-toggle="collapse"  href="#collapseOne" class="panel_a" >
 											<span id="arrowProBasicData" class="glyphicon glyphicon-chevron-up" style="color: rgb(0, 0, 0);"></span>
 	                                    </a>
+	                                    <button id="modifyProBasicData" class="btn btn-default btn-success" 
+										 style="margin-right: 10px;float:right; padding:1px 12px" type="button">修改</button>
 										<button id="cancelProBasicData" class="btn btn-default btn-success" 
-										 style="margin-left: 10px; margin-right: 10px; display: none" type="reset">取消</button>
+										 style="margin-left: 10px; margin-right: 10px;float:right; padding:1px 12px; display: none" type="reset">取消</button>
 										<button id="saveProBasicData" value="1"
 										  class="btn btn-default btn-success"
-										  style="margin-left: 10px; margin-right: 10px;display:none" type="submit">保存</button>
-										<button id="modifyProBasicData" class="btn btn-default btn-success"
-											style="margin-left: 10px;" type="button">修改</button>
+										  style="margin-left: 10px; margin-right: 10px;float:right; padding:1px 12px;display:none" type="submit">保存</button>
+										
 									</h3>
 								</div>
 								<div id="collapseOne" class="panel-collapse collapse in">

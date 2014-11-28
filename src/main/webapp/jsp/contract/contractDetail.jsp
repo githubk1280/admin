@@ -33,13 +33,14 @@
 														<strong>合同信息</strong>
 														<button id="modifyBtn" value="1"
 															class="btn btn-default btn-success"
-															style="margin-left: 10px; margin-right: 10px" type="button">修改</button>
-														<button id="save" value="1"
-															class="btn btn-default btn-success"
-															style="margin-left: 10px; margin-right: 10px;display: none" type="submit">保存</button>
+															style="margin-right: 10px;float:right; padding:1px 12px" type="button">修改</button>
 														<button id="cancelBtn"  value="2"
 															class="btn btn-default btn-success "
-															style="margin-left: 10px; margin-right: 10px; display: none" type="reset">取消</button>
+															style="margin-left: 10px; margin-right: 10px;float:right; padding:1px 12px; display: none" type="reset">取消</button>
+														<button id="save" value="1"
+															class="btn btn-default btn-success"
+															style="margin-left: 10px; margin-right: 10px;float:right; padding:1px 12px; display: none" type="submit">保存</button>
+														
 													</h3>
 												</div>
 												<div id="collapseOne" class="panel-collapse collapse in">

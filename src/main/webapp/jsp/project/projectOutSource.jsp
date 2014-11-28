@@ -87,9 +87,9 @@ function outSourcingController($scope, $http) {
 				class="panel_a" ng-click="poToggle()"> <span id="arrowOutsource" class="glyphicon glyphicon-chevron-down" 
 					style="color: rgb(0, 0, 0);"></span>
 			</a>
-			<button id="modifyOutsource"  type="button" class="btn btn-default btn-success" style="margin-left: 10px;">修改</button>
-			<button id="cancelOutsource"  type="reset" class="btn btn-default btn-success" style="margin-left: 10px; display: none" ng-click="cancelClick()">取消</button>
-			<button id="saveOutsource"  class="btn btn-default btn-success" style="margin-left: 10px; display: none" ng-click="saveOutSource()">保存</button>
+			<button id="modifyOutsource"  type="button" class="btn btn-default btn-success" style="margin-right: 10px;float:right; padding:1px 12px">修改</button>
+			<button id="cancelOutsource"  type="reset" class="btn btn-default btn-success" style="margin-left: 10px; margin-right: 10px;float:right; padding:1px 12px; display: none" ng-click="cancelClick()">取消</button>
+			<button id="saveOutsource"  class="btn btn-default btn-success" style="margin-left: 10px; margin-right: 10px;float:right; padding:1px 12px; display: none" ng-click="saveOutSource()">保存</button>
 		</h3>
 	</div>
 
