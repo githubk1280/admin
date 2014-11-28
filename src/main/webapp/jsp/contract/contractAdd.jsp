@@ -25,7 +25,7 @@
 							<div class="row">
 								<div class="col-lg-12">
 								<form:form action="add" method="post" commandName="contract">
-									<div class="panel-body">
+									<div class="panel-body" ng-controller="contractController">
 										<div class="panel-group" id="accordion">
 											<div class="panel panel-default">
 												<div class="panel-heading ">
@@ -42,7 +42,9 @@
 																	<label id="projectIDLbl" class="warning-style">该字段不允许为空</label>
 																</div>
 																<div>
-																	<form:input id="projectId" path="projectId" class="form-control" />
+																	<form:select ng-model="selected" ng-options="m.projectId for m in idAndPrincipal" path="projectId" >
+																   		<option value="">-- 请选择 --</option>
+																	</form:select>
 																</div>
 															</div>
 															<div class="col-md-6 col-sm-12 col-xs-12">
@@ -236,6 +238,17 @@
 		
 		
 	});
+	function contractController($scope, $http) {
+		$scope.selected = '';
+		$http.get("/admin/sample/ajax/projectIdPrincipal").success(
+				function(data) {
+					if (data.success == true) {
+						$scope.idAndPrincipal = JSON.parse(data.data);
+					}
+				}).error(function(err) {
+				alert("获取失败，请重试!");
+				});
+	}
 	</script>
 </body>
 

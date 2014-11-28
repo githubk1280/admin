@@ -12,7 +12,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-
 <title>生物信息管理系统</title>
 <%@ include file="../comm-fragement/main-css"%>
 </head>
@@ -22,12 +21,12 @@
 		<%@ include file="../common/nav.jsp"%>
 		<div id="page-wrapper" class="detailPage">
 			<div class="row">
-				<div class="col-lg-12">
+				<div class="col-lg-12" >
 					<!-- .panel-heading -->
 					<form:form action="add" method="post" commandName="sample">
 					<div class="panel-body">
 						<div class="panel-group" id="accordion">
-							<div class="panel panel-default">
+							<div class="panel panel-default" ng-controller="sampleController">
 								<div class="panel-heading ">
 									<h3 class="panel-title">
 										<strong>添加样本基本信息</strong>
@@ -36,14 +35,16 @@
 								</div>
 								<div id="collapseOne" class="panel-collapse collapse in">
 									<div class="panel-body">
-										<div class="row">
+										<div class="row row-margin">
 											<div class="col-md-6 col-sm-12 col-xs-12">
 												<div>
 													<label>所属项目编号:</label>
 													<label id="projectIdLbl" class="warning-style">该字段不允许为空</label>
 												</div>
 												<div>
-													<form:input id="projectId" path="projectId" class="form-control" />
+													<form:select ng-model="selected" ng-options="m.projectId for m in idAndPrincipal" path="projectId" class="form-control">
+													    <option value="">-- 请选择 --</option>
+													</form:select>
 												</div>
 											</div>
 										</div>
@@ -74,7 +75,7 @@
 													<label id="samplePrincripalLbl" class="warning-style">该字段不允许为空</label>
 												</div>
 												<div>
-													<form:input id="samplePrincripal" path="samplePrincripal" class="form-control"/>
+													<form:input id="samplePrincripal" path="samplePrincripal" class="form-control" ng-model="selected.principal" readonly="true" />
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -193,15 +194,28 @@
 
 	<%@ include file="../comm-fragement/main-js"%>
 	<%@ include file="../comm-fragement/addSampleVal-js"%>
-	<script type="text/javascript">
+	<script type="text/javascript" >
 	$(document).ready(function() {
 		$("#cancel").click(function() {
 			window.location.replace("http://"+window.location.host+"/admin/sample/list");			
 			return false;
 		});
 		
-		
 	});
+	
+	function sampleController($scope, $http) {
+		$scope.selected = '';
+		$http.get("/admin/sample/ajax/projectIdPrincipal").success(
+				function(data) {
+					if (data.success == true) {
+						$scope.idAndPrincipal = JSON.parse(data.data);
+					}
+				}).error(function(err) {
+				alert("获取失败，请重试!");
+				});
+	}
+	
+	
 	</script>
 
 

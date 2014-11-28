@@ -1,21 +1,30 @@
 package com.tmrasys.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tmrasys.constant.page.PageResourceConstant;
 import com.tmrasys.domain.Employee;
+import com.tmrasys.domain.OutSource;
+import com.tmrasys.domain.PageOutSource;
+import com.tmrasys.domain.ProjectIdPrincipal;
 import com.tmrasys.domain.Sample;
+import com.tmrasys.service.project.ProjectService;
 import com.tmrasys.service.sample.SampleService;
+import com.tmrasys.utils.JsonResponseUtils;
 
 @Controller
 @RequestMapping("/sample")
@@ -24,6 +33,8 @@ public class SampleController {
 
 	@Autowired
 	private SampleService sampleService;
+	@Autowired
+	private ProjectService projectService;
 
 	@PostConstruct
 	public void init() {
@@ -73,6 +84,16 @@ public class SampleController {
 		view.addObject(sample);
 		view.setViewName(PageResourceConstant.SAMPLE_DETAIL);
 		return view;
+	}
+	
+	@RequestMapping("/ajax/projectIdPrincipal")
+	public void load(HttpSession session, HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		Employee employee = (Employee) session.getAttribute("user");
+		List<ProjectIdPrincipal> list = projectService.loadProjectIdPrincipal(employee.getEmployeeId());
+		if (!CollectionUtils.isEmpty(list)) {
+			JsonResponseUtils.returnJsonResponse(response, list, true, 200);
+		}
 	}
 
 }
