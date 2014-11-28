@@ -46,7 +46,7 @@
 							</div>
 							<div class="col-md-10 col-sm-10 col-xs-9">
 								<input type="text" name="userName" class="form-control"
-									placeholder="用户名 " maxlength=30 required autofocus>
+									placeholder="用户名 " maxlength=30 required autofocus/>
 							</div>
 						</div>
 						<br />
@@ -62,7 +62,7 @@
 							</div>
 							<div class="col-md-10 col-sm-10 col-xs-9 ">
 								<input type="password" name="password" class="form-control"
-									placeholder="密码" maxlength=20 required>
+									placeholder="密码" maxlength=20 required/>
 							</div>
 						</div>
 						<button class="btn btn-lg btn-primary btn-block submit-style"

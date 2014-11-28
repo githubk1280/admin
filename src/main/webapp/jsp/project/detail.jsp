@@ -14,7 +14,9 @@
 <meta name="author" content="">
 
 <title>生物信息管理系统</title>
+
 <%@ include file="../comm-fragement/main-css"%>
+
 </head>
 
 <body ng-app="">
