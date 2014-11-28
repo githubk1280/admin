@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.tmrasys.constant.page.PageResourceConstant;
 import com.tmrasys.domain.Employee;
 import com.tmrasys.service.employee.EmployeeService;
+import com.tmrasys.utils.FailedUtils;
 
 @Controller
 @RequestMapping("/user")
@@ -32,6 +33,10 @@ public class UserController {
 		if (null == exist) {
 			employeeService.addEmployee(employee);
 			view.addObject("newuser", employee);
+		} else {
+			view.setViewName("redirect:"
+					+ FailedUtils.getLoginErrorMessage("用户已存在"));
+			return view;
 		}
 		view.setViewName(PageResourceConstant.USER_ADD_RESULT);
 		return view;
