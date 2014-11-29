@@ -26,61 +26,49 @@
 						<div class="panel panel-default panel-info">
 							<div class="panel-heading ">
 								<h3 class="panel-title">
-									<strong>文件上传</strong>
+									<strong>${parent.fileName} 文件列表</strong>
 								</h3>
 							</div>
 							<div class="panel-body">
 								<div class="row">
 									<div class="col-md-12">
-										<button id="createFolder" data-toggle="modal"
-											data-target="#modalCreateFolder"
-											class="btn btn-default btn-primary pull-left"
-											style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px">创建文件夹</button>
+										<form action="/admin/doc/upload/${parent.fileId}" method="post" enctype="multipart/form-data">
+											<input type="file" name="file" class="btn btn-default btn-primary pull-left"
+											style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px" /> 
+											<button id="uploadFile" type="submit"
+												class="btn btn-default btn-primary pull-left"
+												style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px">上传文件</button>
+										</form>
 									</div>
 								</div>
 								<div class="table-responsive">
 									<table class="table table-hover">
 										<thead>
 											<tr>
-												<th>文件夹</th>
-												<!-- 												<th>所有者</th> -->
+												<th></th>
+												<th></th>
 												<th></th>
 											</tr>
 										</thead>
 										<tbody id="folderTableBody">
-<!-- 											<tr> -->
-<!-- 												<td><i class="fa fa-bar-chart-o fa-fw"></i> <a href="/admin/doc/load/-1" -->
-<!-- 													class="project_link">项目方案</a></td> -->
-<!-- 																								<td>所有者</td> -->
-<!-- 												<td>默认文件夹</td> -->
-<!-- 											</tr> -->
-<!-- 											<tr> -->
-<!-- 												<td><i class="fa fa-bar-chart-o fa-fw"></i> <a href="/admin/doc/load/-2" -->
-<!-- 													class="project_link">项目合同</a></td> -->
-<!-- 												<td>默认文件夹</td> -->
-<!-- 											</tr> -->
-<!-- 											<tr> -->
-<!-- 												<td><i class="fa fa-bar-chart-o fa-fw"></i> <a href="/admin/doc/load/-3" -->
-<!-- 													class="project_link">发表文章</a></td> -->
-<!-- 												<td>默认文件夹</td> -->
-<!-- 											</tr> -->
-<!-- 											<tr> -->
-<!-- 												<td><i class="fa fa-bar-chart-o fa-fw"></i> <a href="/admin/doc/load/-4" -->
-<!-- 													class="project_link">样本信息</a></td> -->
-<!-- 												<td>默认文件夹</td> -->
-<!-- 											</tr> -->
-<!-- 											<tr> -->
-<!-- 												<td><i class="fa fa-bar-chart-o fa-fw"></i><a href="/admin/doc/load/-5" -->
-<!-- 													class="project_link">实验结果</a></td> -->
-<!-- 												<td>默认文件夹</td> -->
-<!-- 											</tr> -->
-											<c:forEach items="${docs}" var="doc" varStatus="status">
-												<tr>
-													<td><i class="fa fa-bar-chart-o fa-fw"></i><a href="/admin/doc/load/${doc.fileId}"
-														class="project_link">${doc.fileName}</a></td>
-													<td id="tddddd"><a style="color: blue;">删除</a></td>
-												</tr>
-											</c:forEach>
+											<c:choose>
+												<c:when test="${docs.size()<1}">
+													<tr>
+														<td>文件夹下暂无文件</td>
+													</tr>
+												</c:when>
+												<c:otherwise>
+													<c:forEach items="${docs}" var="doc" varStatus="status">
+														<tr>
+															<td><i class="fa fa-bar-chart-o fa-fw"></i>${doc.fileName}</td>
+															<td><i class="fa fa-bar-chart-o fa-fw"></i> <a href="/admin/doc/download/${doc.fileId}"
+																class="project_link">下载</a></td>
+															<td><i class="fa fa-bar-chart-o fa-fw"></i> <a href="#"
+																class="project_link">删除</a></td>
+														</tr>
+													</c:forEach>
+												</c:otherwise>
+											</c:choose>
 										</tbody>
 									</table>
 								</div>
@@ -103,11 +91,10 @@
 		<div class="modal-dialog" style="margin: 300px auto">
 			<div class="modal-content">
 				<div class="modal-body" align="center">
-					<input id="folderName" type="text" class="form-control"
-						placeholder="请填写文件名" maxlength="10">
+					删除此文件？
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
 					<a href="#"><button id="modalBtn" type="button"
 							class="btn btn-primary" data-dismiss="modal">确认</button></a>
 				</div>
@@ -131,10 +118,7 @@
 	        success: function(data) {
 	        	var response = JSON.parse(data);
 	        	if(response.success){
-// 	        		$("tr").last().after("<tr><td><i class='fa fa-bar-chart-o fa-fw'></i>"+
-// 	        				"<a href='/admin/doc/load/"+${doc.fileId}+"class='project_link'>" + $("#folderName").val() + 
-// 	        				"</a></td><td ><a style='color:blue;'>删除</a></td></tr>");
-	        		location.reload(true);
+	        		$("tr").last().after("<tr><td><i class='fa fa-bar-chart-o fa-fw'></i><a href='#' class='project_link'>" + $("#folderName").val() + "</a></td><td ><a style='color:blue;'>删除</a></td></tr>");
 	        	}else{
 	        		alert(response.data);
 	        	}

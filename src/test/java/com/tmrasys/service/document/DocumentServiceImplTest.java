@@ -2,22 +2,26 @@ package com.tmrasys.service.document;
 
 import java.io.File;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tmrasys.base.AbstractBaseTestConfig;
-import com.tmrasys.controller.DocumentController.FileType;
+import com.tmrasys.controller.DocumentController.FileTypeEnum;
 import com.tmrasys.domain.Document;
 import com.tmrasys.utils.FileUtils;
-@Ignore
+//@Ignore
 public class DocumentServiceImplTest  extends AbstractBaseTestConfig {
 	@Autowired
 	DocumentService service;
 
 	@Test
 	public void testLoadRootFolderByName() {
-		System.out.println(service.loadRootFolderByUserName("test"));
+		System.out.println(service.loadRootFolderCountByUserName("james","test"));
+	}
+	
+	@Test
+	public void loadFilesUnderByFolderId() {
+		System.out.println(service.loadFilesUnderByFolderId("james", 3, FileTypeEnum.FILE.getType()));
 	}
 
 	@Test
@@ -27,7 +31,7 @@ public class DocumentServiceImplTest  extends AbstractBaseTestConfig {
 		d.setFileOwner("james");
 		d.setFilePath(FileUtils.getRootPath() + "james" + File.separator
 				+ "test");
-		d.setFileType(FileType.FOLDER.getType());
+		d.setFileType(FileTypeEnum.FOLDER.getType());
 		//root node
 		d.setParentId(0);
 		service.insertDocument(d);

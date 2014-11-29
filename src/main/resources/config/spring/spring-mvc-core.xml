@@ -10,7 +10,6 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
 http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
-	<mvc:annotation-driven></mvc:annotation-driven>
 	<context:component-scan base-package="com.tmrasys.controller"></context:component-scan>
 	<context:component-scan base-package="com.tmrasys.service"></context:component-scan>
 	<!-- <context:annotation-config/> -->
@@ -22,7 +21,9 @@ http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 		<property name="prefix" value="/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	
+
+	<mvc:annotation-driven></mvc:annotation-driven>
+
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
@@ -35,7 +36,7 @@ http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 	<!-- </bean> -->
 
 	<mvc:default-servlet-handler />
-	
+
 	<import resource="spring-inteceptor.xml" />
 	<import resource="spring-db.xml" />
 	<import resource="spring-mybatis.xml" />

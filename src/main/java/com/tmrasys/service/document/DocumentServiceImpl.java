@@ -22,8 +22,8 @@ public class DocumentServiceImpl implements DocumentService {
 	 * .lang.String)
 	 */
 	@Override
-	public int loadRootFolderByUserName(String name) {
-		return documentDao.loadFolderByName(name, 0);
+	public int loadRootFolderCountByUserName(String owner, String name) {
+		return documentDao.loadFolderByName(name, owner, 0);
 	}
 
 	/*
@@ -40,7 +40,23 @@ public class DocumentServiceImpl implements DocumentService {
 
 	@Override
 	public List<Document> loadRootFoldersUnderUser(String name) {
-		return documentDao.loadRootFoldersUnderUser(name,0);
+		return documentDao.loadRootFoldersUnderUser(name, 0);
+	}
+
+	@Override
+	public List<Document> loadFilesUnderByFolderId(String ownerName,
+			int folderId, int type) {
+		return documentDao.loadFilesUnderByFolderId(ownerName, folderId, type);
+	}
+
+	@Override
+	public Document loadDocumentById(int folderId) {
+		return documentDao.loadDocumentById(folderId);
+	}
+
+	@Override
+	public Document loadFileByUserName(String userName, String fileName) {
+		return documentDao.loadFileByUserName(userName, fileName);
 	}
 
 }

@@ -7,18 +7,33 @@
 		INSERT INTO
 		document
 		(FileId, FileName, FilePath,
-		FileOwner, FileType, ParentId, AddTime)
+		FileOwner, FileOwnerId, FileType, ParentId, AddTime)
 		VALUES
-		(#{fileId},#{fileName},#{filePath},#{fileOwner},#{fileType},#{parentId},now());
+		(#{fileId},#{fileName},#{filePath},#{fileOwner},#{fileOwnerId},#{fileType},#{parentId},now());
 	</insert>
+	<select id="loadDocumentById" resultMap="docResult"
+		parameterType="map">
+		SELECT * FROM document
+		WHERE
+		FileId=#{id}
+	</select>
+	<select id="loadFileByUserName" resultMap="docResult" parameterType="map">
+		SELECT * FROM document
+		WHERE
+		FileOwner=#{userName}
+		AND
+		FileName=#{fileName}
+	</select>
 	<select id="loadFolderByName" resultType="int" parameterType="map">
 		SELECT count(FileId) FROM document
 		WHERE
+		FileOwner=#{owner}
+		AND
 		FileName=#{name}
 		AND
 		ParentId=#{parentId}
 	</select>
-	<select id="loadRootFoldersUnderUser" resultMap="docResult" 
+	<select id="loadRootFoldersUnderUser" resultMap="docResult"
 		parameterType="map">
 		SELECT * FROM document
 		WHERE
@@ -26,11 +41,22 @@
 		AND
 		ParentId=#{parentId}
 	</select>
+	<select id="loadFilesUnderByFolderId" resultMap="docResult"
+		parameterType="map">
+		SELECT * FROM document
+		WHERE
+		FileOwner=#{owner}
+		AND
+		ParentId=#{folderId}
+		AND
+		FileType=#{fileType}
+	</select>
 	<resultMap type="com.tmrasys.domain.Document" id="docResult">
 		<id property="fileId" column="FileId" />
 		<result property="fileName" column="FileName" />
 		<result property="filePath" column="FilePath" />
 		<result property="fileOwner" column="FileOwner" />
+		<result property="fileOwnerId" column="FileOwnerId" />
 		<result property="fileType" column="FileType" />
 		<result property="parentId" column="ParentId" />
 		<result property="addTime" column="AddTime" />
@@ -40,6 +66,7 @@
 		<parameter property="fileName" resultMap="FileName" />
 		<parameter property="filePath" resultMap="FilePath" />
 		<parameter property="fileOwner" resultMap="FileOwner" />
+		<parameter property="fileOwnerId" resultMap="FileOwnerId" />
 		<parameter property="fileType" resultMap="FileType" />
 		<parameter property="parentId" resultMap="ParentId" />
 		<parameter property="addTime" resultMap="AddTime" />

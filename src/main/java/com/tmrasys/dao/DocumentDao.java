@@ -11,6 +11,7 @@ import com.tmrasys.domain.Document;
 public interface DocumentDao {
 
 	public int loadFolderByName(@Param(value = "name") String name,
+			@Param(value = "owner") String owner,
 			@Param(value = "parentId") int parentId);
 
 	public void insertDocument(Document d);
@@ -18,5 +19,16 @@ public interface DocumentDao {
 	public List<Document> loadRootFoldersUnderUser(
 			@Param(value = "name") String name,
 			@Param(value = "parentId") int parentId);
+
+	public List<Document> loadFilesUnderByFolderId(
+			@Param(value = "owner") String owner,
+			@Param(value = "folderId") int folderId,
+			@Param(value = "fileType") int fileType);
+
+	public Document loadDocumentById(@Param(value = "id") int id);
+
+	public Document loadFileByUserName(
+			@Param(value = "userName") String userName,
+			@Param(value = "fileName") String fileName);
 
 }

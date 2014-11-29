@@ -10,6 +10,7 @@ public class Document {
 	private String fileName;
 	private String filePath;
 	private String fileOwner;
+	private int fileOwnerId;
 	private int fileType;
 	private int parentId;
 	private Date addTime;
