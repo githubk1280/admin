@@ -17,4 +17,17 @@ public class FileUtils {
 				+ name);
 
 	}
+
+	final static String winRootDir = "D:" + File.separator + "admin"
+			+ File.separator + "upload" + File.separator;
+	final static String linuxRootDir = File.separator + "admin"
+			+ File.separator + "pload" + File.separator;
+
+	public static String getRootPath() {
+		String system = System.getProperty("os.name");
+		if (system.toLowerCase().indexOf("win") != -1) {
+			return winRootDir;
+		}
+		return linuxRootDir;
+	}
 }

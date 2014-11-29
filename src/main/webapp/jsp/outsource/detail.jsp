@@ -113,7 +113,7 @@
 												</div>
 												<div>
 													<input type="text" class="form-control"
-														value="${outsource.exprResultRecived==true?'已收到':'未收到'}" disabled>
+														value="${outsource.exprResultRecived==1?'已收到':'未收到'}" disabled>
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
