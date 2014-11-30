@@ -36,7 +36,7 @@
 	</div>
 	</ng-view>
 	<!-- navbar tabs -->
-	<ul
+	<ul id="tabUl"
 		class="nav navbar-nav navbar-default nav-pills navbar-nav-left navbar-default-color">
 		<li id="tab1"><a href="<%=request.getContextPath()%>/project/pages/1"><i class="fa fa-tasks fa-fw "></i><strong>项目管理</strong></a></li>
 		<li id="tab2"><a href="<%=request.getContextPath()%>/doc/load"><i class="fa fa-tasks fa-fw"></i><strong>文档管理</strong></a></li>
@@ -53,13 +53,21 @@
 		role="navigation">
 
 		<div class="sidebar-nav ">
-			<ul class="nav" id="side-menu">
-				<li id="projectBasicDataLi"><a id="link_pro" href="<%=request.getContextPath()%>/project/pages/1"><i
+			<ul class="nav" id="sidebarUl">
+				<li style="display:none" id="projectBasicDataLi"><a id="link_pro" href="<%=request.getContextPath()%>/project/pages/1"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>项目基本信息</strong></a></li>
-				<li id="customerBasicDataLi"><a id="link_customer" href="<%=request.getContextPath()%>/customer/pages/1"><i
+				<li  style="display:none" id="customerBasicDataLi"><a id="link_customer" href="<%=request.getContextPath()%>/customer/pages/1"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>客户基本信息</strong></a></li>
-				<li id="outsourceBasicDataLi"><a id="link_outsource" href="<%=request.getContextPath()%>/outsource/pages/1"><i
+				<li  style="display:none" id="outsourceBasicDataLi"><a id="link_outsource" href="<%=request.getContextPath()%>/outsource/pages/1"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>外包信息</strong></a></li>
+				<li  style="display:none" id="docBasiceDataLi"><a id="link_doc" href="<%=request.getContextPath()%>/doc/pages/1"><i
+						class="fa fa-bar-chart-o fa-fw"></i> <strong>文档基本信息</strong></a></li>
+				<li  style="display:none" id="contractBasicDataLi"><a id="link_contract" href="<%=request.getContextPath()%>/contract/pages/1"><i
+						class="fa fa-bar-chart-o fa-fw"></i> <strong>财务合同基本信息</strong></a></li>
+				<li  style="display:none" id="sampleBasicDataLi"><a id="link_contract" href="<%=request.getContextPath()%>/sample/pages/1"><i
+						class="fa fa-bar-chart-o fa-fw"></i> <strong>样品基本信息</strong></a></li>
+				<li  style="display:none" id="literatureBasicDataLi"><a id="link_contract" href="<%=request.getContextPath()%>/literature/list?pageIndex=1"><i
+						class="fa fa-bar-chart-o fa-fw"></i> <strong>文献基本信息</strong></a></li>
 <!-- 				<li><a id="link_proStatus" href="#"><i -->
 <!-- 						class="fa fa-bar-chart-o fa-fw"></i> <strong>项目进度</strong><span -->
 <!-- 						id="projectStatusBadge" class="badge sidebar-badge-margin">1</span></a> -->
@@ -78,6 +86,59 @@
 
 <script type="text/javascript">
 window.onload=function(){
+var activeTabUrlStr = window.location.pathname;
+	
+	if(activeTabUrlStr.indexOf("project")>0){
+		$("#tab1").addClass("active");
+		$("#tab1").siblings().removeClass();
+		$("#projectBasicDataLi").addClass("active");
+		$("#projectBasicDataLi").siblings().removeClass(); 
+		$("#projectBasicDataLi").css('display','block');
+		$("#customerBasicDataLi").css('display','block');
+		$("#outsourceBasicDataLi").css('display','block');
+		
+	}
+	
+	if(activeTabUrlStr.indexOf("doc")>0){
+		$("#tab2").addClass("active");
+		$("#tab2").siblings().removeClass();
+		$("#docBasiceDataLi").css('display','block');
+	}
+	
+	if(activeTabUrlStr.indexOf("contract")>0){
+		$("#tab3").addClass("active");
+		$("#tab3").siblings().removeClass();
+		$("#contractBasicDataLi").css('display','block');
+	}
+	if(activeTabUrlStr.indexOf("sample")>0){
+		$("#tab4").addClass("active");
+		$("#tab4").siblings().removeClass();
+		$("#sampleBasicDataLi").css('display','block');
+	}
+	if(activeTabUrlStr.indexOf("literature")>0){
+		$("#tab5").addClass("active");
+		$("#tab5").siblings().removeClass();
+		$("#literatureBasicDataLi").css('display','block');
+	}
+	
+	if(activeTabUrlStr.indexOf("customer")>0){
+		$("#tab1").addClass("active");
+		$("#tab1").siblings().removeClass();
+		$("#customerBasicDataLi").addClass("active");
+		$("#customerBasicDataLi").siblings().removeClass();
+	}
+	if(activeTabUrlStr.indexOf("outsource")>0){
+		$("#tab1").addClass("active");
+		$("#tab1").siblings().removeClass();
+		$("#outsourceBasicDataLi").addClass("active");
+		$("#outsourceBasicDataLi").siblings().removeClass();
+	}
+	/*
+	*/
+	
+	
+	
+	
 	if($("#role").val()=="1"){
 		$("#createUserLi").css('display','none');
 		$("#tab3").css('display','none');
@@ -103,6 +164,10 @@ window.onload=function(){
 		$("#create").css('display','none');
 		// outsourceTotalPanel
 	}
+	
+	$("#tabUl li a").click(function(){
+		//var temp = $("#tabValue").val('$(this).attr("id")')  ;
+	});
 
 };
 	
