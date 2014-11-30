@@ -94,7 +94,7 @@ public class ProjectController {
 		projectProgressService.addProjectProgress(new ProjectProgress(employee
 				.getEmployeeId(), employee.getName(), "项目创建", new Date(),
 				projectId, 0));
-		return new ModelAndView("redirect:list");
+		return new ModelAndView("redirect:pages/1");
 	}
 	
 	@RequestMapping("/search")

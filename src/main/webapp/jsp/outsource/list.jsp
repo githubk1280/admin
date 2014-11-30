@@ -25,12 +25,7 @@
 				<form role="form">
 					<div class="col-lg-12">
 						<h2 class="page-header form-group input-group">
-							<strong>外包基本信息</strong> <input type="text" class="form-control" style="width:26%;"
-								placeholder="请输入项目编号"> <span class="input-group-btn">
-								<button class="btn btn-default btn-primary" type="button">
-									<i class="fa fa-search" style="font-size:130%"></i>
-								</button>
-							</span>
+							<strong>外包基本信息</strong> 
 						</h2>
 					</div>
 				</form>
