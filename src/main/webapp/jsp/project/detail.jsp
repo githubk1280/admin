@@ -278,6 +278,31 @@
              });
 	    	
 	   	});
+	    
+	    $("#link_newStatus").click(function(){
+			$("#proStatusDate").css('display','block');
+			$("#proStatusUpdate").css('display','block');
+			$("#proStatusContent").css('display','block');
+			$("#cancelProjectStatus").css('display','block');
+			$("#saveProjectStatus").css('display','block');
+		});
+	    $("#cancelProjectStatus").click(function(){
+	    	$("#proStatusDate").css('display','none');
+			$("#proStatusUpdate").css('display','none');
+			$("#proStatusContent").css('display','none');
+			$("#proStatusBtn").css('display','none');
+			$("#cancelProjectStatus").css('display','none');
+			$("#saveProjectStatus").css('display','none');
+	    });
+	    
+	    $("#link_newStatus").click(function(){
+			$("#proStatusDate").css('display','block');
+			$("#proStatusUpdate").css('display','block');
+			$("#proStatusContent").css('display','block');
+			$("#proStatusBtn").css('display','block');
+			$("#btnCancel").css('display','block');
+		});
+	    
 	    function projectStatusController($scope, $http) {
 			$scope.psToggle = function() {
 				var target = $("#arrowProStatus");

@@ -35,7 +35,7 @@
 					</div>
 					<div>
 						<input id="" type="text" class="form-control"
-							ng-model="progress.projectId" value="${project.projectId }">
+							ng-model="progress.projectId" value="${project.projectId }" readonly>
 					</div>
 				</div>
 			</div>
@@ -97,17 +97,23 @@
 					</div>
 				</div>
 			</div>
-			<div id="proStatusBtn" class="row"
-				style="margin-top: 30px; display: none">
+			<div class="row row-margin">
 				<div class="col-md-6 col-sm-12 col-xs-12">
-					<button id="btnSave" class="btn btn-default btn-primary"
-						ng-click="saveProjectStatus()">保存</button>
-					<button id="btnCancel" class="btn btn-default btn-primary">取消</button>
+					<button id="saveProjectStatus" class="btn btn-default btn-primary pull-left" ng-click="saveProjectStatus()" 
+					        style="display:none;" type="submit">保存</button>
+					<button id="cancelProjectStatus" class="btn btn-default btn-primary pull-left" type="button" 
+					        style="display:none;margin-left:10px">取消</button>
 				</div>
 			</div>
+			
 			<!-- add new pro status end  -->
 
 		</div>
 	</div>
 </div>
 <!----------------------------------------project status end ------------------------->
+
+<script type="text/javascript">
+	
+	
+</script>
