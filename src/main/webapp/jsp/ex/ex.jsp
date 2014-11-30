@@ -15,12 +15,12 @@
 <meta name="author" content="">
 
 <title>生物信息管理系统</title>
-<%@ include file="comm-fragement/main-css"%>
+<%@ include file="../comm-fragement/main-css"%>
 </head>
 
 <body ng-app="">
 	<div id="wrapper">
-		<%@ include file="common/nav.jsp"%>
+		<%@ include file="../common/nav.jsp"%>
 		<div id="page-wrapper" class="detailPage">
 			<div class="row">
 				<div class="col-lg-12">
@@ -33,6 +33,7 @@
 								</h3>
 							</div>
 							<b>Failed URL: ${url}</b> 
+							
 							<br /> <b>Exception:
 								${exception.message}</b> 
 							<br />
