@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tmrasys.constant.page.PageResourceConstant;
+import com.tmrasys.domain.Contract;
 import com.tmrasys.domain.Employee;
 import com.tmrasys.domain.OutSource;
 import com.tmrasys.domain.PageOutSource;
@@ -57,6 +58,23 @@ public class SampleController {
 				.getEmployeeId());
 		ModelAndView view = new ModelAndView();
 		view.addObject("samples", samples);
+		view.setViewName(PageResourceConstant.SAMPLE_LIST);
+		return view;
+
+	}
+	
+	@RequestMapping("/pages/{page}")
+	public ModelAndView loadAllSamplesByUser(@PathVariable int page, HttpSession session) {
+		Employee employee = (Employee) session.getAttribute("user");
+		int count = sampleService.countByEmployee(employee.getEmployeeId());
+		List<Sample> samples = sampleService.getPagedByEmployee(employee.getEmployeeId(), page);
+		ModelAndView view = new ModelAndView();
+		int pages = 1;
+		if(count > 10) {
+			pages = (count + 9) / 10;
+		}
+		view.addObject("samples", samples);
+		view.addObject("pages", pages);
 		view.setViewName(PageResourceConstant.SAMPLE_LIST);
 		return view;
 

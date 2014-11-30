@@ -15,6 +15,34 @@
 		ORDER BY
 		sample_id;
 	</select>
+	
+	<select id="getPagedByEmployee" resultMap="sampleMapper"
+		resultType="list" parameterType="int">
+		select * from `test`.`sample` s
+		where
+		s.PROJECT_ID in
+		(select PE.project_id FROM project_employee PE
+		INNER JOIN
+		project P on
+		PE.PROJECT_ID = P.PROJECT_ID and PE.EMPLOYEE_ID=#{employeeId}
+		)
+		ORDER BY
+		sample_id LIMIT #{start}, #{end};
+	</select>
+	
+	<select id="countByEmployee" resultType="int" parameterType="int">
+		select count(*) from `test`.`sample` s
+		where
+		s.PROJECT_ID in
+		(select PE.project_id FROM project_employee PE
+		INNER JOIN
+		project P on
+		PE.PROJECT_ID = P.PROJECT_ID and PE.EMPLOYEE_ID=#{employeeId}
+		)
+		ORDER BY
+		sample_id ;
+	</select>
+	
 	<select id="getById" resultMap="sampleMapper" parameterType="int">
 		select * from `test`.`sample` s
 		where
