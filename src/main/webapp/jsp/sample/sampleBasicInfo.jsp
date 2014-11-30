@@ -22,13 +22,13 @@
 		<%@ include file="../common/nav.jsp"%>
 		<div id="page-wrapper"> 
             <div class="row">
-            <form role="form">
+            <form action="<%=request.getContextPath()%>/sample/search" method="post">
                 <div class="col-lg-12">
                     <h2 class="page-header form-group input-group"><strong>样本基本信息</strong>
                     <button id="create" class="btn btn-default btn-primary" style="margin-left: 10px;">创建新的样本</button>
-                    	<input type="text" class="form-control" style="width:26%;" placeholder="请输入项目编号">
+                    	<input id="searchInput" name="searchStr" type="text" class="form-control" style="width:26%;" placeholder="请输入项目编号">
 	                    <span class="input-group-btn">
-	                        <button class="btn btn-default btn-primary" type="button"><i class="fa fa-search" style="font-size:130%"></i></button>
+	                        <button class="btn btn-default btn-primary" type="submit"><i class="fa fa-search" style="font-size:130%"></i></button>
 	                    </span>
                     </h2>
                 </div>

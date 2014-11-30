@@ -16,4 +16,5 @@ public interface ContractDao {
 	List<Contract> getByProject(int projectId);
 	int countByEmployee(int employeeId);
 	List<Contract> getPagedByEmployee(@Param(value = "employeeId") int employeeId,@Param(value = "start") int start,@Param(value = "end") int end);
+	List<Contract> findContractByProjectId(@Param(value="projectId")String projectId,@Param(value="employeeID")int employeeID);
 }

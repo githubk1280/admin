@@ -1,4 +1,4 @@
-﻿<!-- Navigation -->
+<!-- Navigation -->
 <nav
 	class="navbar navbar-default navbar-static-top  navbar-default-color"
 	role="navigation" style="margin-bottom: 0">
@@ -71,3 +71,4 @@
 	</div>
 	<!-- /.navbar-static-side -->
 </nav>
+

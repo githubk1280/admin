@@ -78,6 +78,15 @@
 		#{diskLocation}, #{sampleAmount}, #{deliveryNum}, #{deliveryType},
 		#{isDelivery});
 	</insert>
+	
+	<select id="findSampleByProjectId" resultMap="sampleMapper"
+		parameterType="map">
+		SELECT * FROM sample s,project_employee pe
+		WHERE s.project_id = pe.project_id
+		      AND pe.employee_id = #{employeeID}
+		      AND s.project_id LIKE "%"#{projectId}"%"
+		ORDER BY s.sample_id DESC		
+	</select>
 
 	<resultMap type="com.tmrasys.domain.Sample" id="sampleMapper">
 		<id property="sampleId" column="SAMPLE_ID" />

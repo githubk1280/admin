@@ -91,5 +91,15 @@ public class ContractController {
 		view.setViewName(PageResourceConstant.CONTRACT_DETAIL);
 		return view;
 	}
+	
+	@RequestMapping("/search")
+	public ModelAndView search(String searchStr,HttpSession session){
+		Employee employee = (Employee)session.getAttribute("user");
+		List<Contract> contracts = contractService.findContractByProjectId(searchStr, employee.getEmployeeId());
+		ModelAndView view = new ModelAndView();
+		view.addObject("contracts", contracts);
+		view.setViewName(PageResourceConstant.CONTRACT_LIST);
+		return view;
+	}
 
 }

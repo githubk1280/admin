@@ -53,4 +53,8 @@ public class ContractServiceImpl implements ContractService {
 		}
 		return contractDao.getPagedByEmployee(employeeId, start, end);
 	}
+	public List<Contract> findContractByProjectId(String projectId, int employeeId) {
+		// TODO Auto-generated method stub
+		return contractDao.findContractByProjectId(projectId, employeeId);
+	}
 }

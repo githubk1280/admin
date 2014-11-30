@@ -11,4 +11,5 @@ public interface SampleService {
 	Sample getById(int sampleId);
 	int countByEmployee(int employeeId);
 	List<Sample> getPagedByEmployee(int employeeId, int page);
+	List<Sample> findSampleByProjectId(String projectId,int employeeID);
 }

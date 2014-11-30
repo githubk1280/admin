@@ -1,5 +1,6 @@
 package com.tmrasys.controller;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -50,6 +51,7 @@ public class ProjectController {
 
 	}
 	
+
 	@RequestMapping("/pages/{page}")
 	public ModelAndView loadProjectByPage(@PathVariable int page, HttpSession session){
 		Employee employee = (Employee) session.getAttribute("user");
@@ -66,6 +68,7 @@ public class ProjectController {
 		return view;
 
 	}
+
 
 	@RequestMapping("/list")
 	public ModelAndView loadAllProjectsByUser(HttpSession session){
@@ -94,7 +97,17 @@ public class ProjectController {
 				projectId, 0));
 		return new ModelAndView("redirect:list");
 	}
-
+	
+	@RequestMapping("/search")
+	public ModelAndView search(String searchStr,HttpSession session){
+		Employee employee = (Employee) session.getAttribute("user");
+		List<Project> projects = projectService.findProjectByProjectName(searchStr,employee.getEmployeeId());
+		ModelAndView view = new ModelAndView();
+		view.addObject("projects",projects);
+		view.setViewName(PageResourceConstant.PROJECT_LIST);
+		return view;
+	}
+	
 	@RequestMapping("/add-redirect")
 	public ModelAndView addRedirect() {
 		Project project = new Project();
@@ -114,5 +127,7 @@ public class ProjectController {
 		return view;
 
 	}
-
+	
+	
+	
 }

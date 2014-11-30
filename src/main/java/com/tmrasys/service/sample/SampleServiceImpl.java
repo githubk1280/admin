@@ -35,6 +35,7 @@ public class SampleServiceImpl implements SampleService {
 	}
 
 	@Override
+
 	public int countByEmployee(int employeeId) {
 		return sampleDao.countByEmployee(employeeId);
 	}
@@ -47,6 +48,11 @@ public class SampleServiceImpl implements SampleService {
 			start = (pageIndex - 1) * 10;
 		}
 		return sampleDao.getPagedByEmployee(employeeId, start, end);
+	}
+
+	public List<Sample> findSampleByProjectId(String projectId, int employeeID) {
+		// TODO Auto-generated method stub
+		return sampleDao.findSampleByProjectId(projectId, employeeID);
 	}
 
 }

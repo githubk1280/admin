@@ -15,4 +15,6 @@ public interface ProjectDao {
 	void addProject(Project project);
 	int countProjectsByEmployee(int employeeId);
 	List<Project> loadProjectsPagination(@Param(value = "employeeId") int employeeId,@Param(value = "start") int start,@Param(value = "end") int end);
+	List<Project> findProjectByProjectName(@Param(value = "projectName")String projectName,
+			@Param(value="employeeID")int employeeID);
 }

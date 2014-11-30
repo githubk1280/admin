@@ -13,4 +13,6 @@ public interface ProjectService {
 	int countProjectsByEmployee(int employeeId);
 	List<ProjectIdPrincipal> loadProjectIdPrincipal(int userId);
 	List<Project> loadProjectsPagination(int userId, int pageIndex);
+	List<Project> findProjectByProjectName(String projectName,int employeeID);
+
 }
