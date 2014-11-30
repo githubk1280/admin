@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tmrasys.dao.LiteratureDao">
+	<insert id="insert" keyProperty="id" parameterMap="lteParameter"
+		useGeneratedKeys="true">
+		INSERT INTO
+		literature
+		(TITLE, AUTHOR,
+		PUBLICATION_YEAR,
+		LOCATIONS, ABSTRACT)
+		VALUES
+		(#{title},#{author},#{publishDate},#{location},#{abstracts})
+	</insert>
+	<select id="loadAllLiteratures" resultMap="lteResult"
+		parameterType="map">
+		SELECT * FROM literature
+		LIMIT #{start},#{offset}
+	</select>
+	<select id="totalCount" resultType="int">
+		SELECT count(LITERATURE_ID) FROM literature
+	</select>
+	<resultMap type="com.tmrasys.domain.Literature" id="lteResult">
+		<id property="id" column="LITERATURE_ID" />
+		<result property="title" column="TITLE" />
+		<result property="author" column="AUTHOR" />
+		<result property="publishDate" column="PUBLICATION_YEAR" />
+		<result property="location" column="LOCATIONS" />
+		<result property="abstracts" column="ABSTRACT" />
+	</resultMap>
+	<parameterMap type="com.tmrasys.domain.Literature" id="lteParameter">
+		<parameter property="id" resultMap="LITERATURE_ID" />
+		<parameter property="title" resultMap="TITLE" />
+		<parameter property="author" resultMap="AUTHOR" />
+		<parameter property="publishDate" resultMap="PUBLICATION_YEAR" />
+		<parameter property="location" resultMap="LOCATIONS" />
+		<parameter property="abstracts" resultMap="ABSTRACT" />
+	</parameterMap>
+</mapper>
+

@@ -53,23 +53,16 @@
 											</tr>
 										</thead>
 										<tbody id="folderTableBody">
-											<tr>
-												<td>项目方案</td>
-												<td>所有者</td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td><a style="color: blue;">下载</a></td>
-											</tr>
-											<tr>
-												<td>项目合同</td>
-												<td>所有者</td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td id="tddddd"><a style="color: blue;">下载</a></td>
-											</tr>
-
+											<c:forEach items="${lts}" var="lte" varStatus="status">
+												<tr>
+													<td>${lte.title }</td>
+													<td>${lte.author }</td>
+													<td><fmt:formatDate value="${lte.publishDate }"	pattern="yyyy-MM-dd" /></td>
+													<td>${lte.location }</td>
+													<td>${lte.abstracts.substring(0,20)}......</td>
+													<td><a style="color: blue;">下载</a></td>
+												</tr>
+											</c:forEach>
 										</tbody>
 									</table>
 								</div>
