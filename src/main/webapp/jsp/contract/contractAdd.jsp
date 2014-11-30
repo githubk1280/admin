@@ -232,7 +232,7 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		$("#cancel").click(function() {
-			window.location.replace("http://"+window.location.host+"/admin/contract/list");			
+			window.location.replace("http://"+window.location.host+"/admin/contract/pages/1");			
 			return false;
 		});
 		

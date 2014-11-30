@@ -71,7 +71,7 @@ public class ContractController {
 	@RequestMapping("/add")
 	public ModelAndView add(Contract contract, HttpSession session) {
 		contractService.addContract(contract);
-		return new ModelAndView("redirect:list");
+		return new ModelAndView("redirect:pages/1");
 	}
 
 	@RequestMapping("/add-redirect")

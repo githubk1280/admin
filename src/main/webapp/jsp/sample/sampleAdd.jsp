@@ -197,7 +197,7 @@
 	<script type="text/javascript" >
 	$(document).ready(function() {
 		$("#cancel").click(function() {
-			window.location.replace("http://"+window.location.host+"/admin/sample/list");			
+			window.location.replace("http://"+window.location.host+"/admin/sample/pages/1");			
 			return false;
 		});
 		

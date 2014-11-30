@@ -56,7 +56,7 @@
 							<c:forEach items="${customers}" var="customer"
 								varStatus="status">
 								<tr>
-									<td><a href="${customer.customerId}" target="_blank"
+									<td><a href="<%=request.getContextPath()%>/customer/${customer.customerId}" target="_blank"
 										class="project_link">${customer.customerName}</a></td>
 									<td>${customer.workUnit}</td>
 									<td>${customer.department}</td>

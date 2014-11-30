@@ -50,7 +50,7 @@
               <tbody>
               	<c:forEach items="${samples}" var="sample" varStatus="status">
               		<tr>
-						<td><a href="${sample.sampleId}" target="_blank" class="project_link">${sample.sampleId}</a></td>
+						<td><a href="<%=request.getContextPath()%>/sample/${sample.sampleId}" target="_blank" class="project_link">${sample.sampleId}</a></td>
 						<td>${sample.projectId}</td>
 						<td>${sample.projectPrincripal}</td>
 						<td><fmt:formatDate value="${sample.reciveDate}"

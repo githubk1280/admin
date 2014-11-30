@@ -58,7 +58,7 @@
 							<c:forEach items="${projects}" var="project" varStatus="status">
 								<tr>
 									<td>${project.projectId}</td>
-									<td><a href="${project.projectId}" target="_blank" class="project_link">${project.projectName}</a></td>
+									<td><a href="<%=request.getContextPath()%>/project/${project.projectId}" target="_blank" class="project_link">${project.projectName}</a></td>
 									<td>${project.projectType}</td>
 									<td>${project.researchDirection}</td>
 									<td><fmt:formatDate value="${project.startDate}"

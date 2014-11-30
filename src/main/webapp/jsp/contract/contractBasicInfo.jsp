@@ -54,7 +54,7 @@
               <tbody>
               	<c:forEach items="${contracts}" var="contract" varStatus="status">
               		<tr>
-						<td><a href="${contract.contractId}" target="_blank" class="project_link">${contract.contractId}</a></td>
+						<td><a href="<%=request.getContextPath()%>/contract/${contract.contractId}" target="_blank" class="project_link">${contract.contractId}</a></td>
 						<td>${contract.projectId}</td>
 						<td>${contract.contractType}</td>
 						<td>${contract.signPersonNameB}</td>
