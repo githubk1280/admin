@@ -85,6 +85,7 @@ window.onload=function(){
 		$("#modifyOutsource").css('display','none');
 		$("#customerBasicDataLi").css('display','none');
 		$("#customerTotalPanel").css('display','none');
+		$("#create").css('display','none');
 	}
 	if($("#role").val()=="3"){
 		$("#createUserLi").css('display','none');
@@ -99,6 +100,7 @@ window.onload=function(){
 		$("#customerTotalPanel").css('display','none');
 		$("#projectstatusTotalPanel").css('display','none');
 		$("#modifyProBasicData").css('display','none');
+		$("#create").css('display','none');
 		// outsourceTotalPanel
 	}
 
