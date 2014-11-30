@@ -33,7 +33,7 @@
 								<div class="row">
 									<div class="col-md-12">
 										<form action="/admin/doc/upload/${parent.fileId}" method="post" enctype="multipart/form-data">
-											<input type="file" name="file" class="btn btn-default btn-primary pull-left"
+											<input id="fileInput" type="file" name="file" class="btn btn-default btn-primary pull-left"
 											style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px" /> 
 											<button id="uploadFile" type="submit"
 												class="btn btn-default btn-primary pull-left"
@@ -120,11 +120,42 @@
 		</div>
 	</div>
 	<!--confirm end modal box -->
+	<!-- confirm modal box -->
+	<div class="modal fade modal-box" id="uploadFileModal" tabindex="0"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" style="margin: 300px auto">
+			<div class="modal-content" style="top:-100px"> 
+				<div class="modal-body" align="center">
+					<h3>请选择文件</h3>
+				</div>
+				<div class="modal-footer">
+					<a href="#" ><button type="button" id="confirmModalBtn"
+							class="btn btn-primary" data-dismiss="modal">确认</button></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--confirm end modal box -->
 	<!-- /#wrapper -->
 	<%@ include file="../common/modal.jsp"%>
 
 	<%@ include file="../comm-fragement/main-js"%>
 	<script type="text/javascript">
+	$(document).ready(function() {
+		//$("#uploadFile").attr("type","submit");
+		$("#uploadFile").click(function(){
+			if($("#fileInput").val().length<3){				
+				$("#uploadFile").attr("type","button");
+				//$("#uploadFileModal");
+				$('#uploadFileModal').modal('show')
+			}else{
+				$("#uploadFile").attr("type","submit");
+			}
+		});
+	});
+	
+	
+	
 	$("#modalBtn").click(function() {
 	    var folderName = $('#folderName').val();
 	    if (!folderName) {
