@@ -34,4 +34,19 @@ public class SampleServiceImpl implements SampleService {
 		return sampleDao.getById(sampleId);
 	}
 
+	@Override
+	public int countByEmployee(int employeeId) {
+		return sampleDao.countByEmployee(employeeId);
+	}
+
+	@Override
+	public List<Sample> getPagedByEmployee(int employeeId, int pageIndex) {
+		int start = 0;
+		int end = 10;
+		if(pageIndex > 1) {
+			start = (pageIndex - 1) * 10;
+		}
+		return sampleDao.getPagedByEmployee(employeeId, start, end);
+	}
+
 }
