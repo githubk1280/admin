@@ -31,14 +31,14 @@
 						class="fa fa-sign-out fa-fw"></i> 退出</a></li>
 			</ul> <!-- /.dropdown-user --></li>
 	</ul>
-	</ng-view>
 	</div>
+	</ng-view>
 	<!-- navbar tabs -->
 	<ul
 		class="nav navbar-nav navbar-default nav-pills navbar-nav-left navbar-default-color">
 		<li id="tab1"><a href="<%=request.getContextPath()%>/project/pages/1"><i
 				class="fa fa-tasks fa-fw "></i><strong>项目管理</strong></a></li>
-		<li id="tab2"><a href="<%=request.getContextPath()%>/test/load/it"><i class="fa fa-tasks fa-fw"></i><strong>文档管理</strong></a></li>
+		<li id="tab2"><a href="<%=request.getContextPath()%>/doc/load"><i class="fa fa-tasks fa-fw"></i><strong>文档管理</strong></a></li>
 		<li id="tab3"><a href="<%=request.getContextPath()%>/contract/pages/1"><i class="fa fa-tasks fa-fw"></i><strong>财务管理</strong></a></li>
 		<li id="tab4"><a href="<%=request.getContextPath()%>/sample/list"><i class="fa fa-tasks fa-fw"></i><strong>样品管理</strong></a></li>
 		<li id="tab5"><a href="#"><i class="fa fa-tasks fa-fw"></i><strong>文献管理</strong></a></li>

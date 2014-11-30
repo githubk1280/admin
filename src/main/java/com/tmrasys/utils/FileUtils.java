@@ -3,7 +3,11 @@ package com.tmrasys.utils;
 import java.io.File;
 import java.io.InputStream;
 
+import org.apache.log4j.Logger;
+
 public class FileUtils {
+	private static Logger logger = Logger.getLogger(FileUtils.class);
+	
 	public static String getFilePath(ClassLoader cl, String name) {
 		String path = cl.getResource(
 				File.separator + "pros" + File.separator + name).toString();
@@ -37,15 +41,17 @@ public class FileUtils {
 		}
 		return false;
 	}
-	
-	public static void createUserFolder(String userName){
+
+	public static void createUserFolder(String userName) {
 		String path = getRootPath() + userName;
 		createFolder(path);
 	}
-	
-	public static void createFolder(String path){
-		File f = new File (path);
-		if(!f.exists())
-			f.mkdir();
+
+	public static void createFolder(String path) {
+		File f = new File(path);
+		if (!f.exists()) {
+			boolean success = f.mkdirs();
+			logger.info("Create files and folders success ? "+success);
+		}
 	}
 }
