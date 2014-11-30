@@ -1,4 +1,4 @@
-﻿<div class="panel panel-default" ng-controller="projectCustomerController">
+﻿<div id="customerTotalPanel" class="panel panel-default" ng-controller="projectCustomerController">
 	<div class="panel-heading">
 		<h3 class="panel-title">
 			<strong>客户信息</strong> <a data-toggle="collapse"
