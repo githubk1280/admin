@@ -55,7 +55,7 @@
 			<ul class="nav" id="side-menu">
 				<li><a id="link_pro" href="<%=request.getContextPath()%>/project/pages/1"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>项目基本信息</strong></a></li>
-				<li><a id="link_customer" href="<%=request.getContextPath()%>/customer/list"><i
+				<li><a id="link_customer" href="<%=request.getContextPath()%>/customer/pages/1"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>客户基本信息</strong></a></li>
 				<li><a id="link_outsource" href="<%=request.getContextPath()%>/outsource/list"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>外包信息</strong></a></li>

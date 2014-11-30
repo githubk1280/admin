@@ -39,4 +39,19 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerDao.getById(customerId);
 	}
 
+	@Override
+	public int countByEmployee(int employeeId) {
+		return customerDao.countByEmployee(employeeId);
+	}
+
+	@Override
+	public List<Customer> getPagedByEmployee(int employeeId, int pageIndex) {
+		int start = 0;
+		int end = 10;
+		if(pageIndex > 1) {
+			start = (pageIndex - 1) * 10;
+		}
+		return customerDao.getPagedByEmployee(employeeId, start, end);
+	}
+
 }

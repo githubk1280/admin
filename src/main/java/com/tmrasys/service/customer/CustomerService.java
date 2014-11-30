@@ -10,4 +10,6 @@ public interface CustomerService {
 	void updateCustomer(Customer customer);
 	List<Customer> getByEmployee(int employeeId);
 	public Customer getById(int customerId);
+	int countByEmployee(int employeeId);
+	List<Customer> getPagedByEmployee(int employeeId, int page);
 }

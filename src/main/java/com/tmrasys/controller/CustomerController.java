@@ -52,6 +52,23 @@ public class CustomerController {
 		return view;
 
 	}
+	
+	@RequestMapping("/pages/{page}")
+	public ModelAndView loadAllCustomersByUser(@PathVariable int page, HttpSession session) {
+		Employee employee = (Employee) session.getAttribute("user");
+		int count = customerService.countByEmployee(employee.getEmployeeId());
+		List<Customer> customers = customerService.getPagedByEmployee(employee.getEmployeeId(), page);
+		ModelAndView view = new ModelAndView();
+		int pages = 1;
+		if(count > 10) {
+			pages = (count + 9) / 10;
+		}
+		view.addObject("customers", customers);
+		view.addObject("pages", pages);
+		view.setViewName(PageResourceConstant.CUSTOMER_LIST);
+		return view;
+
+	}
 
 	@RequestMapping("/ajax/{projectId}")
 	public void load(@PathVariable int projectId, HttpServletRequest request,

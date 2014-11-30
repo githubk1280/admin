@@ -65,14 +65,16 @@
 										class="project_link">${customer.projectId}</a></td>
 									<td>${customer.resarchDirection}</td>
 									<td>${customer.responsibleArea}</td>
-									<td><a href="${customer.customerId}" target="_blank"
+									<td><a href="<%=request.getContextPath()%>/customer/${customer.customerId}" target="_blank"
 										class="project_link">进入详情页</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
-					<c:if test="${projects.size()>10}">
-						<%@ include file="../common/pagnation.jsp"%>
+					<c:if test="${pages>1}">
+						<div style="position:absolute; z-index:1; right: 1px; bottom:20px;">
+							<%@ include file="pagnation.jsp"%>
+						</div>
 					</c:if>
 				</div>
 			</div>
