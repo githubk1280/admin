@@ -2,6 +2,7 @@ package com.tmrasys.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.tmrasys.domain.Contract;
@@ -13,4 +14,6 @@ public interface ContractDao {
 	void updateContract(Contract contract);
 	Contract getById(int contractId);
 	List<Contract> getByProject(int projectId);
+	int countByEmployee(int employeeId);
+	List<Contract> getPagedByEmployee(@Param(value = "employeeId") int employeeId,@Param(value = "start") int start,@Param(value = "end") int end);
 }

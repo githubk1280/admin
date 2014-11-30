@@ -10,5 +10,7 @@ public interface ProjectService {
 	List<Project> loadProjectsByEmployee(int userId);
 	void updateProject(Project project);
 	void addProject(Project project);
+	int countProjectsByEmployee(int employeeId);
 	List<ProjectIdPrincipal> loadProjectIdPrincipal(int userId);
+	List<Project> loadProjectsPagination(int userId, int pageIndex);
 }

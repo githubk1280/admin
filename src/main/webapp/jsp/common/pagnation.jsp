@@ -1,11 +1,9 @@
-﻿<div class="pull-right">
+<div class="pull-right">
 	<ul class="pagination">
-		<li><a href="#"><strong>上一页</strong></a></li>
-		<li class="active"><a href="#">1</a></li>
-		<li><a href="#">2</a></li>
-		<li><a href="#">3</a></li>
-		<li><a href="#">4</a></li>
-		<li><a href="#">5</a></li>
-		<li><a href="#"><strong>下一页</strong></a></li>
+		<li><a href="<%=request.getContextPath()%>/project/pages/1"><strong>first</strong></a></li>
+		<c:forEach var="page" begin="1" end="${pages}" step="1">
+			<li><a href="<%=request.getContextPath()%>/project/pages/${page}">${page}</a></li>
+		</c:forEach>
+		<li><a href="<%=request.getContextPath()%>/project/pages/${pages}"><strong>last</strong></a></li>
 	</ul>
 </div>
