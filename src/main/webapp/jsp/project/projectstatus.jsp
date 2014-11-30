@@ -1,5 +1,5 @@
 ﻿<!----------------------------------------project status start ------------------------->
-<div class="panel panel-default" ng-controller="projectStatusController">
+<div id="projectstatusTotalPanel" class="panel panel-default" ng-controller="projectStatusController">
 	<div class="panel-heading">
 		<h3 class="panel-title">
 			<strong>项目进度</strong> <a data-toggle="collapse" href="#collapseTwo"

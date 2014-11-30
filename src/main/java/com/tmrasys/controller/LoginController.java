@@ -37,7 +37,7 @@ public class LoginController {
 		view.setViewName("redirect:/project/pages/1");
 		return view;
 	}
-	
+
 	@RequestMapping("/logout")
 	public ModelAndView logout(HttpSession session) {
 		session.invalidate();

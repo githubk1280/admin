@@ -1,5 +1,6 @@
 <!-- Navigation -->
 <%@ page language="java" pageEncoding="UTF-8"%>
+
 <nav
 	class="navbar navbar-default navbar-static-top  navbar-default-color"
 	role="navigation" style="margin-bottom: 0">
@@ -9,12 +10,12 @@
 	<ng-view>
 	<div ng-controller="msgController">
 	<ul class="nav navbar-top-links  navbar-right" >
-		<li>
-                 <a href="<%=request.getContextPath()%>/user/add-redirect">
+		<li id="createUserLi">
+            <a href="<%=request.getContextPath()%>/user/add-redirect">
                      <i class="fa fa-sitemap fa-fw"></i>
-                 </a>
+             </a>
 		 </li>
-		<li><a href="#"> <i class="fa fa-envelope fa-fw"></i><span
+		<li id="messageLi"><a href="#"> <i class="fa fa-envelope fa-fw"></i><span
 				id="messageBadge" class="badge message-badge-margin">{{msgNum}}</span>
 		</a></li>
 		<!-- /.dropdown -->
@@ -53,11 +54,11 @@
 
 		<div class="sidebar-nav ">
 			<ul class="nav" id="side-menu">
-				<li><a id="link_pro" href="<%=request.getContextPath()%>/project/pages/1"><i
+				<li id="projectBasicDataLi"><a id="link_pro" href="<%=request.getContextPath()%>/project/pages/1"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>项目基本信息</strong></a></li>
-				<li><a id="link_customer" href="<%=request.getContextPath()%>/customer/pages/1"><i
+				<li id="customerBasicDataLi"><a id="link_customer" href="<%=request.getContextPath()%>/customer/pages/1"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>客户基本信息</strong></a></li>
-				<li><a id="link_outsource" href="<%=request.getContextPath()%>/outsource/pages/1"><i
+				<li id="outsourceBasicDataLi"><a id="link_outsource" href="<%=request.getContextPath()%>/outsource/pages/1"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>外包信息</strong></a></li>
 <!-- 				<li><a id="link_proStatus" href="#"><i -->
 <!-- 						class="fa fa-bar-chart-o fa-fw"></i> <strong>项目进度</strong><span -->
@@ -72,3 +73,34 @@
 	<!-- /.navbar-static-side -->
 </nav>
 
+<script src="../../resources/js/jquery-1.11.0.js"></script>
+<input id="role" type="text" type="hidden" value="<%=session.getAttribute("role")%>"/>
+<script type="text/javascript">
+window.onload=function(){
+	if($("#role").val()=="1"){
+		$("#createUserLi").css('display','none');
+		$("#tab3").css('display','none');
+		$("#modifyProBasicData").css('display','none');
+		$("#modifyOutsource").css('display','none');
+		$("#customerBasicDataLi").css('display','none');
+		$("#customerTotalPanel").css('display','none');
+	}
+	if($("#role").val()=="3"){
+		$("#createUserLi").css('display','none');
+		$("#outsourceBasicDataLi").css('display','none');
+		$("#customerBasicDataLi").css('display','none');
+		$("#tab2").css('display','none');
+		$("#tab3").css('display','none');
+		$("#tab4").css('display','none');
+		$("#tab5").css('display','none');
+		$("#messageLi").css('display','none');
+		$("#outsourceTotalPanel").css('display','none');
+		$("#customerTotalPanel").css('display','none');
+		$("#projectstatusTotalPanel").css('display','none');
+		$("#modifyProBasicData").css('display','none');
+		// outsourceTotalPanel
+	}
+
+};
+	
+</script>

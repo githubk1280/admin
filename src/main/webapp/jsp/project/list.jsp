@@ -127,6 +127,9 @@
 	};
 	*/
 		$(document).ready(function() {
+			if($("#role").val()!="2"){
+				$("#create").css('display','none');
+			}
 			
 			$("#create").click(function() {
 				window.location.replace("http://"+window.location.host+"/admin/project/add-redirect");
