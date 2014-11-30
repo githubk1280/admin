@@ -22,7 +22,7 @@ public class MessageController {
 	@Autowired
 	private MessageService messageService;
 
-	@RequestMapping("/list")
+	@RequestMapping("/ajax/query")
 	public void query(HttpSession session, HttpServletResponse response)
 			throws IOException {
 		Employee employee = (Employee) session.getAttribute("user");
