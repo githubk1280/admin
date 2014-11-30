@@ -17,7 +17,7 @@ public class SimpleTmrasysExceptionHandler {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("exception", exception);
 		mav.addObject("url", req.getRequestURL());
-		mav.setViewName("ex");
+		mav.setViewName("ex/ex");
 		return mav;
 	}
 }
