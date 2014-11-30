@@ -1,6 +1,7 @@
 <!-- Navigation -->
 <%@ page language="java" pageEncoding="UTF-8"%>
 <script src="<spring:url value="/resources/js/jquery-1.11.0.js"/>"></script>
+
 <nav
 	class="navbar navbar-default navbar-static-top  navbar-default-color"
 	role="navigation" style="margin-bottom: 0">
@@ -82,7 +83,7 @@
 </nav>
 
 
-<input id="role" type="text" type="hidden" value="<%=session.getAttribute("role")%>"/>
+<input id="role" type="hidden" value="<%=session.getAttribute("role")%>"/>
 
 <script type="text/javascript">
 window.onload=function(){
@@ -126,12 +127,18 @@ var activeTabUrlStr = window.location.pathname;
 		$("#tab1").siblings().removeClass();
 		$("#customerBasicDataLi").addClass("active");
 		$("#customerBasicDataLi").siblings().removeClass();
+		$("#projectBasicDataLi").css('display','block');
+		$("#customerBasicDataLi").css('display','block');
+		$("#outsourceBasicDataLi").css('display','block');
 	}
 	if(activeTabUrlStr.indexOf("outsource")>0){
 		$("#tab1").addClass("active");
 		$("#tab1").siblings().removeClass();
 		$("#outsourceBasicDataLi").addClass("active");
 		$("#outsourceBasicDataLi").siblings().removeClass();
+		$("#projectBasicDataLi").css('display','block');
+		$("#customerBasicDataLi").css('display','block');
+		$("#outsourceBasicDataLi").css('display','block');
 	}
 	/*
 	*/
