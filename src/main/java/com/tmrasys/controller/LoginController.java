@@ -40,8 +40,8 @@ public class LoginController {
 	
 	@RequestMapping("/logout")
 	public ModelAndView logout(HttpSession session) {
+		session.invalidate();
 		ModelAndView view = new ModelAndView();
-		session.removeAttribute("user");
 		view.setViewName("redirect:/");
 		return view;
 	}

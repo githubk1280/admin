@@ -16,7 +16,7 @@ import com.tmrasys.utils.JsonResponseUtils;
 
 @Controller
 @RequestMapping("/msg")
-public class MessageController {
+public class LiteratureController {
 	Logger logger = Logger.getLogger(getClass());
 
 	@Autowired
