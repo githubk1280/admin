@@ -85,7 +85,7 @@ window.onload=function(){
 		$("#modifyOutsource").css('display','none');
 		$("#customerBasicDataLi").css('display','none');
 		$("#customerTotalPanel").css('display','none');
-		$("#create").css('display','none');
+		$("#create").css('display','none'); 
 	}
 	if($("#role").val()=="3"){
 		$("#createUserLi").css('display','none');

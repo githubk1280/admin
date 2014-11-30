@@ -34,6 +34,7 @@ public class LoginController {
 			return view;
 		}
 		session.setAttribute("user", user);
+		session.setAttribute("role", user.getEmployeeRoleId());
 		view.setViewName("redirect:/project/pages/1");
 		return view;
 	}
