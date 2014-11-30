@@ -2,7 +2,6 @@ package com.tmrasys.service.sample;
 
 import java.util.List;
 
-import com.tmrasys.domain.Contract;
 import com.tmrasys.domain.Sample;
 
 public interface SampleService {
