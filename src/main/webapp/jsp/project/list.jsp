@@ -88,8 +88,10 @@
 							</c:forEach>
 						</tbody>
 					</table>
-					<c:if test="${projects.size()>10}">
+					<c:if test="${pages>1}">
+					<div style="position:absolute; z-index:1; right: 1px; bottom:20px;">
 						<%@ include file="../common/pagnation.jsp"%>
+					</div>
 					</c:if>
 				</div>
 			</div>

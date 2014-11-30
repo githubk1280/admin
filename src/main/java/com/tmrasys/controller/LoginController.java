@@ -34,7 +34,7 @@ public class LoginController {
 			return view;
 		}
 		session.setAttribute("user", user);
-		view.setViewName("redirect:/project/list");
+		view.setViewName("redirect:/project/pages/1");
 		return view;
 	}
 	
