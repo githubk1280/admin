@@ -40,12 +40,29 @@ public class ContractController {
 	}
 
 	@RequestMapping("/list")
-	public ModelAndView loadAllContractsByUser(HttpSession session) {
+	public ModelAndView loadPagedContractsByUser(HttpSession session) {
 		Employee employee = (Employee) session.getAttribute("user");
 		List<Contract> contracts = contractService.getByEmployee(employee
 				.getEmployeeId());
 		ModelAndView view = new ModelAndView();
 		view.addObject("contracts", contracts);
+		view.setViewName(PageResourceConstant.CONTRACT_LIST);
+		return view;
+
+	}
+	
+	@RequestMapping("/pages/{page}")
+	public ModelAndView loadAllContractsByUser(@PathVariable int page, HttpSession session) {
+		Employee employee = (Employee) session.getAttribute("user");
+		int count = contractService.countByEmployee(employee.getEmployeeId());
+		List<Contract> contracts = contractService.getPagedByEmployee(employee.getEmployeeId(), page);
+		ModelAndView view = new ModelAndView();
+		int pages = 1;
+		if(count > 10) {
+			pages = (count + 9) / 10;
+		}
+		view.addObject("contracts", contracts);
+		view.addObject("pages", pages);
 		view.setViewName(PageResourceConstant.CONTRACT_LIST);
 		return view;
 

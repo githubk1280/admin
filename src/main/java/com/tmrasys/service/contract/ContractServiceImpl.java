@@ -38,4 +38,19 @@ public class ContractServiceImpl implements ContractService {
 	public List<Contract> getByProject(int projectId) {
 		return contractDao.getByProject(projectId);
 	}
+
+	@Override
+	public int countByEmployee(int employeeId) {
+		return contractDao.countByEmployee(employeeId);
+	}
+
+	@Override
+	public List<Contract> getPagedByEmployee(int employeeId, int pageIndex) {
+		int start = 0;
+		int end = 10;
+		if(pageIndex > 1) {
+			start = (pageIndex - 1) * 10;
+		}
+		return contractDao.getPagedByEmployee(employeeId, start, end);
+	}
 }

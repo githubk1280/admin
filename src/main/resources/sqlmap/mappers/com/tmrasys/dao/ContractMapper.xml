@@ -16,6 +16,33 @@
 		contract_id;
 	</select>
 	
+	<select id="getPagedByEmployee" resultMap="contractMapper"
+		resultType="list" parameterType="map">
+		select * from `test`.`contract` c
+		where
+		c.PROJECT_ID in
+		(select PE.project_id FROM project_employee PE
+		INNER JOIN
+		project P on
+		PE.PROJECT_ID = P.PROJECT_ID and PE.EMPLOYEE_ID=#{employeeId}
+		)
+		ORDER BY
+		contract_id LIMIT #{start}, #{end};
+	</select>
+	
+	<select id="countByEmployee" resultType="int" parameterType="int">
+		select count(*) from `test`.`contract` c
+		where
+		c.PROJECT_ID in
+		(select PE.project_id FROM project_employee PE
+		INNER JOIN
+		project P on
+		PE.PROJECT_ID = P.PROJECT_ID and PE.EMPLOYEE_ID=#{employeeId}
+		)
+		ORDER BY
+		contract_id;
+	</select>
+	
 	<select id="getByProject" resultMap="contractMapper"
 		resultType="list" parameterType="int">
 		select * from `test`.`contract` c
