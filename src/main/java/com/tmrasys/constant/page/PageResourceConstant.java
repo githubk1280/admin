@@ -30,4 +30,7 @@ public class PageResourceConstant {
 	public static final String LTS_LIST = "literature/list";
 	public static final String LTS_ADD = "literature/add";
 	public static final String LTS_DETAIL = "literature/detail";
+	
+	public static final String PRO_STATUS = "project/proStatusHistory";
+	
 }

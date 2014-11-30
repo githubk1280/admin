@@ -20,8 +20,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
+import com.tmrasys.constant.page.PageResourceConstant;
 import com.tmrasys.domain.Project;
 import com.tmrasys.domain.ProjectProgress;
 import com.tmrasys.event.StatusMessage;
@@ -93,6 +95,18 @@ public class ProjectStatusController implements ApplicationContextAware {
 		applicationContext.publishEvent(new StatusChangedEvent(
 				new StatusMessage(projectId, percentage, content)));
 		JsonResponseUtils.returnJsonResponse(response, progress, true, 200);
+	}
+	
+	
+	
+	@RequestMapping(value = "/ajax/viewHis/{projectId}")
+	public ModelAndView loadProHis(@PathVariable int projectId){
+		List<ProjectProgress> proProgressList = projectProgressService.getByProjectId(projectId);
+		ModelAndView view = new ModelAndView();
+		view.addObject("proHis", proProgressList);
+		view.setViewName(PageResourceConstant.PRO_STATUS);
+		
+		return view;
 	}
 
 	// @RequestMapping(value = "/ajax/add",consumes="application/json")
