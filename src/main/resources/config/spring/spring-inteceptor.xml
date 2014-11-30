@@ -18,6 +18,7 @@ http://www.springframework.org/schema/context
 			<mvc:mapping path="/sample/**" />
 			<mvc:mapping path="/customer/**" />
 			<mvc:mapping path="/outsource/**" />
+			<mvc:mapping path="/literature/**" />
 			<bean class="com.tmrasys.interceptor.LoginInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
