@@ -1,3 +1,4 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
 <div class="pull-right">
 	<ul id="pagingUl" class="pagination">
 		<li><a href="<%=request.getContextPath()%>/project/pages/1"><strong>首页</strong></a></li>

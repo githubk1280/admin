@@ -23,7 +23,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel-body">
-						<div class="panel panel-default panel-info">
+						<div class="panel panel-default">
 							<div class="panel-heading ">
 								<h3 class="panel-title">
 									<strong>${parent.fileName} 文件列表</strong>

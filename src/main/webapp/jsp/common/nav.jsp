@@ -1,6 +1,6 @@
 <!-- Navigation -->
 <%@ page language="java" pageEncoding="UTF-8"%>
-
+<script src="<spring:url value="/resources/js/jquery-1.11.0.js"/>"></script>
 <nav
 	class="navbar navbar-default navbar-static-top  navbar-default-color"
 	role="navigation" style="margin-bottom: 0">
@@ -73,8 +73,9 @@
 	<!-- /.navbar-static-side -->
 </nav>
 
-<script src="../../resources/js/jquery-1.11.0.js"></script>
+
 <input id="role" type="text" type="hidden" value="<%=session.getAttribute("role")%>"/>
+
 <script type="text/javascript">
 window.onload=function(){
 	if($("#role").val()=="1"){
