@@ -15,7 +15,7 @@ import com.tmrasys.service.message.MessageService;
 import com.tmrasys.utils.JsonResponseUtils;
 
 @Controller
-@RequestMapping("/msg")
+@RequestMapping("/message")
 public class MessageController {
 	Logger logger = Logger.getLogger(getClass());
 

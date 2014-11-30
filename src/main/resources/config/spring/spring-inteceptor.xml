@@ -19,7 +19,7 @@ http://www.springframework.org/schema/context
 			<mvc:mapping path="/customer/**" />
 			<mvc:mapping path="/outsource/**" />
 			<mvc:mapping path="/literature/**" />
-			<mvc:mapping path="/msg/**" />
+			<mvc:mapping path="/message/**" />
 			<bean class="com.tmrasys.interceptor.LoginInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
