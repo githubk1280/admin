@@ -23,15 +23,15 @@
 		<%@ include file="../common/nav.jsp"%>
 		<div id="page-wrapper"> 
             <div class="row">
-            <form role="form">
+            <form action="<%=request.getContextPath()%>/contract/search" method="post">
                 <div class="col-lg-12">
                     <h2 class="page-header form-group input-group">
                     	<strong>财务合同基本信息</strong>
                     	<button class="btn btn-default btn-primary" id="create"
 								style="margin-left: 10px;">创建合同</button>
-                    	<input type="text" class="form-control" style="width:26%;" placeholder="请输入项目编号">
+                    	<input type="text" class="form-control" id="searchInput" name="searchStr"  style="width:26%;" placeholder="请输入项目编号">
 	                    <span class="input-group-btn">
-	                        <button class="btn btn-default btn-primary" type="button"><i class="fa fa-search" style="font-size:130%"></i></button>
+	                        <button class="btn btn-default btn-primary" type="submit"><i class="fa fa-search" style="font-size:130%"></i></button>
 	                    </span>
                     </h2>
                 </div>
@@ -54,7 +54,7 @@
               <tbody>
               	<c:forEach items="${contracts}" var="contract" varStatus="status">
               		<tr>
-						<td><a href="${contract.contractId}" target="_blank" class="project_link">${contract.contractId}</a></td>
+						<td><a href="<%=request.getContextPath()%>/contract/${contract.contractId}" target="_blank" class="project_link">${contract.contractId}</a></td>
 						<td>${contract.projectId}</td>
 						<td>${contract.contractType}</td>
 						<td>${contract.signPersonNameB}</td>

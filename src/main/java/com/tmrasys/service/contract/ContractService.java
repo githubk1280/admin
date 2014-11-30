@@ -12,4 +12,5 @@ public interface ContractService {
 	Contract getById(int contractId);
 	List<Contract> getByProject(int projectId);
 	int countByEmployee(int employeeId);
+	List<Contract> findContractByProjectId(String projectId,int employeeId);
 }

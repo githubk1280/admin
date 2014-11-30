@@ -15,4 +15,5 @@ public interface SampleDao {
 	Sample getById(int sampleId);
 	int countByEmployee(int employeeId);
 	List<Sample> getPagedByEmployee(@Param(value = "employeeId") int employeeId,@Param(value = "start") int start,@Param(value = "end") int end);
+	List<Sample> findSampleByProjectId(@Param(value="projectId")String projectId, @Param(value="employeeID")int employeeID);
 }

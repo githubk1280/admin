@@ -55,7 +55,7 @@
 							<c:forEach items="${outsources}" var="outsource"
 								varStatus="status">
 								<tr>
-									<td><a href="${outsource.outSourceId}" target="_blank"
+									<td><a href="<%=request.getContextPath()%>/outsource/${outsource.outSourceId}" target="_blank"
 										class="project_link">${outsource.outSourceId}</a></td>
 									<td>${outsource.outSourceType}</td>
 									<td><a href="<%=request.getContextPath()%>/project/${outsource.projectId}" target="_blank"
@@ -65,7 +65,7 @@
 									<td>${outsource.sendSampleCount}</td>
 									<td><fmt:formatDate value="${outsource.sendSampleDate}"
 											pattern="yyyy-MM-dd" /></td>
-									<td><a href="${outsource.outSourceId}" target="_blank"
+									<td><a href="<%=request.getContextPath()%>/outsource/${outsource.outSourceId}" target="_blank"
 										class="project_link">进入详情页</a></td>
 								</tr>
 							</c:forEach>

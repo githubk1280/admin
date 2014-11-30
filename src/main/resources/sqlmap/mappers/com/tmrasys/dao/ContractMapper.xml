@@ -80,6 +80,13 @@
 		`TOTAL_AMOUNT`=#{totalAmount}, `START_DATE`=#{startDate}, `END_DATE`=#{endDate}
 		WHERE contract_id = #{contractId}
 	</update>
+	<select id="findContractByProjectId" resultMap="contractMapper" parameterType="map">
+		SELECT * FROM contract c,project_employee pe
+		WHERE c.project_id = pe.project_id
+		      AND pe.employee_id = #{employeeID}
+		      AND c.project_id LIKE "%"#{projectId}"%"
+		ORDER BY c.contract_id DESC	
+	</select>
 
 	<resultMap type="com.tmrasys.domain.Contract" id="contractMapper">
 		<id property="contractId" column="CONTRACT_ID" />

@@ -23,15 +23,15 @@
 		<%@ include file="../common/nav.jsp"%>
 		<div id="page-wrapper">
 			<div class="row">
-				<form role="form">
+				<form action="<%=request.getContextPath()%>/project/search" method="post">
 					<div class="col-lg-12 col-md-12">
 						<h2 class="page-header form-group input-group">
 							<strong>项目基本信息</strong>
 							<button class="btn btn-default btn-primary" id="create"
-								style="margin-left: 10px;">创建新的项目</button> 
-							<input id="searchInput" class="form-control" style="width:26%;" placeholder="请输入项目编号">
+								style="margin-left: 10px;" type="button">创建新的项目</button> 
+							<input id="searchInput" name="searchStr" class="form-control"  style="width:26%;"  placeholder="请输入项目编号"/>				
 							<span class="input-group-btn">
-		                        <button id="searchBtn" class="btn btn-default btn-primary"  type="button"><i class="fa fa-search" style="font-size:130%"></i></button>
+		                        <button id="searchBtn" class="btn btn-default btn-primary" type="submit"><i class="fa fa-search" style="font-size:130%"></i></button>
 		                    </span>
 						</h2>
 					</div>
@@ -58,7 +58,7 @@
 							<c:forEach items="${projects}" var="project" varStatus="status">
 								<tr>
 									<td>${project.projectId}</td>
-									<td><a href="${project.projectId}" target="_blank" class="project_link">${project.projectName}</a></td>
+									<td><a href="<%=request.getContextPath()%>/project/${project.projectId}" target="_blank" class="project_link">${project.projectName}</a></td>
 									<td>${project.projectType}</td>
 									<td>${project.researchDirection}</td>
 									<td><fmt:formatDate value="${project.startDate}"
@@ -103,40 +103,30 @@
 
 	<%@ include file="../comm-fragement/main-js"%>
 	<script type="text/javascript">
+	/*
+	function projectController($scope, $http) {
+		$scope.searchBtn = function() {
+			$http.get("/admin/project/search/"+$("#searchInput").val()).success(
+					function(data) {
+						if (data.success == true) {
+							//$scope.pgos = JSON.parse(data.data);
+							//$scope.pgos.experimentOS.projectId = projectId;
+							//$scope.pgos.dataOS.projectId = projectId;
+							//if($scope.pgos.experimentOS.sendSampleDate != null) {
+							//	$scope.pgos.experimentOS.sendSampleDate = $scope
+							//	.getTimeString($scope.pgos.experimentOS.sendSampleDate);
+							//}
+							alert("success");
+						}
+						
+					}).error(function(err) {
+					alert("获取失败，请重试!");
+				});
+			
+		};
+	};
+	*/
 		$(document).ready(function() {
-
-			$("nav li").click(function() {
-				$(this).addClass('active').siblings().removeClass('active');
-			});
-
-			$("#link_pro").click(function() {
-				$("#mainframe").attr("src", "../page/projectBasicData.html");
-			});
-
-			$("#link_customer").click(function() {
-				$("#mainframe").attr("src", "../page/customInfo.html");
-			});
-
-			$("#link_outsource").click(function() {
-				$("#mainframe").attr("src", "../page/outsource.html");
-			});
-
-			$("#link_proStatus").click(function() {
-				$("#mainframe").attr("src", "../page/proStatus.html");
-			});
-
-			$("#link_customCalling").click(function() {
-				$("#mainframe").attr("src", "../page/customCalling.html");
-			});
-
-			$(".pagination li ").click(function() {
-				$(this).addClass('active').siblings().removeClass('active');
-			});
-
-			$("#projectStatusBadge").click(function() {
-				alert($("#projectStatusBadge").text());
-				$("#projectStatusBadge").text("");
-			});
 			
 			$("#create").click(function() {
 				window.location.replace("http://"+window.location.host+"/admin/project/add-redirect");

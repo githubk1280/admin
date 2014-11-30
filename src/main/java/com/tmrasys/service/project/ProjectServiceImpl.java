@@ -72,5 +72,10 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectDao.countProjectsByEmployee(employeeId);
 	}
 
-
+	@Override
+	public List<Project> findProjectByProjectName(String projectName,int employeeID) {
+		// TODO Auto-generated method stub
+		return projectDao.findProjectByProjectName(projectName,employeeID);
+	}
+	
 }

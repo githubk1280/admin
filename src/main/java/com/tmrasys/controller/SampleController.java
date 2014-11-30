@@ -110,5 +110,16 @@ public class SampleController {
 			JsonResponseUtils.returnJsonResponse(response, list, true, 200);
 		}
 	}
+	
+	@RequestMapping("/search")
+	public ModelAndView search(String searchStr,HttpSession session){
+		Employee employee = (Employee)session.getAttribute("user");
+		List<Sample> samples = sampleService.findSampleByProjectId(searchStr, employee.getEmployeeId());
+		ModelAndView view = new ModelAndView();
+		view.addObject("samples",samples);
+		view.setViewName(PageResourceConstant.SAMPLE_LIST);
+		
+		return view;
+	}
 
 }

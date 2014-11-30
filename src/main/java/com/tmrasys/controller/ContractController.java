@@ -71,7 +71,7 @@ public class ContractController {
 	@RequestMapping("/add")
 	public ModelAndView add(Contract contract, HttpSession session) {
 		contractService.addContract(contract);
-		return new ModelAndView("redirect:list");
+		return new ModelAndView("redirect:pages/1");
 	}
 
 	@RequestMapping("/add-redirect")
@@ -89,6 +89,16 @@ public class ContractController {
 		ModelAndView view = new ModelAndView();
 		view.addObject(contract);
 		view.setViewName(PageResourceConstant.CONTRACT_DETAIL);
+		return view;
+	}
+	
+	@RequestMapping("/search")
+	public ModelAndView search(String searchStr,HttpSession session){
+		Employee employee = (Employee)session.getAttribute("user");
+		List<Contract> contracts = contractService.findContractByProjectId(searchStr, employee.getEmployeeId());
+		ModelAndView view = new ModelAndView();
+		view.addObject("contracts", contracts);
+		view.setViewName(PageResourceConstant.CONTRACT_LIST);
 		return view;
 	}
 
