@@ -55,6 +55,23 @@ public class OutSourcingController {
 
 	}
 	
+	@RequestMapping("/pages/{page}")
+	public ModelAndView loadAllContractsByUser(@PathVariable int page, HttpSession session) {
+		Employee employee = (Employee) session.getAttribute("user");
+		int count = outSourceService.countByEmployee(employee.getEmployeeId());
+		List<ProjectOutSource> outsources = outSourceService.getPagedByEmployee(employee.getEmployeeId(), page);
+		ModelAndView view = new ModelAndView();
+		int pages = 1;
+		if(count > 10) {
+			pages = (count + 9) / 10;
+		}
+		view.addObject("outsources", outsources);
+		view.addObject("pages", pages);
+		view.setViewName(PageResourceConstant.OS_LIST);
+		return view;
+
+	}
+	
 	@RequestMapping("/ajax/{projectId}")
 	public void load(@PathVariable int projectId, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {

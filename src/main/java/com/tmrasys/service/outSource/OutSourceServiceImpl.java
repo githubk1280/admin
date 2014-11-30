@@ -51,4 +51,19 @@ public class OutSourceServiceImpl implements OutSourceService {
 		outSourceDao.updateOutSource(outSource);
 	}
 
+	@Override
+	public int countByEmployee(int employeeId) {
+		return outSourceDao.countByEmployee(employeeId);
+	}
+
+	@Override
+	public List<ProjectOutSource> getPagedByEmployee(int employeeId, int pageIndex) {
+		int start = 0;
+		int end = 10;
+		if(pageIndex > 1) {
+			start = (pageIndex - 1) * 10;
+		}
+		return outSourceDao.getPagedByEmployee(employeeId, start, end);
+	}
+
 }
