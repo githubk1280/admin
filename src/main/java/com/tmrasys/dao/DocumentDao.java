@@ -31,4 +31,9 @@ public interface DocumentDao {
 			@Param(value = "userName") String userName,
 			@Param(value = "fileName") String fileName);
 
+	public void deleteFileById(@Param(value = "fileId") int fileId,
+			@Param(value = "owner") String owner);
+
+	public void deleteFileByParentId(@Param(value = "fileId") int fileId,
+			@Param(value = "owner") String owner);
 }

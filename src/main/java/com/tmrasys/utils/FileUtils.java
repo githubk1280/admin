@@ -24,10 +24,28 @@ public class FileUtils {
 			+ File.separator + "upload" + File.separator;
 
 	public static String getRootPath() {
-		String system = System.getProperty("os.name");
-		if (system.toLowerCase().indexOf("win") != -1) {
+		if (isWindows()) {
 			return winRootDir;
 		}
 		return linuxRootDir;
+	}
+
+	public static boolean isWindows() {
+		String system = System.getProperty("os.name");
+		if (system.toLowerCase().indexOf("win") != -1) {
+			return true;
+		}
+		return false;
+	}
+	
+	public static void createUserFolder(String userName){
+		String path = getRootPath() + userName;
+		createFolder(path);
+	}
+	
+	public static void createFolder(String path){
+		File f = new File (path);
+		if(!f.exists())
+			f.mkdir();
 	}
 }

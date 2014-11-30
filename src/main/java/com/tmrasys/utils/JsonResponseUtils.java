@@ -20,7 +20,12 @@ public class JsonResponseUtils {
 	public static <T> void returnJsonResponse(HttpServletResponse response,
 			T t, boolean success, int statusCode) throws IOException {
 		JSONObject json = new JSONObject();
-		String jsonStr = JSON.toJSONString(t);
+		String jsonStr = "";
+		if(t instanceof String){
+			jsonStr = (String) t;
+		}else{
+			jsonStr = JSON.toJSONString(t);
+		}
 		json.put("success", success);
 		json.put("statusCode", statusCode);
 		json.put("data", jsonStr);

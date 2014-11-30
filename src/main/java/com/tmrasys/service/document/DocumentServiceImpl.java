@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tmrasys.controller.DocumentController.FileTypeEnum;
 import com.tmrasys.dao.DocumentDao;
 import com.tmrasys.domain.Document;
 
@@ -57,6 +58,13 @@ public class DocumentServiceImpl implements DocumentService {
 	@Override
 	public Document loadFileByUserName(String userName, String fileName) {
 		return documentDao.loadFileByUserName(userName, fileName);
+	}
+
+	@Override
+	public void deleteFolderById(int fileId, int fileType, String owner) {
+		documentDao.deleteFileById(fileId,owner);
+		if(fileType == FileTypeEnum.FOLDER.getType())
+			documentDao.deleteFileByParentId(fileId, owner);
 	}
 
 }

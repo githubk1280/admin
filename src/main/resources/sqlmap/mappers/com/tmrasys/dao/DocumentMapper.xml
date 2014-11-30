@@ -17,7 +17,8 @@
 		WHERE
 		FileId=#{id}
 	</select>
-	<select id="loadFileByUserName" resultMap="docResult" parameterType="map">
+	<select id="loadFileByUserName" resultMap="docResult"
+		parameterType="map">
 		SELECT * FROM document
 		WHERE
 		FileOwner=#{userName}
@@ -40,6 +41,7 @@
 		FileOwner=#{name}
 		AND
 		ParentId=#{parentId}
+		ORDER BY addTime
 	</select>
 	<select id="loadFilesUnderByFolderId" resultMap="docResult"
 		parameterType="map">
@@ -50,7 +52,22 @@
 		ParentId=#{folderId}
 		AND
 		FileType=#{fileType}
+		ORDER BY addTime DESC
 	</select>
+	<delete id="deleteFileById" parameterType="map">
+		DELETE FROM document
+		WHERE
+		FileId=#{fileId}
+		AND
+		FileOwner=#{owner}
+	</delete>
+	<delete id="deleteFileByParentId" parameterType="map">
+		DELETE FROM document
+		WHERE
+		ParentId=#{fileId}
+		AND
+		FileOwner=#{owner}
+	</delete>
 	<resultMap type="com.tmrasys.domain.Document" id="docResult">
 		<id property="fileId" column="FileId" />
 		<result property="fileName" column="FileName" />

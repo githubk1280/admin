@@ -44,7 +44,7 @@
 											<tr>
 												<th>文件夹</th>
 												<!-- 												<th>所有者</th> -->
-												<th></th>
+												<th>操作</th>
 											</tr>
 										</thead>
 										<tbody id="folderTableBody">
@@ -77,8 +77,11 @@
 											<c:forEach items="${docs}" var="doc" varStatus="status">
 												<tr>
 													<td><i class="fa fa-bar-chart-o fa-fw"></i><a href="/admin/doc/load/${doc.fileId}"
-														class="project_link">${doc.fileName}</a></td>
-													<td id="tddddd"><a style="color: blue;">删除</a></td>
+														class="project_link">${doc.fileName}</a>
+													</td>
+													<td id="tddddd"><a style="color: blue;" href="javascript:void(0);"
+													 onclick="delModel(${doc.fileId})">删除</a>
+													</td>
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -101,8 +104,9 @@
 	<div class="modal fade modal-box" id="modalCreateFolder" tabindex="0"
 		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog" style="margin: 300px auto">
-			<div class="modal-content">
+			<div class="modal-content" style="top:-100px">
 				<div class="modal-body" align="center">
+					<h3>请填写文件名</h3>
 					<input id="folderName" type="text" class="form-control"
 						placeholder="请填写文件名" maxlength="10">
 				</div>
@@ -115,6 +119,24 @@
 		</div>
 	</div>
 	<!-- modal box -->
+	
+	<!-- confirm modal box -->
+	<div class="modal fade modal-box" id="confirmModal" tabindex="0"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" style="margin: 300px auto">
+			<div class="modal-content" style="top:-100px">
+				<div class="modal-body" align="center">
+					<h3>确认删除文件?</h3>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+					<a href="#" ><button type="button" id="confirmModalBtn"
+							class="btn btn-primary" data-dismiss="modal">确认</button></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--confirm end modal box -->
 	<!-- /#wrapper -->
 	<%@ include file="../common/modal.jsp"%>
 
@@ -137,15 +159,42 @@
 	        		location.reload(true);
 	        	}else{
 	        		alert(response.data);
-	        	}
+	        	};
 	            
 	        },
 	        error: function(err) {
 	            alert("创建失败,请重试! errorCode = " + err.status);
 	        }
 	    });
-	    //clear
-	});
+	  //clear modal input
+	    //TODO
+	 });
+	    
+    
+		function delModel(fId){
+			$('#confirmModal').modal('show').on('shown',showDelModel(fId));
+	    };
+	    function showDelModel(fId){
+			$("#confirmModalBtn").attr('onclick','del('+fId+')');
+		}
+	    function del(id) {
+		    $.ajax({
+		        url: "/admin/doc/ajax/delete/" + id,
+		        method: "post",
+		        success: function(data) {
+		        	var response = JSON.parse(data);
+		        	if(response.success){
+		        		location.reload(true);
+		        	}else{
+		        		alert(response.data);
+		        	};
+		            
+		        },
+		        error: function(err) {
+		            alert("删除失败,请重试! errorCode = " + err.status);
+		        }
+		    });
+		 };
 	</script>
 
 </body>

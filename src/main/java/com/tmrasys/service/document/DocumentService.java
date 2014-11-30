@@ -19,4 +19,6 @@ public interface DocumentService {
 
 	public abstract Document loadFileByUserName(String userName, String fileName);
 
+	public abstract void deleteFolderById(int fileId, int fileType, String owner);
+
 }

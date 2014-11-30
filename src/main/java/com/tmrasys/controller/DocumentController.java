@@ -49,6 +49,8 @@ public class DocumentController {
 			addDefaultFolders(employee.getName(), employee.getEmployeeId());
 			documents = documentService.loadRootFoldersUnderUser(employee
 					.getName());
+			// 文件系统创建用户文件夹
+			FileUtils.createUserFolder(employee.getName());
 		}
 		ModelAndView view = new ModelAndView();
 		view.addObject("docs", documents);
@@ -63,7 +65,8 @@ public class DocumentController {
 			d.setFileName(dName.getChLabelValue());
 			d.setFileOwner(userName);
 			d.setFileOwnerId(userId);
-			d.setFilePath(userName + File.separator + dName.getChLabelValue());
+			d.setFilePath(FileUtils.getRootPath() + userName + File.separator
+					+ dName.getChLabelValue());
 			d.setFileType(FileTypeEnum.FOLDER.getType());
 			// root node
 			d.setParentId(0);
@@ -113,19 +116,15 @@ public class DocumentController {
 		return view;
 	}
 
-	@RequestMapping("/ajax/delete/{name}")
-	public void deleteFolder(@PathVariable String name,
-			HttpServletResponse response, HttpSession session)
-			throws IOException {
-
-	}
-
 	@RequestMapping("/upload/{parentId}")
 	public ModelAndView uploadFile(@RequestParam("file") MultipartFile file,
 			@PathVariable int parentId, HttpServletRequest request,
 			HttpSession session) throws IllegalStateException, IOException {
+		ModelAndView view = new ModelAndView();
+		view.setViewName("redirect:/doc/load/" + parentId);
+
 		Document parent = documentService.loadDocumentById(parentId);
-		String path = FileUtils.getRootPath() + parent.getFilePath();
+		String path = parent.getFilePath();
 		String fileName = file.getOriginalFilename();
 		logger.info(":::::::::::::" + file.getSize()
 				+ ":::::::::::::::::::::::::::" + path);
@@ -136,6 +135,7 @@ public class DocumentController {
 		logger.info("start uploading ..");
 		file.transferTo(targetFile);
 		logger.info("upload success !");
+
 		Employee employee = (Employee) session.getAttribute("user");
 		Document d = new Document();
 		String fName = targetFile.getName();
@@ -143,29 +143,26 @@ public class DocumentController {
 		String userName = employee.getName();
 		d.setFileOwner(userName);
 		d.setFileOwnerId(employee.getEmployeeId());
-		d.setFilePath(userName + File.separator + parent.getFileName()
-				+ File.separator + fName);
+		d.setFilePath(FileUtils.getRootPath() + userName + File.separator
+				+ parent.getFileName() + File.separator + fName);
 		d.setFileType(FileTypeEnum.FILE.getType());
 		d.setParentId(parentId);
 		documentService.insertDocument(d);
 		logger.info("upload file add to db success !");
-		
-		ModelAndView view = new ModelAndView();
-		view.setViewName("redirect:/doc/load/" + parentId);
+
 		return view;
 
 	}
-	
+
 	@RequestMapping("/download/{fileId}")
 	public void downloadFile(@PathVariable("fileId") int fileId,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		Document current = documentService.loadDocumentById(fileId);
-		String path = FileUtils.getRootPath();
-		String filePath = path + File.separator + current.getFilePath();
+		String filePath = current.getFilePath();
 		filePath = filePath.replaceAll("_", ".");
 		String fileName = current.getFileName();
-		logger.info("-----------------------"+filePath);
+		logger.info("-----------starting download------------" + filePath);
 		File targetFile = new File(filePath);
 		if (!targetFile.exists()) {
 			request.setAttribute("exception", new Exception(
@@ -173,7 +170,8 @@ public class DocumentController {
 		}
 		response.setContentType("application/x-msdownload;");
 		response.setHeader("Content-disposition", "attachment; filename="
-				+ new String(fileName.replaceAll("_", ".").getBytes("utf-8"), "ISO8859-1"));
+				+ new String(fileName.replaceAll("_", ".").getBytes("utf-8"),
+						"ISO8859-1"));
 		response.setHeader("Content-Length",
 				String.valueOf(targetFile.length()));
 
@@ -197,11 +195,38 @@ public class DocumentController {
 				out.close();
 			}
 		}
-		
-//		ModelAndView view = new ModelAndView();
-//		view.setViewName("redirect:/doc/load/" + parentId);
-//		return view;
+	}
 
+	@RequestMapping("/ajax/delete/{fileId}")
+	public void deleteFile(@PathVariable int fileId,
+			HttpServletResponse response, HttpSession session) throws IOException {
+		Employee employee = (Employee) session.getAttribute("user");
+		Document current = documentService.loadDocumentById(fileId);
+		if (null == current) {
+			JsonResponseUtils.returnJsonResponse(response, "文件不存在或已删除!", false,
+					500);
+			return;
+		}
+		File f = new File(current.getFilePath());
+		if (f.exists()) {
+			if (f.isFile() || (f.isDirectory() && f.list().length < 1)) {
+				f.delete();
+			} else {
+				File[] children = f.listFiles();
+				for (File c : children) {
+					if (c.isFile())
+						c.delete();
+				}
+				f.delete();
+			}
+		} else {
+			JsonResponseUtils.returnJsonResponse(response, "文件不存在或已删除!", false,
+					500);
+			return;
+		}
+		documentService.deleteFolderById(fileId, current.getFileType(),
+				employee.getName());
+		JsonResponseUtils.returnJsonResponse(response, "文件删除成功!", true, 200);
 	}
 
 	@RequestMapping("/ajax/createFolder/{name}")
@@ -217,15 +242,18 @@ public class DocumentController {
 			return;
 		}
 		String userName = employee.getName();
+		String folderDir = FileUtils.getRootPath() + userName + File.separator
+				+ name;
 		Document d = new Document();
 		d.setFileName(name);
 		d.setFileOwner(userName);
 		d.setFileOwnerId(employee.getEmployeeId());
-		d.setFilePath(userName + File.separator + name);
+		d.setFilePath(folderDir);
 		d.setFileType(FileTypeEnum.FOLDER.getType());
 		// root node
 		d.setParentId(0);
 		documentService.insertDocument(d);
+		FileUtils.createFolder(folderDir);
 		JsonResponseUtils.returnJsonResponse(response, "文件夹创建成功", true, 200);
 	}
 
