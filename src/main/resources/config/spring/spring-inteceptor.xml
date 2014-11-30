@@ -13,6 +13,11 @@ http://www.springframework.org/schema/context
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/project/**" />
+			<mvc:mapping path="/doc/**" />
+			<mvc:mapping path="/contract/**" />
+			<mvc:mapping path="/sample/**" />
+			<mvc:mapping path="/customer/**" />
+			<mvc:mapping path="/outsource/**" />
 			<bean class="com.tmrasys.interceptor.LoginInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>

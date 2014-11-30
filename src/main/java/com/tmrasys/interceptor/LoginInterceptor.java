@@ -2,6 +2,7 @@ package com.tmrasys.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -16,7 +17,8 @@ public class LoginInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
 		logger.info("preHandle ..." + handler);
-		if (null == request.getSession().getAttribute("user")) {
+		HttpSession session = request.getSession();
+		if (null == session.getAttribute("user")) {
 			response.sendRedirect(request.getContextPath()
 					+ FailedUtils.getLoginErrorMessage("请先登录!"));
 			return false;

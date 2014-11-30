@@ -51,7 +51,7 @@ public class ProjectController {
 	}
 	
 	@RequestMapping("/pages/{page}")
-	public ModelAndView loadProjectByPage(@PathVariable int page, HttpSession session) {
+	public ModelAndView loadProjectByPage(@PathVariable int page, HttpSession session) throws Exception {
 		Employee employee = (Employee) session.getAttribute("user");
 		int count = projectService.countProjectsByEmployee(employee.getEmployeeId());
 		List<Project> projectsReturn = projectService.loadProjectsPagination(employee.getEmployeeId(), page);
@@ -63,12 +63,13 @@ public class ProjectController {
 		view.addObject("projects", projectsReturn);
 		view.addObject("pages", pages);
 		view.setViewName(PageResourceConstant.PROJECT_LIST);
+		if(true) throw new Exception();
 		return view;
 
 	}
 
 	@RequestMapping("/list")
-	public ModelAndView loadAllProjectsByUser(HttpSession session) {
+	public ModelAndView loadAllProjectsByUser(HttpSession session){
 		Employee employee = (Employee) session.getAttribute("user");
 		List<Project> projects = projectService.loadProjectsByEmployee(employee
 				.getEmployeeId());
