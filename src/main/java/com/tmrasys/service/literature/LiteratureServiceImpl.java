@@ -30,4 +30,9 @@ public class LiteratureServiceImpl implements LiteratureService {
 		return literatureDao.totalCount();
 	}
 
+	@Override
+	public Literature loadById(int id) {
+		return literatureDao.loadById(id);
+	}
+
 }

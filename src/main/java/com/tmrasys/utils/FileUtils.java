@@ -7,7 +7,17 @@ import org.apache.log4j.Logger;
 
 public class FileUtils {
 	private static Logger logger = Logger.getLogger(FileUtils.class);
-	
+
+	final static String winRootDir = "D:" + File.separator + "admin"
+			+ File.separator + "upload" + File.separator;
+	final static String linuxRootDir = File.separator + "admin"
+			+ File.separator + "upload" + File.separator;
+
+	final static String winLiteratureDir = "D:" + File.separator + "admin"
+			+ File.separator + "literature" + File.separator;
+	final static String linuxLiteratureDir = File.separator + "admin"
+			+ File.separator + "literature" + File.separator;
+
 	public static String getFilePath(ClassLoader cl, String name) {
 		String path = cl.getResource(
 				File.separator + "pros" + File.separator + name).toString();
@@ -21,11 +31,6 @@ public class FileUtils {
 				+ name);
 
 	}
-
-	final static String winRootDir = "D:" + File.separator + "admin"
-			+ File.separator + "upload" + File.separator;
-	final static String linuxRootDir = File.separator + "admin"
-			+ File.separator + "upload" + File.separator;
 
 	public static String getRootPath() {
 		if (isWindows()) {
@@ -51,7 +56,19 @@ public class FileUtils {
 		File f = new File(path);
 		if (!f.exists()) {
 			boolean success = f.mkdirs();
-			logger.info("Create files and folders success ? "+success);
+			logger.info("Create files and folders success ? " + success);
 		}
+	}
+
+	public static void createLiteratureFolder() {
+		File f = new File(isWindows() ? winLiteratureDir : linuxLiteratureDir);
+		if (!f.exists()) {
+			boolean success = f.mkdirs();
+			logger.info("Create literature folder success ? " + success);
+		}
+	}
+
+	public static String getLiteraturePath() {
+		return isWindows() ? winLiteratureDir : linuxLiteratureDir;
 	}
 }

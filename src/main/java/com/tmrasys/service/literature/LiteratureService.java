@@ -12,4 +12,6 @@ public interface LiteratureService {
 
 	public int getTotalCount();
 
+	public Literature loadById(int id);
+
 }

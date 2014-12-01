@@ -34,10 +34,12 @@
 							<div class="panel-body">
 								<div class="row">
 									<div class="col-md-12">
+										<a href="add-redirect" target="_blank">
 										<button id="createDocument" data-toggle="modal"
 											data-target="#modalCreateFolder"
 											class="btn btn-default btn-primary pull-left"
-											style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px">创建新的文献</button>
+											style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px">
+											创建新的文献</button></a>
 									</div>
 								</div>
 								<div class="table-responsive">
@@ -53,16 +55,34 @@
 											</tr>
 										</thead>
 										<tbody id="folderTableBody">
-											<c:forEach items="${lts}" var="lte" varStatus="status">
-												<tr>
-													<td>${lte.title }</td>
-													<td>${lte.author }</td>
-													<td><fmt:formatDate value="${lte.publishDate }"	pattern="yyyy-MM-dd" /></td>
-													<td>${lte.location }</td>
-													<td>${lte.abstracts.substring(0,20)}......</td>
-													<td><a style="color: blue;">下载</a></td>
-												</tr>
-											</c:forEach>
+											<c:choose>
+											<c:when test="${lts.size()<1}">
+													<tr>
+														<td>暂无文献</td>
+													</tr>
+												</c:when>
+											<c:otherwise>
+												<c:forEach items="${lts}" var="lte" varStatus="status">
+													<tr>
+														<td>${lte.title }</td>
+														<td>${lte.author }</td>
+														<td><fmt:formatDate value="${lte.publishDate }"	pattern="yyyy-MM-dd" /></td>
+														<td>${lte.location }</td>
+														<td>
+														<c:choose>
+															<c:when test="${lte.abstracts.length()>20}">
+																	${lte.abstracts.substring(0,20)}......
+															</c:when>
+															<c:otherwise>
+																${lte.abstracts}
+															</c:otherwise>
+														</c:choose>
+														</td>
+														<td><a style="color: blue;" href="download/${lte.id}">下载</a></td>
+													</tr>
+												</c:forEach>
+											</c:otherwise>
+											</c:choose>
 										</tbody>
 									</table>
 								</div>

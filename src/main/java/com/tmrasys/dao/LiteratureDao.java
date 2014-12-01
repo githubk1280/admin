@@ -17,4 +17,6 @@ public interface LiteratureDao {
 	
 	int totalCount();
 
+	Literature loadById(int id);
+
 }

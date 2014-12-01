@@ -18,4 +18,8 @@ public class Literature {
 	 * 摘要
 	 */
 	private String abstracts;
+	/**
+	 * 上传文件存储路径
+	 */
+	private String filePath;
 }

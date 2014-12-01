@@ -8,14 +8,20 @@
 		literature
 		(TITLE, AUTHOR,
 		PUBLICATION_YEAR,
-		LOCATIONS, ABSTRACT)
+		LOCATIONS, ABSTRACT,DISK_URL)
 		VALUES
-		(#{title},#{author},#{publishDate},#{location},#{abstracts})
+		(#{title},#{author},#{publishDate},#{location},#{abstracts},#{filePath})
 	</insert>
 	<select id="loadAllLiteratures" resultMap="lteResult"
 		parameterType="map">
 		SELECT * FROM literature
+		ORDER BY addTime DESC
 		LIMIT #{start},#{offset}
+	</select>
+	<select id="loadById" resultMap="lteResult" parameterType="int">
+		SELECT * FROM literature
+		WHERE
+		LITERATURE_ID=#{id}
 	</select>
 	<select id="totalCount" resultType="int">
 		SELECT count(LITERATURE_ID) FROM literature
@@ -27,6 +33,7 @@
 		<result property="publishDate" column="PUBLICATION_YEAR" />
 		<result property="location" column="LOCATIONS" />
 		<result property="abstracts" column="ABSTRACT" />
+		<result property="filePath" column="DISK_URL" />
 	</resultMap>
 	<parameterMap type="com.tmrasys.domain.Literature" id="lteParameter">
 		<parameter property="id" resultMap="LITERATURE_ID" />
@@ -35,6 +42,7 @@
 		<parameter property="publishDate" resultMap="PUBLICATION_YEAR" />
 		<parameter property="location" resultMap="LOCATIONS" />
 		<parameter property="abstracts" resultMap="ABSTRACT" />
+		<parameter property="filePath" resultMap="DISK_URL" />
 	</parameterMap>
 </mapper>
 

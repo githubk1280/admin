@@ -24,8 +24,8 @@ public class PageResourceConstant {
 	public static final String SAMPLE_DETAIL = "sample/sampleDetail";
 	public static final String SAMPLE_ADD = "sample/sampleAdd";
 	
-	public static final String DOC_LOAD = "document/detail";
-	public static final String DOC_LIST = "document/list";
+	public static final String DOC_LOAD = "document/folderList";
+	public static final String DOC_LIST = "document/fileList";
 	
 	public static final String LTS_LIST = "literature/list";
 	public static final String LTS_ADD = "literature/add";
