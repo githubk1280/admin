@@ -8,10 +8,19 @@
 		(`PROJECT_ID`,`EMPLOYEE_ID`)
 		VALUES (#{projectId},#{employeeId});
 	</insert>
+	<select id="getByProjectId" resultMap="proEmp"
+		parameterType="map">
+		SELECT * FROM `project_employee`
+		WHERE PROJECT_ID = #{projectId} and EMPLOYEE_ID = #{employeeId} ;
+	</select>
 	<parameterMap type="com.tmrasys.domain.ProjectEmployee"
 		id="peParameter">
 		<parameter property="projectId" resultMap="PROJECT_ID" />
 		<parameter property="employeeId" resultMap="EMPLOYEE_ID" />
 	</parameterMap>
+	<resultMap type="com.tmrasys.domain.ProjectEmployee" id="proEmp">
+		<result column="PROJECT_ID" property="projectId"/>
+		<result column="EMPLOYEE_ID" property="employeeId"/>
+	</resultMap>
 </mapper>
 

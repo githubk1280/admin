@@ -10,4 +10,5 @@ public interface EmployeeService {
 	void updateEmployee(Employee employee);
 	void updatePrivilege(Employee employee, String privilegeCode);
 	public List<Integer> getEmployeesByProjectId(int projectId);
+	List<Employee> getAllEmployees();
 }

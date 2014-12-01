@@ -8,6 +8,9 @@
 		WHERE
 		employee_name=#{name}
 	</select>
+	<select id="getAllEmployees" resultMap="employeeMapper">
+		SELECT * FROM employee
+	</select>
 	<select id="getEmployeesByProjectId" parameterType="int"
 		resultType="int">
 		SELECT e.employee_id FROM employee e LEFT JOIN

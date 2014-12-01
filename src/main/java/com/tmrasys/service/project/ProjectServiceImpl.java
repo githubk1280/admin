@@ -74,8 +74,12 @@ public class ProjectServiceImpl implements ProjectService {
 
 	@Override
 	public List<Project> findProjectByProjectName(String projectName,int employeeID) {
-		// TODO Auto-generated method stub
 		return projectDao.findProjectByProjectName(projectName,employeeID);
+	}
+
+	@Override
+	public List<Project> loadAllProjects() {
+		return projectDao.loadAllProjects();
 	}
 	
 }

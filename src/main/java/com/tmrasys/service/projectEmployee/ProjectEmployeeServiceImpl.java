@@ -17,4 +17,9 @@ public class ProjectEmployeeServiceImpl implements ProjectEmployeeService {
 		projectEmployeeDao.addReference(pe);
 	}
 
+	@Override
+	public ProjectEmployee getByProjectId(int projectId, int employeeId) {
+		return projectEmployeeDao.getByProjectId(projectId, employeeId);
+	}
+
 }

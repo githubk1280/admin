@@ -8,6 +8,10 @@
 		WHERE
 		project_id=#{id}
 	</select>
+	
+	<select id="loadAllProjects" resultMap="employeeMapper">
+		SELECT * FROM project
+	</select>
 
 	<select id="loadProjectsByEmployee" resultType="list" resultMap="employeeMapper"
 		parameterType="int">

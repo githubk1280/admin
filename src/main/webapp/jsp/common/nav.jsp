@@ -61,6 +61,8 @@
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>客户基本信息</strong></a></li>
 				<li  style="display:none" id="outsourceBasicDataLi"><a id="link_outsource" href="<%=request.getContextPath()%>/outsource/pages/1"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>外包信息</strong></a></li>
+				<li  style="display:block" id="assignBasicDataLi"><a id="link_outsource" href="<%=request.getContextPath()%>/project/assign-redirect"><i
+						class="fa fa-bar-chart-o fa-fw"></i> <strong>分配项目</strong></a></li>
 				<li  style="display:none" id="docBasiceDataLi"><a id="link_doc" href="<%=request.getContextPath()%>/doc/pages/1"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong>文档基本信息</strong></a></li>
 				<li  style="display:none" id="contractBasicDataLi"><a id="link_contract" href="<%=request.getContextPath()%>/contract/pages/1"><i
