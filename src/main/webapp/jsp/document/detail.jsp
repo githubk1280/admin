@@ -76,11 +76,11 @@
 <!-- 											</tr> -->
 											<c:forEach items="${docs}" var="doc" varStatus="status">
 												<tr>
-													<td><i class="fa fa-bar-chart-o fa-fw"></i><a href="/admin/doc/load/${doc.fileId}"
+													<td><i class="glyphicon glyphicon-folder-close" style="margin-right:10px"></i><a href="/admin/doc/load/${doc.fileId}"
 														class="project_link">${doc.fileName}</a>
 													</td>
-													<td id="tddddd"><a style="color: blue;" href="javascript:void(0);"
-													 onclick="delModel(${doc.fileId})">删除</a>
+													<td><a style="color: #333;margin-left:6px" class="glyphicon glyphicon-trash" href="javascript:void(0);"
+													 onclick="delModel(${doc.fileId})"></a>
 													</td>
 												</tr>
 											</c:forEach>

@@ -60,12 +60,12 @@
 												<c:otherwise>
 													<c:forEach items="${docs}" var="doc" varStatus="status">
 														<tr>
-															<td><i class="fa fa-bar-chart-o fa-fw"></i>${doc.fileName}</td>
-															<td><i class="fa fa-bar-chart-o fa-fw"></i> <a href="/admin/doc/download/${doc.fileId}"
-																class="project_link">下载</a></td>
-															<td><i class="fa fa-bar-chart-o fa-fw"></i> 
-															<a style="color: blue;" href="javascript:void(0);"
-													 			onclick="delModel(${doc.fileId})">删除</a></td>
+															<td><i class="glyphicon glyphicon-file"></i>${doc.fileName}</td>
+															<td><a style="color: #333;margin-left:20px" class="glyphicon glyphicon-download-alt" href="/admin/doc/download/${doc.fileId}"
+																class="project_link"></a></td>
+															<td> 
+															<a style="color: #333;margin-left:20px"class="glyphicon glyphicon-trash" href="javascript:void(0);"
+													 			onclick="delModel(${doc.fileId})"></a></td>
 														</tr>
 													</c:forEach>
 												</c:otherwise>
