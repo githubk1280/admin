@@ -12,5 +12,9 @@ public class ProjectEmployee {
 		this.projectId = projectId;
 		this.employeeId = employeeId;
 	}
+	
+	public ProjectEmployee() {
+		
+	}
 
 }

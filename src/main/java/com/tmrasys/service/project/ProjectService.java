@@ -14,5 +14,5 @@ public interface ProjectService {
 	List<ProjectIdPrincipal> loadProjectIdPrincipal(int userId);
 	List<Project> loadProjectsPagination(int userId, int pageIndex);
 	List<Project> findProjectByProjectName(String projectName,int employeeID);
-
+	List<Project> loadAllProjects();
 }

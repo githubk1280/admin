@@ -17,8 +17,8 @@
 			<div class="row row-margin">
 				<div class="col-md-3 col-sm-12 col-xs-12">
 					<div>
-					<!--  ng-click="viewProHis()-->
-						<a id="link_proHis" href="#"  "><label
+					<!-- ng-click="viewProHis()" -->
+						<a id="link_proHis" href="<%=request.getContextPath()%>/status/proStatusHistory/${project.projectId}"  target="_blank" ><label
 							id="proStatusHis" class="a-color">项目进度历史 </label></a>
 					</div>
 				</div>

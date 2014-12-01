@@ -99,7 +99,7 @@ public class ProjectStatusController implements ApplicationContextAware {
 	
 	
 	
-	@RequestMapping(value = "/ajax/viewHis/{projectId}")
+	@RequestMapping(value = "proStatusHistory/{projectId}")
 	public ModelAndView loadProHis(@PathVariable int projectId){
 		List<ProjectProgress> proProgressList = projectProgressService.getByProjectId(projectId);
 		ModelAndView view = new ModelAndView();

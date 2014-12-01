@@ -12,4 +12,5 @@ public interface EmployeeDao {
 	void addEmployee(Employee employee);
 	void updateEmployee(Employee employee);
 	public List<Integer> getEmployeesByProjectId(int projectId);
+	List<Employee> getAllEmployees();
 }

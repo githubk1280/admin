@@ -18,6 +18,7 @@ import com.tmrasys.domain.Employee;
 import com.tmrasys.domain.Project;
 import com.tmrasys.domain.ProjectEmployee;
 import com.tmrasys.domain.ProjectProgress;
+import com.tmrasys.service.employee.EmployeeService;
 import com.tmrasys.service.project.ProjectService;
 import com.tmrasys.service.projectEmployee.ProjectEmployeeService;
 import com.tmrasys.service.projectProgress.ProjectProgressService;
@@ -35,6 +36,9 @@ public class ProjectController {
 
 	@Autowired
 	private ProjectProgressService projectProgressService;
+	
+	@Autowired
+	private EmployeeService employeeService;
 
 	@PostConstruct
 	public void init() {
@@ -127,6 +131,32 @@ public class ProjectController {
 
 	}
 	
+	@RequestMapping("/assign-redirect")
+	public ModelAndView assignRedirect() {
+		ProjectEmployee projectEmployee = new ProjectEmployee(0, 0);
+		List<Employee> emps = employeeService.getAllEmployees();
+		List<Project> pros = projectService.loadAllProjects();
+		ModelAndView view = new ModelAndView();
+		view.addObject("projects", pros);
+		view.addObject("employees", emps);
+		view.addObject("projectEmployee", projectEmployee);
+		view.setViewName("project/assignProjects");
+		return view;
+
+	}
 	
+	@RequestMapping("/assign")
+	public ModelAndView assign(ProjectEmployee projectEmployee, HttpSession session) {
+		boolean exist = projectEmployeeService.getByProjectId(projectEmployee.getProjectId(), projectEmployee.getEmployeeId()) != null;
+		int success = 1;
+		if(exist) {
+			success = 2;
+		} else {
+			projectEmployeeService.addReference(projectEmployee);
+		}
+		ModelAndView view = new ModelAndView();
+		view.addObject("success", success);
+		return new ModelAndView("project/assign-success");
+	}
 	
 }
