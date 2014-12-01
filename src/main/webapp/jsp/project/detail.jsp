@@ -356,20 +356,6 @@
 					alert(err);
 				});
 			};
-			$scope.viewProHis = function(){
-		    	//alert("ssss");
-		    	$http({
-		            method:'post',
-		            url:'/admin/status/ajax/viewHis/${project.projectId}',
-		            data:''
-				}).success(function (data){
-					if(data.success == true){
-						alert("状态更新成功!");
-					}
-				}).error(function (err){
-					//alert(err);
-				});
-		    };
 		}
 	    
 	    
