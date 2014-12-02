@@ -45,7 +45,7 @@ public class MessageServiceTest extends AbstractBaseTestConfig {
 	
 	@Test
 	public void getMessagesByReceiveId() {
-		System.out.println(messageService.getMessagesByReceiveId(3));
+		System.out.println(messageService.getMessagesByReceiveId(3, 0, 0));
 	}
 	
 	@Test

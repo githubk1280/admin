@@ -332,13 +332,13 @@
 				result += "-";
 				result += d.getMonth();
 				result += "-";
-				result += d.getDay() > 10 ? d.getDay() : "0" + d.getDay();
+				result += d.getDay() > 11 ? d.getDay() : "0" + d.getDay();
 				result += " ";
-				result += d.getHours() > 10 ? d.getHours() : "0" + d.getHours();
+				result += d.getHours() > 11 ? d.getHours() : "0" + d.getHours();
 				result += ":";
-				result += d.getMinutes() > 10 ? d.getMinutes() : "0" + d.getMinutes();
+				result += d.getMinutes() > 11 ? d.getMinutes() : "0" + d.getMinutes();
 				result += ":";
-				result += d.getSeconds() > 10 ? d.getSeconds() : "0" + d.getSeconds();
+				result += d.getSeconds() > 11 ? d.getSeconds() : "0" + d.getSeconds();
 				return result;
 			};
 		

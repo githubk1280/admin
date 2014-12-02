@@ -24,9 +24,9 @@
 		project_employee pe
 		ON
 		e.employee_id = pe.EMPLOYEE_ID WHERE
-		pe.PROJECT_ID = #{projectId};
+		pe.PROJECT_ID = #{projectId}
 		AND
-		e.employee_id != #{operatorId}
+		e.employee_id <![CDATA[!=]]> #{operatorId}
 	</select>
 
 	<insert id="addEmployee" keyProperty="employeeId" parameterMap="employeeParameter"

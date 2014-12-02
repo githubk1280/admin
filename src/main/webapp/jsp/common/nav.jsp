@@ -16,7 +16,7 @@
                      <i class="fa fa-sitemap fa-fw"></i>
              </a>
 		 </li>
-		<li id="messageLi"><a href="#"> <i class="fa fa-envelope fa-fw"></i><span
+		<li id="messageLi"><a href="<%=request.getContextPath()%>/message/list?p=1"> <i class="fa fa-envelope fa-fw"></i><span
 				id="messageBadge" class="badge message-badge-margin">{{msgNum}}</span>
 		</a></li>
 		<!-- /.dropdown -->

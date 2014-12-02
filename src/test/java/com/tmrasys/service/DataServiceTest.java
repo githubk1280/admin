@@ -66,7 +66,8 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		employee.setName("tony");
 		employee.setPassword("123456");
 		employee.setPrivilege(1);
-		employeeDataService.addEmployee(employee);
+		// employeeDataService.addEmployee(employee);
+		employeeDataService.getEmployeesEmailByProjectId(52, 3);
 	}
 
 	@Test
@@ -191,8 +192,8 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		for (Contract c : list)
 			System.out.println(c);
 		Contract contract = list.get(0);
-//		contract.setContractId(0);
-//		contractService.addContract(contract);
+		// contract.setContractId(0);
+		// contractService.addContract(contract);
 		contract.setSignPersonNameA("james");
 		contractService.updateContract(contract);
 	}

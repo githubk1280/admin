@@ -19,54 +19,51 @@
 <body ng-app="">
 	<div id="wrapper">
 		<%@ include file="../common/nav.jsp"%>
-		<div id="page-wrapper">
-			<!-- Navigation -->
-			<nav
-				class="navbar navbar-default navbar-static-top  navbar-default-color"
-				role="navigation" style="margin-bottom: 0">
-			<div class="navbar-header">
-				<a class="navbar-brand"><strong class="navbrand-font">我的消息</strong></a>
-			</div>
-			<!-- /.navbar-static-side --> </nav>
-		</div>
+		<div id="page-wrapper" class="detailPage">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel-body">
+						<div class="panel-group" id="accordion">
+							<div class="panel panel-default">
+								<div class="panel-heading ">
+									<h3 class="panel-title">
+										<strong>消息列表</strong>
+									</h3>
+								</div>
+								<div id="collapseOne">
+									<div class="panel-body">
+										<div class="row row-margin">
+											<div class="col-md-4 col-sm-12 col-xs-12">
 
-		<div class="panel-body">
-			<div class="panel-group" id="accordion">
-				<div class="panel panel-default">
-					<div class="panel-heading ">
-						<h3 class="panel-title">
-							<strong>消息列表</strong>
-						</h3>
-					</div>
-					<div id="collapseOne">
-						<div class="panel-body">
-							<div class="row row-margin">
-								<div class="col-md-4 col-sm-12 col-xs-12">
-
-									<div class="alert alert-danger">
-										这是一条未读的信息 <label style="">2011-11-11</label> <i
-											style="position: float; z-index: 1; right: 20px; bottom: 20px"
-											class="fa fa-bar-chart-o fa-fw"></i>
-									</div>
-									<div class="collapse" style="">
-										<l id="l">消息content</l>
+												<div class="alert alert-danger">
+													这是一条未读的信息 <label style="">2011-11-11</label> <i
+														style="position: float; z-index: 1; right: 20px; bottom: 20px"
+														class="fa fa-bar-chart-o fa-fw"></i>
+												</div>
+												<div class="collapse" style="">
+													<l id="l">消息content</l>
+												</div>
+											</div>
+											<div class="col-md-8  col-sm-12 col-xs-12"></div>
+											<hr align=center width=98%
+												style="border-top: 1px solid #178acc">
+										</div>
+										<div class="row row-margin">
+											<div class="col-md-4 col-sm-12 col-xs-12">
+												<div class="alert alert-danger">
+													这是一条未读的信息 <label>2011-11-11</label><i
+														class="fa fa-bar-chart-o fa-fw"></i>
+												</div>
+												<div class="collapse" style="margin-left: 10px">
+													<l>消息content</l>
+												</div>
+											</div>
+											<div class="col-md-8  col-sm-12 col-xs-12"></div>
+											<hr align=center width=98%
+												style="border-top: 1px solid #178acc">
+										</div>
 									</div>
 								</div>
-								<div class="col-md-8  col-sm-12 col-xs-12"></div>
-								<hr align=center width=98% style="border-top: 1px solid #178acc">
-							</div>
-							<div class="row row-margin">
-								<div class="col-md-4 col-sm-12 col-xs-12">
-									<div class="alert alert-danger">
-										这是一条未读的信息 <label>2011-11-11</label><i
-											class="fa fa-bar-chart-o fa-fw"></i>
-									</div>
-									<div class="collapse" style="margin-left: 10px">
-										<l>消息content</l>
-									</div>
-								</div>
-								<div class="col-md-8  col-sm-12 col-xs-12"></div>
-								<hr align=center width=98% style="border-top: 1px solid #178acc">
 							</div>
 						</div>
 					</div>
@@ -74,15 +71,22 @@
 			</div>
 		</div>
 	</div>
-	</div>
 
 	<!-- /#wrapper -->
 	<%@ include file="../common/modal.jsp"%>
 
 	<%@ include file="../comm-fragement/main-js"%>
 	<script type="text/javascript">
-		
-	</script>
+    $(document).ready(function(){
+    	$("div i").each(function(){
+    		$(this).click(function(){
+    			$(this).parent().next("div").toggleClass("in");
+    			$(this).parent("div").attr("class","alert alert-success");
+    		});
+    	});
+    	
+    });
+    </script>
 
 </body>
 

@@ -18,6 +18,7 @@ public class StatusMessage {
 		this.projectId = projectId;
 		this.percentage = percentage;
 		this.content = content;
+		this.operatorId = operatorId;
 	}
 
 	public StatusMessage() {
