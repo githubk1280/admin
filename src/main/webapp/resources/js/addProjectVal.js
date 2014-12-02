@@ -1,7 +1,12 @@
 /**
  * 
- */
 
+$('#startDate').datetimepicker({
+	lang:'ch',
+	DateMode:'dmComboBox'
+});
+
+ */
 $(".form_date").datetimepicker({
 	language:"zh-CN",
 	minView: "month",

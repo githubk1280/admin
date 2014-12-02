@@ -152,7 +152,6 @@
 														<div class="input-group">
 															<span class="input-group-addon">￥</span>
 															<form:input id="potentialExpenditure" path="potentialExpenditure"  maxlength="15" class="form-control" />
-															<span class="input-group-addon"> .00</span>
 														</div>
 													</div>
 												</div>

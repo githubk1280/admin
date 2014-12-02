@@ -15,6 +15,7 @@
 <link href="<spring:url value="/resources/css/exam.css"/>" rel="stylesheet">
 <link href="<spring:url value="/resources/css/theme.css"/>" rel="stylesheet">
 <link href="<spring:url value="/resources/css/bootstrap-datetimepicker.min.css"/>" rel="stylesheet">
+<!--<link href="<spring:url value="/resources/css/jquery.datetimepicker.css"/>" rel="stylesheet">-->
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

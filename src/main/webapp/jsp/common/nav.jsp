@@ -28,7 +28,7 @@
 		</a>
 			<ul class="dropdown-menu dropdown-user">
 			   <!--  <li><a href="<%=request.getContextPath()%>/user/add-redirect"><i class="fa fa-user fa-fw"></i> 用户信息</a></li>-->
-				<li><a href="<%=request.getContextPath()%>/user/modify-redirect"><i class="fa fa-gear fa-fw"></i>修改密码</a></li>
+				<li id="modifyPasswordLi"><a href="<%=request.getContextPath()%>/user/modify-redirect"><i class="fa fa-gear fa-fw"></i>修改密码</a></li>
 				<li class="divider"></li>
 				<li><a href="<%=request.getContextPath()%>/logout" ><i
 						class="fa fa-sign-out fa-fw"></i> 退出</a></li>
@@ -39,11 +39,11 @@
 	<!-- navbar tabs -->
 	<ul id="tabUl"
 		class="nav navbar-nav navbar-default nav-pills navbar-nav-left navbar-default-color">
-		<li id="tab1"><a href="<%=request.getContextPath()%>/project/pages/1"><i class="fa fa-tasks fa-fw "></i><strong>项目管理</strong></a></li>
-		<li id="tab2"><a href="<%=request.getContextPath()%>/doc/load"><i class="fa fa-tasks fa-fw"></i><strong>文档管理</strong></a></li>
-		<li id="tab3"><a href="<%=request.getContextPath()%>/contract/pages/1"><i class="fa fa-tasks fa-fw"></i><strong>财务管理</strong></a></li>
-		<li id="tab4"><a href="<%=request.getContextPath()%>/sample/pages/1"><i class="fa fa-tasks fa-fw"></i><strong>样品管理</strong></a></li>
-		<li id="tab5"><a href="<%=request.getContextPath()%>/literature/list?pageIndex=1"><i class="fa fa-tasks fa-fw"></i><strong>文献管理</strong></a></li>
+		<li id="tab1"><a href="<%=request.getContextPath()%>/project/pages/1"><i class="fa fa-tasks fa-fw "></i><strong style="font-size:17px">项目管理</strong></a></li>
+		<li id="tab2"><a href="<%=request.getContextPath()%>/doc/load"><i class="fa fa-tasks fa-fw"></i><strong style="font-size:17px">文档管理</strong></a></li>
+		<li id="tab3"><a href="<%=request.getContextPath()%>/contract/pages/1"><i class="fa fa-tasks fa-fw"></i><strong style="font-size:17px">财务管理</strong></a></li>
+		<li id="tab4"><a href="<%=request.getContextPath()%>/sample/pages/1"><i class="fa fa-tasks fa-fw"></i><strong style="font-size:17px">样品管理</strong></a></li>
+		<li id="tab5"><a href="<%=request.getContextPath()%>/literature/list?pageIndex=1"><i class="fa fa-tasks fa-fw"></i><strong style="font-size:17px">文献管理</strong></a></li>
 	</ul>
 
 
@@ -55,22 +55,26 @@
 
 		<div class="sidebar-nav ">
 			<ul class="nav" id="sidebarUl">
-				<li style="display:none" id="projectBasicDataLi"><a id="link_pro" href="<%=request.getContextPath()%>/project/pages/1"><i
-						class="fa fa-bar-chart-o fa-fw"></i> <strong>项目基本信息</strong></a></li>
+				<li  style="display:none" id="projectBasicDataLi"><a id="link_pro" href="<%=request.getContextPath()%>/project/pages/1"><i
+						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">项目基本信息</strong></a></li>
 				<li  style="display:none" id="customerBasicDataLi"><a id="link_customer" href="<%=request.getContextPath()%>/customer/pages/1"><i
-						class="fa fa-bar-chart-o fa-fw"></i> <strong>客户基本信息</strong></a></li>
+						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">客户基本信息</strong></a></li>
 				<li  style="display:none" id="outsourceBasicDataLi"><a id="link_outsource" href="<%=request.getContextPath()%>/outsource/pages/1"><i
-						class="fa fa-bar-chart-o fa-fw"></i> <strong>外包信息</strong></a></li>
-				<li  style="display:block" id="assignBasicDataLi"><a id="link_outsource" href="<%=request.getContextPath()%>/project/assign-redirect"><i
-						class="fa fa-bar-chart-o fa-fw"></i> <strong>分配项目</strong></a></li>
+						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">外包信息</strong></a></li>
+				<li  style="display:none" id="assignBasicDataLi"><a id="link_outsource" href="<%=request.getContextPath()%>/project/assign-redirect"><i
+						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">分配项目</strong></a></li>
 				<li  style="display:none" id="docBasiceDataLi"><a id="link_doc" href="<%=request.getContextPath()%>/doc/pages/1"><i
-						class="fa fa-bar-chart-o fa-fw"></i> <strong>文档基本信息</strong></a></li>
+						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">文档基本信息</strong></a></li>
 				<li  style="display:none" id="contractBasicDataLi"><a id="link_contract" href="<%=request.getContextPath()%>/contract/pages/1"><i
-						class="fa fa-bar-chart-o fa-fw"></i> <strong>财务合同基本信息</strong></a></li>
+						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">财务合同基本信息</strong></a></li>
 				<li  style="display:none" id="sampleBasicDataLi"><a id="link_contract" href="<%=request.getContextPath()%>/sample/pages/1"><i
-						class="fa fa-bar-chart-o fa-fw"></i> <strong>样品基本信息</strong></a></li>
-				<li  style="display:none" id="literatureBasicDataLi"><a id="link_contract" href="<%=request.getContextPath()%>/literature/list?pageIndex=1"><i
-						class="fa fa-bar-chart-o fa-fw"></i> <strong>文献基本信息</strong></a></li>
+						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">样品基本信息</strong></a></li>
+				<li  style="display:none" id="literatureBasicDataLi"><a id="link_literature" href="<%=request.getContextPath()%>/literature/list?pageIndex=1"><i
+						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">文献基本信息</strong></a></li>
+				<li  style="display:none" id="sideModifyPasswordLi"><a id="link_sideModifyPassword" href="<%=request.getContextPath()%>/user/modify-redirect"><i
+						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">修改密码</strong></a></li>
+				<li  style="display:none" id="sideCreateUserLi"><a id="link_sideCreateUser" href="<%=request.getContextPath()%>/user/add-redirect"><i
+						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">创建新用户</strong></a></li>
 <!-- 				<li><a id="link_proStatus" href="#"><i -->
 <!-- 						class="fa fa-bar-chart-o fa-fw"></i> <strong>项目进度</strong><span -->
 <!-- 						id="projectStatusBadge" class="badge sidebar-badge-margin">1</span></a> -->
@@ -99,6 +103,7 @@ var activeTabUrlStr = window.location.pathname;
 		$("#projectBasicDataLi").css('display','block');
 		$("#customerBasicDataLi").css('display','block');
 		$("#outsourceBasicDataLi").css('display','block');
+		$("#assignBasicDataLi").css('display','block');
 		
 	}
 	
@@ -142,12 +147,18 @@ var activeTabUrlStr = window.location.pathname;
 		$("#customerBasicDataLi").css('display','block');
 		$("#outsourceBasicDataLi").css('display','block');
 	}
+	
+	if(activeTabUrlStr.indexOf("user")>0&&activeTabUrlStr.indexOf("modify")>0){
+		$("#sideModifyPasswordLi").css('display','block');
+		//sideModifyPassword
+	}
+	if(activeTabUrlStr.indexOf("user")>0&&activeTabUrlStr.indexOf("add")>0){
+		$("#sideCreateUserLi").css('display','block');
+		//sideModifyPassword
+	}
 	/*
 	*/
-	
-	
-	
-	
+		
 	if($("#role").val()=="1"){
 		$("#createUserLi").css('display','none');
 		$("#tab3").css('display','none');
@@ -156,6 +167,8 @@ var activeTabUrlStr = window.location.pathname;
 		$("#customerBasicDataLi").css('display','none');
 		$("#customerTotalPanel").css('display','none');
 		$("#create").css('display','none'); 
+		$("#assignBasicDataLi").css('display','none');
+		$("#projectBasicDataLi").removeClass("active");
 	}
 	if($("#role").val()=="3"){
 		$("#createUserLi").css('display','none');
@@ -165,18 +178,17 @@ var activeTabUrlStr = window.location.pathname;
 		$("#tab3").css('display','none');
 		$("#tab4").css('display','none');
 		$("#tab5").css('display','none');
-		$("#messageLi").css('display','none');
+		//$("#messageLi").css('display','none');
 		$("#outsourceTotalPanel").css('display','none');
 		$("#customerTotalPanel").css('display','none');
 		$("#projectstatusTotalPanel").css('display','none');
 		$("#modifyProBasicData").css('display','none');
 		$("#create").css('display','none');
-		// outsourceTotalPanel
+		$("#assignBasicDataLi").css('display','none');
+		$("#projectBasicDataLi").removeClass("active");
 	}
 	
-	$("#tabUl li a").click(function(){
-		//var temp = $("#tabValue").val('$(this).attr("id")')  ;
-	});
+	
 
 };
 	

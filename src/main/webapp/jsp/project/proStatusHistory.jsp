@@ -30,49 +30,44 @@
                               </div>
                               <div id="collapseOne">
                                   <div class="panel-body">
+                                  
                                   	<div class="row row-margin" style="align:center">
                                   		<div class="col-md-4  col-sm-12 col-xs-12" >
                                   				<div><label>项目编号</label></div>
-                                  				<div><p>1001</p></div>
-                                   	</div>		                                        	
+                                  				<div><p></p></div> 
+                                   		</div>		
                                    	<div class="col-md-4  col-sm-12 col-xs-12" ></div>
                                   	</div>
+                                 <c:forEach items="${proHis}" var="projectHis" >
                                   	<div class="row row-margin">
                                   		<div class="col-md-4  col-sm-12 col-xs-12" >
                                   			<div><label>日期</label></div>
-                                   		<div><p style="color:red;">2012-01-01</p></div>
+                                   		<div><p style="color:red;">
+                                   				<fmt:formatDate value="${projectHis.progressDate}" pattern="yyyy-MM-dd" />
+											  </p>
+									    </div> 
                                   		</div>
                                    	<div class="col-md-4 col-sm-12 col-xs-12">
                                    			<div><label>撰写人员</label></div>
-                                   			<div><p>Ivan</p></div>
+                                   			<div><p>${projectHis.employeeName}</p></div> 
                                    			<div><label>当时进度</label></div>
-                                   			<div><p style="color:blue">30%</p></div>
+                                   			<div><p style="color:blue">${projectHis.percentage}%</p></div>
                                    			<div><label>进度内容</label></div>
-                                   			<div><p>这是一个很好的项目，客户已付预付款，已经开始啦！阿斯顿发生的发送到发生的发送到发低烧发呆发送到发生的发送到发生的</p></div>
+                                   			<div><l>${projectHis.content}</l></div>
                                    	</div>
                                    	<div class="col-md-4  col-sm-12 col-xs-12"></div>
                                   	</div>
                                   	<div class="row row-margin"><hr  align=center width=98% style="border-top:1px solid #178acc"></div>
-                                  	<div class="row row-margin">
-                                  		<div class="col-md-4  col-sm-12 col-xs-12" >
-                                  			<div><label>日期</label></div>
-                                   		<div><p style="color:red;">2012-01-02</p></div>
-                                  		</div>
-                                   	<div class="col-md-4 col-sm-12 col-xs-12">
-                                   			<div><label>撰写人员</label></div>
-                                   			<div><p>Ivan</p></div>
-                                   			<div><label>当时进度</label></div>
-                                   			<div><p style="color:blue">30%</p></div>
-                                   			<div><label>进度内容</label></div>
-                                   			<div><p>这是一个很好的项目，客户已付预付款，已经开始啦！阿斯顿发生的发送到发生的发送到发低烧发呆发送到发生的发送到发生的</p></div>
-                                   	</div>
-                                   	<div class="col-md-4  col-sm-12 col-xs-12" style="border-bottom:1px sloid #eee"></div>
-                                  	</div>
+                                 </c:forEach>
                                   	
-				 				 </div>
+				 				 </div> 
                             </div>
                      </div>
              </div>
 </div>
 </body>
+<script type="text/javascript">
+</script>
 </html>
+
+
