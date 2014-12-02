@@ -20,7 +20,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Autowired
 	private PrivilegeDao privilegeDao;
 	private Map<String, Integer> privileges = new HashMap<String, Integer>();
-	
+
 	@Override
 	public Employee getEmployeeByName(String name) {
 		return employeeDao.getEmployeeByName(name);
@@ -38,9 +38,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public void updatePrivilege(Employee employee, String privilegeCode) {
-		if(privileges.size() == 0) {
-			for(Privilege privilege : privilegeDao.getAllPrivileges()) {
-				privileges.put(privilege.getDescription(), privilege.getPrivilegeId());
+		if (privileges.size() == 0) {
+			for (Privilege privilege : privilegeDao.getAllPrivileges()) {
+				privileges.put(privilege.getDescription(),
+						privilege.getPrivilegeId());
 			}
 		}
 		int privilegeId = privileges.get(privilegeCode);
@@ -56,6 +57,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public List<Employee> getAllEmployees() {
 		return employeeDao.getAllEmployees();
+	}
+
+	@Override
+	public List<String> getEmployeesEmailByProjectId(int projectId,
+			int operatorId) {
+		return employeeDao.getEmployeesEmailByProjectId(projectId, operatorId);
 	}
 
 }

@@ -7,8 +7,12 @@ public class StatusMessage {
 	private int projectId;
 	private int percentage;
 	private String content;
+	/**
+	 * 更新状态的 employeeId
+	 */
+	private int operatorId;
 
-	public StatusMessage(int projectId, int percentage,
+	public StatusMessage(int operatorId, int projectId, int percentage,
 			String content) {
 		super();
 		this.projectId = projectId;

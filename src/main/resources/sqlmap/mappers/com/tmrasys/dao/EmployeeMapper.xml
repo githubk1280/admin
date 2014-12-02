@@ -15,8 +15,20 @@
 		resultType="int">
 		SELECT e.employee_id FROM employee e LEFT JOIN
 		project_employee pe ON
-		e.employee_id = pe.EMPLOYEE_ID WHERE pe.PROJECT_ID = #{projectId};
+		e.employee_id = pe.EMPLOYEE_ID WHERE
+		pe.PROJECT_ID = #{projectId};
 	</select>
+	<select id="getEmployeesEmailByProjectId" parameterType="int"
+		resultType="string">
+		SELECT e.EMAIL FROM employee e LEFT JOIN
+		project_employee pe
+		ON
+		e.employee_id = pe.EMPLOYEE_ID WHERE
+		pe.PROJECT_ID = #{projectId};
+		AND
+		e.employee_id != #{operatorId}
+	</select>
+
 	<insert id="addEmployee" keyProperty="employeeId" parameterMap="employeeParameter"
 		useGeneratedKeys="true">
 		INSERT INTO `employee`

@@ -43,8 +43,12 @@ public class MessageHandler implements Handler {
 						.getEmployeesByProjectId(((StatusMessage) obj)
 								.getProjectId());
 				Message message = null;
-				logger.info("Sending message to all employees :"+employeeIds);
+				logger.info("Sending message to all employees :" + employeeIds);
 				for (Integer employeeId : employeeIds) {
+					if (employeeId == ((StatusMessage) obj).getOperatorId()) {
+						// skip himself
+						continue;
+					}
 					message = new Message();
 					message.setSenderId(0);
 					message.setReceiveId(employeeId);

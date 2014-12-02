@@ -2,6 +2,7 @@ package com.tmrasys.service.handler;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 import java.util.Properties;
 
 import javax.annotation.PostConstruct;
@@ -12,8 +13,12 @@ import org.springframework.core.task.TaskExecutor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
+import com.tmrasys.domain.Customer;
 import com.tmrasys.event.StatusMessage;
+import com.tmrasys.service.customer.CustomerService;
+import com.tmrasys.service.employee.EmployeeService;
 import com.tmrasys.utils.FileUtils;
 
 @Component("mailHandler")
@@ -23,6 +28,10 @@ public class MailHandler implements Handler {
 	private JavaMailSenderImpl mailSender;
 	private SimpleMailMessage templateMessage;
 	private Properties p;
+	@Autowired
+	private CustomerService customerService;
+	@Autowired
+	private EmployeeService employService;
 
 	@Autowired
 	private TaskExecutor taskExecutor;
@@ -47,7 +56,10 @@ public class MailHandler implements Handler {
 			public void run() {
 				String content = ((StatusMessage) obj).getContent();
 				SimpleMailMessage msg = new SimpleMailMessage(templateMessage);
-				String to[] = p.getProperty("mail.to").split(",");
+				// String to[] = p.getProperty("mail.to").split(",");
+				String to[] = prepareToList(
+						((StatusMessage) obj).getProjectId(),
+						((StatusMessage) obj).getOperatorId());
 				logger.info(String.format("Sending mail to %s,content=%s", to,
 						content));
 				msg.setTo(to);
@@ -56,6 +68,20 @@ public class MailHandler implements Handler {
 				mailSender.setPassword(p.getProperty("mail.from.passwrod"));
 				mailSender.send(msg);
 				logger.info("Mail sent success!");
+			}
+
+			private String[] prepareToList(int projectId, int operatorId) {
+				List<Customer> customers = customerService
+						.getByProjectId(projectId);
+				List<String> emails = employService
+						.getEmployeesEmailByProjectId(projectId, operatorId);
+				for (Customer c : customers) {
+					String email = c.getEmail();
+					if (!StringUtils.isEmpty(email)) {
+						emails.add(email);
+					}
+				}
+				return emails.toArray(new String[] {});
 			}
 
 		});

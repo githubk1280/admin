@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.BeansException;
@@ -24,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
 import com.tmrasys.constant.page.PageResourceConstant;
+import com.tmrasys.domain.Employee;
 import com.tmrasys.domain.Project;
 import com.tmrasys.domain.ProjectProgress;
 import com.tmrasys.event.StatusMessage;
@@ -69,8 +71,9 @@ public class ProjectStatusController implements ApplicationContextAware {
 	}
 
 	@RequestMapping(value = "/ajax/add")
-	public void add(HttpServletRequest request, HttpServletResponse response)
-			throws IOException {
+	public void add(HttpServletRequest request, HttpServletResponse response,
+			HttpSession session) throws IOException {
+		Employee employee = (Employee) session.getAttribute("user");
 		BufferedReader in = request.getReader();
 		String s = in.readLine();
 		StringBuffer sb = new StringBuffer();
@@ -91,21 +94,21 @@ public class ProjectStatusController implements ApplicationContextAware {
 		// 3.publish userId,projectId,percentage,content
 		int percentage = progress.getPercentage();
 		String content = String.format(messageContentMap.get(percentage),
-				progress.getEmployeeName())+"%";
+				progress.getEmployeeName()) + "%";
 		applicationContext.publishEvent(new StatusChangedEvent(
-				new StatusMessage(projectId, percentage, content)));
+				new StatusMessage(employee.getEmployeeId(), projectId,
+						percentage, content)));
 		JsonResponseUtils.returnJsonResponse(response, progress, true, 200);
 	}
-	
-	
-	
+
 	@RequestMapping(value = "proStatusHistory/{projectId}")
-	public ModelAndView loadProHis(@PathVariable int projectId){
-		List<ProjectProgress> proProgressList = projectProgressService.getByProjectId(projectId);
+	public ModelAndView loadProHis(@PathVariable int projectId) {
+		List<ProjectProgress> proProgressList = projectProgressService
+				.getByProjectId(projectId);
 		ModelAndView view = new ModelAndView();
 		view.addObject("proHis", proProgressList);
 		view.setViewName(PageResourceConstant.PRO_STATUS);
-		
+
 		return view;
 	}
 
