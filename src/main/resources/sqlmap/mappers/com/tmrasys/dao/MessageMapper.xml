@@ -3,6 +3,14 @@
 
 <mapper namespace="com.tmrasys.dao.MessageDao">
 
+	<update id="updateMessageStatus" parameterType="map">
+		UPDATE message
+		SET
+		Status=#{status}
+		WHERE
+		id=#{msgId}
+	</update>
+
 	<insert id="addMessage" parameterMap="messageParameter"
 		keyProperty="messageId" useGeneratedKeys="true">
 		INSERT INTO
@@ -39,6 +47,7 @@
 		ReceiverId = #{receiveId}
 		ORDER BY
 		SendTime DESC
+		LIMIT #{start},#{offset}
 	</select>
 
 	<select id="getMessagesCountByReceiveId" parameterType="int"

@@ -33,4 +33,6 @@ public class PageResourceConstant {
 	
 	public static final String PRO_STATUS = "project/proStatusHistory";
 	
+	public static final String MSG_LIST = "msg/list";
+	
 }

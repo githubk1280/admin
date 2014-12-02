@@ -25,7 +25,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tmrasys.constant.page.PageResourceConstant;
 import com.tmrasys.constant.page.PaginationConstant;
-import com.tmrasys.domain.Document;
 import com.tmrasys.domain.Literature;
 import com.tmrasys.service.literature.LiteratureService;
 import com.tmrasys.utils.FileUtils;

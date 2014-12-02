@@ -30,13 +30,21 @@ public class MessageServiceImpl implements MessageService {
 	}
 
 	@Override
-	public List<Message> getMessagesByReceiveId(int receiveId) {
-		return messageDao.getMessagesByReceiveId(receiveId);
+	public List<Message> getMessagesByReceiveId(int receiveId, int p,
+			int defaultPageSize) {
+		return messageDao.getMessagesByReceiveId(receiveId, (p - 1)
+				* defaultPageSize, defaultPageSize);
 	}
 
 	@Override
 	public int getMessagesCountByReceiveId(int receiveId) {
 		return messageDao.getMessagesCountByReceiveId(receiveId);
+	}
+
+	@Override
+	public void updateMessageStatus(int msgId, int status) {
+		messageDao.updateMessageStatus(msgId, status);
+
 	}
 
 }

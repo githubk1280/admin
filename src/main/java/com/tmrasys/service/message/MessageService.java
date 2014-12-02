@@ -12,7 +12,10 @@ public interface MessageService {
 
 	public MessageText getMessageTextById(int msgTextId);
 
-	public List<Message> getMessagesByReceiveId(int receiveId);
-	
+	public List<Message> getMessagesByReceiveId(int receiveId, int p,
+			int defaultPageSize);
+
 	public int getMessagesCountByReceiveId(int receiveId);
+
+	public void updateMessageStatus(int msgId, int status);
 }

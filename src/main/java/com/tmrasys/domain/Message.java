@@ -13,6 +13,9 @@ public class Message {
 	private int senderId;
 	private int receiveId;
 	private Date sendTime;
+	/**
+	 * 已读、未读
+	 */
 	private int status;
 	private int msgTextId;
 }

@@ -20,91 +20,60 @@
 	<div id="wrapper">
 		<%@ include file="../common/nav.jsp"%>
 		<div id="page-wrapper">
-			<div class="row">
-				<form role="form">
-					<div class="col-lg-12">
-						<h2 class="page-header form-group input-group">
-							<strong>消息列表</strong> <input type="text" class="form-control"
-								placeholder="请输入日期"> <span class="input-group-btn">
-								<button class="btn btn-default btn-primary" type="button">
-									<i class="fa fa-search"></i>
-								</button>
-							</span>
-						</h2>
-					</div>
-				</form>
-				<!-- /.col-lg-12 -->
+			<!-- Navigation -->
+			<nav
+				class="navbar navbar-default navbar-static-top  navbar-default-color"
+				role="navigation" style="margin-bottom: 0">
+			<div class="navbar-header">
+				<a class="navbar-brand"><strong class="navbrand-font">我的消息</strong></a>
 			</div>
-			<div class="row">
-				<div class="table-responsive">
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th>时间</th>
-								<th>消息内容</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>2010-01-01</td>
-								<td>
-									<p style="color: red">进度信息</p> <textarea rows="8" cols="80"
-										disabled>asdfasdfasdfasdf</textarea>
-								</td>
-							</tr>
-							<tr>
-								<td>2010-01-01</td>
-								<td><textarea rows="8" cols="80">asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfaffffffffffffffffffffffffffffffffffffffffasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfsss</textarea></td>
-							</tr>
-							<tr>
-								<td>1003</td>
-								<td><textarea rows="8" cols="80">asdfasdfasdfasdfasdfasdfasdfasdfasdfaffffffffffffffffffffffffffffffffffffffffasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfsss</textarea></td>
-							</tr>
-							<tr>
-								<td>1004</td>
-								<td><textarea rows="8" cols="80">asdfasdfasdfasdf</textarea></td>
-							</tr>
-							<tr>
-								<td>1005</td>
-								<td><textarea rows="8" cols="80">asdfasdfasdfasdf</textarea></td>
-							</tr>
-							<tr>
-								<td>1006</td>
-								<td><textarea rows="8" cols="80">asdfasdfasdfasdf</textarea></td>
-							</tr>
-							<tr>
-								<td>1007</td>
-								<td><textarea rows="8" cols="80">asdfasdfasdfasdf</textarea></td>
-							</tr>
-							<tr>
-								<td>1008</td>
-								<td><textarea rows="8" cols="80">asdfasdfasdfasdf</textarea></td>
-							</tr>
-							<tr>
-								<td>1009</td>
-								<td><textarea rows="8" cols="80">asdfasdfasdfasdf</textarea></td>
-							</tr>
-							<tr>
-								<td>1010</td>
-								<td>Robin</td>
-							</tr>
-						</tbody>
-					</table>
-					<div class="pull-right">
-						<ul class="pagination">
-							<li><a id="paging" href="#"><strong>上一页</strong></a></li>
-							<li class="active"><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a id="paging" href="#"><strong>下一页</strong></a></li>
-						</ul>
+			<!-- /.navbar-static-side --> </nav>
+		</div>
+
+		<div class="panel-body">
+			<div class="panel-group" id="accordion">
+				<div class="panel panel-default">
+					<div class="panel-heading ">
+						<h3 class="panel-title">
+							<strong>消息列表</strong>
+						</h3>
+					</div>
+					<div id="collapseOne">
+						<div class="panel-body">
+							<div class="row row-margin">
+								<div class="col-md-4 col-sm-12 col-xs-12">
+
+									<div class="alert alert-danger">
+										这是一条未读的信息 <label style="">2011-11-11</label> <i
+											style="position: float; z-index: 1; right: 20px; bottom: 20px"
+											class="fa fa-bar-chart-o fa-fw"></i>
+									</div>
+									<div class="collapse" style="">
+										<l id="l">消息content</l>
+									</div>
+								</div>
+								<div class="col-md-8  col-sm-12 col-xs-12"></div>
+								<hr align=center width=98% style="border-top: 1px solid #178acc">
+							</div>
+							<div class="row row-margin">
+								<div class="col-md-4 col-sm-12 col-xs-12">
+									<div class="alert alert-danger">
+										这是一条未读的信息 <label>2011-11-11</label><i
+											class="fa fa-bar-chart-o fa-fw"></i>
+									</div>
+									<div class="collapse" style="margin-left: 10px">
+										<l>消息content</l>
+									</div>
+								</div>
+								<div class="col-md-8  col-sm-12 col-xs-12"></div>
+								<hr align=center width=98% style="border-top: 1px solid #178acc">
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<!-- /#page-wrapper -->
 		</div>
+	</div>
 	</div>
 
 	<!-- /#wrapper -->
@@ -112,6 +81,7 @@
 
 	<%@ include file="../comm-fragement/main-js"%>
 	<script type="text/javascript">
+		
 	</script>
 
 </body>
