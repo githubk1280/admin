@@ -355,6 +355,20 @@
 					alert(err);
 				});
 			};
+			
+			$scope.cancelProjectStatus = function(){
+				$http.get("/admin/status/ajax/${project.projectId}").success(
+						function(data) {
+							if (data.success == true) {
+								$scope.progress = JSON.parse(data.data);
+							}
+							// format
+							$scope.progress.progressDate = $scope
+									.getTimeString($scope.progress.progressDate);
+						}).error(function(err) {
+						alert("获取失败，请重试!");
+					});
+			}
 		}
 	    
 	    

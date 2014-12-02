@@ -46,9 +46,10 @@
 						<label>项目当前进度 </label>
 					</div>
 					<div class="progress">
-						<div class="progress-bar progress-bar" role="progressbar"
+						<div class="progress-bar 
+						 <c:if test="{${scope.progress.percentage}<=30}">progress-bar-danger</c:if>" role="progressbar"
 							aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-							style="width: {{progress.percentage">
+							style="width: {{progress.percentage}}%">
 							<span class="sr-only">{{progress.percentage}}% Complete</span>{{progress.percentage}}%
 						</div>
 					</div>
@@ -93,8 +94,8 @@
 						<label>进度内容 </label>
 					</div>
 					<div>
-						<textarea id="inpuProStatusContent" class="form-control" rows="8"
-							cols="4" ng-model="progress.content"></textarea>
+						<textarea id="inpuProStatusContent" class="form-control" rows="8" ng-model="progress.content"
+							cols="4" ></textarea>
 					</div>
 				</div>
 			</div>
@@ -102,7 +103,7 @@
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<button id="saveProjectStatus" class="btn btn-default btn-primary pull-left" ng-click="saveProjectStatus()" 
 					        style="display:none;" type="submit">保存</button>
-					<button id="cancelProjectStatus" class="btn btn-default btn-primary pull-left" type="button" 
+					<button id="cancelProjectStatus" class="btn btn-default btn-primary pull-left" type="button"  ng-click="cancelProjectStatus()" 
 					        style="display:none;margin-left:10px">取消</button>
 				</div>
 			</div>
@@ -115,6 +116,5 @@
 <!----------------------------------------project status end ------------------------->
 
 <script type="text/javascript">
-	
-	
+
 </script>
