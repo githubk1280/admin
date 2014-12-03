@@ -42,7 +42,7 @@ public class MessageController {
 	@RequestMapping("/list")
 	public ModelAndView list(int p, HttpSession session) {
 		Employee employee = (Employee) session.getAttribute("user");
-		List<Message> messages = messageService.getMessagesByReceiveId(
+		List<Message> messages = messageService.getFullMessagesByReceiveId(
 				employee.getEmployeeId(), p,
 				PaginationConstant.DEFAULT_PAGE_SIZE);
 		ModelAndView view = new ModelAndView();
@@ -60,6 +60,15 @@ public class MessageController {
 				MessageStatusEnum.READ.getValue());
 		JsonResponseUtils.returnJsonResponse(response, msgText.getMsgText(),
 				true, 200);
+	}
+
+	@RequestMapping("/ajax/status/{msgId}")
+	public void changeMessageStatus(@PathVariable int msgId,
+			HttpServletResponse response) throws IOException {
+		// 更新
+		messageService.updateMessageStatus(msgId,
+				MessageStatusEnum.READ.getValue());
+		JsonResponseUtils.returnJsonResponse(response, "done", true, 200);
 	}
 
 }

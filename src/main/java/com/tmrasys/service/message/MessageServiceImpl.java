@@ -47,4 +47,11 @@ public class MessageServiceImpl implements MessageService {
 
 	}
 
+	@Override
+	public List<Message> getFullMessagesByReceiveId(int employeeId, int p,
+			int defaultPageSize) {
+		return messageDao.getFullMessagesByReceiveId(employeeId, (p - 1)
+				* defaultPageSize, defaultPageSize);
+	}
+
 }

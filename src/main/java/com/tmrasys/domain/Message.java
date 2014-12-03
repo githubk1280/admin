@@ -18,4 +18,5 @@ public class Message {
 	 */
 	private int status;
 	private int msgTextId;
+	private String msgText;
 }

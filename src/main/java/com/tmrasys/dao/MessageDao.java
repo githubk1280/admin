@@ -33,4 +33,9 @@ public interface MessageDao {
 
 	public void updateMessageStatus(@Param(value = "msgId") int msgId,
 			@Param(value = "status") int status);
+
+	public List<Message> getFullMessagesByReceiveId(
+			@Param(value = "receiveId") int receiveId,
+			@Param(value = "start") int start,
+			@Param(value = "offset") int offset);
 }

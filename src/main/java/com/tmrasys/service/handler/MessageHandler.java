@@ -47,7 +47,7 @@ public class MessageHandler implements Handler {
 				for (Integer employeeId : employeeIds) {
 					if (employeeId == ((StatusMessage) obj).getOperatorId()) {
 						// skip himself
-						continue;
+//						continue;
 					}
 					message = new Message();
 					message.setSenderId(0);

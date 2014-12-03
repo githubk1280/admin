@@ -23,7 +23,7 @@
 	</insert>
 
 	<insert id="addMessageText" parameterMap="messageTextParameter"
-		keyProperty="id">
+		useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO
 		message_text
 		(MessageText)
@@ -39,7 +39,7 @@
 		id = #{msgTextId}
 	</select>
 
-	<select id="getMessagesByReceiveId" parameterType="int"
+	<select id="getMessagesByReceiveId" parameterType="map"
 		resultMap="messageResultMapper">
 		SELECT *
 		FROM message
@@ -48,6 +48,24 @@
 		ORDER BY
 		SendTime DESC
 		LIMIT #{start},#{offset}
+	</select>
+
+	<select id="getFullMessagesByReceiveId" parameterType="map"
+		resultMap="fullMessageResultMapper">
+		SELECT
+		m.id,m.SenderId,m.ReceiverId,m.SendTime,m.Status,mt.id as
+		tId,mt.MessageText
+		FROM message m,message_text mt
+		WHERE
+		m.MsgTextId =
+		mt.id
+		AND
+		m.ReceiverId =
+		#{receiveId}
+		ORDER BY
+		m.SendTime DESC
+		LIMIT
+		#{start},#{offset}
 	</select>
 
 	<select id="getMessagesCountByReceiveId" parameterType="int"
@@ -61,7 +79,7 @@
 	</select>
 
 	<parameterMap type="com.tmrasys.domain.MessageText" id="messageTextParameter">
-		<parameter property="id" resultMap="ID" />
+		<parameter property="id" resultMap="id" />
 		<parameter property="msgText" resultMap="MessageText" />
 	</parameterMap>
 
@@ -86,6 +104,16 @@
 		<result property="sendTime" column="SendTime" />
 		<result property="status" column="Status" />
 		<result property="msgTextId" column="MsgTextId" />
+	</resultMap>
+
+	<resultMap type="com.tmrasys.domain.Message" id="fullMessageResultMapper">
+		<result property="messageId" column="id" />
+		<result property="senderId" column="SenderId" />
+		<result property="receiveId" column="ReceiverId" />
+		<result property="sendTime" column="SendTime" />
+		<result property="status" column="Status" />
+		<result property="msgTextId" column="tId" />
+		<result property="msgText" column="MessageText" />
 	</resultMap>
 </mapper>
 

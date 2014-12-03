@@ -32,32 +32,41 @@
 								</div>
 								<div id="collapseOne">
 									<div class="panel-body">
-										<div class="row row-margin">
-											<div class="col-md-4 col-sm-12 col-xs-12">
-												<div class="alert alert-danger" style="padding:0px;margin-bottom:10px" >
-													这是一条未读的信息 <label style="">2011-11-11</label> <i
-														style="position: float; z-index: 1; right: 20px; bottom: 20px;margin-left:40px"
-														class="glyphicon glyphicon-envelope"></i>
-												</div>
-												<div class="collapse well" style="">消息content</div>
-											</div>
-											<div class="col-md-8  col-sm-12 col-xs-12"></div>
-											<hr align=center width=98%
-												style="border-top: 1px solid #178acc;margin-top:20px">
-										</div>
-										<div class="row row-margin">
-											<div class="col-md-4 col-sm-12 col-xs-12">
-												<div class="alert alert-danger" style="padding:0px;margin-bottom:10px">
-													这是一条未读的信息 <label>2011-11-11</label><i 
-													    style="position: float; z-index: 1; right: 20px; bottom: 20px;margin-left:40px"
-														class="fa fa-bar-chart-o fa-fw"></i>
-												</div>
-												<div class="collapse well" style="">消息content</div>
-											</div>
-											<div class="col-md-8  col-sm-12 col-xs-12"></div>
-											<hr align=center width=98%
-												style="border-top: 1px solid #178acc">
-										</div>
+										<c:choose>
+											<c:when test="${messages.size()<1}">
+												<tr>
+													<td>暂无消息</td>
+												</tr>
+											</c:when>
+											<c:otherwise>
+												<c:forEach items="${messages}" var="msg" varStatus="status">
+													<div class="row row-margin">
+														<div class="col-md-4 col-sm-12 col-xs-12">
+															<c:if test="${msg.status==0 }">
+															<div class="alert alert-danger"
+																style="padding: 0px; margin-bottom: 10px">
+																1 封未读信息
+															</c:if>
+															<c:if test="${msg.status==1 }">
+															<div class="alert alert-success"
+																style="padding: 0px; margin-bottom: 10px">
+																已读信息
+															</c:if>
+															 <label style=""><fmt:formatDate
+																		value="${msg.sendTime}" pattern="yyyy-MM-dd" /></label> <a
+																	href="javascript:void()" id="${msg.messageId}"><i
+																	style="position: float; z-index: 1; right: 20px; bottom: 20px; margin-left: 40px"
+																	class="glyphicon glyphicon-envelope"></i></a>
+															</div>
+															<div class="collapse well" style="">${msg.msgText}</div>
+														</div>
+														<div class="col-md-8  col-sm-12 col-xs-12"></div>
+														<hr align=center width=98%
+															style="border-top: 1px solid #178acc; margin-top: 20px">
+													</div>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
 									</div>
 								</div>
 							</div>
@@ -73,17 +82,25 @@
 
 	<%@ include file="../comm-fragement/main-js"%>
 	<script type="text/javascript">
-    $(document).ready(function(){
-    	$("div i").each(function(){
-    		$(this).click(function(){
-    			$(this).parent().next("div").toggleClass("in");
-    			$(this).parent("div").attr("class","alert alert-success");
-    			//$(this).css('display','none');
-    		});
-    	});
-    	
-    });
-    </script>
+		$(document).ready(function() {
+			$(".row a").each(function() {
+				$(this).click(function() {
+					$(this).parent().next("div").toggleClass("in");
+					$(this).parent("div").attr("class", "alert alert-success");
+					updateStatus(this.id);
+				});
+			});
+		});
+		
+		function updateStatus(id){
+			$.ajax({
+		        url: "/admin/message/ajax/status/" + id,
+		        method: "post",
+		        success: function(data) {
+		        }
+			});
+		}
+	</script>
 
 </body>
 

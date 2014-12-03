@@ -18,4 +18,7 @@ public interface MessageService {
 	public int getMessagesCountByReceiveId(int receiveId);
 
 	public void updateMessageStatus(int msgId, int status);
+
+	public List<Message> getFullMessagesByReceiveId(int employeeId, int p,
+			int defaultPageSize);
 }
