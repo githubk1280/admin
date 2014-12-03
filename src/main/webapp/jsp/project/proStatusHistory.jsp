@@ -30,15 +30,14 @@
                               </div>
                               <div id="collapseOne">
                                   <div class="panel-body">
-                                  
                                   	<div class="row row-margin" style="align:center">
                                   		<div class="col-md-4  col-sm-12 col-xs-12" >
                                   				<div><label>项目编号</label></div>
-                                  				<div><p></p></div> 
+                                  				<div><p>${proHis.projectId}</p></div> 
                                    		</div>		
                                    	<div class="col-md-4  col-sm-12 col-xs-12" ></div>
                                   	</div>
-                                 <c:forEach items="${proHis}" var="projectHis" >
+                                 <c:forEach items="${proHis.ppList}" var="projectHis" >
                                   	<div class="row row-margin">
                                   		<div class="col-md-4  col-sm-12 col-xs-12" >
                                   			<div><label>日期</label></div>

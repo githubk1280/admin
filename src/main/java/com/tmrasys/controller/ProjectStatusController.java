@@ -28,8 +28,9 @@ import com.tmrasys.constant.page.PageResourceConstant;
 import com.tmrasys.domain.Employee;
 import com.tmrasys.domain.Project;
 import com.tmrasys.domain.ProjectProgress;
-import com.tmrasys.event.StatusMessage;
+import com.tmrasys.domain.ProjectProgressPkg;
 import com.tmrasys.event.StatusChangedEvent;
+import com.tmrasys.event.StatusMessage;
 import com.tmrasys.service.project.ProjectService;
 import com.tmrasys.service.projectProgress.ProjectProgressService;
 import com.tmrasys.utils.JsonResponseUtils;
@@ -106,8 +107,9 @@ public class ProjectStatusController implements ApplicationContextAware {
 	public ModelAndView loadProHis(@PathVariable int projectId) {
 		List<ProjectProgress> proProgressList = projectProgressService
 				.getByProjectId(projectId);
+		ProjectProgressPkg pppkg = new ProjectProgressPkg(projectId,proProgressList);
 		ModelAndView view = new ModelAndView();
-		view.addObject("proHis", proProgressList);
+		view.addObject("proHis", pppkg);
 		view.setViewName(PageResourceConstant.PRO_STATUS);
 
 		return view;

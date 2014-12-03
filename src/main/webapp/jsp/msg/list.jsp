@@ -34,29 +34,25 @@
 									<div class="panel-body">
 										<div class="row row-margin">
 											<div class="col-md-4 col-sm-12 col-xs-12">
-
-												<div class="alert alert-danger">
+												<div class="alert alert-danger" style="padding:0px;margin-bottom:10px" >
 													这是一条未读的信息 <label style="">2011-11-11</label> <i
-														style="position: float; z-index: 1; right: 20px; bottom: 20px"
-														class="fa fa-bar-chart-o fa-fw"></i>
+														style="position: float; z-index: 1; right: 20px; bottom: 20px;margin-left:40px"
+														class="glyphicon glyphicon-envelope"></i>
 												</div>
-												<div class="collapse" style="">
-													<l id="l">消息content</l>
-												</div>
+												<div class="collapse well" style="">消息content</div>
 											</div>
 											<div class="col-md-8  col-sm-12 col-xs-12"></div>
 											<hr align=center width=98%
-												style="border-top: 1px solid #178acc">
+												style="border-top: 1px solid #178acc;margin-top:20px">
 										</div>
 										<div class="row row-margin">
 											<div class="col-md-4 col-sm-12 col-xs-12">
-												<div class="alert alert-danger">
-													这是一条未读的信息 <label>2011-11-11</label><i
+												<div class="alert alert-danger" style="padding:0px;margin-bottom:10px">
+													这是一条未读的信息 <label>2011-11-11</label><i 
+													    style="position: float; z-index: 1; right: 20px; bottom: 20px;margin-left:40px"
 														class="fa fa-bar-chart-o fa-fw"></i>
 												</div>
-												<div class="collapse" style="margin-left: 10px">
-													<l>消息content</l>
-												</div>
+												<div class="collapse well" style="">消息content</div>
 											</div>
 											<div class="col-md-8  col-sm-12 col-xs-12"></div>
 											<hr align=center width=98%
@@ -82,6 +78,7 @@
     		$(this).click(function(){
     			$(this).parent().next("div").toggleClass("in");
     			$(this).parent("div").attr("class","alert alert-success");
+    			//$(this).css('display','none');
     		});
     	});
     	
