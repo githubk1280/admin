@@ -12,7 +12,7 @@ $(".form_date").datetimepicker({
 
 $("#save").click(function(){
 	$("#save").attr("type","submit");
-	var projectId = $("#projectId").val();
+	var projectId = $("#projectIdSelect").val();
 		projectId = $.trim(projectId);
 	var sourceUnit = $("#sourceUnit").val();
 		sourceUnit = $.trim(sourceUnit);

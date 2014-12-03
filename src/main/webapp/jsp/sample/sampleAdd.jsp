@@ -42,8 +42,11 @@
 													<label id="projectIdLbl" class="warning-style">该字段不允许为空</label>
 												</div>
 												<div>
-													<form:select  ng-model="selected" ng-options="m.projectId for m in idAndPrincipal" path="projectId" class="form-control">
+												<!-- ng-options="x.projectId for x in idAndPrincipal" -->
+													<form:select id="projectIdSelect" ng-model="selected"  path="projectId" class="form-control" ng-change="myChange()">
 													    <option value="">-- 请选择 --</option>
+													    <option ng-repeat="item in idAndPrincipal"  
+													     value="{{ item.projectId }}">{{ item.projectId }}</option>
 													</form:select>
 												</div>
 											</div>
@@ -84,7 +87,8 @@
 													<label id="projectPrincripalLbl" class="warning-style">该字段不允许为空</label>
 												</div>
 												<div>
-													<form:input id="projectPrincripal" path="projectPrincripal" ng-model="selected.principal" readonly="true" class="form-control"/>
+													<form:input id="projectPrincripal" path="projectPrincripal" 
+													ng-model="principal" readonly="true" class="form-control"/>
 												</div>
 											</div>
 										</div>
@@ -94,10 +98,9 @@
 													<label>是否外送</label>
 												</div>
 												<div class="pull-left">
-													<label><input type="radio" 
-														id="sended1" value="Y" checked>是 </label> <label><input
-														type="radio"  id="sended2"
-														value="N">否 </label>
+													<label><form:radiobutton
+														id="isDelivery1" value="Y" path="isDelivery" checked="true" />是</label> <label><form:radiobutton  id="isDelivery2"
+														path="isDelivery" value="N" />否</label>
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-12 col-xs-12">
@@ -105,10 +108,9 @@
 													<label>样本类型</label>
 												</div>
 												<div class="pull-left">
-													<label><input type="radio"
-														id="sampleType1" value="A" checked>A </label> <label><input
-														type="radio"  id="sampleType12"
-														value="B">B </label>
+													<label><form:radiobutton
+														id="sampleType1" value="A" path="sampleType" checked="true" />A</label> <label><form:radiobutton  id="sampleType12"
+														path="sampleType" value="B" />B</label>
 												</div>
 											</div>
 										</div>
@@ -213,6 +215,19 @@
 				}).error(function(err) {
 				alert("获取失败，请重试!");
 				});
+		/* $scope.change(function() {
+			alert("dd");
+		}); */
+		
+		$scope.myChange = function () {
+			var i = 0;
+			for(;i < $scope.idAndPrincipal.length;i++) {
+				if($scope.idAndPrincipal[i].projectId == $scope.selected) {
+					$scope.principal = $scope.idAndPrincipal[i].principal;
+				}
+			}
+		};
+			
 	}
 	
 	

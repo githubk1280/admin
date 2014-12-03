@@ -19,6 +19,7 @@ public class Sample {
 	private Date reportDate;
 	private String diskLocation;
 	private int sampleAmount;
+	private String sampleType;
 	/**
 	 * 外送编号
 	 */

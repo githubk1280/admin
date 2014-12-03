@@ -101,6 +101,7 @@
 		<result property="deliveryNum" column="DELIVERY_NUM" />
 		<result property="deliveryType" column="SAMPLE_TYPE" />
 		<result property="isDelivery" column="IS_DELIVERY" />
+		<result property="sampleType" column="SAMPLE_TYPE" />
 	</resultMap>
 	<parameterMap type="com.tmrasys.domain.Sample" id="sampleParameter">
 		<parameter property="sampleId" resultMap="SAMPLE_ID" />
@@ -115,7 +116,7 @@
 		<parameter property="deliveryNum" resultMap="DELIVERY_NUM" />
 		<parameter property="deliveryType" resultMap="SAMPLE_TYPE" />
 		<parameter property="isDelivery" resultMap="IS_DELIVERY" />
-		
+		<parameter property="sampleType" resultMap="SAMPLE_TYPE" />
 	</parameterMap>
 </mapper>
 

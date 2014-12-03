@@ -42,8 +42,9 @@
 																	<label id="projectIDLbl" class="warning-style">该字段不允许为空</label>
 																</div>
 																<div>
-																	<form:select class="form-control" ng-model="selected" ng-options="m.projectId for m in idAndPrincipal" path="projectId" >
+																	<form:select class="form-control" ng-model="selected"  path="projectId" >
 																   		<option value="">-- 请选择 --</option>
+																   		<option ng-repeat="item in idAndPrincipal" value="{{ item.projectId }}">{{ item.projectId }}</option>
 																	</form:select>
 																</div>
 															</div>
@@ -89,7 +90,7 @@
 															</div>
 															<div class="col-md-6 col-sm-12 col-xs-12">
 																<div>
-																	<label>签订日期(yyyy-mm-dd)</label> 
+																	<label>签订日期</label> 
 																	<label id="signDateLbl" class="warning-style">该字段不允许为空</label> 
 																	<label id="signDateFormatLbl" class="warning-style">日期格式不正确</label>
 																	<label id="issignDateLbl" class="warning-style">您输入的日期不存在</label>
@@ -102,7 +103,7 @@
 														<div class="row row-margin">
 															<div class="col-md-6 col-sm-12 col-xs-12">
 																<div>
-																	<label>开始日期(yyyy-mm-dd)</label>
+																	<label>开始日期</label>
 																	<label id="startDateLbl" class="warning-style">该字段不允许为空</label>
 																	<label id="startDateFormatLbl" class="warning-style">日期格式不正确</label>
 																	<label id="isstartDateLbl" class="warning-style">您输入的日期不存在</label>
@@ -115,7 +116,7 @@
 															</div>
 															<div class="col-md-6 col-sm-12 col-xs-12">
 																<div>
-																	<label>结束日期(yyyy-mm-dd)</label>
+																	<label>结束日期</label>
 																	<label id="endDateLbl" class="warning-style">该字段不允许为空</label>
 																	<label id="endDateFormatLbl" class="warning-style">日期格式不正确</label>
 																	<label id="dateComparedLbl" class="warning-style">结束日期必须大于开始日期</label>
@@ -251,5 +252,4 @@
 	}
 	</script>
 </body>
-
 </html>
