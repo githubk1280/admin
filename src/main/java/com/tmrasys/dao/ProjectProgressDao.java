@@ -10,4 +10,5 @@ import com.tmrasys.domain.ProjectProgress;
 public interface ProjectProgressDao {
 	List<ProjectProgress> getByProjectId(int projectId);
 	void addProjectProgress(ProjectProgress projectProgress);
+	List<ProjectProgress> getBasicByProjectId(int projectId);
 }

@@ -308,7 +308,7 @@
 			$scope.psToggle = function() {
 				var target = $("#arrowProStatus");
 				if (target.attr("class") == ("glyphicon glyphicon-chevron-down")) {
-					$http.get("/admin/status/ajax/${project.projectId}").success(
+					$http.get("/admin/status/ajax/proHisBasic/${project.projectId}").success(
 						function(data) {
 							if (data.success == true) {
 								$scope.progress = JSON.parse(data.data);
@@ -327,8 +327,8 @@
 							if($scope.progress.percentage>90){
 								$("#progressBarStyle").addClass("progress-bar-success");
 							}
-							$scope.progress.progressDate = $scope
-									.getTimeString($scope.progress.progressDate);
+							//$scope.progress.progressDate = $scope
+								//	.getTimeString($scope.progress.progressDate);
 						}).error(function(err) {
 						alert("获取失败，请重试!");
 					});

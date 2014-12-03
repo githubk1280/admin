@@ -9,6 +9,13 @@
 		project_id=#{projectId}
 		ORDER BY PROGRESS_DATE DESC
 	</select>
+	<select id="getBasicByProjectId" resultMap="projectProgressMapper"
+		resultType="list" parameterType="int">
+		SELECT project_id,employee_id,employee_name,percentage FROM project_progress
+		WHERE
+		project_id=#{projectId} 
+		ORDER BY PROGRESS_DATE DESC
+	</select>
 	<insert id="addProjectProgress" keyProperty="projectProgressId"
 		parameterMap="ppParameter" useGeneratedKeys="true">
 		INSERT INTO

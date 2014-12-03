@@ -70,6 +70,19 @@ public class ProjectStatusController implements ApplicationContextAware {
 			JsonResponseUtils.returnJsonResponse(response, progress, true, 200);
 		}
 	}
+	
+	@RequestMapping(value = "ajax/proHisBasic/{projectId}")
+	public void getProHisBasic(@PathVariable int projectId, HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		List<ProjectProgress> proProgressList = projectProgressService
+				.getBasciByProjectId(projectId);
+		if (!CollectionUtils.isEmpty(proProgressList)) {
+			ProjectProgress progress = proProgressList.get(0);
+			request.setAttribute("projectStatus", progress);
+			JsonResponseUtils.returnJsonResponse(response, progress, true, 200);
+		}
+
+	}
 		
 
 	@RequestMapping(value = "/ajax/add")
@@ -102,6 +115,8 @@ public class ProjectStatusController implements ApplicationContextAware {
 						percentage, content)));
 		JsonResponseUtils.returnJsonResponse(response, progress, true, 200);
 	}
+	
+	
 
 	@RequestMapping(value = "proStatusHistory/{projectId}")
 	public ModelAndView loadProHis(@PathVariable int projectId) {
@@ -114,6 +129,8 @@ public class ProjectStatusController implements ApplicationContextAware {
 
 		return view;
 	}
+	
+	
 
 	// @RequestMapping(value = "/ajax/add",consumes="application/json")
 	// public void add(@RequestBody ProjectProgress progress) {

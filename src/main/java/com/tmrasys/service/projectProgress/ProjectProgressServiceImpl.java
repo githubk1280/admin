@@ -23,5 +23,7 @@ public class ProjectProgressServiceImpl implements ProjectProgressService {
 		projectProgressDao.addProjectProgress(projectProgress);
 	}
 
-
+	public List<ProjectProgress> getBasciByProjectId(int projectId){
+		return projectProgressDao.getBasicByProjectId(projectId);
+	}
 }
