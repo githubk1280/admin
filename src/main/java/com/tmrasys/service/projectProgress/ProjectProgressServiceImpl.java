@@ -23,4 +23,5 @@ public class ProjectProgressServiceImpl implements ProjectProgressService {
 		projectProgressDao.addProjectProgress(projectProgress);
 	}
 
+
 }

@@ -69,6 +69,7 @@ public class ProjectStatusController implements ApplicationContextAware {
 			JsonResponseUtils.returnJsonResponse(response, progress, true, 200);
 		}
 	}
+		
 
 	@RequestMapping(value = "/ajax/add")
 	public void add(HttpServletRequest request, HttpServletResponse response,

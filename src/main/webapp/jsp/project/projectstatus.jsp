@@ -46,8 +46,7 @@
 						<label>项目当前进度 </label>
 					</div>
 					<div class="progress">
-						<div class="progress-bar 
-						 <c:if test="{${scope.progress.percentage}<=30}">progress-bar-danger</c:if>" role="progressbar"
+						<div id="progressBarStyle" class="progress-bar " role="progressbar"
 							aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
 							style="width: {{progress.percentage}}%">
 							<span class="sr-only">{{progress.percentage}}% Complete</span>{{progress.percentage}}%
@@ -63,7 +62,7 @@
 						<label>进度日期</label>
 					</div>
 					<div>
-						<input id="inputProStatusDate" type="text" class="form-control"
+						<input id="inputProStatusDate" type="text" class="form-control form_date"
 							ng-model="progress.progressDate">
 					</div>
 				</div>
@@ -116,5 +115,18 @@
 <!----------------------------------------project status end ------------------------->
 
 <script type="text/javascript">
+$("#radioProStatus1").click(function(){
+	$("#progressBarStyle").removeClass().addClass("progress-bar progress-bar-danger");
+});
+$("#radioProStatus2").click(function(){
+	$("#progressBarStyle").removeClass().addClass("progress-bar progress-bar-warning");
+});
+$("#radioProStatus3").click(function(){
+	$("#progressBarStyle").removeClass().addClass("progress-bar progress-bar-primary");
+});
+$("#radioProStatus4").click(function(){
+	$("#progressBarStyle").removeClass().addClass("progress-bar progress-bar-success");
+});
+$("#inputProStatusDate").val("");
 
 </script>

@@ -314,6 +314,19 @@
 								$scope.progress = JSON.parse(data.data);
 							}
 							// format
+							//alert($scope.progress.percentage);
+							if($scope.progress.percentage<=30){
+								$("#progressBarStyle").addClass("progress-bar-danger");
+							}
+							if($scope.progress.percentage>30&&$scope.progress.percentage<=60){
+								$("#progressBarStyle").addClass("progress-bar-warning");
+							}
+							if($scope.progress.percentage>60&&$scope.progress.percentage<=90){
+								$("#progressBarStyle").addClass("progress-bar");
+							}
+							if($scope.progress.percentage>90){
+								$("#progressBarStyle").addClass("progress-bar-success");
+							}
 							$scope.progress.progressDate = $scope
 									.getTimeString($scope.progress.progressDate);
 						}).error(function(err) {
@@ -362,9 +375,22 @@
 							if (data.success == true) {
 								$scope.progress = JSON.parse(data.data);
 							}
-							// format
+							if($scope.progress.percentage<=30){
+								$("#progressBarStyle").addClass("progress-bar-danger");
+							}
+							if($scope.progress.percentage>30&&$scope.progress.percentage<=60){
+								$("#progressBarStyle").addClass("progress-bar-warning");
+							}
+							if($scope.progress.percentage>60&&$scope.progress.percentage<=90){
+								$("#progressBarStyle").addClass("progress-bar");
+							}
+							if($scope.progress.percentage>90){
+								$("#progressBarStyle").addClass("progress-bar-success");
+							}
+							//format
 							$scope.progress.progressDate = $scope
 									.getTimeString($scope.progress.progressDate);
+							
 						}).error(function(err) {
 						alert("获取失败，请重试!");
 					});
