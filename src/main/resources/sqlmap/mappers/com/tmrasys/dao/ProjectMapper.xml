@@ -22,6 +22,16 @@
 		#{employeeId}
 	</select>
 	
+	<select id="loadProjectsByEmployeeAndId" resultMap="employeeMapper"
+		parameterType="map">
+		SELECT * FROM project P
+		INNER JOIN project_employee PE ON
+		P.PROJECT_ID = PE.PROJECT_ID
+		INNER JOIN employee E ON E.EMPLOYEE_ID = PE.EMPLOYEE_ID 
+		AND E.EMPLOYEE_ID = #{employeeId}
+		AND P.PROJECT_ID = #{projectId}
+	</select>
+	
 	<select id="countProjectsByEmployee" resultType="int" 
 		parameterType="int">
 		SELECT count(*) FROM project P

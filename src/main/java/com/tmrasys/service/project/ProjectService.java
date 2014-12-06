@@ -15,4 +15,5 @@ public interface ProjectService {
 	List<Project> loadProjectsPagination(int userId, int pageIndex);
 	List<Project> findProjectByProjectName(String projectName,int employeeID);
 	List<Project> loadAllProjects();
+	boolean hasAccessAuth(int employeeId, int projectId);
 }

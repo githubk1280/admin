@@ -1,6 +1,6 @@
 <!-- Navigation -->
 <%@ page language="java" pageEncoding="UTF-8"%>
-<script src="<spring:url value="/resources/js/jquery-1.11.0.js"/>"></script>
+<script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.js"></script>
 
 <nav
 	class="navbar navbar-default navbar-static-top  navbar-default-color"

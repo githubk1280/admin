@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tmrasys.constant.DataCheckTypeConstant;
+import com.tmrasys.constant.RoleConstant;
 import com.tmrasys.constant.page.PageResourceConstant;
 import com.tmrasys.domain.Employee;
 import com.tmrasys.domain.Project;
@@ -22,9 +24,12 @@ import com.tmrasys.service.employee.EmployeeService;
 import com.tmrasys.service.project.ProjectService;
 import com.tmrasys.service.projectEmployee.ProjectEmployeeService;
 import com.tmrasys.service.projectProgress.ProjectProgressService;
+import com.tmrasys.stereotype.DataAccessCheck;
+import com.tmrasys.stereotype.Priviliege;
 
 @Controller
 @RequestMapping("/project")
+@Priviliege(allow = { RoleConstant.MANAGER })
 public class ProjectController {
 	Logger logger = Logger.getLogger(getClass());
 
@@ -36,7 +41,7 @@ public class ProjectController {
 
 	@Autowired
 	private ProjectProgressService projectProgressService;
-	
+
 	@Autowired
 	private EmployeeService employeeService;
 
@@ -44,6 +49,7 @@ public class ProjectController {
 	public void init() {
 	}
 
+	@DataAccessCheck(forWhat = { DataCheckTypeConstant.PROJECT })
 	@RequestMapping("/{projectId}")
 	public ModelAndView loadProjectById(@PathVariable int projectId) {
 		Project project = projectService.loadProjectById(projectId);
@@ -53,16 +59,18 @@ public class ProjectController {
 		return view;
 
 	}
-	
 
 	@RequestMapping("/pages/{page}")
-	public ModelAndView loadProjectByPage(@PathVariable int page, HttpSession session){
+	public ModelAndView loadProjectByPage(@PathVariable int page,
+			HttpSession session) {
 		Employee employee = (Employee) session.getAttribute("user");
-		int count = projectService.countProjectsByEmployee(employee.getEmployeeId());
-		List<Project> projectsReturn = projectService.loadProjectsPagination(employee.getEmployeeId(), page);
+		int count = projectService.countProjectsByEmployee(employee
+				.getEmployeeId());
+		List<Project> projectsReturn = projectService.loadProjectsPagination(
+				employee.getEmployeeId(), page);
 		ModelAndView view = new ModelAndView();
 		int pages = 1;
-		if(count > 10) {
+		if (count > 10) {
 			pages = (count + 9) / 10;
 		}
 		view.addObject("projects", projectsReturn);
@@ -72,9 +80,8 @@ public class ProjectController {
 
 	}
 
-
 	@RequestMapping("/list")
-	public ModelAndView loadAllProjectsByUser(HttpSession session){
+	public ModelAndView loadAllProjectsByUser(HttpSession session) {
 		Employee employee = (Employee) session.getAttribute("user");
 		List<Project> projects = projectService.loadProjectsByEmployee(employee
 				.getEmployeeId());
@@ -100,17 +107,18 @@ public class ProjectController {
 				projectId, 0));
 		return new ModelAndView("redirect:pages/1");
 	}
-	
+
 	@RequestMapping("/search")
-	public ModelAndView search(String searchStr,HttpSession session){
+	public ModelAndView search(String searchStr, HttpSession session) {
 		Employee employee = (Employee) session.getAttribute("user");
-		List<Project> projects = projectService.findProjectByProjectName(searchStr,employee.getEmployeeId());
+		List<Project> projects = projectService.findProjectByProjectName(
+				searchStr, employee.getEmployeeId());
 		ModelAndView view = new ModelAndView();
-		view.addObject("projects",projects);
+		view.addObject("projects", projects);
 		view.setViewName(PageResourceConstant.PROJECT_LIST);
 		return view;
 	}
-	
+
 	@RequestMapping("/add-redirect")
 	public ModelAndView addRedirect() {
 		Project project = new Project();
@@ -120,7 +128,7 @@ public class ProjectController {
 		return view;
 
 	}
-	
+
 	@RequestMapping("/update")
 	public ModelAndView addRedirect(Project project) {
 		projectService.updateProject(project);
@@ -130,7 +138,7 @@ public class ProjectController {
 		return view;
 
 	}
-	
+
 	@RequestMapping("/assign-redirect")
 	public ModelAndView assignRedirect() {
 		ProjectEmployee projectEmployee = new ProjectEmployee(0, 0);
@@ -144,12 +152,15 @@ public class ProjectController {
 		return view;
 
 	}
-	
+
 	@RequestMapping("/assign")
-	public ModelAndView assign(ProjectEmployee projectEmployee, HttpSession session) {
-		boolean exist = projectEmployeeService.getByProjectId(projectEmployee.getProjectId(), projectEmployee.getEmployeeId()) != null;
+	public ModelAndView assign(ProjectEmployee projectEmployee,
+			HttpSession session) {
+		boolean exist = projectEmployeeService
+				.getByProjectId(projectEmployee.getProjectId(),
+						projectEmployee.getEmployeeId()) != null;
 		int success = 1;
-		if(exist) {
+		if (exist) {
 			success = 2;
 		} else {
 			projectEmployeeService.addReference(projectEmployee);
@@ -158,5 +169,5 @@ public class ProjectController {
 		view.addObject("success", success);
 		return new ModelAndView("project/assign-success");
 	}
-	
+
 }

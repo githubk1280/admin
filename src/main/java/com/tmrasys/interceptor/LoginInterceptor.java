@@ -5,17 +5,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.springframework.core.Ordered;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tmrasys.utils.FailedUtils;
 
-public class LoginInterceptor implements HandlerInterceptor {
+public class LoginInterceptor implements HandlerInterceptor, Ordered {
 	Logger logger = Logger.getLogger(getClass());
 
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
+		System.out.println(this.getOrder());
 		logger.info("preHandle ..." + handler);
 		HttpSession session = request.getSession();
 		if (null == session.getAttribute("user")) {
@@ -40,6 +42,11 @@ public class LoginInterceptor implements HandlerInterceptor {
 			HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
 		// logger.info("afterCompletion ...");
+	}
+
+	@Override
+	public int getOrder() {
+		return 5;
 	}
 
 }

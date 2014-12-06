@@ -43,12 +43,13 @@ public class ProjectServiceImpl implements ProjectService {
 	public List<ProjectIdPrincipal> loadProjectIdPrincipal(int userId) {
 		List<ProjectIdPrincipal> list = new ArrayList<ProjectIdPrincipal>();
 		List<Project> pros = projectDao.loadProjectsByEmployee(userId);
-		for(Project project : pros) {
+		for (Project project : pros) {
 			ProjectIdPrincipal projectIdPrincipal = new ProjectIdPrincipal();
 			projectIdPrincipal.setProjectId(project.getProjectId());
-			List<Customer> cus = customerService.getByProjectId(project.getProjectId());
-			for(Customer customer : cus) {
-				if(customer.getPrincipalNumber() == 1) {
+			List<Customer> cus = customerService.getByProjectId(project
+					.getProjectId());
+			for (Customer customer : cus) {
+				if (customer.getPrincipalNumber() == 1) {
 					projectIdPrincipal.setPrincipal(customer.getCustomerName());
 				}
 			}
@@ -61,7 +62,7 @@ public class ProjectServiceImpl implements ProjectService {
 	public List<Project> loadProjectsPagination(int userId, int pageIndex) {
 		int start = 0;
 		int end = 10;
-		if(pageIndex > 1) {
+		if (pageIndex > 1) {
 			start = (pageIndex - 1) * 10;
 		}
 		return projectDao.loadProjectsPagination(userId, start, end);
@@ -73,13 +74,23 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public List<Project> findProjectByProjectName(String projectName,int employeeID) {
-		return projectDao.findProjectByProjectName(projectName,employeeID);
+	public List<Project> findProjectByProjectName(String projectName,
+			int employeeID) {
+		return projectDao.findProjectByProjectName(projectName, employeeID);
 	}
 
 	@Override
 	public List<Project> loadAllProjects() {
 		return projectDao.loadAllProjects();
 	}
-	
+
+	@Override
+	public boolean hasAccessAuth(int employeeId, int projectId) {
+		Project project = projectDao.loadProjectsByEmployeeAndId(employeeId,
+				projectId);
+		if(null == project)
+			return false;
+		return true;
+	}
+
 }

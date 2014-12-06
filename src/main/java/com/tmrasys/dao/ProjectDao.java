@@ -10,12 +10,26 @@ import com.tmrasys.domain.Project;
 @Repository
 public interface ProjectDao {
 	Project loadProjectById(int id);
+
 	List<Project> loadProjectsByEmployee(int employeeId);
+
 	void updateProject(Project project);
+
 	void addProject(Project project);
+
 	int countProjectsByEmployee(int employeeId);
-	List<Project> loadProjectsPagination(@Param(value = "employeeId") int employeeId,@Param(value = "start") int start,@Param(value = "end") int end);
-	List<Project> findProjectByProjectName(@Param(value = "projectName")String projectName,
-			@Param(value="employeeID")int employeeID);
+
+	List<Project> loadProjectsPagination(
+			@Param(value = "employeeId") int employeeId,
+			@Param(value = "start") int start, @Param(value = "end") int end);
+
+	List<Project> findProjectByProjectName(
+			@Param(value = "projectName") String projectName,
+			@Param(value = "employeeID") int employeeID);
+
 	List<Project> loadAllProjects();
+
+	Project loadProjectsByEmployeeAndId(
+			@Param(value = "employeeId") int employeeId, 
+			@Param(value = "projectId")int projectId);
 }

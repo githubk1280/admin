@@ -22,6 +22,14 @@ http://www.springframework.org/schema/context
 			<mvc:mapping path="/message/**" />
 			<bean class="com.tmrasys.interceptor.LoginInterceptor" />
 		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.tmrasys.interceptor.PriviliegeInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.tmrasys.interceptor.TmrasysDataAccessInterceptor" />
+		</mvc:interceptor>
 	</mvc:interceptors>
 
 </beans>

@@ -35,4 +35,6 @@ public class PageResourceConstant {
 	
 	public static final String MSG_LIST = "msg/list";
 	
+	public static final String NO_AUTH_TO_ACCESS = "/jsp/ex/noaccess.jsp";
+	
 }
