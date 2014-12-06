@@ -62,11 +62,20 @@ public class MailHandler implements Handler {
 						((StatusMessage) obj).getOperatorId());
 				logger.info(String.format("Sending mail to %s,content=%s", to,
 						content));
+				if (to == null || to.length < 1) {
+					logger.info("The to address is empty , no mail sending !");
+					return;
+				}
 				msg.setTo(to);
 				msg.setText(content);
 				mailSender.setUsername(p.getProperty("mail.from.username"));
 				mailSender.setPassword(p.getProperty("mail.from.passwrod"));
-				mailSender.send(msg);
+				try {
+					mailSender.send(msg);
+				} catch (Exception e) {
+					logger.error("Mail sending error ! Detail :\n"
+							+ e.getMessage());
+				}
 				logger.info("Mail sent success!");
 			}
 

@@ -22,7 +22,9 @@
 		 		$http.get("/admin/message/ajax/query").success(
 						function(data) {
 							if (data.success == true) {
-								$scope.msgNum = data.data;
+								if(data.data !=0 ){
+									$scope.msgNum = data.data;
+								}
 							}
 						}).error(function(err) {
 						//alert("获取失败，请重试!");

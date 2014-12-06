@@ -8,11 +8,15 @@ import org.springframework.stereotype.Service;
 import com.tmrasys.dao.MessageDao;
 import com.tmrasys.domain.Message;
 import com.tmrasys.domain.MessageText;
+import com.tmrasys.service.cache.GlobalCache;
 
 @Service
 public class MessageServiceImpl implements MessageService {
 	@Autowired
 	private MessageDao messageDao;
+
+	@Autowired
+	private GlobalCache cacheService;
 
 	@Override
 	public void addMessage(Message message) {

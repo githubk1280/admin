@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.stereotype.Component;
 
+import com.tmrasys.constant.CacheNames;
 import com.tmrasys.domain.Message;
 import com.tmrasys.domain.MessageText;
 import com.tmrasys.enums.MessageStatusEnum;
 import com.tmrasys.event.StatusMessage;
+import com.tmrasys.service.cache.GlobalCache;
 import com.tmrasys.service.employee.EmployeeService;
 import com.tmrasys.service.message.MessageService;
 
@@ -27,6 +29,9 @@ public class MessageHandler implements Handler {
 
 	@Autowired
 	private TaskExecutor taskExecutor;
+
+	@Autowired
+	private GlobalCache cacheService;
 
 	@Override
 	public void handle(final Object obj) {
@@ -47,7 +52,7 @@ public class MessageHandler implements Handler {
 				for (Integer employeeId : employeeIds) {
 					if (employeeId == ((StatusMessage) obj).getOperatorId()) {
 						// skip himself
-//						continue;
+						// continue;
 					}
 					message = new Message();
 					message.setSenderId(0);
@@ -57,6 +62,9 @@ public class MessageHandler implements Handler {
 					message.setStatus(MessageStatusEnum.UNREAD.getValue());
 					messageService.addMessage(message);
 				}
+				//invalidate cache
+				cacheService.invalidate(String.format(CacheNames.MESSAGE_COUNT,
+						((StatusMessage) obj).getOperatorId()));
 				logger.info("Send message to all employees Success !");
 			}
 

@@ -42,19 +42,24 @@
 												<c:forEach items="${messages}" var="msg" varStatus="status">
 													<div class="row row-margin">
 														<div class="col-md-4 col-sm-12 col-xs-12">
-															<c:if test="${msg.status==0 }">
-															<div class="alert alert-danger"
-																style="padding: 0px; margin-bottom: 10px">
-																1 封未读信息
-															</c:if>
-															<c:if test="${msg.status==1 }">
-															<div class="alert alert-success"
-																style="padding: 0px; margin-bottom: 10px">
-																已读信息
-															</c:if>
-															 <label style=""><fmt:formatDate
+															<c:choose>
+																<c:when test="${msg.status==0 }">
+																	<c:set value="danger" var="classLabel" />
+																	<c:set value="1 封未读信息" var="messageLabel" />
+																</c:when>
+																<c:otherwise>
+																	<c:set value="success" var="classLabel" />
+																	<c:set value="已读信息" var="messageLabel" />
+																</c:otherwise>
+															</c:choose>
+															<div class="alert alert-${classLabel}"
+																style="padding: 0px; margin-bottom: 10px">${messageLabel}
+																<c:set value="_" var="separtor" />
+																<c:set value="${msg.messageId}${separtor}${msg.status}"
+																	var="idLabel" />
+																<label style=""><fmt:formatDate
 																		value="${msg.sendTime}" pattern="yyyy-MM-dd" /></label> <a
-																	href="javascript:void()" id="${msg.messageId}"><i
+																	href="javascript:void(0)" id="${idLabel}"><i
 																	style="position: float; z-index: 1; right: 20px; bottom: 20px; margin-left: 40px"
 																	class="glyphicon glyphicon-envelope"></i></a>
 															</div>
@@ -91,15 +96,20 @@
 				});
 			});
 		});
-		
-		function updateStatus(id){
-			$.ajax({
-		        url: "/admin/message/ajax/status/" + id,
-		        method: "post",
-		        success: function(data) {
-		        }
-			});
-		}
+
+		function updateStatus(id) {
+			var params = id.split("_");
+			var id = params[0];
+			var status = params[1];
+			if (id && status && status == 0) {
+				$.ajax({
+					url : "/admin/message/ajax/status/" + id,
+					method : "post",
+					success : function(data) {
+					}
+				});
+			}
+		};
 	</script>
 
 </body>
