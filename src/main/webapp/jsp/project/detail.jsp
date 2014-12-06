@@ -447,9 +447,18 @@
 				var saveCustomInfoType = $("#saveCustomInfo").attr("type");
 				if(saveCustomInfoType!="button"){
 					var pId = $('#projectIdForCustomerAdd').val();
-					if($scope.customer0)$scope.customer0.projectId = pId;
-					if($scope.customer1)$scope.customer1.projectId = pId;
-					if($scope.customer2)$scope.customer2.projectId = pId;
+					if($scope.customer0){
+						$scope.customer0.projectId = pId;
+						$scope.customer0.principalNumber = 0;
+					}
+					if($scope.customer1){
+						$scope.customer1.projectId = pId;
+						$scope.customer1.principalNumber = 1;
+					}
+					if($scope.customer2){
+						$scope.customer2.projectId = pId;
+						$scope.customer2.principalNumber = 2;
+					}
 					var customers = [];
 					($scope.customer0) && customers.push($scope.customer0);
 					($scope.customer1) && customers.push($scope.customer1);
