@@ -25,7 +25,7 @@
 					<!-- <div class="panel panel-default panel-primary"> -->
 
 					<div class="panel-body">
-						<div class="panel panel-default panel-info">
+						<div class="panel panel-default">
 							<div class="panel-heading ">
 								<h3 class="panel-title">
 									<strong>文献</strong>

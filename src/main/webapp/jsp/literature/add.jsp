@@ -22,10 +22,12 @@
 		<div id="page-wrapper" class="detailPage">
 			<div class="row">
 				<div class="col-lg-12">
+				<form action="add" method="post" enctype="multipart/form-data">
 					<!-- .panel-heading -->
 					<div class="panel-body">
+					<div class="panel-group" id="accordion">
 						<div class="panel panel-default">
-						<form action="add" method="post" enctype="multipart/form-data">
+						
 							<div class="panel-heading">
 								<h3 class="panel-title">
 									<strong>创建新的文献</strong>
@@ -91,18 +93,19 @@
 									</div>
 									<div class="row row-margin">
 										<div class="col-md-6 col-sm-12 col-xs-12">
-											<button id="saveProBasicData"
+											<button id="saveLiterature"
 												class="btn btn-default btn-primary" type="submit">保存</button>
-											<button id="cancelProBasicData"
+											<button id="cancelLiterature"
 												class="btn btn-default btn-primary" type="reset">取消</button>
 										</div>
 									</div>
 								</div>
 							</div>
-							</form>
+							
+						</div>
 						</div>
 					</div>
-
+</form>
 					<!-- .panel-body -->
 				</div>
 				<!-- /.panel -->
@@ -115,7 +118,10 @@
 
 	<%@ include file="../comm-fragement/main-js"%>
 	<script type="text/javascript">
-		
+		$("#cancelLiterature").click(function(){
+			window.location.replace("http://"+window.location.host+"/admin/literature/list?pageIndex=1");			
+			return false;
+		});
 	</script>
 
 </body>
