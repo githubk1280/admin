@@ -27,7 +27,7 @@ http://www.springframework.org/schema/context
 			<bean class="com.tmrasys.interceptor.PriviliegeInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>
-			<mvc:mapping path="/**" />
+			<mvc:mapping path="/project/**" />
 			<bean class="com.tmrasys.interceptor.TmrasysDataAccessInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
