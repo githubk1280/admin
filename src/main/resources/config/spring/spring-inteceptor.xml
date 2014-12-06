@@ -30,6 +30,10 @@ http://www.springframework.org/schema/context
 			<mvc:mapping path="/project/**" />
 			<bean class="com.tmrasys.interceptor.TmrasysDataAccessInterceptor" />
 		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.tmrasys.interceptor.PerformanceInterceptor" />
+		</mvc:interceptor>
 	</mvc:interceptors>
 
 </beans>

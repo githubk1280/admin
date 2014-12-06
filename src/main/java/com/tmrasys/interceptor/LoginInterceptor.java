@@ -17,8 +17,6 @@ public class LoginInterceptor implements HandlerInterceptor, Ordered {
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		System.out.println(this.getOrder());
-		logger.info("preHandle ..." + handler);
 		HttpSession session = request.getSession();
 		if (null == session.getAttribute("user")) {
 			response.sendRedirect(request.getContextPath()
