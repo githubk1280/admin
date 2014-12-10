@@ -14,6 +14,7 @@ http://www.springframework.org/schema/context
 		<property name="url" value="${jdbc.url}"></property>
 		<property name="username" value="${jdbc.username}"></property>
 		<property name="password" value="${jdbc.password}"></property>
+		<property name="validationQuery" value="${validateSelect}"></property>
 	</bean>
 
 
