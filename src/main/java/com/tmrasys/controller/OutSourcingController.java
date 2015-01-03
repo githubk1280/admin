@@ -39,7 +39,7 @@ public class OutSourcingController {
 		OutSource outsource = outSourceService.getById(osId);
 		ModelAndView view = new ModelAndView();
 		 view.addObject("outsource", outsource);
-		view.setViewName(PageResourceConstant.OS_DETAIL);
+		view.setViewName(PageResourceConstant.OS_EXPDETAIL);
 		return view;
 
 	}

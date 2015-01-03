@@ -6,7 +6,8 @@ public class PageResourceConstant {
 	public static final String PROJECT_ADD = "project/add";
 
 	public static final String OS_LIST = "outsource/list";
-	public static final String OS_DETAIL = "outsource/detail";
+	public static final String OS_DATADETAIL = "outsource/dataDetail";
+	public static final String OS_EXPDETAIL = "outsource/expDetail";
 	public static final String OS_ADDDATA = "outsource/addData";
 	public static final String OS_ADDEXP = "outsource/addExp";
 

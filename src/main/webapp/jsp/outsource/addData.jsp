@@ -21,82 +21,85 @@
 	<div id="wrapper">
 		<%@ include file="../common/nav.jsp"%>
 		<div id="page-wrapper" class="detailPage">
-			<div id="outsourceTotalPanel" class="panel panel-default" ng-controller="outSourcingController">
-	<div class="panel-heading">
-		<h3 class="panel-title">
-			<strong>外包信息</strong>
-		</h3>
-	</div>
-
-	<div id="collapseThree" >
-		<div id="panelOutsource" class="panel-body">
 			<div class="row">
-				<div class="col-md-12">
-					<div class="pull-left page-header">
-						<h5>
-							<strong>数据分析外包信息</strong>
-						</h5>
+				<div class="col-lg-12">
+					<div class="panel-body">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">
+									<strong>外包信息</strong>
+								</h3>
+						</div>
+						<div id="collapseThree" class="panel-collapse collapse in" style="">
+							<div class="panel-body">
+								<div class="row">
+											<div class="col-md-12">
+												<div class="pull-left page-header">
+													<h5>
+														<strong>数据分析外包信息</strong>
+													</h5>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6 col-sm-12 col-xs-12">
+												<div>
+													<label>项目编号 </label>
+												</div>
+												<div>
+													<input type="text" class="form-control">
+												</div>
+											</div>
+											<div class="col-md-6 col-sm-12 col-xs-12">
+												<div>
+													<label>外包单位</label>
+												</div>
+												<div>
+													<input type="text" class="form-control">
+												</div>
+											</div>
+										</div>
+										<div class="row row-margin">
+											<div class="col-md-6 col-sm-12 col-xs-12">
+												<div>
+													<label>联系人</label>
+												</div>
+												<div>
+													<input type="text" class="form-control" >
+												</div>
+											</div>
+											<div class="col-md-6 col-sm-12 col-xs-12">
+												<div>
+													<label>联系人电话</label>
+												</div>
+												<div>
+													<input type="text" class="form-control" >
+												</div>
+											</div>
+										</div>
+										<div class="row row-margin">
+											<div class="col-md-6 col-sm-12 col-xs-12">
+												<div>
+													<label>地址 </label>
+												</div>
+												<div>
+													<textarea class="form-control" rows="8"></textarea>
+												</div>
+											</div>
+										</div>	
+									<div class="row row-margin" >
+										<div class="col-md-6 col-sm-12 col-xs-12">
+											<button id="saveOutSource" class="btn btn-default btn-primary" type="submit">保存</button>
+											<button id="cancelOutSource" class="btn btn-default btn-primary" type="button">取消</button>
+										</div>
+									</div>
+									</div>
+									</div>
 					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6 col-sm-12 col-xs-12">
-					<div>
-						<label>项目编号 </label>
-					</div>
-					<div>
-						<input id="dataProjectID" type="text" readonly="true" class="form-control" ng-model="pgos.dataOS.projectId" value="${project.projectId}" >
-					</div>
-				</div>
-				<div class="col-md-6 col-sm-12 col-xs-12">
-					<div>
-						<label>外包单位</label>
-					</div>
-					<div>
-						<input type="text"  maxlength="20" class="form-control" ng-model="pgos.dataOS.outSourceUnit">
-					</div>
-				</div>
-			</div>
-			<div class="row row-margin">
-				<div class="col-md-6 col-sm-12 col-xs-12">
-					<div>
-						<label>联系人</label>
-					</div>
-					<div>
-						<input type="text" maxlength="5" class="form-control" ng-model="pgos.dataOS.contactPerson">
-					</div>
-				</div>
-				<div class="col-md-6 col-sm-12 col-xs-12">
-					<div>
-						<label>联系人电话</label>
-						<label id="dataContactPhoneLbl" class="warning-style">请输入正确的号码</label>
-					</div>
-					<div>
-						<input id="dataContactPhone" type="text" maxlength="15" class="form-control" ng-model="pgos.dataOS.contactPhone">
-					</div>
-				</div>
-			</div>
-			<div class="row row-margin">
-				<div class="col-md-6 col-sm-12 col-xs-12">
-					<div>
-						<label>地址 </label>
-					</div>
-					<div>
-						<textarea class="form-control" rows="8" ng-model="pgos.dataOS.address"></textarea>
-					</div>
-				</div>
-			</div>
-			<div class="row row-margin">
-				<div class="col-md-6 col-sm-12 col-xs-12">
-					<button id="saveOutSource" class="btn btn-default btn-primary" type="submit">保存</button>
-					<button id="cancelOutSource" class="btn btn-default btn-primary" type="button">取消</button>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-
-		</div>
 	</div>
 	
 	<!-- /#wrapper -->

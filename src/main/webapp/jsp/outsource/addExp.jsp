@@ -17,35 +17,37 @@
 <%@ include file="../comm-fragement/main-css"%>
 </head>
 
-<body ng-app="">
+<body>
 	<div id="wrapper">
 		<%@ include file="../common/nav.jsp"%>
 		<div id="page-wrapper" class="detailPage">
-			<div id="outsourceTotalPanel" class="panel panel-default" ng-controller="outSourcingController">
-	<div class="panel-heading">
-		<h3 class="panel-title">
-			<strong>外包信息</strong>
-		</h3>
-	</div>
-
-	<div id="collapseThree" >
-		<div id="panelOutsource" class="panel-body">
 			<div class="row">
-				<div class="col-md-12">
-					<div class="pull-left page-header">
-						<h5>
-							<strong>实验外包信息</strong>
-						</h5>
-					</div>
-				</div>
-			</div>
-			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel-body">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">
+									<strong>外包信息</strong>
+								</h3>
+						</div>
+						<div id="collapseThree" class="panel-collapse collapse in" style="">
+							<div class="panel-body">
+								<div class="row">
+											<div class="col-md-12">
+												<div class="pull-left page-header">
+													<h5>
+														<strong>实验外包信息</strong>
+													</h5>
+												</div>
+											</div>
+										</div>
+										<div class="row">
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div>
 						<label>项目编号 </label>
 					</div>
 					<div>
-						<input id="outsourceProjectID" type="text" readonly="true" class="form-control" ng-model="pgos.experimentOS.projectId" value="${project.projectId }">
+						<input id="outsourceProjectID" type="text" readonly="true" class="form-control" value="${project.projectId }">
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -53,7 +55,7 @@
 						<label>外包单位</label>
 					</div>
 					<div>
-						<input type="text" maxlength="20" class="form-control" ng-model="pgos.experimentOS.outSourceUnit">
+						<input type="text" maxlength="20" class="form-control">
 					</div>
 				</div>
 			</div>
@@ -63,7 +65,7 @@
 						<label>联系人</label>
 					</div>
 					<div>
-						<input type="text" maxlength="5" class="form-control" ng-model="pgos.experimentOS.contactPerson">
+						<input type="text" maxlength="5" class="form-control" >
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -72,7 +74,7 @@
 						<label id="contactPhoneLbl" class="warning-style">请输入正确的号码</label>
 					</div>
 					<div>
-						<input id="contactPhone" type="text" maxlength="15" class="form-control" ng-model="pgos.experimentOS.contactPhone">
+						<input id="contactPhone" type="text" maxlength="15" class="form-control" >
 					</div>
 				</div>
 			</div>
@@ -84,7 +86,7 @@
 						<label id="contractAmountLbl" class="warning-style">请输入正确的金额</label>
 					</div>
 					<div>
-						<input id="contractAmount" type="text" maxlength="5" class="form-control" ng-model="pgos.experimentOS.contractAmount">
+						<input id="contractAmount" type="text" maxlength="5" class="form-control">
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -94,7 +96,7 @@
 						<label id="issendSampleDateLbl" class="warning-style">您输入的日期不存在</label>
 					</div>
 					<div>
-						<input id="sendSampleDate" type="text"  maxlength="10" class="form-control form_date" ng-model="pgos.experimentOS.sendSampleDate"> 
+						<input id="sendSampleDate" type="text"  maxlength="10" class="form-control form_date" > 
 					</div>
 				</div>
 			</div>
@@ -118,7 +120,7 @@
 					</div>
 					<div>
 						<div>
-							<input type="text"  maxlength="10" class="form-control" ng-model="pgos.experimentOS.sendSampleCount">
+							<input type="text"  maxlength="10" class="form-control" >
 						</div>
 					</div>
 				</div>
@@ -129,7 +131,7 @@
 						<label>合同信息</label>
 					</div>
 					<div>
-						<textarea class="form-control" rows="8" ng-model="pgos.experimentOS.contactInfo"></textarea>
+						<textarea class="form-control" rows="8"></textarea>
 					</div>
 				</div>
 			</div>
@@ -139,7 +141,7 @@
 						<label>地址 </label>
 					</div>
 					<div>
-						<textarea class="form-control" rows="8" ng-model="pgos.experimentOS.address"></textarea>
+						<textarea class="form-control" rows="8" ></textarea>
 					</div>
 				</div>
 			</div>
@@ -149,12 +151,13 @@
 					<button id="cancelOutSource" class="btn btn-default btn-primary" type="button">取消</button>
 				</div>
 			</div>
-			
+									</div>
+									</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
-
-		</div>
 	</div>
 	
 	<!-- /#wrapper -->
