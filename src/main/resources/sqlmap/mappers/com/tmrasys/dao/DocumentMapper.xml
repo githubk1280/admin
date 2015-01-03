@@ -7,9 +7,9 @@
 		INSERT INTO
 		document
 		(FileId, FileName, FilePath,
-		FileOwner, FileOwnerId, FileType, ParentId, AddTime)
+		FileOwner, FileOwnerId, FileType, ParentId, AddTime,ProjectId)
 		VALUES
-		(#{fileId},#{fileName},#{filePath},#{fileOwner},#{fileOwnerId},#{fileType},#{parentId},now());
+		(#{fileId},#{fileName},#{filePath},#{fileOwner},#{fileOwnerId},#{fileType},#{parentId},now(),#{projectId});
 	</insert>
 	<select id="loadDocumentById" resultMap="docResult"
 		parameterType="map">
@@ -62,7 +62,8 @@
 		FileOwner=#{owner}
 	</delete>
 	<delete id="deleteFileByParentId" parameterType="map">
-		DELETE FROM document
+		DELETE FROM
+		document
 		WHERE
 		ParentId=#{fileId}
 		AND
@@ -87,6 +88,7 @@
 		<parameter property="fileType" resultMap="FileType" />
 		<parameter property="parentId" resultMap="ParentId" />
 		<parameter property="addTime" resultMap="AddTime" />
+		<parameter property="projectId" resultMap="ProjectId" />
 	</parameterMap>
 </mapper>
 

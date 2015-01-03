@@ -46,11 +46,10 @@ public class DocumentController {
 				.loadRootFoldersUnderUser(employee.getName());
 		// DB里创建默认5个文件夹
 		if (null != documents && documents.size() < 5) {
-			addDefaultFolders(employee.getName(), employee.getEmployeeId());
-			documents = documentService.loadRootFoldersUnderUser(employee
-					.getName());
+			addDefaultFolders();
+			documents = documentService.loadRootFoldersUnderUser("admin");
 			// 文件系统创建用户文件夹
-			FileUtils.createUserFolder(employee.getName());
+			FileUtils.createFolder(FileUtils.getRootPath());
 		}
 		ModelAndView view = new ModelAndView();
 		view.addObject("docs", documents);
@@ -58,15 +57,15 @@ public class DocumentController {
 		return view;
 	}
 
-	private void addDefaultFolders(String userName, int userId) {
+	private void addDefaultFolders() {
 		Document d = null;
 		for (DefaultFolderNameEnum dName : DefaultFolderNameEnum.values()) {
 			d = new Document();
+			d.setFileId(dName.getValue());
 			d.setFileName(dName.getChLabelValue());
-			d.setFileOwner(userName);
-			d.setFileOwnerId(userId);
-			d.setFilePath(FileUtils.getRootPath() + userName + File.separator
-					+ dName.getChLabelValue());
+			d.setFileOwner("admin");
+			d.setFileOwnerId(0);
+			d.setFilePath(FileUtils.getRootPath() + dName.getChLabelValue());
 			d.setFileType(FileTypeEnum.FOLDER.getType());
 			// root node
 			d.setParentId(0);
@@ -199,7 +198,8 @@ public class DocumentController {
 
 	@RequestMapping("/ajax/delete/{fileId}")
 	public void deleteFile(@PathVariable int fileId,
-			HttpServletResponse response, HttpSession session) throws IOException {
+			HttpServletResponse response, HttpSession session)
+			throws IOException {
 		Employee employee = (Employee) session.getAttribute("user");
 		Document current = documentService.loadDocumentById(fileId);
 		if (null == current) {
@@ -275,9 +275,9 @@ public class DocumentController {
 	}
 
 	public enum DefaultFolderNameEnum {
-		PROJECT_PLAN(-1, "plan", "项目方案"), PROJECT_CONTRACT(-2, "contract",
-				"项目合同"), PUBLIST_ARTICALE(-3, "article", "发表文章"), SAMPLE_INFO(
-				-4, "sample", "样本信息"), EXPRIMENT_RESULT(-5, "result", "实验结果");
+		PROJECT_PLAN(1, "plan", "项目方案"), PROJECT_CONTRACT(2, "contract", "项目合同"), PUBLIST_ARTICALE(
+				3, "article", "发表文章"), SAMPLE_INFO(4, "sample", "样本信息"), EXPRIMENT_RESULT(
+				5, "result", "实验结果");
 		private String labelValue;
 		private int value;
 		private String chLabelValue;
