@@ -203,7 +203,7 @@ public class DocumentController {
 		Employee employee = (Employee) session.getAttribute("user");
 		Document current = documentService.loadDocumentById(fileId);
 		if (null == current) {
-			JsonResponseUtils.returnJsonResponse(response, "文件不存在或已删除!", false,
+			JsonResponseUtils.returnJsonResponse(response, "deleted!", false,
 					500);
 			return;
 		}
@@ -220,13 +220,13 @@ public class DocumentController {
 				f.delete();
 			}
 		} else {
-			JsonResponseUtils.returnJsonResponse(response, "文件不存在或已删除!", false,
+			JsonResponseUtils.returnJsonResponse(response, "deleted!", false,
 					500);
 			return;
 		}
 		documentService.deleteFolderById(fileId, current.getFileType(),
 				employee.getName());
-		JsonResponseUtils.returnJsonResponse(response, "文件删除成功!", true, 200);
+		JsonResponseUtils.returnJsonResponse(response, "succeed!", true, 200);
 	}
 
 	@RequestMapping("/ajax/createFolder/{name}")
@@ -237,7 +237,7 @@ public class DocumentController {
 		Employee employee = (Employee) session.getAttribute("user");
 		String ownerName = employee.getName();
 		if (isNameDuplicate(ownerName, name)) {
-			JsonResponseUtils.returnJsonResponse(response, "文件夹已经存，请重新输入!",
+			JsonResponseUtils.returnJsonResponse(response, "existed!",
 					false, 500);
 			return;
 		}
@@ -254,7 +254,7 @@ public class DocumentController {
 		d.setParentId(0);
 		documentService.insertDocument(d);
 		FileUtils.createFolder(folderDir);
-		JsonResponseUtils.returnJsonResponse(response, "文件夹创建成功", true, 200);
+		JsonResponseUtils.returnJsonResponse(response, "succeed", true, 200);
 	}
 
 	private boolean isNameDuplicate(String ownerName, String name) {

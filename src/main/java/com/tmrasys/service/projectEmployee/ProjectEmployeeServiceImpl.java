@@ -18,7 +18,7 @@ public class ProjectEmployeeServiceImpl implements ProjectEmployeeService {
 	}
 
 	@Override
-	public ProjectEmployee getByProjectId(int projectId, int employeeId) {
+	public ProjectEmployee getByProjectId(String projectId, int employeeId) {
 		return projectEmployeeDao.getByProjectId(projectId, employeeId);
 	}
 

@@ -37,7 +37,7 @@ public class DataTestController {
 
 	@RequestMapping("/load/it")
 	public ModelAndView loadProjectById() {
-		Project project = dataService.loadProjectById(1);
+		Project project = dataService.loadProjectById("1");
 		ModelAndView view = new ModelAndView();
 		view.addObject("project", project);
 		view.setViewName("/upload/upload");

@@ -51,7 +51,7 @@ public class ProjectController {
 
 	@DataAccessCheck(forWhat = { DataCheckTypeConstant.PROJECT })
 	@RequestMapping("/{projectId}")
-	public ModelAndView loadProjectById(@PathVariable int projectId) {
+	public ModelAndView loadProjectById(@PathVariable String projectId) {
 		Project project = projectService.loadProjectById(projectId);
 		ModelAndView view = new ModelAndView();
 		view.addObject("project", project);
@@ -99,7 +99,7 @@ public class ProjectController {
 		Employee employee = (Employee) session.getAttribute("user");
 		int employeeId = employee.getEmployeeId();
 		projectService.addProject(project);
-		int projectId = project.getProjectId();
+		String projectId = project.getProjectId();
 		projectEmployeeService.addReference(new ProjectEmployee(projectId,
 				employeeId));
 		projectProgressService.addProjectProgress(new ProjectProgress(employee
@@ -141,7 +141,7 @@ public class ProjectController {
 
 	@RequestMapping("/assign-redirect")
 	public ModelAndView assignRedirect() {
-		ProjectEmployee projectEmployee = new ProjectEmployee(0, 0);
+		ProjectEmployee projectEmployee = new ProjectEmployee("", 0);
 		List<Employee> emps = employeeService.getAllEmployees();
 		List<Project> pros = projectService.loadAllProjects();
 		ModelAndView view = new ModelAndView();

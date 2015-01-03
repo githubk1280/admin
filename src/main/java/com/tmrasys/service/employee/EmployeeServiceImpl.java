@@ -50,7 +50,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public List<Integer> getEmployeesByProjectId(int projectId) {
+	public List<Integer> getEmployeesByProjectId(String projectId) {
 		return employeeDao.getEmployeesByProjectId(projectId);
 	}
 
@@ -60,7 +60,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public List<String> getEmployeesEmailByProjectId(int projectId,
+	public List<String> getEmployeesEmailByProjectId(String projectId,
 			int operatorId) {
 		return employeeDao.getEmployeesEmailByProjectId(projectId, operatorId);
 	}

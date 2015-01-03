@@ -13,14 +13,14 @@ public interface EmployeeService {
 
 	void updatePrivilege(Employee employee, String privilegeCode);
 
-	public List<Integer> getEmployeesByProjectId(int projectId);
+	public List<Integer> getEmployeesByProjectId(String projectId);
 
 	/** except operatorId
 	 * @param projectId
 	 * @param operatorId
 	 * @return
 	 */
-	public List<String> getEmployeesEmailByProjectId(int projectId, int operatorId);
+	public List<String> getEmployeesEmailByProjectId(String projectId, int operatorId);
 
 	List<Employee> getAllEmployees();
 }

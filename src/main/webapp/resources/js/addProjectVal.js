@@ -17,8 +17,6 @@ $(".form_date").datetimepicker({
 
 $("#saveProBasicData").click(function(){
 	$("#saveProBasicData").attr("type","submit");
-	var proBasicProjectID = $("#proBasicProjectID").val();
-		proBasicProjectID = $(proBasicProjectID);
 	//proBasicProjectID
 	var projectName = $("#projectName").val();
 		projectName = $.trim(projectName);
@@ -42,7 +40,7 @@ $("#saveProBasicData").click(function(){
 	var projectNote = $("#projectNote").val();
 		projectNote = $.trim(projectNote);
 	/*** give judgement non-null****/
-	if(proBasicProjectID.length<1){
+	if($("#proBasicProjectID").val().length<1){
 		$("#proBasicProjectIDLbl").show();
 		//$("#projectName").focus();
 		$("#saveProBasicData").attr("type","button");

@@ -8,7 +8,7 @@ import com.tmrasys.domain.ProjectProgress;
 
 @Repository
 public interface ProjectProgressDao {
-	List<ProjectProgress> getByProjectId(int projectId);
+	List<ProjectProgress> getByProjectId(String projectId);
 	void addProjectProgress(ProjectProgress projectProgress);
-	List<ProjectProgress> getBasicByProjectId(int projectId);
+	List<ProjectProgress> getBasicByProjectId(String projectId);
 }

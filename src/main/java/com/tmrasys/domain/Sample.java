@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 public class Sample {
 	private int sampleId;
-	private int projectId;
+	private String projectId;
 	private String samplePrincripal;
 	private String projectPrincripal;
 	private String sourceUnit;

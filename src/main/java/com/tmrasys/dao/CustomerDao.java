@@ -9,7 +9,7 @@ import com.tmrasys.domain.Customer;
 
 @Repository
 public interface CustomerDao {
-	List<Customer> getByProjectId(int projectId);
+	List<Customer> getByProjectId(String projectId);
 	void addCustomer(Customer customer);
 	void updateCustomer(Customer customer);
 	List<Customer> getByEmployee(int employeeId);

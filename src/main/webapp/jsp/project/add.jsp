@@ -43,7 +43,7 @@
 														<label id="proBasicProjectIDLbl" class="warning-style">该字段不允许为空</label>
 													</div>
 													<div>
-														<input id="proBasicProjectID" type="text" class="form-control" maxlength ="10">
+														<form:input id="proBasicProjectID" path="projectId" type="text" class="form-control" maxlength ="20" />
 													</div>
 												</div>
 												<div class="col-md-6 col-sm-12 col-xs-12">

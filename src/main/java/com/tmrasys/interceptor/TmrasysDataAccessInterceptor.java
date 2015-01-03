@@ -55,7 +55,7 @@ public class TmrasysDataAccessInterceptor implements HandlerInterceptor,
 							.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 					if (DataCheckTypeConstant.PROJECT.equals(name)) {
 //						logger.info(pathVariable.get("projectId"));
-						int projectId = Integer.parseInt((String) pathVariable
+						String projectId = ((String) pathVariable
 								.get("projectId"));
 
 						if (projectService.hasAccessAuth(employee.getEmployeeId(), projectId)) {

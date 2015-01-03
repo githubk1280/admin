@@ -20,7 +20,7 @@ public class ProjectServiceImpl implements ProjectService {
 	private CustomerService customerService;
 
 	@Override
-	public Project loadProjectById(int projectId) {
+	public Project loadProjectById(String projectId) {
 		return projectDao.loadProjectById(projectId);
 	}
 
@@ -85,7 +85,7 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public boolean hasAccessAuth(int employeeId, int projectId) {
+	public boolean hasAccessAuth(int employeeId, String projectId) {
 		Project project = projectDao.loadProjectsByEmployeeAndId(employeeId,
 				projectId);
 		if(null == project)

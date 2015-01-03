@@ -60,7 +60,7 @@ public class ProjectStatusController implements ApplicationContextAware {
 	}
 
 	@RequestMapping("/ajax/{projectId}")
-	public void load(@PathVariable int projectId, HttpServletRequest request,
+	public void load(@PathVariable String projectId, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 		List<ProjectProgress> progresses = projectProgressService
 				.getByProjectId(projectId);
@@ -72,7 +72,7 @@ public class ProjectStatusController implements ApplicationContextAware {
 	}
 	
 	@RequestMapping(value = "ajax/proHisBasic/{projectId}")
-	public void getProHisBasic(@PathVariable int projectId, HttpServletRequest request,
+	public void getProHisBasic(@PathVariable String projectId, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 		List<ProjectProgress> proProgressList = projectProgressService
 				.getBasciByProjectId(projectId);
@@ -98,7 +98,7 @@ public class ProjectStatusController implements ApplicationContextAware {
 		}
 		ProjectProgress progress = JSON.parseObject(sb.toString(),
 				ProjectProgress.class);
-		int projectId = progress.getProjectId();
+		String projectId = progress.getProjectId();
 		// 1.insert
 		progress.setProgressDate(new Date());
 		projectProgressService.addProjectProgress(progress);
@@ -119,7 +119,7 @@ public class ProjectStatusController implements ApplicationContextAware {
 	
 
 	@RequestMapping(value = "proStatusHistory/{projectId}")
-	public ModelAndView loadProHis(@PathVariable int projectId) {
+	public ModelAndView loadProHis(@PathVariable String projectId) {
 		List<ProjectProgress> proProgressList = projectProgressService
 				.getByProjectId(projectId);
 		ProjectProgressPkg pppkg = new ProjectProgressPkg(projectId,proProgressList);
