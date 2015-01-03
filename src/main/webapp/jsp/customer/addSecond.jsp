@@ -47,7 +47,7 @@
 						<label>项目编号 </label>
 					</div>
 					<div>
-						<input id="secondCustomerProjectId" type="text" class="form-control" value="${project.projectId }" readonly="true"/>
+						<input id="secondCustomerProjectId" type="text" class="form-control" />
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -55,7 +55,7 @@
 						<label>姓名 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer2.customerName" readonly="true" maxlength="5"/>
+						<input type="text" class="form-control"  maxlength="5"/>
 					</div>
 				</div>
 			</div>
@@ -65,7 +65,7 @@
 						<label>性别 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer2.sex" readonly="true" maxlength="1"/>
+						<input type="text" class="form-control"  readonly="true" maxlength="1"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -74,7 +74,7 @@
 						<label id="secondAgeLbl" class="warning-style">请输入正确的年龄</label>
 					</div>
 					<div>
-						<input id="secondAge" type="text" class="form-control" ng-model="customer2.age" readonly="true" maxlength="3"/>
+						<input id="secondAge" type="text" class="form-control" maxlength="3"/>
 					</div>
 				</div>
 			</div>
@@ -85,7 +85,7 @@
 						<label id="secondPhoneLbl" class="warning-style">请输入正确的号码</label>
 					</div>
 					<div>
-						<input id="secondPhone" type="text" class="form-control" ng-model="customer2.phone" readonly="true" maxlength="15"/>
+						<input id="secondPhone" type="text" class="form-control"  maxlength="15"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -94,7 +94,7 @@
 						<label id="secondCellphoneLbl" class="warning-style">请输入正确的号码</label>
 					</div>
 					<div>
-						<input id="secondCellphone" type="text" class="form-control" ng-model="customer2.cellphone" readonly="true" maxlength="15"/>
+						<input id="secondCellphone" type="text" class="form-control"  maxlength="15"/>
 					</div>
 				</div>
 			</div>
@@ -104,7 +104,7 @@
 						<label>工作单位 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer2.workUnit" readonly="true" maxlength="20"/>
+						<input type="text" class="form-control"  maxlength="20"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -112,7 +112,7 @@
 						<label>科室/部门 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer2.department" readonly="true" maxlength="10"/>
+						<input type="text" class="form-control"  maxlength="10"/>
 					</div>
 				</div>
 			</div>
@@ -122,7 +122,7 @@
 						<label>职位 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer2.position" readonly="true" maxlength="6"/>
+						<input type="text" class="form-control"  maxlength="6"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -131,7 +131,7 @@
 						<label id="secondMailLbl" class="warning-style">请输入正确的邮箱</label>
 					</div>
 					<div>
-						<input id="secondMail" type="text" class="form-control" ng-model="customer2.email" readonly="true" maxlength="20"/>
+						<input id="secondMail" type="text" class="form-control"  maxlength="20"/>
 					</div>
 				</div>
 			</div>
@@ -141,7 +141,7 @@
 						<label>联系地址 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer2.adress" readonly="true"  maxlength="100"/>
+						<input type="text" class="form-control"   maxlength="100"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -149,7 +149,7 @@
 						<label>研究方向 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer2.resarchDirection" readonly="true"  maxlength="10"/>
+						<input type="text" class="form-control"   maxlength="10"/>
 					</div>
 				</div>
 			</div>
@@ -159,7 +159,7 @@
 						<label>与负责人关系 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer2.relationShip" readonly="true" maxlength="10"/>
+						<input type="text" class="form-control"  maxlength="10"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -167,14 +167,14 @@
 						<label>负责内容 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control"  ng-model="customer2.responsibleArea" readonly="true" maxlength="50"/>
+						<input type="text" class="form-control"   maxlength="50"/>
 					</div>
 				</div>
 			</div>
 			<div class="row row-margin" >
 				<div class="col-md-6 col-sm-12 col-xs-12">
-					<button id="saveCustomer" class="btn btn-default btn-primary" type="submit">保存</button>
-					<button id="cancelCustomer" class="btn btn-default btn-primary" type="button">取消</button>
+					<button id="saveCustomerInfo" class="btn btn-default btn-primary" type="submit">保存</button>
+					<button id="cancelCustomerInfo" class="btn btn-default btn-primary" type="button">取消</button>
 				</div>
 			</div>
 			</div>
@@ -188,7 +188,7 @@
 	<!-- /#wrapper -->
 	<%@ include file="../common/modal.jsp"%>
 	<%@ include file="../comm-fragement/main-js"%>
-	<%@ include file="../comm-fragement/addProjecVal-js"%>
+	<%@ include file="../comm-fragement/modifyCustomerVal-js"%>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#cancelCustomer").click(function() {

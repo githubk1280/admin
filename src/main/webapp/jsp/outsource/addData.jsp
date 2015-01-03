@@ -106,7 +106,6 @@
 	<%@ include file="../common/modal.jsp"%>
 
 	<%@ include file="../comm-fragement/main-js"%>
-	<%@ include file="../comm-fragement/addProjecVal-js"%>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#cancelOutSource").click(function() {
