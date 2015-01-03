@@ -157,6 +157,23 @@ $("#potentialExpenditure").blur(function(){
 	$("#potentialExpenditure").val(amount);
 });
 
+$("#proBasicProjectID").blur(function(){
+	var id = $.trim($("#proBasicProjectID").val());  
+    $.ajax({  
+        url:"ajax/validateProjectId",  
+        data:{projectId:id},
+        cache:false,
+        success:function(data){  
+            if(JSON.parse(data).data == "1"){  
+            	$("#projectIdInvalidated").show();
+        		$("#saveProBasicData").attr("type","button");
+            }else{
+            	$("#projectIdInvalidated").hide();
+            }
+        }
+    });
+});
+
 
 /***validate number float  dot negative***/
 function isAmountNumber(obj){

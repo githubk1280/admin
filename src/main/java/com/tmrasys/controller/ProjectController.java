@@ -1,14 +1,18 @@
 package com.tmrasys.controller;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,6 +30,7 @@ import com.tmrasys.service.projectEmployee.ProjectEmployeeService;
 import com.tmrasys.service.projectProgress.ProjectProgressService;
 import com.tmrasys.stereotype.DataAccessCheck;
 import com.tmrasys.stereotype.Priviliege;
+import com.tmrasys.utils.JsonResponseUtils;
 
 @Controller
 @RequestMapping("/project")
@@ -168,6 +173,18 @@ public class ProjectController {
 		ModelAndView view = new ModelAndView();
 		view.addObject("success", success);
 		return new ModelAndView("project/assign-success");
+	}
+	
+	@RequestMapping(value = "ajax/validateProjectId")
+	public void validate(String projectId, HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		Project exist = projectService.loadProjectById(projectId);
+		int flag = 1;
+		if (null == exist) {
+			flag = 2;
+		}
+		request.setAttribute("flag", flag);
+		JsonResponseUtils.returnJsonResponse(response, flag, true, 200);
 	}
 
 }
