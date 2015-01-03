@@ -21,6 +21,7 @@
 <body ng-app="">
 	<div id="wrapper">
 		<%@ include file="../common/nav.jsp"%>
+		<%@ include file="../comm-fragement/main-js"%>
 		<div id="page-wrapper" class="detailPage">
 			<div class="row">
 				<div class="col-lg-12">

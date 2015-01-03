@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import com.tmrasys.dao.SampleDao;
 import com.tmrasys.domain.Sample;
 
-
 @Service
 public class SampleServiceImpl implements SampleService {
 
 	@Autowired
 	private SampleDao sampleDao;
+
 	@Override
 	public List<Sample> getByEmployee(int employeeId) {
 		return sampleDao.getByEmployee(employeeId);
@@ -35,7 +35,6 @@ public class SampleServiceImpl implements SampleService {
 	}
 
 	@Override
-
 	public int countByEmployee(int employeeId) {
 		return sampleDao.countByEmployee(employeeId);
 	}
@@ -44,15 +43,19 @@ public class SampleServiceImpl implements SampleService {
 	public List<Sample> getPagedByEmployee(int employeeId, int pageIndex) {
 		int start = 0;
 		int end = 10;
-		if(pageIndex > 1) {
+		if (pageIndex > 1) {
 			start = (pageIndex - 1) * 10;
 		}
 		return sampleDao.getPagedByEmployee(employeeId, start, end);
 	}
 
 	public List<Sample> findSampleByProjectId(String projectId, int employeeID) {
-		// TODO Auto-generated method stub
 		return sampleDao.findSampleByProjectId(projectId, employeeID);
+	}
+
+	@Override
+	public Sample getByEmployeeAndId(int employeeId, String sampleId) {
+		return sampleDao.getByEmployeeAndId(employeeId,sampleId);
 	}
 
 }

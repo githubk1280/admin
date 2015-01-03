@@ -17,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.tmrasys.constant.DataCheckTypeConstant;
 import com.tmrasys.constant.page.PageResourceConstant;
 import com.tmrasys.domain.Employee;
-import com.tmrasys.service.project.ProjectService;
 import com.tmrasys.stereotype.DataAccessCheck;
 
 /**
@@ -31,7 +30,7 @@ public class TmrasysDataAccessInterceptor implements HandlerInterceptor,
 	Logger logger = Logger.getLogger(getClass());
 
 	@Autowired
-	private ProjectService projectService;
+	private DataCheckHelper checkHelper;
 
 	@Override
 	public int getOrder() {
@@ -48,25 +47,39 @@ public class TmrasysDataAccessInterceptor implements HandlerInterceptor,
 					.getMethodAnnotation(DataAccessCheck.class);
 			HttpSession session = request.getSession();
 			Employee employee = (Employee) session.getAttribute("user");
-			if (null != checkAnno) {
+			boolean pass = true;
+			if (null != checkAnno && checkAnno.forWhat() != null) {
 				String[] needCheck = checkAnno.forWhat();
 				for (String name : needCheck) {
 					Map<String, Object> pathVariable = (Map<String, Object>) request
 							.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 					if (DataCheckTypeConstant.PROJECT.equals(name)) {
-						// logger.info(pathVariable.get("projectId"));
 						String projectId = ((String) pathVariable
 								.get("projectId"));
-
-						if (projectService.hasAccessAuth(
-								employee.getEmployeeId(), projectId)) {
-							break;
-						} else {
-							response.sendRedirect(request.getContextPath()
-									+ PageResourceConstant.NO_AUTH_TO_ACCESS);
-							return false;
-						}
+						pass = checkHelper.hasAccess(projectId, name,
+								employee.getEmployeeId());
 					}
+
+					if (DataCheckTypeConstant.CONTRACT.equals(name)) {
+						String contractId = ((String) pathVariable
+								.get("contractId"));
+						pass = checkHelper.hasAccess(contractId, name,
+								employee.getEmployeeId());
+					}
+
+					if (DataCheckTypeConstant.SAMPLE.equals(name)) {
+						String sampleId = ((String) pathVariable
+								.get("sampleId"));
+						pass = checkHelper.hasAccess(sampleId, name,
+								employee.getEmployeeId());
+					}
+
+				}
+
+				if (!pass) {
+					response.sendRedirect(request.getContextPath()
+							+ PageResourceConstant.NO_AUTH_TO_ACCESS);
+					return false;
 				}
 			}
 		}

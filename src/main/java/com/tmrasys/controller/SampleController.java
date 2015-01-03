@@ -16,12 +16,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tmrasys.constant.DataCheckTypeConstant;
 import com.tmrasys.constant.page.PageResourceConstant;
 import com.tmrasys.domain.Employee;
 import com.tmrasys.domain.ProjectIdPrincipal;
 import com.tmrasys.domain.Sample;
 import com.tmrasys.service.project.ProjectService;
 import com.tmrasys.service.sample.SampleService;
+import com.tmrasys.stereotype.DataAccessCheck;
 import com.tmrasys.utils.JsonResponseUtils;
 
 @Controller
@@ -38,6 +40,7 @@ public class SampleController {
 	public void init() {
 	}
 
+	@DataAccessCheck(forWhat = { DataCheckTypeConstant.SAMPLE })
 	@RequestMapping("/{sampleId}")
 	public ModelAndView loadProjectById(@PathVariable int sampleId) {
 		Sample sample = sampleService.getById(sampleId);
@@ -59,15 +62,17 @@ public class SampleController {
 		return view;
 
 	}
-	
+
 	@RequestMapping("/pages/{page}")
-	public ModelAndView loadAllSamplesByUser(@PathVariable int page, HttpSession session) {
+	public ModelAndView loadAllSamplesByUser(@PathVariable int page,
+			HttpSession session) {
 		Employee employee = (Employee) session.getAttribute("user");
 		int count = sampleService.countByEmployee(employee.getEmployeeId());
-		List<Sample> samples = sampleService.getPagedByEmployee(employee.getEmployeeId(), page);
+		List<Sample> samples = sampleService.getPagedByEmployee(
+				employee.getEmployeeId(), page);
 		ModelAndView view = new ModelAndView();
 		int pages = 1;
-		if(count > 10) {
+		if (count > 10) {
 			pages = (count + 9) / 10;
 		}
 		view.addObject("samples", samples);
@@ -91,7 +96,7 @@ public class SampleController {
 		view.setViewName(PageResourceConstant.SAMPLE_ADD);
 		return view;
 	}
-	
+
 	@RequestMapping("/update")
 	public ModelAndView update(Sample sample) {
 		sampleService.updateSample(sample);
@@ -100,25 +105,27 @@ public class SampleController {
 		view.setViewName(PageResourceConstant.SAMPLE_DETAIL);
 		return view;
 	}
-	
+
 	@RequestMapping("/ajax/projectIdPrincipal")
 	public void load(HttpSession session, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 		Employee employee = (Employee) session.getAttribute("user");
-		List<ProjectIdPrincipal> list = projectService.loadProjectIdPrincipal(employee.getEmployeeId());
+		List<ProjectIdPrincipal> list = projectService
+				.loadProjectIdPrincipal(employee.getEmployeeId());
 		if (!CollectionUtils.isEmpty(list)) {
 			JsonResponseUtils.returnJsonResponse(response, list, true, 200);
 		}
 	}
-	
+
 	@RequestMapping("/search")
-	public ModelAndView search(String searchStr,HttpSession session){
-		Employee employee = (Employee)session.getAttribute("user");
-		List<Sample> samples = sampleService.findSampleByProjectId(searchStr, employee.getEmployeeId());
+	public ModelAndView search(String searchStr, HttpSession session) {
+		Employee employee = (Employee) session.getAttribute("user");
+		List<Sample> samples = sampleService.findSampleByProjectId(searchStr,
+				employee.getEmployeeId());
 		ModelAndView view = new ModelAndView();
-		view.addObject("samples",samples);
+		view.addObject("samples", samples);
 		view.setViewName(PageResourceConstant.SAMPLE_LIST);
-		
+
 		return view;
 	}
 

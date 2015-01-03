@@ -10,7 +10,7 @@ import com.tmrasys.domain.Contract;
 
 @Service
 public class ContractServiceImpl implements ContractService {
-	
+
 	@Autowired
 	private ContractDao contractDao;
 
@@ -48,13 +48,19 @@ public class ContractServiceImpl implements ContractService {
 	public List<Contract> getPagedByEmployee(int employeeId, int pageIndex) {
 		int start = 0;
 		int end = 10;
-		if(pageIndex > 1) {
+		if (pageIndex > 1) {
 			start = (pageIndex - 1) * 10;
 		}
 		return contractDao.getPagedByEmployee(employeeId, start, end);
 	}
-	public List<Contract> findContractByProjectId(String projectId, int employeeId) {
-		// TODO Auto-generated method stub
+
+	public List<Contract> findContractByProjectId(String projectId,
+			int employeeId) {
 		return contractDao.findContractByProjectId(projectId, employeeId);
+	}
+
+	@Override
+	public Contract getByEmployeeAndId(int employeeId, String id) {
+		return contractDao.getByEmployeeAndId(employeeId, id);
 	}
 }

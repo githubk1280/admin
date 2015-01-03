@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tmrasys.constant.DataCheckTypeConstant;
 import com.tmrasys.constant.page.PageResourceConstant;
 import com.tmrasys.domain.Contract;
 import com.tmrasys.domain.Employee;
 import com.tmrasys.service.contract.ContractService;
+import com.tmrasys.stereotype.DataAccessCheck;
 
 @Controller
 @RequestMapping("/contract")
@@ -29,6 +31,7 @@ public class ContractController {
 	public void init() {
 	}
 
+	@DataAccessCheck(forWhat = { DataCheckTypeConstant.CONTRACT })
 	@RequestMapping("/{contractId}")
 	public ModelAndView loadProjectById(@PathVariable int contractId) {
 		Contract contract = contractService.getById(contractId);
