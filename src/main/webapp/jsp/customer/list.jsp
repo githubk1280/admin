@@ -37,11 +37,11 @@
 					<table class="table table-hover">
 						<thead>
 							<tr>
+								<th>项目编号</th>
 								<th>负责人</th>
 								<th>单位</th>
 								<th>部门</th>
 								<th>职位</th>
-								<th>所属项目编号</th>
 								<th>研究方向 </th>
 								<th>负责内容</th>
 								<th></th>
@@ -51,13 +51,13 @@
 							<c:forEach items="${customers}" var="customer"
 								varStatus="status">
 								<tr>
+									<td><a href="<%=request.getContextPath()%>/project/${customer.projectId}" target="_blank"
+										class="project_link">${customer.projectId}</a></td>
 									<td><a href="<%=request.getContextPath()%>/customer/${customer.customerId}" target="_blank"
 										class="project_link">${customer.customerName}</a></td>
 									<td>${customer.workUnit}</td>
 									<td>${customer.department}</td>
 									<td>${customer.position}</td>
-									<td><a href="<%=request.getContextPath()%>/project/${customer.projectId}" target="_blank"
-										class="project_link">${customer.projectId}</a></td>
 									<td>${customer.resarchDirection}</td>
 									<td>${customer.responsibleArea}</td>
 									<td><a href="<%=request.getContextPath()%>/customer/${customer.customerId}" target="_blank"
