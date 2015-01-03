@@ -28,6 +28,8 @@ http://www.springframework.org/schema/context
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/project/**" />
+			<mvc:mapping path="/sample/**" />
+			<mvc:mapping path="/contract/**" />
 			<bean class="com.tmrasys.interceptor.TmrasysDataAccessInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>

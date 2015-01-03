@@ -37,25 +37,25 @@
 		<appender-ref ref="dailyFileAppender" />
 	</logger>
 
-	<logger name="org.apache.ibatis">
-	<level value="debug" />
-	<appender-ref ref="ibatisAppender" />
-	</logger>
+<!-- 	<logger name="org.apache.ibatis"> -->
+<!-- 	<level value="debug" /> -->
+<!-- 	<appender-ref ref="ibatisAppender" /> -->
+<!-- 	</logger> -->
 
-	<logger name="java.sql">
-	<level value="debug" />
-	<appender-ref ref="ibatisAppender" />
-	</logger>
+<!-- 	<logger name="java.sql"> -->
+<!-- 	<level value="debug" /> -->
+<!-- 	<appender-ref ref="ibatisAppender" /> -->
+<!-- 	</logger> -->
 
-	<logger name="java.sql.Statement">
-	<level value="debug" />
-	<appender-ref ref="ibatisAppender" />
-	</logger>
+<!-- 	<logger name="java.sql.Statement"> -->
+<!-- 	<level value="debug" /> -->
+<!-- 	<appender-ref ref="ibatisAppender" /> -->
+<!-- 	</logger> -->
 
-	<logger name="java.sql.ResultSet">
-	<level value="debug" />
-	<appender-ref ref="ibatisAppender" />
-	</logger>
+<!-- 	<logger name="java.sql.ResultSet"> -->
+<!-- 	<level value="debug" /> -->
+<!-- 	<appender-ref ref="ibatisAppender" /> -->
+<!-- 	</logger> -->
 
 	<root>
 		<level value="INFO" />
