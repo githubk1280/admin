@@ -36,7 +36,7 @@
 		parameterType="int">
 		SELECT count(*) FROM project P
 		INNER JOIN project_employee PE ON
-		P.PROJECT_ID = PE.PROJECT_ID
+		P.PROJECT_ID = PE.PROJECT_ID AND P.PROJECT_PERCENTAGE <![CDATA[<>]]> 100
 		INNER JOIN employee E ON E.EMPLOYEE_ID = PE.EMPLOYEE_ID AND E.EMPLOYEE_ID =
 		#{employeeId}
 	</select>
@@ -45,7 +45,7 @@
 		parameterType="map">
 		SELECT * FROM project P
 		INNER JOIN project_employee PE ON
-		P.PROJECT_ID = PE.PROJECT_ID
+		P.PROJECT_ID = PE.PROJECT_ID AND P.PROJECT_PERCENTAGE <![CDATA[<>]]> 100
 		INNER JOIN employee E ON E.EMPLOYEE_ID = PE.EMPLOYEE_ID AND E.EMPLOYEE_ID =
 		#{employeeId} LIMIT #{start}, #{end};
 	</select>
@@ -55,11 +55,11 @@
 		INSERT INTO `project`
 		(`NEED_PRINCPAL_ASSIST`,`PRIORITY`,`START_DATE`,`END_DATE`,`PROJECT_CONTENT`,`POTENTIAL_EXPENDITURE`,
 		`SAMPLE_COUNT`,`RESEARCH_DIRECTION`,`TECHNOLOGY_PLATFORM_DEMAND`,`HAS_CORPORATED_INTENTION`,`NEED_PROJECT_PLAN`,
-		`NEED_SCI`,`PROJECT_NOTE`,`PROJECT_NAME`,`PROJECT_TYPE`,`PROJECT_PERCENTAGE`)
+		`NEED_SCI`,`PROJECT_NOTE`,`PROJECT_NAME`,`PROJECT_TYPE`,`PROJECT_PERCENTAGE`,`PROJECT_INPUT_ID`)
 		VALUES
 		(#{needPrincipalAssist},#{priority},#{startDate},#{endDate},#{projectContent},#{potentialExpenditure},
 		#{sampleCount},#{researchDirection},#{platformDemand},#{hasCorporatedIntention},#{needProjectPlan},
-		#{needSCI},#{projectNote},#{projectName},#{projectType},#{projectStatusPercentage});
+		#{needSCI},#{projectNote},#{projectName},#{projectType},#{projectStatusPercentage},#{inputId});
 	</insert>
 	
 	<update id="updateProject" parameterMap="projectParameter" flushCache="true">
@@ -110,6 +110,7 @@
 		<parameter property="projectNote" resultMap="PROJECT_NOTE" />
 		<parameter property="projectType" resultMap="PROJECT_TYPE" />
 		<parameter property="projectStatusPercentage" resultMap="PROJECT_PERCENTAGE" />
+		<parameter property="inputId" resultMap="PROJECT_INPUT_ID" />
 	</parameterMap>
 
 	<resultMap type="com.tmrasys.domain.Project" id="employeeMapper">
@@ -130,6 +131,7 @@
 		<result property="projectNote" column="PROJECT_NOTE" />
 		<result property="projectType" column="PROJECT_TYPE" />
 		<result property="projectStatusPercentage" column="PROJECT_PERCENTAGE" />
+		<result property="inputId" column="PROJECT_INPUT_ID" />
 	</resultMap>
 
 </mapper>

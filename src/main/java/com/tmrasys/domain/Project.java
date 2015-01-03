@@ -42,4 +42,8 @@ public class Project {
 	 * 项目百分比
 	 */
 	private int projectStatusPercentage;
+	/**
+	 * 手动输入的项目编号
+	 */
+	private String inputId;
 }
