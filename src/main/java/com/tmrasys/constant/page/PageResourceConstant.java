@@ -12,7 +12,9 @@ public class PageResourceConstant {
 	public static final String OS_ADDEXP = "outsource/addExp";
 
 	public static final String CUSTOMER_LIST = "customer/list";
-	public static final String CUSTOMER_DETAIL = "customer/principalDetail";
+	public static final String CUSTOMER_PRINCIPALDETAIL = "customer/principalDetail";
+	public static final String CUSTOMER_FIRSTDETAIL = "customer/firstDetail";
+	public static final String CUSTOMER_SECONDDETAIL = "customer/secondDetail";
 	public static final String CUSTOMER_ADDPRINCIPAL = "customer/addPrincipal";
 	public static final String CUSTOMER_ADDFIRST = "customer/addFirst";
 	public static final String CUSTOMER_ADDSECOND = "customer/addSecond";

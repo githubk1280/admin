@@ -48,6 +48,7 @@
 							<tr>
 								<th>项目编号</th>
 								<th>负责人</th>
+								<th>负责人级别</th>
 								<th>单位</th>
 								<th>部门</th>
 								<th>职位</th>
@@ -62,8 +63,9 @@
 								<tr>
 									<td><a href="<%=request.getContextPath()%>/project/${customer.projectId}" target="_blank"
 										class="project_link">${customer.projectId}</a></td>
-									<td><a href="<%=request.getContextPath()%>/customer/${customer.customerId}" target="_blank"
+									<td><a href="<%=request.getContextPath()%>/customer/${customer.customerId}&${customer.principalId}" target="_blank"
 										class="project_link">${customer.customerName}</a></td>
+									<td>${customer.principalId}</td>
 									<td>${customer.workUnit}</td>
 									<td>${customer.department}</td>
 									<td>${customer.position}</td>

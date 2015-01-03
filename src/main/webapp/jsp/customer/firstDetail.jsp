@@ -26,6 +26,8 @@
 				<div class="col-lg-12">
 					<!-- .panel-heading -->
 					<div class="panel-body">
+					<form:form action="updateFirst/${customer.customerId}" method="post" commandName="customer">
+					
 					<!----------------------------------------custom info start ------------------------->
 	                                <div class="panel panel-default">
 	                                    <div class="panel-heading">
@@ -55,7 +57,7 @@
 						<label>项目编号 </label>
 					</div>
 					<div>
-						<input id="firstCustomerProjectId" type="text" class="form-control" value="${project.projectId }" readonly="true">
+						<form:input id="projectIdForCustomerAdd" path="projectId" type="text" class="form-control" readonly="true"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -63,7 +65,7 @@
 						<label>姓名 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer1.customerName" readonly="true" maxlength="5"/>
+						<form:input id="customerName" path="customerName" type="text" class="form-control" readonly="true" maxlength="5"/>
 					</div>
 				</div>
 			</div>
@@ -73,7 +75,7 @@
 						<label>性别 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer1.sex" readonly="true" maxlength="1"/>
+						<form:input id="sex"  path="sex" type="text" class="form-control" readonly="true" maxlength="1"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -82,7 +84,7 @@
 						<label id="firstAgeLbl" class="warning-style">请输入正确的年龄</label>
 					</div>
 					<div>
-						<input id="firstAge" type="text" class="form-control" ng-model="customer1.age" readonly="true" maxlength="3"/>
+						<form:input id="age" path="age" type="text" class="form-control" readonly="true" maxlength="3"/>
 					</div>
 				</div>
 			</div>
@@ -93,7 +95,7 @@
 						<label id="firstPhoneLbl" class="warning-style">请输入正确的号码</label>
 					</div>
 					<div>
-						<input id="firstPhone" type="text" class="form-control" ng-model="customer1.phone" readonly="true" maxlength="15"/>
+						<form:input id="phone" path="phone" type="text" class="form-control" readonly="true" maxlength="15"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -102,7 +104,7 @@
 						<label id="firstCellphoneLbl" class="warning-style">请输入正确的号码</label>
 					</div>
 					<div>
-						<input id="firstCellphone" type="text" class="form-control" ng-model="customer1.cellphone" readonly="true" maxlength="15"/>
+						<form:input id="cellphone" path="cellphone" type="text" class="form-control"  readonly="true" maxlength="15"/>
 					</div>
 				</div>
 			</div>
@@ -112,7 +114,7 @@
 						<label>工作单位 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer1.workUnit" readonly="true" maxlength="20"/>
+						<form:input id="workUnit" path="workUnit" type="text" class="form-control" readonly="true" maxlength="20"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -120,7 +122,7 @@
 						<label>科室/部门 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer1.department" readonly="true" maxlength="10"/>
+						<form:input id="department" path="department"  type="text" class="form-control"  readonly="true" maxlength="10"/>
 					</div>
 				</div>
 			</div>
@@ -130,7 +132,7 @@
 						<label>职位 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer1.position" readonly="true" maxlength="6"/>
+						<form:input id="position" path="position" type="text" class="form-control"  readonly="true" maxlength="6"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -139,7 +141,7 @@
 						<label id="firstMailLbl" class="warning-style">请输入正确的邮箱</label>
 					</div>
 					<div>
-						<input id="firstMail" type="text" class="form-control" ng-model="customer1.email" readonly="true" maxlength="20"/>
+						<form:input id="email" path="email" type="text" class="form-control"  readonly="true" maxlength="20"/>
 					</div>
 				</div>
 			</div>
@@ -149,7 +151,7 @@
 						<label>联系地址 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer1.adress" readonly="true" maxlength="100"/>
+						<form:input id="adress" path="adress" type="text" class="form-control"  readonly="true" maxlength="100"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -157,7 +159,7 @@
 						<label>研究方向 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer1.resarchDirection" readonly="true" maxlength="10"/>
+						<form:input id="resarchDirection" path="resarchDirection" type="text" class="form-control" readonly="true" maxlength="10"/>
 					</div>
 				</div>
 			</div>
@@ -167,7 +169,7 @@
 						<label>与负责人关系 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control" ng-model="customer1.relationShip" readonly="true" maxlength="10"/>
+						<form:input id="relationShip" path="relationShip" type="text" class="form-control" readonly="true" maxlength="10"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -175,7 +177,7 @@
 						<label>负责内容 </label>
 					</div>
 					<div>
-						<input type="text" class="form-control"  ng-model="customer1.responsibleArea" readonly="true"  maxlength="50"/>
+						<form:input id="responsibleArea" path="responsibleArea" type="text" class="form-control"   readonly="true"  maxlength="50"/>
 					</div>
 				</div>
 			</div>
@@ -183,7 +185,7 @@
      </div>
 	<!----------------------------------------custom info end ------------------------->
 						</div>
-
+</form:form>
 					<!-- .panel-body -->
 				</div>
 				<!-- /.panel -->
@@ -192,45 +194,136 @@
 	</div>
 	<!-- /#wrapper -->
 	<%@ include file="../common/modal.jsp"%>
-	<%@ include file="../comm-fragement/modifyCustomerVal-js"%>
 	<%@ include file="../comm-fragement/main-js"%>
 	<script type="text/javascript">
-		$(document).ready(function() {
+	$(document).ready(function() {
+		/****button switch of project basic data start***/
+		if($("#modifyCustomInfo").css('display')=="block"){
+			$("#panelCustomerInfo input").attr("readonly",true);
+			$("#panelCustomerInfo textarea").attr("readonly",true);
+			$("#customerLevel0").attr("disabled",true);
+			$("#customerLevel1").attr("disabled",true);
+			$("#customerLevel2").attr("disabled",true);
+			$("#customerLevel3").attr("disabled",true);
+			$("#customerLevel4").attr("disabled",true);
+			
+		}else{
+			$("#panelCustomerInfo input").attr("readonly",false);
+			$("#panelCustomerInfo textarea").attr("readonly",false);
+		}
 
-			$("nav li").click(function() {
-				$(this).addClass('active').siblings().removeClass('active');
-			});
-
-			$("#link_pro").click(function() {
-				$("#mainframe").attr("src", "../page/projectBasicData.html");
-			});
-
-			$("#link_customer").click(function() {
-				$("#mainframe").attr("src", "../page/customInfo.html");
-			});
-
-			$("#link_outsource").click(function() {
-				$("#mainframe").attr("src", "../page/outsource.html");
-			});
-
-			$("#link_proStatus").click(function() {
-				$("#mainframe").attr("src", "../page/proStatus.html");
-			});
-
-			$("#link_customCalling").click(function() {
-				$("#mainframe").attr("src", "../page/customCalling.html");
-			});
-
-			$(".pagination li ").click(function() {
-				$(this).addClass('active').siblings().removeClass('active');
-			});
-
-			$("#projectStatusBadge").click(function() {
-				alert($("#projectStatusBadge").text());
-				$("#projectStatusBadge").text("");
-			})
-
+		$("#modifyCustomInfo").click(function(){
+			$("#saveCustomInfo").css('display','block');
+			$("#cancelCustomInfo").css('display','block');
+			$("#modifyCustomInfo").css('display','none');
+			$("#panelCustomerInfo input").attr("readonly",false);
+			$("#panelCustomerInfo textarea").attr("readonly",false);
+			$("#customerLevel0").attr("disabled",false);
+			$("#customerLevel1").attr("disabled",false);
+			$("#customerLevel2").attr("disabled",false);
+			$("#customerLevel3").attr("disabled",false);
+			$("#customerLevel4").attr("disabled",false);
+			$("#projectIdForCustomerAdd").attr("readonly",true);
+			$("#firstCustomerProjectId").attr("readonly",true);
+			$("#secondCustomerProjectId").attr("readonly",true);
+			
 		});
+
+
+		$("#cancelCustomInfo").click(function(){
+			$("#saveCustomInfo").css('display','none');
+			$("#modifyCustomInfo").css('display','block');
+			$("#cancelCustomInfo").css('display','none');
+			$("#panelCustomerInfo input").attr("readonly",true);
+			$("#panelCustomerInfo textarea").attr("readonly",true);
+			$("#customerLevel0").attr("disabled",true);
+			$("#customerLevel1").attr("disabled",true);
+			$("#customerLevel2").attr("disabled",true);
+			$("#customerLevel3").attr("disabled",true);
+			$("#customerLevel4").attr("disabled",true);
+			$("#firstAgeLbl").hide();
+			$("#firstPhoneLbl").hide();
+			$("#firstCellphoneLbl").hide();
+			$("#firstMailLbl").hide();
+		});	
+		
+		
+		$("#saveCustomInfo").click(function(){
+			$("#saveCustomInfo").attr("type","submit");
+			var firstAge = $("#age").val();
+				firstAge = $.trim(firstAge);
+			var firstPhone = $("#phone").val();
+				firstPhone = $.trim(firstPhone);
+			var firstCellphone = $("#cellphone").val();
+				firstCellphone = $.trim(firstCellphone);
+			var firstMail = $("#email").val();
+				firstMail = $.trim(firstMail);
+			if(firstAge.length>0){
+				customerInfo_isPositiveInteger($("#age"));
+			}
+			
+			if(firstPhone.length>0){
+				customerInfo_isPositiveInteger($("#Phone"));
+			}
+			
+			if(firstCellphone.length>0){
+				customerInfo_isPositiveInteger($("#cellphone"));
+			}
+			
+			if(firstMail.length>0){
+				isEmail($("#email"));
+			}
+		});
+	});
+	/***validate positive number***/
+	function customerInfo_isPositiveInteger(obj){
+		var reg = /^[0-9]*[0-9][0-9]*$/;
+		if(obj.attr("id")=="age"){
+			if(!reg.test(obj.val())){
+				$("#firstAgeLbl").show();
+				$("#saveCustomInfo").attr("type","button");
+				//return "failed";
+			}else{
+				$("#firstAgeLbl").hide();
+				//return "success";
+			};
+		}
+		
+		if(obj.attr("id")=="phone"){
+			if(!reg.test(obj.val())){
+				$("#firstPhoneLbl").show();
+				$("#saveCustomInfo").attr("type","button");
+				//return "failed";
+			}else{
+				$("#firstPhoneLbl").hide();
+				//return "success";
+			};
+		}
+		
+		if(obj.attr("id")=="cellphone"){
+			if(!reg.test(obj.val())){
+				$("#firstCellphoneLbl").show();
+				$("#saveCustomInfo").attr("type","button");
+				//return "failed";
+			}else{
+				$("#firstCellphoneLbl").hide();
+				//return "success";
+			};
+		}
+		
+	};
+
+	function isEmail(obj){ 
+		var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/; 
+		if(obj.attr("id")=="email"){
+			if(!reg.test(obj.val())){
+				$("#firstMailLbl").show();
+				$("#saveCustomInfo").attr("type","button");
+			}else{
+				$("#firstMailLbl").hide();
+			}
+		}
+	}
 	</script>
 </body>
 

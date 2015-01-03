@@ -31,12 +31,19 @@ public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 
-	@RequestMapping("/{customerId}")
-	public ModelAndView loadProjectById(@PathVariable int customerId) {
+	@RequestMapping("/{customerId}&{principalId}")
+	public ModelAndView loadProjectById(@PathVariable int customerId,@PathVariable int principalId) {
 		Customer customer = customerService.getById(customerId);
 		ModelAndView view = new ModelAndView();
 		view.addObject("customer", customer);
-		view.setViewName(PageResourceConstant.CUSTOMER_DETAIL);
+		if(principalId==0){
+			view.setViewName(PageResourceConstant.CUSTOMER_PRINCIPALDETAIL);
+		}else if(principalId==1){
+			view.setViewName(PageResourceConstant.CUSTOMER_FIRSTDETAIL);
+		}else if(principalId==2){
+			view.setViewName(PageResourceConstant.CUSTOMER_SECONDDETAIL);
+		}
+		
 		return view;
 
 	}
@@ -51,6 +58,73 @@ public class CustomerController {
 		view.setViewName(PageResourceConstant.CUSTOMER_LIST);
 		return view;
 
+	}
+	
+	@RequestMapping("/addPrincipal")
+	public ModelAndView addPrincipal(Customer customer,HttpSession session) {
+		Employee employee = (Employee) session.getAttribute("user");
+		customer.setPrincipalId(0);
+		customer.setPrincipalNumber(0);
+		customerService.addCustomer(customer);
+		ModelAndView view = new ModelAndView();
+		view.setViewName("redirect:pages/1");
+		return view;
+	}
+	
+	@RequestMapping("/addFirst")
+	public ModelAndView addFirst(Customer customer,HttpSession session) {
+		Employee employee = (Employee) session.getAttribute("user");
+		customer.setPrincipalId(1);
+		customer.setPrincipalNumber(1);
+		customerService.addCustomer(customer);
+		ModelAndView view = new ModelAndView();
+		view.setViewName("redirect:pages/1");
+		return view;
+	}
+	
+	@RequestMapping("/addSecond")
+	public ModelAndView addSecond(Customer customer,HttpSession session) {
+		Employee employee = (Employee) session.getAttribute("user");
+		customer.setPrincipalId(2);
+		customer.setPrincipalNumber(2);
+		customerService.addCustomer(customer);
+		ModelAndView view = new ModelAndView();
+		view.setViewName("redirect:pages/1");
+		return view;
+	}
+	
+	@RequestMapping("/updatePrincipal/{customerId}")
+	public ModelAndView updatePrincipal(Customer customer,HttpSession session,@PathVariable int customerId) {
+		Employee employee = (Employee) session.getAttribute("user");
+		customer.setCustomerId(customerId);
+		customerService.updateCustomer(customer);
+		ModelAndView view = new ModelAndView();
+		view.setViewName(PageResourceConstant.CUSTOMER_PRINCIPALDETAIL);
+		return view;
+	}
+	
+	@RequestMapping("/updateFirst/{customerId}")
+	public ModelAndView updateFirst(Customer customer,HttpSession session,@PathVariable int customerId) {
+		Employee employee = (Employee) session.getAttribute("user");
+		customer.setCustomerId(customerId);
+		customer.setPrincipalId(1);
+		customer.setPrincipalNumber(1);
+		customerService.updateCustomer(customer);
+		ModelAndView view = new ModelAndView();
+		view.setViewName(PageResourceConstant.CUSTOMER_FIRSTDETAIL);
+		return view;
+	}
+	
+	@RequestMapping("/updateSecond/{customerId}")
+	public ModelAndView updateSecond(Customer customer,HttpSession session,@PathVariable int customerId) {
+		Employee employee = (Employee) session.getAttribute("user");
+		customer.setCustomerId(customerId);
+		customer.setPrincipalId(2);
+		customer.setPrincipalNumber(2);
+		customerService.updateCustomer(customer);
+		ModelAndView view = new ModelAndView();
+		view.setViewName(PageResourceConstant.CUSTOMER_SECONDDETAIL);
+		return view;
 	}
 	
 	@RequestMapping("/pages/{page}")

@@ -12,6 +12,7 @@
 		SELECT * FROM customers
 		WHERE
 		project_id=#{projectId}
+		ORDER BY project_id
 	</select>
 
 	<insert id="addCustomer" keyProperty="customerId"
@@ -27,7 +28,7 @@
 		#{projectId},#{relationShip},#{principalNumber});
 	</insert>
 
-	<update id="updateCustomer" parameterMap="customerParameter" flushCache="true">
+	<update id="updateCustomer" parameterMap="customerParameter" >
 		UPDATE customers 
 		SET CUSTOMER_NAME=#{customerName},SEX=#{sex},
 		AGE=#{age},PHONE=#{phone},
@@ -36,7 +37,7 @@
 		EMAIL=#{email},ADRESS=#{adress},
 		RESEARCH_DIRECTION=#{resarchDirection},RESPONSIBLE_AREA=#{responsibleArea},
 		CUSTOMER_LEVEL=#{customerLevel},PRINCIPAL_ID=#{principalId},
-		PROJECT_ID=#{projectId},RELATIONSHIP=#{relationShip},PRINCIPAL_NUM=#{principalNumber}
+		PROJECT_ID=#{projectId},RELATIONSHIP=#{relationShip}
 		WHERE CUSTOMER_ID = #{customerId}
 	</update>
 	
@@ -67,7 +68,7 @@
 		INNER JOIN
 		project P on PE.PROJECT_ID = P.PROJECT_ID and PE.EMPLOYEE_ID=#{employeeId}
 		)
-		ORDER BY CUSTOMER_ID LIMIT #{start}, #{end};
+		ORDER BY c.project_id,c.principal_num LIMIT #{start}, #{end};
 	</select>
 	
 	<resultMap type="com.tmrasys.domain.Customer" id="customerMapper">
