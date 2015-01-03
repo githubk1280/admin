@@ -21,7 +21,7 @@
 
 	<div id="wrapper">
 		<%@ include file="../common/nav.jsp"%>
-		<div id="page-wrapper">
+		<div id="page-wrapper" >
 			<div class="row">
 				<form action="<%=request.getContextPath()%>/customer/search" method="post">
 					<div class="col-lg-12">
@@ -47,6 +47,7 @@
 						<thead>
 							<tr>
 								<th>项目编号</th>
+								<th>项目名称</th>
 								<th>负责人</th>
 								<th>负责人级别</th>
 								<th>单位</th>
@@ -61,8 +62,9 @@
 							<c:forEach items="${customers}" var="customer"
 								varStatus="status">
 								<tr>
+									<td>${customer.projectId}</td>
 									<td><a href="<%=request.getContextPath()%>/project/${customer.projectId}" target="_blank"
-										class="project_link">${customer.projectId}</a></td>
+										class="project_link">${customer.projectName}</a></td>
 									<td><a href="<%=request.getContextPath()%>/customer/${customer.customerId}&${customer.principalId}" target="_blank"
 										class="project_link">${customer.customerName}</a></td>
 									<td>${customer.principalId}</td>
@@ -91,8 +93,14 @@
 	<div class="modal fade modal-box" id="modalSelectCustomerType" tabindex="0"
 		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog" style="margin: 300px auto">
-			<div class="modal-content" style="top:-100px">
+			<div class="modal-content" style="top:-100px"  >
 				<div class="modal-body" align="center">
+					<h3>请选择项目</h3>
+					<select class="form-control" ng-change="myChange()" ng-model="selected" ng-controller="customerController">
+						<option value="">---请选择---</option>
+						<option id="projectId" ng-repeat="item in idAndPrincipal"  
+													     value="{{ item.projectId }}">{{ item.projectId }}</option>
+					</select>
 					<h3>请选择负责人类型</h3>
 					<button class="btn btn-default btn-primary" id="projectPrincipal">项目主要负责人</button>
 					<button class="btn btn-default btn-primary" id="projectFirstPerson">项目第一联系人</button>
@@ -130,6 +138,57 @@
 			});
 
 		});
+		
+		function customerController($scope, $http) {
+			$scope.selected = '';
+			
+			$http.get("/admin/customer/ajax/projectIdPrincipal").success(
+					function(data) {
+						if (data.success == true) {
+							$scope.idAndPrincipal = JSON.parse(data.data);
+						}
+					}).error(function(err) {
+					alert("获取失败，请重试!");
+					});
+			/* $scope.change(function() {
+				alert("dd");
+			}); */
+			
+			$scope.myChange = function () {
+				var i = 0;
+				for(;i < $scope.idAndPrincipal.length;i++) {
+					if($scope.idAndPrincipal[i].projectId == $scope.selected) {
+						//$scope.principal = $scope.idAndPrincipal[i].principal;
+						
+						$scope.countProjectPrincipal = $scope.idAndPrincipal[i].countProjectPrincipal;
+						$scope.countProjectFirst = $scope.idAndPrincipal[i].countProjectFirst;
+						$scope.countProjectSecond = $scope.idAndPrincipal[i].countProjectSecond;
+						if($scope.countProjectPrincipal==0){
+							$("#projectFirstPerson").attr("disabled","true");
+							$("#projectSecondPerson").attr("disabled","true");
+							$("#projectPrincipal").removeAttr("disabled");
+						}else{
+							if($scope.countProjectFirst==0){
+								$("#projectPrincipal").attr("disabled","true");
+								$("#projectSecondPerson").attr("disabled","true");
+								$("#projectFirstPerson").removeAttr("disabled"); 
+							}else{
+								if($scope.countProjectSecond==0){
+									$("#projectPrincipal").attr("disabled","true");
+									$("#projectFirstPerson").attr("disabled","true");
+									$("#projectSecondPerson").removeAttr("disabled");
+								}else{
+									$("#projectPrincipal").attr("disabled","true");
+									$("#projectFirstPerson").attr("disabled","true");
+									$("#projectSecondPerson").attr("disabled","true");
+								};
+							};
+						};
+					};
+				};
+			};
+				
+		};
 	</script>
 
 

@@ -20,7 +20,9 @@ import com.alibaba.fastjson.JSON;
 import com.tmrasys.constant.page.PageResourceConstant;
 import com.tmrasys.domain.Customer;
 import com.tmrasys.domain.Employee;
+import com.tmrasys.domain.ProjectIdPrincipal;
 import com.tmrasys.service.customer.CustomerService;
+import com.tmrasys.service.project.ProjectService;
 import com.tmrasys.utils.JsonResponseUtils;
 
 @Controller
@@ -30,6 +32,8 @@ public class CustomerController {
 
 	@Autowired
 	private CustomerService customerService;
+	@Autowired
+	private ProjectService projectService;
 
 	@RequestMapping("/{customerId}&{principalId}")
 	public ModelAndView loadProjectById(@PathVariable int customerId,@PathVariable int principalId) {
@@ -132,6 +136,10 @@ public class CustomerController {
 		Employee employee = (Employee) session.getAttribute("user");
 		int count = customerService.countByEmployee(employee.getEmployeeId());
 		List<Customer> customers = customerService.getPagedByEmployee(employee.getEmployeeId(), page);
+		for(int i=0;i<customers.size();i++){
+			String projectName = customerService.getProjectName(customers.get(i).getProjectId());
+			customers.get(i).setProjectName(projectName);
+		}
 		ModelAndView view = new ModelAndView();
 		int pages = 1;
 		if(count > 10) {
@@ -203,7 +211,33 @@ public class CustomerController {
 		view.addObject(cust);
 		view.setViewName(PageResourceConstant.CUSTOMER_ADDSECOND);
 		return view;
-
+	}
+	
+	@RequestMapping("/search")
+	public ModelAndView search(String searchStr, HttpSession session) {
+		Employee employee = (Employee) session.getAttribute("user");
+		System.out.println("::::::::::::::::::::::::"+employee.getEmployeeId());
+		System.out.println("::::::::::::::::::::::::"+searchStr);
+		
+		List<Customer> customers = customerService.getByEmployee(employee
+				.getEmployeeId());
+//		List<ProjectOutSource> outsources = outSourceService
+//				.loadOutSourceByProjectName(searchStr, employee.getEmployeeId());
+		ModelAndView view = new ModelAndView();
+//		view.addObject("outsources", outsources);
+//		view.setViewName(PageResourceConstant.OS_LIST);
+		return view;
+	}
+	
+	@RequestMapping("/ajax/projectIdPrincipal")
+	public void load(HttpSession session, HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		Employee employee = (Employee) session.getAttribute("user");
+		List<ProjectIdPrincipal> list = projectService
+				.loadProjectCustomer(employee.getEmployeeId());
+		if (!CollectionUtils.isEmpty(list)) {
+			JsonResponseUtils.returnJsonResponse(response, list, true, 200);
+		}
 	}
 
 }

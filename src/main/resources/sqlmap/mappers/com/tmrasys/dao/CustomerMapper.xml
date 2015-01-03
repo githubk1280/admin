@@ -14,6 +14,20 @@
 		project_id=#{projectId}
 		ORDER BY project_id
 	</select>
+	<select id="countProjectPrincipal" resultType="int" parameterType="String">
+		SELECT COUNT(project_id) FROM customers WHERE project_id=#{projectId} And PRINCIPAL_NUM ='0'
+	</select>
+	<select id="countProjectFirst" resultType="int" parameterType="String">
+		SELECT COUNT(project_id) FROM customers WHERE project_id=#{projectId} And PRINCIPAL_NUM ='1'
+	</select>
+	<select id="countProjectSecond" resultType="int" parameterType="String">
+		SELECT COUNT(project_id) FROM customers WHERE project_id=#{projectId} And PRINCIPAL_NUM ='2'
+	</select>
+	
+	<select id="getProjectName" resultType="String" parameterType="String">
+		SELECT project_name FROM project 
+		WHERE project_id=#{projectId}
+	</select>
 
 	<insert id="addCustomer" keyProperty="customerId"
 		useGeneratedKeys="true" parameterMap="customerParameter">

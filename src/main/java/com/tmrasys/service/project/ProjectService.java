@@ -25,4 +25,5 @@ public interface ProjectService {
 	List<Project> loadAllProjects();
 
 	boolean hasAccessAuth(int employeeId, String projectId);
+	List<ProjectIdPrincipal> loadProjectCustomer(int userId);
 }

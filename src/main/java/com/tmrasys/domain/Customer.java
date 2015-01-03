@@ -25,4 +25,5 @@ public class Customer {
 	 *  找到第一负责人
 	 */
 	private int principalId;
+	private String projectName;
 }

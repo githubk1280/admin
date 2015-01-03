@@ -32,4 +32,5 @@ public interface ProjectDao {
 	Project loadProjectsByEmployeeAndId(
 			@Param(value = "employeeId") int employeeId, 
 			@Param(value = "projectId")String projectId);
+	List<Project> loadProjectCustomer(int employeeId);
 }

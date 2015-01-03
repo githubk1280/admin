@@ -57,6 +57,7 @@ public class ProjectServiceImpl implements ProjectService {
 		}
 		return list;
 	}
+	
 
 	@Override
 	public List<Project> loadProjectsPagination(int userId, int pageIndex) {
@@ -91,6 +92,43 @@ public class ProjectServiceImpl implements ProjectService {
 		if(null == project)
 			return false;
 		return true;
+	}
+
+	@Override
+	public List<ProjectIdPrincipal> loadProjectCustomer(int userId) {
+		List<ProjectIdPrincipal> list = new ArrayList<ProjectIdPrincipal>();
+		List<Project> pros = projectDao.loadProjectsByEmployee(userId);
+		for (Project project : pros) {
+			ProjectIdPrincipal projectIdPrincipal = new ProjectIdPrincipal();
+			projectIdPrincipal.setProjectId(project.getProjectId());
+			List<Customer> cus = customerService.getByProjectId(project
+					.getProjectId());
+			for (Customer customer : cus) {
+				if (customer.getPrincipalNumber() == 1) {
+					projectIdPrincipal.setPrincipal(customer.getCustomerName());
+				}
+			}
+			int countProjectPrincipal = customerService.countProjectPrincipal(project.getProjectId());
+			int countProjectFirst = customerService.countProjectFirst(project.getProjectId());
+			int countProjectSecond = customerService.countProjectSecond(project.getProjectId());
+			if(countProjectPrincipal==0){
+				projectIdPrincipal.setCountProjectPrincipal(countProjectPrincipal);
+			}else{
+				projectIdPrincipal.setCountProjectPrincipal(1);
+				if(countProjectFirst==0){
+					projectIdPrincipal.setCountProjectFirst(countProjectFirst);
+				}else{
+					projectIdPrincipal.setCountProjectFirst(1);
+					if(countProjectSecond==0){
+						projectIdPrincipal.setCountProjectSecond(countProjectSecond);
+					}else{
+						projectIdPrincipal.setCountProjectSecond(1);
+					}
+				}
+			}
+			list.add(projectIdPrincipal);
+		}
+		return list;
 	}
 
 }

@@ -54,4 +54,31 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerDao.getPagedByEmployee(employeeId, start, end);
 	}
 
+	@Override
+	public String getProjectName(String projectId) {
+		// TODO Auto-generated method stub
+		return customerDao.getProjectName(projectId);
+	}
+
+	@Override
+	public int countProjectPrincipal(String projectId) {
+		// TODO Auto-generated method stub
+		return customerDao.countProjectPrincipal(projectId);
+	}
+
+	@Override
+	public int countProjectFirst(String projectId) {
+		// TODO Auto-generated method stub
+		return customerDao.countProjectFirst(projectId);
+	}
+
+	@Override
+	public int countProjectSecond(String projectId) {
+		// TODO Auto-generated method stub
+		return customerDao.countProjectSecond(projectId);
+	}
+	
+	
+	
+
 }

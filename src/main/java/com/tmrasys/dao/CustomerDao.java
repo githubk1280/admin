@@ -16,4 +16,8 @@ public interface CustomerDao {
 	Customer getById(int customerId);
 	int countByEmployee(int employeeId);
 	List<Customer> getPagedByEmployee(@Param(value = "employeeId") int employeeId,@Param(value = "start") int start,@Param(value = "end") int end);
+	String getProjectName(@Param(value = "projectId") String projectId);
+	int countProjectPrincipal(String projectId);
+	int countProjectFirst(String projectId);
+	int countProjectSecond(String projectId);
 }
