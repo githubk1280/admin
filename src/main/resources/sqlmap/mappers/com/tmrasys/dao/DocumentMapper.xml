@@ -7,9 +7,9 @@
 		INSERT INTO
 		document
 		(FileId, FileName, FilePath,
-		FileOwner, FileOwnerId, FileType, ParentId, AddTime,ProjectId)
+		FileOwner, FileOwnerId, FileType, ParentId, AddTime)
 		VALUES
-		(#{fileId},#{fileName},#{filePath},#{fileOwner},#{fileOwnerId},#{fileType},#{parentId},now(),#{projectId});
+		(#{fileId},#{fileName},#{filePath},#{fileOwner},#{fileOwnerId},#{fileType},#{parentId},now());
 	</insert>
 	<select id="loadDocumentById" resultMap="docResult"
 		parameterType="map">
@@ -43,15 +43,26 @@
 		ParentId=#{parentId}
 		ORDER BY addTime
 	</select>
-	<select id="loadFilesUnderByFolderId" resultMap="docResult"
+	<select id="loadFilesUnderUserByType" resultMap="docResult"
 		parameterType="map">
 		SELECT * FROM document
 		WHERE
 		FileOwner=#{owner}
 		AND
 		ParentId=#{folderId}
-		AND
-		FileType=#{fileType}
+		<if test="fileType &lt; 3">
+			AND FileType=#{fileType}
+		</if>
+		ORDER BY addTime DESC
+	</select>
+	<select id="loadFilesByType" resultMap="docResult"
+		parameterType="map">
+		SELECT * FROM document
+		WHERE
+		ParentId=#{folderId}
+		<if test="fileType &lt; 3">
+			AND FileType=#{fileType}
+		</if>
 		ORDER BY addTime DESC
 	</select>
 	<delete id="deleteFileById" parameterType="map">
@@ -88,7 +99,6 @@
 		<parameter property="fileType" resultMap="FileType" />
 		<parameter property="parentId" resultMap="ParentId" />
 		<parameter property="addTime" resultMap="AddTime" />
-		<parameter property="projectId" resultMap="ProjectId" />
 	</parameterMap>
 </mapper>
 

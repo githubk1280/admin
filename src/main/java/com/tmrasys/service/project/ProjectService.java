@@ -7,13 +7,22 @@ import com.tmrasys.domain.ProjectIdPrincipal;
 
 public interface ProjectService {
 	Project loadProjectById(String projectId);
+
 	List<Project> loadProjectsByEmployee(int userId);
+
 	void updateProject(Project project);
+
 	void addProject(Project project);
+
 	int countProjectsByEmployee(int employeeId);
+
 	List<ProjectIdPrincipal> loadProjectIdPrincipal(int userId);
+
 	List<Project> loadProjectsPagination(int userId, int pageIndex);
-	List<Project> findProjectByProjectName(String projectName,int employeeID);
+
+	List<Project> findProjectByProjectName(String projectName, int employeeID);
+
 	List<Project> loadAllProjects();
+
 	boolean hasAccessAuth(int employeeId, String projectId);
 }

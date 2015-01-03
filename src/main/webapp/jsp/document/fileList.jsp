@@ -30,33 +30,32 @@
 								</h3>
 							</div>
 							<div class="panel-body">
-								<div class="row">
-									<div class="col-md-12">
-									<div style="margin-left: 10px;margin-top:20px">
-												<label >项目编号 </label> 
-												<label id="projectIDLbl" class="warning-style">该字段不允许为空</label>
-												<select id="projectIdSel" class="form-control" ng-model="selected"  path="projectId" style="">
-											   		<option value="">-- 请选择 --</option>
-											   		<!--  <option ng-repeat="item in idAndPrincipal" value="{{ item.projectId }}">{{ item.projectId }}</option>-->
-												</select>
-									</div>
-										<form action="/admin/doc/upload/${parent.fileId}" method="post" enctype="multipart/form-data">
-											<input id="fileInput" type="file" name="file" class="btn btn-default btn-primary pull-left"
-											style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px" /> 
-											<button id="uploadFile" type="submit"
-												class="btn btn-default btn-primary pull-left"
-												style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px">上传文件</button>
+								<c:if test="${parent.fileId>5 }">
+									<div class="row">
+										<form action="/admin/doc/upload/${parent.fileId}"
+											method="post" enctype="multipart/form-data">
+											<div class="col-md-12">
+												<input id="fileInput" type="file" name="file"
+													class="btn btn-default btn-primary pull-left"
+													style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px" />
+												<button id="uploadFile" type="submit"
+													class="btn btn-default btn-primary pull-left"
+													style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px">上传文件</button>
+											</div>
 										</form>
 									</div>
-								</div>
+								</c:if>
 								<div class="table-responsive">
 									<table class="table table-hover">
 										<thead>
 											<tr>
-												<th>文件</th>
-												<th>所属项目编号</th>
-												<th>下载文件</th>
-												<th>删除文件</th>
+												<th><c:if test="${parent.fileId<6 }">项目</c:if>文件<c:if
+														test="${parent.fileId<6 }">夹</c:if></th>
+												<c:if test="${parent.fileId>5 }">
+													<th>所属项目编号</th>
+												</c:if>
+												<th><c:if test="${parent.fileId>5 }">下载文件</c:if></th>
+												<th>删除文件<c:if test="${parent.fileId<6 }">夹</c:if></th>
 											</tr>
 										</thead>
 										<tbody id="folderTableBody">
@@ -69,12 +68,32 @@
 												<c:otherwise>
 													<c:forEach items="${docs}" var="doc" varStatus="status">
 														<tr>
-															<td><i class="glyphicon glyphicon-file"></i>${doc.fileName}</td>
-															<td><a style="color: #333;margin-left:20px" class="glyphicon glyphicon-download-alt" href="/admin/doc/download/${doc.fileId}"
-																class="project_link"></a></td>
-															<td> 
-															<a style="color: #333;margin-left:20px"class="glyphicon glyphicon-trash" href="javascript:void(0);"
-													 			onclick="delModel(${doc.fileId})"></a></td>
+															<c:choose>
+																<c:when test="${doc.fileType<1 }">
+																	<td><i class="glyphicon glyphicon-file"></i>${doc.fileName}</td>
+																	<td>${doc.fileName}</td>
+																	<td><a style="color: #333; margin-left: 20px"
+																		class="glyphicon glyphicon-download-alt"
+																		href="/admin/doc/download/${doc.fileId}"
+																		class="project_link"></a></td>
+																	<td><a style="color: #333; margin-left: 20px"
+																		class="glyphicon glyphicon-trash"
+																		href="javascript:void(0);"
+																		onclick="delModel(${doc.fileId})"></a></td>
+																</c:when>
+																<c:otherwise>
+																	<td><i class="glyphicon glyphicon-folder-close"
+																		style="margin-right: 10px"></i><a
+																		href="/admin/doc/load/${doc.fileId}"
+																		class="project_link">${doc.fileName}</a></td>
+																	<%-- 																	<td>${doc.projectId }</td> --%>
+																	<td></td>
+																	<td><a style="color: #333; margin-left: 20px"
+																		class="glyphicon glyphicon-trash"
+																		href="javascript:void(0);"
+																		onclick="delModel(${doc.fileId})"></a></td>
+																</c:otherwise>
+															</c:choose>
 														</tr>
 													</c:forEach>
 												</c:otherwise>
@@ -99,10 +118,8 @@
 	<div class="modal fade modal-box" id="modalCreateFolder" tabindex="0"
 		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog" style="margin: 300px auto">
-			<div class="modal-content" style="top:-100px">
-				<div class="modal-body" align="center">
-					删除此文件？
-				</div>
+			<div class="modal-content" style="top: -100px">
+				<div class="modal-body" align="center">删除此文件？</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
 					<a href="#"><button id="modalBtn" type="button"
@@ -116,13 +133,13 @@
 	<div class="modal fade modal-box" id="confirmModal" tabindex="0"
 		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog" style="margin: 300px auto">
-			<div class="modal-content" style="top:-100px"> 
+			<div class="modal-content" style="top: -100px">
 				<div class="modal-body" align="center">
 					<h3>确认删除文件？</h3>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
-					<a href="#" ><button type="button" id="confirmModalBtn"
+					<a href="#"><button type="button" id="confirmModalBtn"
 							class="btn btn-primary" data-dismiss="modal">确认</button></a>
 				</div>
 			</div>
@@ -133,12 +150,12 @@
 	<div class="modal fade modal-box" id="uploadFileModal" tabindex="0"
 		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog" style="margin: 300px auto">
-			<div class="modal-content" style="top:-100px"> 
+			<div class="modal-content" style="top: -100px">
 				<div class="modal-body" align="center">
 					<h3>请选择文件</h3>
 				</div>
 				<div class="modal-footer">
-					<a href="#" ><button type="button" id="confirmModalBtn"
+					<a href="#"><button type="button" id="confirmModalBtn"
 							class="btn btn-primary" data-dismiss="modal">确认</button></a>
 				</div>
 			</div>
@@ -190,6 +207,8 @@
 	    //clear
 	});
 	function delModel(fId){
+		alert("文件夹不允许删除");
+		return ;
 		$('#confirmModal').modal('show').on('shown',showDelModel(fId));
     };
     function showDelModel(fId){

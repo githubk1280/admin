@@ -14,11 +14,9 @@ public class Document {
 	private int fileType;
 	private int parentId;
 	private Date addTime;
-	private String projectId;
 
 	public Document(String fileName, String filePath, String fileOwner,
-			int fileOwnerId, int fileType, int parentId, Date addTime,
-			String projectId) {
+			int fileOwnerId, int fileType, int parentId, Date addTime) {
 		this.fileName = fileName;
 		this.filePath = filePath;
 		this.fileOwner = fileOwner;
@@ -26,7 +24,6 @@ public class Document {
 		this.fileType = fileType;
 		this.parentId = parentId;
 		this.addTime = addTime;
-		this.projectId = projectId;
 	}
 
 	public Document() {

@@ -12,7 +12,7 @@ public interface DocumentService {
 
 	public abstract List<Document> loadRootFoldersUnderUser(String name);
 
-	public abstract List<Document> loadFilesUnderByFolderId(String ownerName,
+	public abstract List<Document> loadFilesUnderUserByType(String ownerName,
 			int folderId, int type);
 
 	public abstract Document loadDocumentById(int folderId);
@@ -20,5 +20,8 @@ public interface DocumentService {
 	public abstract Document loadFileByUserName(String userName, String fileName);
 
 	public abstract void deleteFolderById(int fileId, int fileType, String owner);
+
+	public abstract List<Document> loadFilesByType(int folderId,
+			int type);
 
 }

@@ -21,7 +21,7 @@ public class DocumentServiceImplTest  extends AbstractBaseTestConfig {
 	
 	@Test
 	public void loadFilesUnderByFolderId() {
-		System.out.println(service.loadFilesUnderByFolderId("james", 3, FileTypeEnum.FILE.getType()));
+		System.out.println(service.loadFilesUnderUserByType("james", 3, FileTypeEnum.FILE.getType()));
 	}
 
 	@Test

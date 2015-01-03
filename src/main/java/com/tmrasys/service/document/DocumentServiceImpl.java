@@ -45,9 +45,9 @@ public class DocumentServiceImpl implements DocumentService {
 	}
 
 	@Override
-	public List<Document> loadFilesUnderByFolderId(String ownerName,
+	public List<Document> loadFilesUnderUserByType(String ownerName,
 			int folderId, int type) {
-		return documentDao.loadFilesUnderByFolderId(ownerName, folderId, type);
+		return documentDao.loadFilesUnderUserByType(ownerName, folderId, type);
 	}
 
 	@Override
@@ -65,6 +65,11 @@ public class DocumentServiceImpl implements DocumentService {
 		documentDao.deleteFileById(fileId, owner);
 		if (fileType == FileTypeEnum.FOLDER.getType())
 			documentDao.deleteFileByParentId(fileId, owner);
+	}
+
+	@Override
+	public List<Document> loadFilesByType(int folderId, int fileType) {
+		return documentDao.loadFilesByType(folderId, fileType);
 	}
 
 }

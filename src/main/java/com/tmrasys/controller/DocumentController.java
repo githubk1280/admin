@@ -102,9 +102,11 @@ public class DocumentController {
 	@RequestMapping("/load/{folderId}")
 	public ModelAndView loadFiles(@PathVariable int folderId,
 			HttpSession session) {
-		Employee employee = (Employee) session.getAttribute("user");
-		List<Document> documents = documentService.loadFilesUnderByFolderId(
-				employee.getName(), folderId, FileTypeEnum.FILE.getType());
+		// Employee employee = (Employee) session.getAttribute("user");
+		// List<Document> documents = documentService.loadFilesUnderUserByType(
+		// employee.getName(), folderId, FileTypeEnum.All.getType());
+		List<Document> documents = documentService.loadFilesByType(folderId,
+				FileTypeEnum.All.getType());
 		ModelAndView view = new ModelAndView();
 		Document parent = null;
 		parent = documentService.loadDocumentById(folderId);
@@ -124,8 +126,7 @@ public class DocumentController {
 		Document parent = documentService.loadDocumentById(parentId);
 		String path = parent.getFilePath();
 		String fileName = file.getOriginalFilename();
-		logger.info(":::::::::::::" + file.getSize()
-				+ ":::::::::::::::::::::::::::" + path);
+		logger.info(+file.getSize() + "---" + path);
 		File targetFile = new File(path, fileName);
 		if (!targetFile.exists()) {
 			targetFile.mkdirs();
@@ -141,8 +142,7 @@ public class DocumentController {
 		String userName = employee.getName();
 		d.setFileOwner(userName);
 		d.setFileOwnerId(employee.getEmployeeId());
-		d.setFilePath(FileUtils.getRootPath() + userName + File.separator
-				+ parent.getFileName() + File.separator + fName);
+		d.setFilePath(path + File.separator + fName);
 		d.setFileType(FileTypeEnum.FILE.getType());
 		d.setParentId(parentId);
 		documentService.insertDocument(d);
@@ -274,9 +274,9 @@ public class DocumentController {
 	}
 
 	public enum DefaultFolderNameEnum {
-		PROJECT_PLAN(-1, "plan", "项目方案"), PROJECT_CONTRACT(-2, "contract",
-				"项目合同"), PUBLIST_ARTICALE(-3, "article", "发表文章"), SAMPLE_INFO(
-				-4, "sample", "样本信息"), EXPRIMENT_RESULT(-5, "result", "实验结果");
+		PROJECT_PLAN(1, "plan", "项目方案"), PROJECT_CONTRACT(2, "contract", "项目合同"), PUBLIST_ARTICALE(
+				3, "article", "发表文章"), SAMPLE_INFO(4, "sample", "样本信息"), EXPRIMENT_RESULT(
+				5, "result", "实验结果");
 		private String labelValue;
 		private int value;
 		private String chLabelValue;
@@ -302,7 +302,7 @@ public class DocumentController {
 	}
 
 	public enum FileTypeEnum {
-		FILE(0, "file"), FOLDER(1, "folder");
+		FILE(0, "file"), FOLDER(1, "folder"), All(3, "all");
 		private int type;
 		private String value;
 

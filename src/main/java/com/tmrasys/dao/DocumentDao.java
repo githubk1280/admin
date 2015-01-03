@@ -20,7 +20,7 @@ public interface DocumentDao {
 			@Param(value = "name") String name,
 			@Param(value = "parentId") int parentId);
 
-	public List<Document> loadFilesUnderByFolderId(
+	public List<Document> loadFilesUnderUserByType(
 			@Param(value = "owner") String owner,
 			@Param(value = "folderId") int folderId,
 			@Param(value = "fileType") int fileType);
@@ -36,4 +36,8 @@ public interface DocumentDao {
 
 	public void deleteFileByParentId(@Param(value = "fileId") int fileId,
 			@Param(value = "owner") String owner);
+
+	public List<Document> loadFilesByType(
+			@Param(value = "folderId") int folderId,
+			@Param(value = "fileType") int fileType);
 }

@@ -129,14 +129,13 @@ public class ProjectController {
 			d = new Document();
 			// d.setFileId(dName.getValue());
 			d.setFileName(id);
-			d.setFileOwner("");
-			d.setFileOwnerId(-1);
+			d.setFileOwner("admin");
+			d.setFileOwnerId(0);
 			d.setFilePath(FileUtils.getRootPath() + dName.getChLabelValue()
 					+ File.separator + id);
 			d.setFileType(FileTypeEnum.FOLDER.getType());
 			// root node
 			d.setParentId(dName.getValue());
-			d.setProjectId(id);
 			documentService.insertDocument(d);
 		}
 	}
