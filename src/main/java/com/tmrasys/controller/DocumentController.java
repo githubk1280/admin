@@ -43,7 +43,7 @@ public class DocumentController {
 	public ModelAndView load(HttpSession session) {
 		Employee employee = (Employee) session.getAttribute("user");
 		List<Document> documents = documentService
-				.loadRootFoldersUnderUser(employee.getName());
+				.loadRootFoldersUnderUser("admin");
 		// DB里创建默认5个文件夹
 		if (null != documents && documents.size() < 5) {
 			addDefaultFolders();

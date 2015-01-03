@@ -18,7 +18,7 @@ $(".form_date").datetimepicker({
 $("#saveProBasicData").click(function(){
 	$("#saveProBasicData").attr("type","submit");
 	var proBasicProjectID = $("#proBasicProjectID").val();
-		proBasicProjectID = $(proBasicProjectID);
+//		proBasicProjectID = $(proBasicProjectID);
 	//proBasicProjectID
 	var projectName = $("#projectName").val();
 		projectName = $.trim(projectName);
