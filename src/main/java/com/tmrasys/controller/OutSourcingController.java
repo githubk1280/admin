@@ -38,7 +38,7 @@ public class OutSourcingController {
 		OutSource outsource = outSourceService.getById(osId);
 		ModelAndView view = new ModelAndView();
 		 view.addObject("outsource", outsource);
-		view.setViewName(PageResourceConstant.OS_DETAIL);
+		view.setViewName(PageResourceConstant.OS_EXPDETAIL);
 		return view;
 
 	}
@@ -113,6 +113,26 @@ public class OutSourcingController {
 		pgos.setExperimentOS(experimentOS);
 		pgos.setDataOS(dataOS);
 		JsonResponseUtils.returnJsonResponse(response, pgos, true, 200);
+	}
+	
+	@RequestMapping("/addData-redirect")
+	public ModelAndView addDataRedirect() {
+		OutSource os = new OutSource();
+		ModelAndView view = new ModelAndView();
+		view.addObject(os);
+		view.setViewName(PageResourceConstant.OS_ADDDATA);
+		return view;
+
+	}
+	
+	@RequestMapping("/addExp-redirect")
+	public ModelAndView addExpRedirect() {
+		OutSource os = new OutSource();
+		ModelAndView view = new ModelAndView();
+		view.addObject(os);
+		view.setViewName(PageResourceConstant.OS_ADDEXP);
+		return view;
+
 	}
 
 }

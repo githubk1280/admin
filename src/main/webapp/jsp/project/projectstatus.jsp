@@ -12,7 +12,7 @@
 		</h3>
 
 	</div>
-	<div id="collapseTwo" class="panel-collapse collapse">
+	<div id="collapseTwo" class="panel-collapse collapse in">
 		<div id="panelProStatus" class="panel-body">
 			<div class="row row-margin">
 				<div class="col-md-3 col-sm-12 col-xs-12">

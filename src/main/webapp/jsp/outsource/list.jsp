@@ -26,7 +26,13 @@
 					<div class="col-lg-12">
 						<h2 class="page-header form-group input-group">
 							<strong>外包基本信息</strong> 
+							<button class="btn btn-default btn-primary" 
+								style="margin-left: 10px;" type="button" data-toggle="modal"
+											data-target="#modalSelectOSType"
+											class="btn btn-default btn-primary pull-left"
+											style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px">创建新的外包</button> 
 						</h2>
+						
 					</div>
 				</form>
 				<!-- /.col-lg-12 -->
@@ -36,10 +42,10 @@
 					<table class="table table-hover">
 						<thead>
 							<tr>
+								<th>项目编号</th>
+								<th>项目名称</th>
 								<th>外包编号</th>
 								<th>外包类型</th>
-								<th>所属项目编号</th>
-								<th>所属项目名称</th>
 								<th>外包状态</th>
 								<th>送样数量</th>
 								<th>送样日期</th>
@@ -50,12 +56,12 @@
 							<c:forEach items="${outsources}" var="outsource"
 								varStatus="status">
 								<tr>
+									<td>${outsource.projectId}</td>
+									<td><a href="<%=request.getContextPath()%>/project/${outsource.projectId}" target="_blank"
+										class="project_link">${outsource.projectName}</a></td>
 									<td><a href="<%=request.getContextPath()%>/outsource/${outsource.outSourceId}" target="_blank"
 										class="project_link">${outsource.outSourceId}</a></td>
 									<td>${outsource.outSourceType}</td>
-									<td><a href="<%=request.getContextPath()%>/project/${outsource.projectId}" target="_blank"
-										class="project_link">${outsource.projectId}</a></td>
-									<td>${outsource.projectName}</td>
 									<td>${outsource.outSourceStatus}</td>
 									<td>${outsource.sendSampleCount}</td>
 									<td><fmt:formatDate value="${outsource.sendSampleDate}"
@@ -74,6 +80,22 @@
 				</div>
 			</div>
 			<!-- /#page-wrapper -->
+		</div>
+	</div>
+	<!-- modal box -->
+	<div class="modal fade modal-box" id="modalSelectOSType" tabindex="0"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" style="margin: 300px auto">
+			<div class="modal-content" style="top:-100px">
+				<div class="modal-body" align="center">
+					<h3>请选择外包类型</h3>
+					<button class="btn btn-default btn-primary" id="dataAnOs">数据分析外包</button>
+					<button class="btn btn-default btn-primary" id="expriOs">实验外包</button>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+				</div>
+			</div>
 		</div>
 	</div>
 	<!-- /#wrapper -->
@@ -116,6 +138,16 @@
 				$("#projectStatusBadge").text("");
 			});
 
+		});
+		$(document).ready(function() {
+			$("#dataAnOs").click(function() {
+				window.location.replace("http://"+window.location.host+"/admin/outsource/addData-redirect");
+				return false;
+			});
+			$("#expriOs").click(function() {
+				window.location.replace("http://"+window.location.host+"/admin/outsource/addExp-redirect");
+				return false;
+			});
 		});
 	</script>
 

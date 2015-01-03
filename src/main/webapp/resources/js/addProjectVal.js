@@ -1,4 +1,3 @@
-
 /**
  * 
 
@@ -156,6 +155,23 @@ $("#potentialExpenditure").blur(function(){
 	var potentialExpenditure = $("#potentialExpenditure").val().replace(/,/g,"");
 	var amount = potentialExpenditure.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 	$("#potentialExpenditure").val(amount);
+});
+
+$("#proBasicProjectID").blur(function(){
+	var id = $.trim($("#proBasicProjectID").val());  
+    $.ajax({  
+        url:"ajax/validateProjectId",  
+        data:{projectId:id},
+        cache:false,
+        success:function(data){  
+            if(JSON.parse(data).data == "1"){  
+            	$("#projectIdInvalidated").show();
+        		$("#saveProBasicData").attr("type","button");
+            }else{
+            	$("#projectIdInvalidated").hide();
+            }
+        }
+    });
 });
 
 

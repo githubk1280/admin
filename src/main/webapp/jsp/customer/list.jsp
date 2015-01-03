@@ -27,6 +27,11 @@
 					<div class="col-lg-12">
 						<h2 class="page-header form-group input-group">
 							<strong>客户基本信息</strong>
+							<button class="btn btn-default btn-primary" 
+								style="margin-left: 10px;" type="button" data-toggle="modal" id="createNewCustomer"
+											data-target="#modalSelectCustomerType"
+											class="btn btn-default btn-primary pull-left"
+											style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px">创建新的客户</button> 
 						</h2>
 					</div>
 				</form>
@@ -37,11 +42,11 @@
 					<table class="table table-hover">
 						<thead>
 							<tr>
+								<th>项目编号</th>
 								<th>负责人</th>
 								<th>单位</th>
 								<th>部门</th>
 								<th>职位</th>
-								<th>所属项目编号</th>
 								<th>研究方向 </th>
 								<th>负责内容</th>
 								<th></th>
@@ -51,13 +56,13 @@
 							<c:forEach items="${customers}" var="customer"
 								varStatus="status">
 								<tr>
+									<td><a href="<%=request.getContextPath()%>/project/${customer.projectId}" target="_blank"
+										class="project_link">${customer.projectId}</a></td>
 									<td><a href="<%=request.getContextPath()%>/customer/${customer.customerId}" target="_blank"
 										class="project_link">${customer.customerName}</a></td>
 									<td>${customer.workUnit}</td>
 									<td>${customer.department}</td>
 									<td>${customer.position}</td>
-									<td><a href="<%=request.getContextPath()%>/project/${customer.projectId}" target="_blank"
-										class="project_link">${customer.projectId}</a></td>
 									<td>${customer.resarchDirection}</td>
 									<td>${customer.responsibleArea}</td>
 									<td><a href="<%=request.getContextPath()%>/customer/${customer.customerId}" target="_blank"
@@ -76,18 +81,46 @@
 			<!-- /#page-wrapper -->
 		</div>
 	</div>
+	<!-- modal box -->
+	<div class="modal fade modal-box" id="modalSelectCustomerType" tabindex="0"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" style="margin: 300px auto">
+			<div class="modal-content" style="top:-100px">
+				<div class="modal-body" align="center">
+					<h3>请选择负责人类型</h3>
+					<button class="btn btn-default btn-primary" id="projectPrincipal">项目主要负责人</button>
+					<button class="btn btn-default btn-primary" id="projectFirstPerson">项目第一联系人</button>
+					<button class="btn btn-default btn-primary" id="projectSecondPerson">项目第二联系人</button>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- /#wrapper -->
 	<%@ include file="../common/modal.jsp"%>
-
 	<%@ include file="../comm-fragement/main-js"%>
 	<script type="text/javascript">
 		$(document).ready(function() {
-
-			
-
 			$("#projectStatusBadge").click(function() {
 				alert($("#projectStatusBadge").text());
 				$("#projectStatusBadge").text("");
+			});
+			$('#createNewCustomer').click(function(){
+				//validate  which create user button will be displayed
+			});
+			$("#projectPrincipal").click(function() {
+				window.location.replace("http://"+window.location.host+"/admin/customer/addPrincipal-redirect");
+				return false;
+			});
+			$("#projectFirstPerson").click(function() {
+				window.location.replace("http://"+window.location.host+"/admin/customer/addFirst-redirect");
+				return false;
+			});
+			$("#projectSecondPerson").click(function() {
+				window.location.replace("http://"+window.location.host+"/admin/customer/addSecond-redirect");
+				return false;
 			});
 
 		});

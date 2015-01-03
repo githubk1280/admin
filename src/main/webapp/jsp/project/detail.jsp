@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -25,9 +25,11 @@
 	</div>
 		<div id="page-wrapper" class="detailPage">
 			<div class="row">
+			
 				<div class="col-lg-12">
 					<!-- .panel-heading -->
 					<div class="panel-body">
+					<%@ include file="projectstatus.jsp"%>
 						<!----------------------------------------project basic data start ------------------------->
 						<form:form action="update" method="post" commandName="project">
 						<div class="panel-group" id="accordion">
@@ -246,7 +248,7 @@
 						 </div>
 						</form:form>
 						<!-- include projectstatus page -->
-						<%@ include file="projectstatus.jsp"%>
+						
 						<!-- include projectoutsource page -->
 						<%@ include file="projectOutSource.jsp"%>
 						<%@ include file="projectCustomer.jsp"%>
@@ -483,5 +485,4 @@
 	    
     </script>
 </body>
-
 </html>

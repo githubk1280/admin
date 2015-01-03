@@ -57,10 +57,10 @@
 			<ul class="nav" id="sidebarUl">
 				<li  style="display:none" id="projectBasicDataLi"><a id="link_pro" href="<%=request.getContextPath()%>/project/pages/1"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">项目基本信息</strong></a></li>
+			    <li  style="display:none" id="outsourceBasicDataLi"><a id="link_outsource" href="<%=request.getContextPath()%>/outsource/pages/1"><i
+						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">外包信息</strong></a></li>
 				<li  style="display:none" id="customerBasicDataLi"><a id="link_customer" href="<%=request.getContextPath()%>/customer/pages/1"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">客户基本信息</strong></a></li>
-				<li  style="display:none" id="outsourceBasicDataLi"><a id="link_outsource" href="<%=request.getContextPath()%>/outsource/pages/1"><i
-						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">外包信息</strong></a></li>
 				<li  style="display:none" id="assignBasicDataLi"><a id="link_outsource" href="<%=request.getContextPath()%>/project/assign-redirect"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">分配项目</strong></a></li>
 				<li  style="display:none" id="docBasiceDataLi"><a id="link_doc" href="<%=request.getContextPath()%>/doc/pages/1"><i
@@ -104,7 +104,6 @@ var activeTabUrlStr = window.location.pathname;
 		$("#customerBasicDataLi").css('display','block');
 		$("#outsourceBasicDataLi").css('display','block');
 		$("#assignBasicDataLi").css('display','block');
-		
 	}
 	
 	if(activeTabUrlStr.indexOf("doc")>0){

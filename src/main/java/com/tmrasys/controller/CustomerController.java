@@ -102,5 +102,34 @@ public class CustomerController {
 		}
 		JsonResponseUtils.returnJsonResponse(response, "", true, 200);
 	}
+	
+	@RequestMapping("/addPrincipal-redirect")
+	public ModelAndView addPrincipalRedirect() {
+		Customer cust = new Customer();
+		ModelAndView view = new ModelAndView();
+		view.addObject(cust);
+		view.setViewName(PageResourceConstant.CUSTOMER_ADDPRINCIPAL);
+		return view;
+
+	}
+	
+	@RequestMapping("/addFirst-redirect")
+	public ModelAndView addFirstRedirect() {
+		Customer cust = new Customer();
+		ModelAndView view = new ModelAndView();
+		view.addObject(cust);
+		view.setViewName(PageResourceConstant.CUSTOMER_ADDFIRST);
+		return view;
+	}
+	
+	@RequestMapping("/addSecond-redirect")
+	public ModelAndView addSecondRedirect() {
+		Customer cust = new Customer();
+		ModelAndView view = new ModelAndView();
+		view.addObject(cust);
+		view.setViewName(PageResourceConstant.CUSTOMER_ADDSECOND);
+		return view;
+
+	}
 
 }
