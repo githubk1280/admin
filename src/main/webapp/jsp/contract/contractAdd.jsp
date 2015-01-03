@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ page import="com.tmrasys.domain.Employee" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -149,6 +150,21 @@
 														<div class="row row-margin">
 															<div class="col-md-6 col-sm-12 col-xs-12">
 																<div>
+																	<label>预付款状态</label>
+																</div>
+																<div>
+																	<div class="pull-left">
+																		<label><form:radiobutton path="advancedAmountStatus" id="advancedAmountStatus1"
+																		value="未收" checked="true"/>未收</label> <label> <form:radiobutton id="advancedAmountStatus2"
+																		path="advancedAmountStatus" value="已收" />已收
+																		</label>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="row row-margin">
+															<div class="col-md-4 col-sm-12 col-xs-12">
+																<div>
 																	<label>预付款金额</label>
 																	<label id="advancedAmountLbl" class="warning-style">该字段不允许为空</label>
 																	<label id="checkAdvancedAmountLbl" class="warning-style">请输入正确的金额</label>
@@ -157,40 +173,29 @@
 																<div>
 																	<div class="input-group">
 																		<span class="input-group-addon">￥</span>
-																		<form:input id="advancedAmount" path="advancedAmount" class="form-control" />
-																		
+																		<input id="advancedAmount" path="advancedAmount" class="form-control" />
 																	</div>
 																</div>
-
 															</div>
-															<div class="col-md-6 col-sm-12 col-xs-12">
+															<div class="col-md-4 col-sm-12 col-xs-12">
 																<div>
-																	<label>预付款状态</label>
+																	<label>预付款到账日期</label>
 																</div>
 																<div class="pull-left">
-																	<label><form:radiobutton path="advancedAmountStatus" id="advancedAmountStatus1"
-																		value="未收" checked="true"/>未收</label> <label> <form:radiobutton id="advancedAmountStatus2"
-																		path="advancedAmountStatus" value="已收" />已收
-																	</label>
+																	<input id="advancedPaymentDate" path="advancedPaymentDate" class="form-control" style="width:150%"/>
+																</div>
+															</div>
+															<div class="col-md-4 col-sm-12 col-xs-12">
+																<div>
+																	<label>预付款财务确认人</label>
+																</div>
+																<div class="pull-left">
+																	<input id="advancedPaymentPrincipal" path="advancedPaymentPrincipal"
+																	   class="form-control" style="width:150%" readonly value="<%=((Employee)session.getAttribute("user")).getName()%>"/>
 																</div>
 															</div>
 														</div>
 														<div class="row row-margin">
-															<div class="col-md-6 col-sm-12 col-xs-12">
-																<div>
-																	<label>尾款金额</label>
-																	<label id="balancedAmountLbl" class="warning-style">该字段不允许为空</label>
-																	<label id="checkBalancedAmountLbl" class="warning-style">请输入正确的金额</label>
-																	<label id="balancedAmountComparedTotalAmountLbl" class="warning-style">尾款金额不能大于合同金额</label>
-																</div>
-																<div>
-																	<div class="input-group">
-																		<span class="input-group-addon">￥</span>
-																		<form:input id="balancedAmount" path="balancedAmount" class="form-control" />
-																		
-																	</div>
-																</div>
-															</div>
 															<div class="col-md-6 col-sm-12 col-xs-12">
 																<div>
 																	<label>尾款状态</label>
@@ -203,7 +208,43 @@
 																		</label>
 																	</div>
 																</div>
-
+															</div>
+														</div>
+														<div class="row row-margin">
+															<div class="col-md-4 col-sm-12 col-xs-12">
+																<div>
+																	<label>尾款金额</label>
+																	<label id="balancedAmountLbl" class="warning-style">该字段不允许为空</label>
+																	<label id="checkBalancedAmountLbl" class="warning-style">请输入正确的金额</label>
+																	<label id="balancedAmountComparedTotalAmountLbl" class="warning-style">尾款金额不能大于合同金额</label>
+																</div>
+																<div>
+																	<div class="input-group">
+																		<span class="input-group-addon">￥</span>
+																		<input id="balancedAmount" path="balancedAmount" class="form-control" />
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-4 col-sm-12 col-xs-12">
+																<div>
+																	<label>尾款到账日期</label>
+																</div>
+																<div>
+																	<div class="pull-left">
+																		<input id="balPaymentDate" path="balPaymentDate" class="form-control" style="width:150%"/>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-4 col-sm-12 col-xs-12">
+																<div>
+																	<label>尾款财务确认人</label>
+																</div>
+																<div>
+																	<div class="pull-left">
+																		<input id="balPaymentPrincipal" path="balPaymentPrincipal" 
+																		class="form-control" style="width:150%" readonly value="<%=((Employee)session.getAttribute("user")).getName()%>"/>
+																	</div>
+																</div>
 															</div>
 														</div>
 														<div class="row row-margin">
@@ -236,8 +277,6 @@
 			window.location.replace("http://"+window.location.host+"/admin/contract/pages/1");			
 			return false;
 		});
-		
-		
 	});
 	function contractController($scope, $http) {
 		$scope.selected = '';
@@ -250,6 +289,7 @@
 				alert("获取失败，请重试!");
 				});
 	}
+	
 	</script>
 </body>
 </html>

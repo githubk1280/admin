@@ -25,12 +25,11 @@
 						<label>客户级别</label>
 					</div>
 					<div class="pull-left">
-						<label><input type="radio" 
-							id="customerLevel1"  checked>高 </label> <label><input
-							type="radio"  id="customerLevel2"
-							value="option18">中 </label> <label><input type="radio"
-							 id="customerLevel3" value="option19">低
-						</label>
+						<label><input type="radio" id="customerLevel1"  checked>VIP-1 </label> 
+						<label><input type="radio" id="customerLevel2" value="option18">VIP-2</label> 
+						<label><input type="radio" id="customerLevel3" value="option19">VIP-3</label>
+						<label><input type="radio" id="customerLevel4" value="option19">VIP-4</label>
+						<label><input type="radio" id="customerLevel5" value="option19">VIP-5</label>
 					</div>
 				</div>
 			</div>

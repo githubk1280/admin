@@ -39,24 +39,28 @@
                                   	</div>
                                  <c:forEach items="${proHis.ppList}" var="projectHis" >
                                   	<div class="row row-margin">
-                                  		<div class="col-md-4  col-sm-12 col-xs-12" >
+                                  		<div class="col-md-1 col-sm-12 col-xs-12">
+                                  		 <!-- <div class="col-md-4  col-sm-12 col-xs-12" > -->
                                   			<div><label>日期</label></div>
-                                   		<div><p style="color:red;">
-                                   				<fmt:formatDate value="${projectHis.progressDate}" pattern="yyyy-MM-dd" />
-											  </p>
-									    </div> 
-                                  		</div>
-                                   	<div class="col-md-4 col-sm-12 col-xs-12">
+	                                   		<div><p style="color:red;">
+	                                   				<fmt:formatDate value="${projectHis.progressDate}" pattern="yyyy-MM-dd" />
+												  </p>
+										    </div>
+										</div> 
+                                   	 <div class="col-md-1 col-sm-12 col-xs-12" style="margin-left:120px">
                                    			<div><label>撰写人员</label></div>
                                    			<div><p>${projectHis.employeeName}</p></div> 
+                                   	</div>
+                                   	<div class="col-md-1 col-sm-12 col-xs-12" style="margin-left:120px">
                                    			<div><label>当时进度</label></div>
                                    			<div><p style="color:blue">${projectHis.percentage}%</p></div>
+                                   	</div>
+                                   	<div class="col-md-1 col-sm-12 col-xs-12" style="margin-left:120px">
                                    			<div><label>进度内容</label></div>
                                    			<div><l>${projectHis.content}</l></div>
                                    	</div>
-                                   	<div class="col-md-4  col-sm-12 col-xs-12"></div>
                                   	</div>
-                                  	<div class="row row-margin"><hr  align=center width=98% style="border-top:1px solid #178acc"></div>
+                                  	<hr  align=center width=100% style="border-top:1px solid #178acc;margin-top:1px">
                                  </c:forEach>
                                   	
 				 				 </div> 

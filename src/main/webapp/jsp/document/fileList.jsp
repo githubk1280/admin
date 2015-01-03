@@ -32,6 +32,14 @@
 							<div class="panel-body">
 								<div class="row">
 									<div class="col-md-12">
+									<div style="margin-left: 10px;margin-top:20px">
+												<label >项目编号 </label> 
+												<label id="projectIDLbl" class="warning-style">该字段不允许为空</label>
+												<select id="projectIdSel" class="form-control" ng-model="selected"  path="projectId" style="">
+											   		<option value="">-- 请选择 --</option>
+											   		<!--  <option ng-repeat="item in idAndPrincipal" value="{{ item.projectId }}">{{ item.projectId }}</option>-->
+												</select>
+									</div>
 										<form action="/admin/doc/upload/${parent.fileId}" method="post" enctype="multipart/form-data">
 											<input id="fileInput" type="file" name="file" class="btn btn-default btn-primary pull-left"
 											style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px" /> 
@@ -46,6 +54,7 @@
 										<thead>
 											<tr>
 												<th>文件</th>
+												<th>所属项目编号</th>
 												<th>下载文件</th>
 												<th>删除文件</th>
 											</tr>
@@ -151,6 +160,7 @@
 			}else{
 				$("#uploadFile").attr("type","submit");
 			}
+			
 		});
 	});
 	

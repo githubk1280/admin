@@ -40,10 +40,10 @@
 												<div class="col-md-6 col-sm-12 col-xs-12">
 													<div>
 														<label>项目编号 </label>
+														<label id="proBasicProjectIDLbl" class="warning-style">该字段不允许为空</label>
 													</div>
 													<div>
-														<input id="proBasicProjectID" type="text" placeholder="自动生成" class="form-control"
-															disabled>
+														<input id="proBasicProjectID" type="text" class="form-control" maxlength ="10">
 													</div>
 												</div>
 												<div class="col-md-6 col-sm-12 col-xs-12">
