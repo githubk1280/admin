@@ -15,7 +15,7 @@ public class CustomerServiceImpl implements CustomerService {
 	private CustomerDao customerDao;
 
 	@Override
-	public List<Customer> getByProjectId(int projectId) {
+	public List<Customer> getByProjectId(String projectId) {
 		return customerDao.getByProjectId(projectId);
 	}
 

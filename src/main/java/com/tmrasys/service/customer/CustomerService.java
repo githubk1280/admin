@@ -5,7 +5,7 @@ import java.util.List;
 import com.tmrasys.domain.Customer;
 
 public interface CustomerService {
-	List<Customer> getByProjectId(int projectId);
+	List<Customer> getByProjectId(String projectId);
 	void addCustomer(Customer customer);
 	void updateCustomer(Customer customer);
 	List<Customer> getByEmployee(int employeeId);

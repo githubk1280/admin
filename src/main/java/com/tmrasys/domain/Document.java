@@ -14,11 +14,11 @@ public class Document {
 	private int fileType;
 	private int parentId;
 	private Date addTime;
-	private int projectId;
+	private String projectId;
 
 	public Document(String fileName, String filePath, String fileOwner,
 			int fileOwnerId, int fileType, int parentId, Date addTime,
-			int projectId) {
+			String projectId) {
 		this.fileName = fileName;
 		this.filePath = filePath;
 		this.fileOwner = fileOwner;

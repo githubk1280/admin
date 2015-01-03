@@ -27,7 +27,7 @@ public class Contract {
 	private Date balancedAmountDate;
 	private String advancedAmountStatus;
 	private String balancedAmountStatus;
-	private int projectId;
+	private String projectId;
 	private int totalAmount;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date startDate;

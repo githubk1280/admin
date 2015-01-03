@@ -14,6 +14,6 @@ public class ProjectOutSource {
 	private boolean isErRecived;
 	private String outSourceStatus;
 	private String outSourceType;
-	private int projectId;
+	private String projectId;
 	private String projectName;
 }

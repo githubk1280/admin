@@ -18,7 +18,7 @@ public class OutSource {
 	private boolean exprResultRecived;
 	private String outSourceStatus;
 	private String outSourceType;
-	private int projectId;
+	private String projectId;
 	private String contactPerson;
 	private String contactPhone;
 	private BigDecimal contractAmount;

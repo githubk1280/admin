@@ -8,5 +8,5 @@ import com.tmrasys.domain.ProjectEmployee;
 @Repository
 public interface ProjectEmployeeDao {
 	void addReference(ProjectEmployee pe);
-	ProjectEmployee getByProjectId(@Param(value = "projectId") int projectId, @Param(value = "employeeId") int employeeId);
+	ProjectEmployee getByProjectId(@Param(value = "projectId") String projectId, @Param(value = "employeeId") int employeeId);
 }

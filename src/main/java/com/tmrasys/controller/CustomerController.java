@@ -71,7 +71,7 @@ public class CustomerController {
 	}
 
 	@RequestMapping("/ajax/{projectId}")
-	public void load(@PathVariable int projectId, HttpServletRequest request,
+	public void load(@PathVariable String projectId, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 		List<Customer> customers = customerService.getByProjectId(projectId);
 		if (!CollectionUtils.isEmpty(customers)) {

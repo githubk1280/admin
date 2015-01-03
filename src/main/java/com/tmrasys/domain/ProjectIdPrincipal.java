@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class ProjectIdPrincipal {
-	private int projectId;
+	private String projectId;
 	private String principal;
 }

@@ -14,7 +14,7 @@ public class ProjectProgressServiceImpl implements ProjectProgressService {
 	private ProjectProgressDao projectProgressDao;
 
 	@Override
-	public List<ProjectProgress> getByProjectId(int projectId) {
+	public List<ProjectProgress> getByProjectId(String projectId) {
 		return projectProgressDao.getByProjectId(projectId);
 	}
 
@@ -23,7 +23,7 @@ public class ProjectProgressServiceImpl implements ProjectProgressService {
 		projectProgressDao.addProjectProgress(projectProgress);
 	}
 
-	public List<ProjectProgress> getBasciByProjectId(int projectId){
+	public List<ProjectProgress> getBasciByProjectId(String projectId){
 		return projectProgressDao.getBasicByProjectId(projectId);
 	}
 }

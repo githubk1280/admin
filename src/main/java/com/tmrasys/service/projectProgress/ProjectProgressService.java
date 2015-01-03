@@ -5,7 +5,7 @@ import java.util.List;
 import com.tmrasys.domain.ProjectProgress;
 
 public interface ProjectProgressService {
-	List<ProjectProgress> getByProjectId(int projectId);
+	List<ProjectProgress> getByProjectId(String projectId);
 	void addProjectProgress(ProjectProgress projectProgress);
-	List<ProjectProgress> getBasciByProjectId(int projectId);
+	List<ProjectProgress> getBasciByProjectId(String projectId);
 }

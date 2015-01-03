@@ -47,8 +47,7 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 
 	@Test
 	public void testLoadProjectById() {
-		System.out.println(projectDataService.loadProjectById(1));
-		System.out.println(projectDataService.loadProjectById(2));
+		System.out.println(projectDataService.loadProjectById("74"));
 	}
 
 	@Test
@@ -56,7 +55,7 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		System.out.println(employeeDataService.getEmployeeByName("ivan"));
 		System.out.println(employeeDataService.getEmployeeByName("terry"));
 		System.out.println(employeeDataService.getEmployeeByName("james"));
-		System.out.println(employeeDataService.getEmployeesByProjectId(29));
+		System.out.println(employeeDataService.getEmployeesByProjectId("29"));
 	}
 
 	@Test
@@ -67,7 +66,7 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		employee.setPassword("123456");
 		employee.setPrivilege(1);
 		// employeeDataService.addEmployee(employee);
-		employeeDataService.getEmployeesEmailByProjectId(52, 3);
+		employeeDataService.getEmployeesEmailByProjectId("52", 3);
 	}
 
 	@Test
@@ -95,20 +94,20 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 	@Test
 	public void testaddOutSource() {
 		OutSource os = outSourceService.getOutSourceByProjectId(36).get(1);
-		os.setProjectId(37);
+		os.setProjectId("37");
 		os.setOutSourceId(0);
 		outSourceService.addOutSource(os);
 	}
 
 	@Test
 	public void testgetCustomersByProjectId() {
-		for (Customer customer : customerService.getByProjectId(1))
+		for (Customer customer : customerService.getByProjectId("74"))
 			System.out.println(customer);
 	}
 
 	@Test
 	public void testgetProjectProgressByProjectId() {
-		for (ProjectProgress pp : projectProgressService.getByProjectId(15))
+		for (ProjectProgress pp : projectProgressService.getByProjectId("15"))
 			System.out.println(pp);
 	}
 
@@ -118,7 +117,7 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		pp.setContent("test add");
 		pp.setEmployeeId(1);
 		pp.setProgressDate(new Date());
-		pp.setProjectId(1);
+		pp.setProjectId("15");
 		pp.setPercentage(0);
 		projectProgressService.addProjectProgress(pp);
 	}
@@ -135,9 +134,9 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		pro.setPotentialExpenditure("test test etc");
 		pro.setPriority(1);
 		pro.setProjectContent("what a perfect project");
-		pro.setProjectName("一个老中医");
-		pro.setProjectNote("一个老中医  专治吹牛X");
-		pro.setResearchDirection("专治各种");
+		pro.setProjectName("aaa");
+		pro.setProjectNote("bbbb");
+		pro.setResearchDirection("cccc");
 		pro.setSampleCount(100);
 		pro.setStartDate(new Date());
 		projectDataService.addProject(pro);
@@ -145,20 +144,20 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 
 	@Test
 	public void testupdateProject() {
-		Project pro = projectDataService.loadProjectById(5);
-		pro.setProjectName("生物项目1");
+		Project pro = projectDataService.loadProjectById("15");
+		pro.setProjectName("pooo1");
 		projectDataService.updateProject(pro);
 	}
 
 	@Test
 	public void testaddReference() {
-		ProjectEmployee projectEmployee = new ProjectEmployee(1, 1);
+		ProjectEmployee projectEmployee = new ProjectEmployee("16", 1);
 		projectEmployeeService.addReference(projectEmployee);
 	}
 
 	@Test
 	public void testaddCustomer() {
-		Customer customer = customerService.getByProjectId(1).get(0);
+		Customer customer = customerService.getByProjectId("15").get(0);
 		customer.setCustomerName("gary");
 		customer.setCustomerId(0);
 		customerService.addCustomer(customer);
@@ -166,9 +165,9 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 
 	@Test
 	public void testupdateCustomer() {
-		Customer customer = customerService.getByProjectId(15).get(0);
+		Customer customer = customerService.getByProjectId("15").get(0);
 		customer.setCustomerName("ivan");
-		customer.setProjectId(16);
+		customer.setProjectId("16");
 		customerService.updateCustomer(customer);
 	}
 
@@ -181,7 +180,7 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 	@Test
 	public void testupdatePrivilege() {
 		employee = employeeDataService.getEmployeeByName("ivan");
-		employeeDataService.updatePrivilege(employee, "研究员");
+		employeeDataService.updatePrivilege(employee, "resear");
 	}
 
 	@Test
@@ -204,7 +203,7 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 			System.out.println(sample);
 		}
 		Sample sample = sampleService.getById(1);
-		sample.setProjectId(37);
+		sample.setProjectId("37");
 		sampleService.addSample(sample);
 	}
 }

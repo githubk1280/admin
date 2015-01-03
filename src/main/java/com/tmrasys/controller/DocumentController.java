@@ -41,7 +41,6 @@ public class DocumentController {
 
 	@RequestMapping("/load")
 	public ModelAndView load(HttpSession session) {
-		Employee employee = (Employee) session.getAttribute("user");
 		List<Document> documents = documentService
 				.loadRootFoldersUnderUser("admin");
 		// DB里创建默认5个文件夹
@@ -275,9 +274,9 @@ public class DocumentController {
 	}
 
 	public enum DefaultFolderNameEnum {
-		PROJECT_PLAN(1, "plan", "项目方案"), PROJECT_CONTRACT(2, "contract", "项目合同"), PUBLIST_ARTICALE(
-				3, "article", "发表文章"), SAMPLE_INFO(4, "sample", "样本信息"), EXPRIMENT_RESULT(
-				5, "result", "实验结果");
+		PROJECT_PLAN(-1, "plan", "项目方案"), PROJECT_CONTRACT(-2, "contract",
+				"项目合同"), PUBLIST_ARTICALE(-3, "article", "发表文章"), SAMPLE_INFO(
+				-4, "sample", "样本信息"), EXPRIMENT_RESULT(-5, "result", "实验结果");
 		private String labelValue;
 		private int value;
 		private String chLabelValue;

@@ -79,7 +79,7 @@ public class MailHandler implements Handler {
 				logger.info("Mail sent success!");
 			}
 
-			private String[] prepareToList(int projectId, int operatorId) {
+			private String[] prepareToList(String projectId, int operatorId) {
 				List<Customer> customers = customerService
 						.getByProjectId(projectId);
 				List<String> emails = employService

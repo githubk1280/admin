@@ -9,7 +9,7 @@ import com.tmrasys.domain.Project;
 
 @Repository
 public interface ProjectDao {
-	Project loadProjectById(int id);
+	Project loadProjectById(String id);
 
 	List<Project> loadProjectsByEmployee(int employeeId);
 
@@ -31,5 +31,5 @@ public interface ProjectDao {
 
 	Project loadProjectsByEmployeeAndId(
 			@Param(value = "employeeId") int employeeId, 
-			@Param(value = "projectId")int projectId);
+			@Param(value = "projectId")String projectId);
 }

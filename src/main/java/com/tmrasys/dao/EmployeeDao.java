@@ -15,10 +15,10 @@ public interface EmployeeDao {
 
 	void updateEmployee(Employee employee);
 
-	public List<Integer> getEmployeesByProjectId(int projectId);
+	public List<Integer> getEmployeesByProjectId(String projectId);
 
 	public List<String> getEmployeesEmailByProjectId(
-			@Param(value = "projectId") int projectId,
+			@Param(value = "projectId") String projectId,
 			@Param(value = "operatorId") int operatorId);
 
 	List<Employee> getAllEmployees();

@@ -14,14 +14,14 @@ public class ProjectProgress {
 	private String content;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date progressDate;
-	private int projectId;
+	private String projectId;
 	private int percentage;
 
 	public ProjectProgress() {
 	}
 
 	public ProjectProgress(int employeeId, String employeeName, String content,
-			Date progressDate, int projectId, int percentage) {
+			Date progressDate, String projectId, int percentage) {
 		super();
 		this.employeeId = employeeId;
 		this.employeeName = employeeName;

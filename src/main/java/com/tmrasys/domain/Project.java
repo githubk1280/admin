@@ -8,7 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
 public class Project {
-	private int projectId;
+	private String projectId;
 	private String projectName;
 	private int priority;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -42,8 +42,4 @@ public class Project {
 	 * 项目百分比
 	 */
 	private int projectStatusPercentage;
-	/**
-	 * 手动输入的项目编号
-	 */
-	private String inputId;
 }
