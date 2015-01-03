@@ -89,7 +89,7 @@
 </nav>
 
 
-<input id="role" type="hidden" value="<%=session.getAttribute("role")%>"/>
+
 
 <script type="text/javascript">
 window.onload=function(){
@@ -158,7 +158,7 @@ var activeTabUrlStr = window.location.pathname;
 	/*
 	*/
 		
-	if($("#role").val()=="1"){
+	if(<%=session.getAttribute("role")%>=="1"){
 		$("#createUserLi").css('display','none');
 		$("#tab3").css('display','none');
 		$("#modifyProBasicData").css('display','none');
@@ -169,7 +169,7 @@ var activeTabUrlStr = window.location.pathname;
 		$("#assignBasicDataLi").css('display','none');
 		$("#projectBasicDataLi").removeClass("active");
 	}
-	if($("#role").val()=="3"){
+	if(<%=session.getAttribute("role")%>=="3"){
 		$("#createUserLi").css('display','none');
 		$("#outsourceBasicDataLi").css('display','none');
 		$("#customerBasicDataLi").css('display','none');

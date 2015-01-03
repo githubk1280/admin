@@ -17,4 +17,5 @@ public interface OutSourceDao {
 	void updateOutSource(OutSource outSource);
 	int countByEmployee(int employeeId);
 	List<ProjectOutSource> getPagedByEmployee(@Param(value = "employeeId") int employeeId,@Param(value = "start") int start,@Param(value = "end") int end);
+	List<ProjectOutSource> getByProjectName(@Param(value = "projectName")String projectName,@Param(value = "employeeId")int employeeId);
 }

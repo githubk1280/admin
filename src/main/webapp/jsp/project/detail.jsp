@@ -29,7 +29,7 @@
 				<div class="col-lg-12">
 					<!-- .panel-heading -->
 					<div class="panel-body">
-					<%@ include file="projectstatus.jsp"%>
+					
 						<!----------------------------------------project basic data start ------------------------->
 						<form:form action="update" method="post" commandName="project">
 						<div class="panel-group" id="accordion">
@@ -248,7 +248,7 @@
 						 </div>
 						</form:form>
 						<!-- include projectstatus page -->
-						
+						<%@ include file="projectstatus.jsp"%>
 						<!-- include projectoutsource page -->
 						<%@ include file="projectOutSource.jsp"%>
 						<%@ include file="projectCustomer.jsp"%>

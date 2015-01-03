@@ -13,4 +13,5 @@ public interface OutSourceService {
 	void updateOutSource(OutSource outSource);
 	int countByEmployee(int employeeId);
 	List<ProjectOutSource> getPagedByEmployee(int employeeId, int page);
+	List<ProjectOutSource> loadOutSourceByProjectName(String projectName,int employeeId);
 }

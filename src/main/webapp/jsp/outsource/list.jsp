@@ -22,7 +22,7 @@
 		<%@ include file="../common/nav.jsp"%>
 		<div id="page-wrapper">
 			<div class="row">
-				<form role="form">
+				<form action="<%=request.getContextPath()%>/outsource/search" method="post">
 					<div class="col-lg-12">
 						<h2 class="page-header form-group input-group">
 							<strong>外包基本信息</strong> 
@@ -31,6 +31,10 @@
 											data-target="#modalSelectOSType"
 											class="btn btn-default btn-primary pull-left"
 											style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px">创建新的外包</button> 
+							<input id="searchInput" name="searchStr" class="form-control"  style="width:26%;"  placeholder="请输入项目名称"/>				
+							<span class="input-group-btn">
+		                        <button id="searchBtn" class="btn btn-default btn-primary" type="submit"><i class="fa fa-search" style="font-size:130%"></i></button>
+		                    </span>
 						</h2>
 						
 					</div>
