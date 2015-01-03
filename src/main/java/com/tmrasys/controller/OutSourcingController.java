@@ -21,6 +21,7 @@ import com.tmrasys.constant.page.PageResourceConstant;
 import com.tmrasys.domain.Employee;
 import com.tmrasys.domain.OutSource;
 import com.tmrasys.domain.PageOutSource;
+import com.tmrasys.domain.Project;
 import com.tmrasys.domain.ProjectOutSource;
 import com.tmrasys.service.outSource.OutSourceService;
 import com.tmrasys.utils.JsonResponseUtils;
@@ -113,6 +114,19 @@ public class OutSourcingController {
 		pgos.setExperimentOS(experimentOS);
 		pgos.setDataOS(dataOS);
 		JsonResponseUtils.returnJsonResponse(response, pgos, true, 200);
+	}
+	
+	@RequestMapping("/search")
+	public ModelAndView search(String searchStr, HttpSession session) {
+		Employee employee = (Employee) session.getAttribute("user");
+		System.out.println("::::::::::::::::::::::::"+employee.getEmployeeId());
+		System.out.println("::::::::::::::::::::::::"+searchStr);
+		List<ProjectOutSource> outsources = outSourceService
+				.loadOutSourceByProjectName(searchStr, employee.getEmployeeId());
+		ModelAndView view = new ModelAndView();
+		view.addObject("outsources", outsources);
+		view.setViewName(PageResourceConstant.OS_LIST);
+		return view;
 	}
 	
 	@RequestMapping("/addData-redirect")

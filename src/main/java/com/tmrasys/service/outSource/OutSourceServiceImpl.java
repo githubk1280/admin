@@ -30,6 +30,13 @@ public class OutSourceServiceImpl implements OutSourceService {
 		list.add(dataOS);
 		return list;
 	}
+	
+	@Override
+	public List<ProjectOutSource> loadOutSourceByProjectName(String projectName,
+			int employeeId) {
+		// TODO Auto-generated method stub
+		return outSourceDao.getByProjectName(projectName, employeeId);
+	}
 
 	@Override
 	public void addOutSource(OutSource os) {
