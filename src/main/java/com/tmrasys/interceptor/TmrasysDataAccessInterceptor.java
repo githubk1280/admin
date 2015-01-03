@@ -54,11 +54,12 @@ public class TmrasysDataAccessInterceptor implements HandlerInterceptor,
 					Map<String, Object> pathVariable = (Map<String, Object>) request
 							.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 					if (DataCheckTypeConstant.PROJECT.equals(name)) {
-//						logger.info(pathVariable.get("projectId"));
+						// logger.info(pathVariable.get("projectId"));
 						String projectId = ((String) pathVariable
 								.get("projectId"));
 
-						if (projectService.hasAccessAuth(employee.getEmployeeId(), projectId)) {
+						if (projectService.hasAccessAuth(
+								employee.getEmployeeId(), projectId)) {
 							break;
 						} else {
 							response.sendRedirect(request.getContextPath()

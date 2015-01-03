@@ -71,7 +71,7 @@
 															<c:choose>
 																<c:when test="${doc.fileType<1 }">
 																	<td><i class="glyphicon glyphicon-file"></i>${doc.fileName}</td>
-																	<td>${doc.fileName}</td>
+																	<td>${parent.fileName}</td>
 																	<td><a style="color: #333; margin-left: 20px"
 																		class="glyphicon glyphicon-download-alt"
 																		href="/admin/doc/download/${doc.fileId}"
@@ -86,7 +86,7 @@
 																		style="margin-right: 10px"></i><a
 																		href="/admin/doc/load/${doc.fileId}"
 																		class="project_link">${doc.fileName}</a></td>
-																	<%-- 																	<td>${doc.projectId }</td> --%>
+																	<%--<td>${doc.projectId }</td> --%>
 																	<td></td>
 																	<td><a style="color: #333; margin-left: 20px"
 																		class="glyphicon glyphicon-trash"
