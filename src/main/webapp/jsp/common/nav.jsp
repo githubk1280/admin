@@ -61,7 +61,7 @@
 						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">外包信息</strong></a></li>
 				<li  style="display:none" id="customerBasicDataLi"><a id="link_customer" href="<%=request.getContextPath()%>/customer/pages/1"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">客户基本信息</strong></a></li>
-				<li  style="display:none" id="assignBasicDataLi"><a id="link_outsource" href="<%=request.getContextPath()%>/project/assign-redirect"><i
+				<li  style="display:none" id="assignBasicDataLi"><a id="link_assgin" href="<%=request.getContextPath()%>/project/assign-redirect"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">分配项目</strong></a></li>
 				<li  style="display:none" id="docBasiceDataLi"><a id="link_doc" href="<%=request.getContextPath()%>/doc/pages/1"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">文档基本信息</strong></a></li>
@@ -94,7 +94,6 @@
 <script type="text/javascript">
 	window.onload=function(){
 	var activeTabUrlStr = window.location.pathname;
-		
 		if(activeTabUrlStr.indexOf("project")>0){
 			$("#tab1").addClass("active");
 			$("#tab1").siblings().removeClass();
@@ -136,6 +135,7 @@
 			$("#projectBasicDataLi").css('display','block');
 			$("#customerBasicDataLi").css('display','block');
 			$("#outsourceBasicDataLi").css('display','block');
+			$("#assignBasicDataLi").css('display','block');
 		}
 		if(activeTabUrlStr.indexOf("outsource")>0){
 			$("#tab1").addClass("active");
@@ -145,7 +145,20 @@
 			$("#projectBasicDataLi").css('display','block');
 			$("#customerBasicDataLi").css('display','block');
 			$("#outsourceBasicDataLi").css('display','block');
+			$("#assignBasicDataLi").css('display','block');
 		}
+		
+		if(activeTabUrlStr.indexOf("assign")>0){
+			$("#tab1").addClass("active");
+			$("#tab1").siblings().removeClass();
+			$("#assignBasicDataLi").addClass("active");
+			$("#assignBasicDataLi").siblings().removeClass();
+			$("#projectBasicDataLi").css('display','block');
+			$("#customerBasicDataLi").css('display','block');
+			$("#outsourceBasicDataLi").css('display','block');
+			//$("#assignBasicDataLi").css('display','block');
+		}
+		
 		
 		if(activeTabUrlStr.indexOf("user")>0&&activeTabUrlStr.indexOf("modify")>0){
 			$("#sideModifyPasswordLi").css('display','block');
@@ -165,14 +178,18 @@
 			$("#modifyOutsource").css('display','none');
 			$("#customerBasicDataLi").css('display','none');
 			$("#customerTotalPanel").css('display','none');
+			$("#assignBasicDataLi").css('display','none');
 			$("#create").css('display','none'); 
 			$("#assignBasicDataLi").css('display','none');
 			$("#projectBasicDataLi").removeClass("active");
 		}
+		
+		/*
 		if(<%=session.getAttribute("role")%>=="3"){
 			$("#createUserLi").css('display','none');
 			$("#outsourceBasicDataLi").css('display','none');
 			$("#customerBasicDataLi").css('display','none');
+			$("#assignBasicDataLi").css('display','none');
 			$("#tab2").css('display','none');
 			$("#tab3").css('display','none');
 			$("#tab4").css('display','none');
@@ -186,8 +203,7 @@
 			$("#assignBasicDataLi").css('display','none');
 			$("#projectBasicDataLi").removeClass("active");
 		}
-		
-	
+		*/
 	};
 
 	
