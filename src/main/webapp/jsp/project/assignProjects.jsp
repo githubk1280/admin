@@ -64,6 +64,16 @@
 													</div>
 												</div>
 											</div>
+											<div class="row row-margin">
+												<div class="col-md-6 col-sm-12 col-xs-12">
+													<div>
+														<label>分配内容</label>
+													</div>
+													<div>
+														<form:textarea path="" id="assignContent" class="form-control" rows="6" style="width:80%"/>
+													</div>
+												</div>
+											</div>
 											<div class="row row-margin" style="margin-top:30px ;">
 												<div class="col-md-12 col-sm-12 col-xs-12">
 													<button id="assignSubmit" class="btn btn-default btn-primary" type="submit">保存</button>
