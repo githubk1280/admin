@@ -50,68 +50,66 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-6 col-sm-12 col-xs-12">
+				<div class="col-md-4 col-sm-12 col-xs-12">
 					<div>
 						<label>项目编号 </label>
 					</div>
 					<div>
-						<form:input id="dataProjectID" type="text" readonly="true" class="form-control" path="projectId" />
-						<form:input id="osID" type="text" readonly="true" cssStyle="display:none" class="form-control" path="outSourceId" />
+						<form:input id="dataProjectID" type="text" readonly="true" class="form-control input-style" path="projectId" />
+						<form:input id="osID" type="text" readonly="true" cssStyle="display:none" class="form-control input-style" path="outSourceId" />
 					</div>
 				</div>
-				<div class="col-md-6 col-sm-12 col-xs-12">
+				<div class="col-md-4 col-sm-12 col-xs-12">
 					<div>
 						<label>外包单位</label>
 					</div>
 					<div>
-						<form:input type="text"  maxlength="20" class="form-control" path="outSourceUnit" />
+						<form:input type="text"  maxlength="20" class="form-control input-style" path="outSourceUnit" />
 					</div>
 				</div>
-			</div>
-			<div class="row row-margin">
-				<div class="col-md-6 col-sm-12 col-xs-12">
+				<div class="col-md-4 col-sm-12 col-xs-12">
 					<div>
 						<label>联系人</label>
 					</div>
 					<div>
-						<form:input type="text" maxlength="5" class="form-control" path="contactPerson" />
+						<form:input type="text" maxlength="5" class="form-control input-style" path="contactPerson" />
 					</div>
 				</div>
-				<div class="col-md-6 col-sm-12 col-xs-12">
+			</div>
+			<div class="row row-margin">
+				<div class="col-md-4 col-sm-12 col-xs-12">
 					<div>
 						<label>联系人电话</label>
 						<label id="dataContactPhoneLbl" class="warning-style">请输入正确的号码</label>
 					</div>
 					<div>
-						<form:input id="dataContactPhone" type="text" maxlength="15" class="form-control" path="contactPhone" />
+						<form:input id="dataContactPhone" type="text" maxlength="15" class="form-control input-style" path="contactPhone" />
 					</div>
 				</div>
-			</div>
-			<div class="row row-margin">
-				<div class="col-md-6 col-sm-12 col-xs-12">
+				<div class="col-md-4 col-sm-12 col-xs-12">
 					<div>
 						<label>地址 </label>
 					</div>
 					<div>
-						<form:input class="form-control"  path="address" />
+						<form:input class="form-control input-style"  path="address" />
 					</div>
 				</div>
-				<div class="col-md-6 col-sm-12 col-xs-12">
+				<div class="col-md-4 col-sm-12 col-xs-12">
 					<div>
 						<label>数据来源 </label>
 					</div>
 					<div>
-						<form:input class="form-control"  path="dataSource" />
+						<form:input class="form-control input-style"  path="dataSource" />
 					</div>
 				</div>
 			</div>
 			<div class="row row-margin">
-				<div class="col-md-6 col-sm-12 col-xs-12">
+				<div class="col-md-4 col-sm-12 col-xs-12">
 					<div>
 						<label>数据编号</label>
 					</div>
 					<div>
-						<form:input class="form-control"  path="dataNum" />
+						<form:input class="form-control input-style"  path="dataNum" /> 
 					</div>
 				</div>
 			</div>
