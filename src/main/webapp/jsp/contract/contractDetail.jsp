@@ -48,95 +48,91 @@
 													
 													<div id="panelContractData" class="panel-body">
 														<div class="row">
-															<div class="col-md-6 col-sm-12 col-xs-12">
+															<div class="col-md-4 col-sm-12 col-xs-12">
 																<div>
 																	<label>项目编号 </label>
 																</div>
 																<div>
-																	<form:input path="projectId" class="form-control" readonly="true"/>
+																	<form:input path="projectId" class="form-control input-style" readonly="true"/>
 																</div>
 															</div>
-															<div class="col-md-6 col-sm-12 col-xs-12">
+															<div class="col-md-4 col-sm-12 col-xs-12">
 																<div>
 																	<label>合同编号 </label>
 																</div>
 																<div>
-																	<form:input path="contractId" class="form-control" readonly="true"/>
+																	<form:input path="contractId" class="form-control input-style" readonly="true"/>
 																</div>
 															</div>
-														</div>
-														
-														<div class="row">
-															<div class="col-md-6 col-sm-12 col-xs-12">
+															<div class="col-md-4 col-sm-12 col-xs-12">
 																<div>
 																	<label>合同签订人 </label>
 																</div>
 																<div>
-																	<form:input path="signPersonNameB" class="form-control" readonly="true"/>
+																	<form:input path="signPersonNameB" class="form-control input-style" readonly="true"/>
 																</div>
 															</div>
-															<div class="col-md-6 col-sm-12 col-xs-12">
+														</div>
+														<div class="row row-margin">
+															<div class="col-md-4 col-sm-12 col-xs-12">
 																<div>
 																	<label>合同状态</label>
 																</div>
 																<div>
-																	<form:input path="contractType" class="form-control" readonly="true"/>
+																	<form:input path="contractType" class="form-control input-style" readonly="true"/>
 																</div>
 															</div>
-														</div>
-														
-														<div class="row row-margin">
-															<div class="col-md-6 col-sm-12 col-xs-12">
+															<div class="col-md-4 col-sm-12 col-xs-12">
 																<div>
 																	<label>纸质合同编号 </label>
 																</div>
 																<div>
-																	<form:input path="contractPaperId" class="form-control" readonly="true"/>
+																	<form:input path="contractPaperId" class="form-control input-style" readonly="true"/>
 																</div>
 															</div>
-															<div class="col-md-6 col-sm-12 col-xs-12">
+															<div class="col-md-4 col-sm-12 col-xs-12">
 																<div>
 																	<label>签订日期</label>
 																</div>
 																<div>
-																	<form:input path="signDate" class="form-control" readonly="true"/>
+																	<form:input path="signDate" class="form-control input-style" readonly="true"/>
 																</div>
 															</div>
 														</div>
 														<div class="row row-margin">
-															<div class="col-md-6 col-sm-12 col-xs-12">
+															<div class="col-md-4 col-sm-12 col-xs-12">
 																<div>
 																	<label>开始日期</label>
 																</div>
 																<div>
 																	<div>
-																		<form:input path="startDate" class="form-control" readonly="true"/>
+																		<form:input path="startDate" class="form-control input-style" readonly="true"/>
 																	</div>
 																</div>
 															</div>
-															<div class="col-md-6 col-sm-12 col-xs-12">
+															<div class="col-md-4 col-sm-12 col-xs-12">
 																<div>
 																	<label>结束日期</label>
 																</div>
 																<div>
 																	<div>
-																		<form:input path="endDate" class="form-control" readonly="true"/>
+																		<form:input path="endDate" class="form-control input-style" readonly="true"/>
 																	</div>
 																</div>
 															</div>
-														</div>
-														<div class="row row-margin">
-															<div class="col-md-6 col-sm-12 col-xs-12">
+															<div class="col-md-4 col-sm-12 col-xs-12">
 																<div>
 																	<label>合同金额</label>
 																</div>
 																<div>
 																	<div>
-																		<form:input id="totalAmount" path="totalAmount" class="form-control" readonly="true"/>
+																		<div class="input-group input-style">
+																			<span class="input-group-addon">￥</span>
+																			<form:input id="totalAmount" path="totalAmount" class="form-control input-style" readonly="true"/>
+																		</div>
 																	</div>
 																</div>
 															</div>
-															<div class="col-md-6 col-sm-12 col-xs-12"></div>
 														</div>
 														<div class="row row-margin">
 															<div class="col-md-6 col-sm-12 col-xs-12">
@@ -160,7 +156,7 @@
 																	<label id="advancedAmountComparedTotalAmountLbl" class="warning-style">预付款金额不能大于合同金额</label>
 																</div>
 																<div>
-																	<div class="input-group">
+																	<div class="input-group input-style">
 																		<span class="input-group-addon">￥</span>
 																		<form:input id="advancedAmount" path="advancedAmount" class="form-control"  readonly="true"/>
 																	</div>
@@ -171,17 +167,17 @@
 																<div>
 																	<label>预付款到账日期</label>
 																</div>
-																<div class="pull-left">
-																	<form:input id="advancedPaymentDate" path="advancedAmountDate" class="form-control form_date" style="width:150%" readonly="true"/>
+																<div>
+																	<form:input id="advancedPaymentDate" path="advancedAmountDate" class="form-control form_date input-style" readonly="true"/>
 																</div>
 															</div>
 															<div class="col-md-4 col-sm-12 col-xs-12">
 																<div>
 																	<label>预付款财务确认人</label>
 																</div>
-																<div class="pull-left">
+																<div>
 																	<form:input id="advancedPaymentPrincipal" path="advancedConfirmer"
-																	   class="form-control" style="width:150%" readonly="true" />
+																	   class="form-control input-style" readonly="true" />
 																</div>
 															</div>
 														</div>
@@ -191,7 +187,7 @@
 																	<label>尾款状态</label>
 																</div>
 																<div>
-																	<div class="pull-left">
+																	<div>
 																		<label><form:radiobutton path="balancedAmountStatus" id="balancedAmountStatus1"
 																			value="未收" checked="true"/>未收</label> <label> <form:radiobutton id="balancedAmountStatus2"
 																			path="balancedAmountStatus" value="已收" />已收
@@ -211,7 +207,7 @@
 																<div>
 																	<div class="input-group">
 																		<span class="input-group-addon">￥</span>
-																		<form:input id="balancedAmount" path="balancedAmount" class="form-control"  readonly="true"/>
+																		<form:input id="balancedAmount" path="balancedAmount" class="form-control input-style"  readonly="true"/>
 																	</div>
 																</div>
 															</div>
@@ -220,8 +216,8 @@
 																	<label>尾款到账日期</label>
 																</div>
 																<div>
-																	<div class="pull-left">
-																		<form:input id="balPaymentDate" path="balancedAmountDate" class="form-control form_date" style="width:150%" readonly="true"/>
+																	<div>
+																		<form:input id="balPaymentDate" path="balancedAmountDate" class="form-control form_date input-style" readonly="true"/>
 																	</div>
 																</div>
 															</div>
@@ -230,9 +226,9 @@
 																	<label>尾款财务确认人</label>
 																</div>
 																<div>
-																	<div class="pull-left">
+																	<div>
 																		<form:input id="balPaymentPrincipal" path="balancedConfirmer" 
-																		class="form-control" style="width:150%" readonly="true" />
+																		class="form-control input-style" readonly="true" />
 																	</div>
 																</div>
 															</div>
