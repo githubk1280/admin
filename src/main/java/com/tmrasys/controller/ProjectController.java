@@ -222,9 +222,9 @@ public class ProjectController {
 			projectEmployeeService.addReference(projectEmployee);
 			projectService.addContent(projectEmployee.getProjectId(), projectEmployee.getAssignContent());
 		}
-		ModelAndView view = new ModelAndView();
+		ModelAndView view = new ModelAndView("project/assign-success");
 		view.addObject("success", success);
-		return new ModelAndView("project/assign-success");
+		return view;
 	}
 	
 	@RequestMapping(value = "ajax/validateProjectId")
