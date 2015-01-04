@@ -38,4 +38,6 @@ public class Contract {
 	 */
 	private String contractPaperId;
 	private String contractType;
+	private String advancedConfirmer;
+	private String balancedConfirmer;
 }
