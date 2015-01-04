@@ -2,6 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.tmrasys.dao.CustomerDao">
+	<select id="getByEmployeeAndId" resultType="string" parameterType="map">
+		select c.CUSTOMER_ID from customers c
+		where c.PROJECT_ID in 
+		(select PE.project_id FROM project_employee PE
+		INNER JOIN
+		project P on PE.PROJECT_ID = P.PROJECT_ID and PE.EMPLOYEE_ID=#{employeeId}
+		)
+		AND c.CUSTOMER_ID=#{customerId}
+	</select>
+
 	<select id="getById" parameterType="int" resultMap="customerMapper">
 		SELECT * FROM customers
 		WHERE CUSTOMER_ID=#{customerId}

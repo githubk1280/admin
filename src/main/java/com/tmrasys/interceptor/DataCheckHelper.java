@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import com.tmrasys.constant.DataCheckTypeConstant;
 import com.tmrasys.service.contract.ContractService;
+import com.tmrasys.service.customer.CustomerService;
 import com.tmrasys.service.outSource.OutSourceService;
 import com.tmrasys.service.project.ProjectService;
 import com.tmrasys.service.sample.SampleService;
@@ -23,6 +24,9 @@ public class DataCheckHelper {
 	@Autowired
 	private OutSourceService outSourceService;
 
+	@Autowired
+	private CustomerService customerService;
+
 	public boolean hasAccess(String id, String name, int employeeId) {
 		if (DataCheckTypeConstant.PROJECT.equals(name)) {
 			return checkProject(id, employeeId);
@@ -32,8 +36,15 @@ public class DataCheckHelper {
 			return checkContract(id, employeeId);
 		} else if (DataCheckTypeConstant.OUTSOURCE.equals(name)) {
 			return checkOutsource(id, employeeId);
+		} else if (DataCheckTypeConstant.CUSTOMER.equals(name)) {
+			return checkCustomer(id, employeeId);
 		}
 		return true;
+	}
+
+	private boolean checkCustomer(String id, int employeeId) {
+		return customerService.getByEmployeeAndId(id, employeeId) == null ? false
+				: true;
 	}
 
 	private boolean checkOutsource(String id, int employeeId) {

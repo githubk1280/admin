@@ -77,6 +77,10 @@ public class TmrasysDataAccessInterceptor implements HandlerInterceptor,
 								employee.getEmployeeId());
 					}
 					if (DataCheckTypeConstant.CUSTOMER.equals(name)) {
+						String customerId = ((String) pathVariable
+								.get("customerId"));
+						pass = checkHelper.hasAccess(customerId, name,
+								employee.getEmployeeId());
 					}
 
 				}

@@ -48,7 +48,7 @@ public class CustomerServiceImpl implements CustomerService {
 	public List<Customer> getPagedByEmployee(int employeeId, int pageIndex) {
 		int start = 0;
 		int end = 10;
-		if(pageIndex > 1) {
+		if (pageIndex > 1) {
 			start = (pageIndex - 1) * 10;
 		}
 		return customerDao.getPagedByEmployee(employeeId, start, end);
@@ -56,29 +56,31 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public String getProjectName(String projectId) {
-		// TODO Auto-generated method stub
+
 		return customerDao.getProjectName(projectId);
 	}
 
 	@Override
 	public int countProjectPrincipal(String projectId) {
-		// TODO Auto-generated method stub
+
 		return customerDao.countProjectPrincipal(projectId);
 	}
 
 	@Override
 	public int countProjectFirst(String projectId) {
-		// TODO Auto-generated method stub
+
 		return customerDao.countProjectFirst(projectId);
 	}
 
 	@Override
 	public int countProjectSecond(String projectId) {
-		// TODO Auto-generated method stub
+
 		return customerDao.countProjectSecond(projectId);
 	}
-	
-	
-	
+
+	@Override
+	public String getByEmployeeAndId(String id, int employeeId) {
+		return customerDao.getByEmployeeAndId(id, employeeId);
+	}
 
 }
