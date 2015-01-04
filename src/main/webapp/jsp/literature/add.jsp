@@ -93,6 +93,114 @@
 									</div>
 									<div class="row row-margin">
 										<div class="col-md-6 col-sm-12 col-xs-12">
+											<div>
+												<label>文章研究内容和方向</label>
+											</div>
+											<div>
+												<input type="text" class="form-control" name="articleDirection">
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-12 col-xs-12">
+											<div>
+												<label>文章背景</label>
+											</div>
+											<div>
+												<input type="text" class="form-control" name="articleBg">
+											</div>
+										</div>
+									</div>
+									<div class="row row-margin">
+										<div class="col-md-6 col-sm-12 col-xs-12">
+											<div>
+												<label>技术路线</label>
+											</div>
+											<div>
+												<input type="text" class="form-control" name="tecPath">
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-12 col-xs-12">
+											<div>
+												<label>技术平台</label>
+											</div>
+											<div>
+												<input type="text" class="form-control" name="tecPlatform">
+											</div>
+										</div>
+									</div>
+									<div class="row row-margin">
+										<div class="col-md-6 col-sm-12 col-xs-12">
+											<div>
+												<label>文章结论</label>
+											</div>
+											<div>
+												<input type="text" class="form-control" name="articleRes">
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-12 col-xs-12">
+											<div>
+												<label>文章亮点</label>
+											</div>
+											<div>
+												<input type="text" class="form-control" name="articleLight">
+											</div>
+										</div>
+									</div>
+									<div class="row row-margin">
+										<div class="col-md-6 col-sm-12 col-xs-12">
+											<div>
+												<label>对于科研项目的启示</label>
+											</div>
+											<div>
+												<input type="text" class="form-control" name="tipForResearch">
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-12 col-xs-12">
+											<div>
+												<label>对于产品研发的启示</label>
+											</div>
+											<div>
+												<input type="text" class="form-control" name="tipForProduct">
+											</div>
+										</div>
+									</div>
+									<div class="row row-margin">
+										<div class="col-md-6 col-sm-12 col-xs-12">
+											<div>
+												<label>对于技术平台建设的启示</label>
+											</div>
+											<div>
+												<input type="text" class="form-control" name="tipForTec">
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-12 col-xs-12">
+											<div>
+												<label>备注信息</label>
+											</div>
+											<div>
+												<input type="text" class="form-control" name="comments">
+											</div>
+										</div>
+									</div>
+									<div class="row row-margin">
+										<div class="col-md-6 col-sm-12 col-xs-12">
+											<div>
+												<label>相关问题与解答</label>
+											</div>
+											<div>
+												<input type="text" class="form-control" name="qa">
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-12 col-xs-12">
+											<div>
+												<label>附件研究热点</label>
+											</div>
+											<div>
+												<input type="text" class="form-control" name="hotPoint">
+											</div>
+										</div>
+									</div>
+									<div class="row row-margin">
+										<div class="col-md-6 col-sm-12 col-xs-12">
 											<button id="saveLiterature"
 												class="btn btn-default btn-primary" type="submit">保存</button>
 											<button id="cancelLiterature"
