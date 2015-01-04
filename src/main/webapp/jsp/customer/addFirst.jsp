@@ -48,7 +48,7 @@
 						<label>项目编号 </label>
 					</div>
 					<div>
-						<form:input id="projectIdForCustomerAdd" path="projectId" type="text" class="form-control" />
+						<form:input id="projectIdForCustomerAdd" path="projectId" type="text" class="form-control" readonly="true"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">

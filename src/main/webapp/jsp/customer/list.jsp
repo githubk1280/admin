@@ -126,16 +126,15 @@
 				alert(("#projectId").val());
 			});
 			$("#projectPrincipal").click(function() {
-				var a = $("#proId").val();
-				window.location.replace("http://"+window.location.host+"/admin/customer/addPrincipal-redirect/" + a);
+				window.location.replace("http://"+window.location.host+"/admin/customer/addPrincipal-redirect/" + $("#proId").val());
 				return false;
 			});
 			$("#projectFirstPerson").click(function() {
-				window.location.replace("http://"+window.location.host+"/admin/customer/addFirst-redirect");
+				window.location.replace("http://"+window.location.host+"/admin/customer/addFirst-redirect"+ $("#proId").val());
 				return false;
 			});
 			$("#projectSecondPerson").click(function() {
-				window.location.replace("http://"+window.location.host+"/admin/customer/addSecond-redirect");
+				window.location.replace("http://"+window.location.host+"/admin/customer/addSecond-redirect"+ $("#proId").val());
 				return false;
 			});
 

@@ -196,19 +196,21 @@ public class CustomerController {
 
 	}
 	
-	@RequestMapping("/addFirst-redirect")
-	public ModelAndView addFirstRedirect() {
+	@RequestMapping("/addFirst-redirect/{projectId}")
+	public ModelAndView addFirstRedirect(@PathVariable String projectId) {
 		Customer cust = new Customer();
 		ModelAndView view = new ModelAndView();
+		cust.setProjectId(projectId);
 		view.addObject(cust);
 		view.setViewName(PageResourceConstant.CUSTOMER_ADDFIRST);
 		return view;
 	}
 	
-	@RequestMapping("/addSecond-redirect")
-	public ModelAndView addSecondRedirect() {
+	@RequestMapping("/addSecond-redirect/{projectId}")
+	public ModelAndView addSecondRedirect(@PathVariable String projectId) {
 		Customer cust = new Customer();
 		ModelAndView view = new ModelAndView();
+		cust.setProjectId(projectId);
 		view.addObject(cust);
 		view.setViewName(PageResourceConstant.CUSTOMER_ADDSECOND);
 		return view;
