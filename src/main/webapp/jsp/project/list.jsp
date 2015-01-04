@@ -29,6 +29,16 @@
 							<strong>项目基本信息</strong>
 							<button class="btn btn-default btn-primary" id="create"
 								style="margin-left: 10px;" type="button">创建新的项目</button> 
+							<c:choose>
+							<c:when  test="${flag==1}">
+								<button class="btn btn-default btn-primary" id="completed"
+								style="margin-left: 10px;" type="button">已完成的项目</button> 
+							</c:when>
+							<c:otherwise>
+								<button class="btn btn-default btn-primary" id="progress"
+								style="margin-left: 10px;" type="button" >未完成的项目</button>
+							</c:otherwise>
+							</c:choose>
 							<input id="searchInput" name="searchStr" class="form-control"  style="width:26%;"  placeholder="请输入项目名称"/>				
 							<span class="input-group-btn">
 		                        <button id="searchBtn" class="btn btn-default btn-primary" type="submit"><i class="fa fa-search" style="font-size:130%"></i></button>
@@ -131,8 +141,16 @@
 				window.location.replace("http://"+window.location.host+"/admin/project/add-redirect");
 				return false;
 			});
-
+			$("#completed").click(function() {
+				window.location.replace("http://"+window.location.host+"/admin/project/completedPages/1");
+				return false;
+			});
+			$("#progress").click(function() {
+				window.location.replace("http://"+window.location.host+"/admin/project/pages/1");
+				return false;
+			});
 		});
+	
 	</script>
 
 

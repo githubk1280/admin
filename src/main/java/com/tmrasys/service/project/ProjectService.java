@@ -26,4 +26,8 @@ public interface ProjectService {
 
 	boolean hasAccessAuth(int employeeId, String projectId);
 	List<ProjectIdPrincipal> loadProjectCustomer(int userId);
+	
+	List<Project> loadCompletedProjectsPagination(int userId, int pageIndex);
+	
+	int countCompletedProjectsByEmployee(int employeeId);
 }

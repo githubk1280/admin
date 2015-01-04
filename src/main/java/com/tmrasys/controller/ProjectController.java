@@ -88,9 +88,29 @@ public class ProjectController {
 		}
 		view.addObject("projects", projectsReturn);
 		view.addObject("pages", pages);
+		view.addObject("flag", 1);
 		view.setViewName(PageResourceConstant.PROJECT_LIST);
 		return view;
-
+	}
+	
+	@RequestMapping("/completedPages/{page}")
+	public ModelAndView loadCompletedProjectByPage(@PathVariable int page,
+			HttpSession session) {
+		Employee employee = (Employee) session.getAttribute("user");
+		int count = projectService.countCompletedProjectsByEmployee(employee
+				.getEmployeeId());
+		List<Project> projectsReturn = projectService.loadCompletedProjectsPagination(
+				employee.getEmployeeId(), page);
+		ModelAndView view = new ModelAndView();
+		int pages = 1;
+		if (count > 10) {
+			pages = (count + 9) / 10;
+		}
+		view.addObject("projects", projectsReturn);
+		view.addObject("pages", pages);
+		view.addObject("flag", 2);
+		view.setViewName(PageResourceConstant.PROJECT_LIST);
+		return view;
 	}
 
 	@RequestMapping("/list")

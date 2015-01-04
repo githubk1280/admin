@@ -49,6 +49,24 @@
 		INNER JOIN employee E ON E.EMPLOYEE_ID = PE.EMPLOYEE_ID AND E.EMPLOYEE_ID =
 		#{employeeId} LIMIT #{start}, #{end};
 	</select>
+	
+	<select id="countCompletedProjectsByEmployee" resultType="int" 
+		parameterType="int">
+		SELECT count(*) FROM project P
+		INNER JOIN project_employee PE ON
+		P.PROJECT_ID = PE.PROJECT_ID AND P.PROJECT_PERCENTAGE = 100
+		INNER JOIN employee E ON E.EMPLOYEE_ID = PE.EMPLOYEE_ID AND E.EMPLOYEE_ID =
+		#{employeeId}
+	</select>
+	
+	<select id="loadCompletedProjectsPagination" resultType="list" resultMap="employeeMapper"
+		parameterType="map">
+		SELECT * FROM project P
+		INNER JOIN project_employee PE ON
+		P.PROJECT_ID = PE.PROJECT_ID AND P.PROJECT_PERCENTAGE = 100
+		INNER JOIN employee E ON E.EMPLOYEE_ID = PE.EMPLOYEE_ID AND E.EMPLOYEE_ID =
+		#{employeeId} LIMIT #{start}, #{end};
+	</select>
 
 	<insert id="addProject" parameterMap="projectParameter"
 		keyProperty="projectId" useGeneratedKeys="true">

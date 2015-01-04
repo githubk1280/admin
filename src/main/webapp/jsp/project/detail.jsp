@@ -179,6 +179,7 @@
 													<div>
 														<div>
 															<form:input id="platformDemand" path="platformDemand" class="form-control" maxlength="10"/>
+															<form:input id="percentage" type="text" readonly="true" cssStyle="display:none" class="form-control" path="projectStatusPercentage" />
 														</div>
 													</div>
 												</div>
@@ -277,7 +278,9 @@
 	    			$(this).attr("class","glyphicon glyphicon-chevron-down");
 	    		}
              });
-	    	
+	    	if($("#percentage").val() == 100){
+	    		$("#modifyProBasicData").css('display','none');
+	    	}
 	   	});
 	    
 	    $("#link_newStatus").click(function(){

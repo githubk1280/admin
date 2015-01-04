@@ -16,10 +16,16 @@ public interface ProjectDao {
 	void updateProject(Project project);
 
 	void addProject(Project project);
-
+	
 	int countProjectsByEmployee(int employeeId);
+	
+	int countCompletedProjectsByEmployee(int employeeId);
 
 	List<Project> loadProjectsPagination(
+			@Param(value = "employeeId") int employeeId,
+			@Param(value = "start") int start, @Param(value = "end") int end);
+	
+	List<Project> loadCompletedProjectsPagination(
 			@Param(value = "employeeId") int employeeId,
 			@Param(value = "start") int start, @Param(value = "end") int end);
 

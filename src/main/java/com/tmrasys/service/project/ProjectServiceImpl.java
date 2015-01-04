@@ -131,4 +131,20 @@ public class ProjectServiceImpl implements ProjectService {
 		return list;
 	}
 
+	@Override
+	public List<Project> loadCompletedProjectsPagination(int userId,
+			int pageIndex) {
+		int start = 0;
+		int end = 10;
+		if (pageIndex > 1) {
+			start = (pageIndex - 1) * 10;
+		}
+		return projectDao.loadCompletedProjectsPagination(userId, start, end);
+	}
+
+	@Override
+	public int countCompletedProjectsByEmployee(int employeeId) {
+		return projectDao.countCompletedProjectsByEmployee(employeeId);
+	}
+
 }
