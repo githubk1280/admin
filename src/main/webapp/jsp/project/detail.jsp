@@ -49,7 +49,6 @@
 										<button id="saveProBasicData" value="1"
 										  class="btn btn-default btn-success"
 										  style="margin-left: 10px; margin-right: 10px;float:right; padding:1px 12px;display:none" type="submit">保存</button>
-										
 									</h3>
 								</div>
 								<div id="collapseOne" class="panel-collapse collapse in">

@@ -145,4 +145,16 @@ public class LiteratureController {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return sdf.parse(publishDate);
 	}
+	
+	@RequestMapping("/literature/{literatureId}")
+	public ModelAndView literatureDetail(@PathVariable("id") int literatureId) {
+//		List<Literature> lts = literatureService.loadAllLiteratures(pageIndex,
+//				PaginationConstant.DEFAULT_PAGE_SIZE);
+//		int totalCount = literatureService.getTotalCount();
+		ModelAndView view = new ModelAndView();
+		view.setViewName(PageResourceConstant.LTS_DETAIL);
+//		view.addObject("lts", lts);
+//		view.addObject("total", totalCount);
+		return view;
+	}
 }
