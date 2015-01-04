@@ -22,11 +22,11 @@
 		<%@ include file="../common/nav.jsp"%>
 		<div id="page-wrapper">
 			<div class="row">
-				<form action="<%=request.getContextPath()%>/outsource/search" method="post">
+				<form action="<%=request.getContextPath()%>/customer/search" method="post">
 					<div class="col-lg-12">
 						<h2 class="page-header form-group input-group">
 							<strong>外包基本信息</strong> 
-							<button class="btn btn-default btn-primary" 
+							<button class="btn btn-default btn-primary" id="createOutsource"
 								style="margin-left: 10px;" type="button" data-toggle="modal"
 											data-target="#modalSelectOSType"
 											class="btn btn-default btn-primary pull-left"

@@ -6,13 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tmrasys.dao.CustomerDao;
+import com.tmrasys.dao.ProjectDao;
 import com.tmrasys.domain.Customer;
+import com.tmrasys.domain.ProjectCustomer;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
 	private CustomerDao customerDao;
+	
+	@Autowired
+	private ProjectDao projectDao;
 
 	@Override
 	public List<Customer> getByProjectId(String projectId) {
@@ -81,6 +86,28 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public String getByEmployeeAndId(String id, int employeeId) {
 		return customerDao.getByEmployeeAndId(id, employeeId);
+	}
+
+	@Override
+	public List<ProjectCustomer> findProjectCustomerInfo(String projectName,
+			int employeeId) {
+		// TODO Auto-generated method stub
+//		List<ProjectCustomer> pcList = customerDao.findProjectCustomerInfo(employeeId, projectName);
+		List<ProjectCustomer> pcList = projectDao.findProjectCustomerInfo(employeeId, projectName);
+		if(pcList!=null&&pcList.size()>0){
+			for(int i=0;i<pcList.size();i++){
+				Customer cust = customerDao.getByProjectIdForSearch(employeeId, pcList.get(i).getProjectId());
+				pcList.get(i).setCustomerId(cust.getCustomerId());
+				pcList.get(i).setCustomerName(cust.getCustomerName());
+				pcList.get(i).setCustomerLevel(cust.getCustomerLevel());
+				pcList.get(i).setWorkUnit(cust.getWorkUnit());
+				pcList.get(i).setDepartment(cust.getDepartment());
+				pcList.get(i).setPosition(cust.getPosition());
+				pcList.get(i).setResarchDirection(cust.getResarchDirection());
+				pcList.get(i).setResponsibleArea(cust.getResponsibleArea());
+			}
+		}
+		return pcList;
 	}
 
 }

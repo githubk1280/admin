@@ -32,7 +32,7 @@
 								</h3>
 						</div>
 						<div id="panelCustomerInfo" class="panel-body">
-						<form:form action="addSecond" method="post" commandName="customer">
+						<form:form action="../addSecond" method="post" commandName="customer">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="pull-left page-header">

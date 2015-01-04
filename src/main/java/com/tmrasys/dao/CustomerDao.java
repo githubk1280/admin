@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.tmrasys.domain.Customer;
+import com.tmrasys.domain.ProjectCustomer;
 
 @Repository
 public interface CustomerDao {
@@ -35,4 +36,7 @@ public interface CustomerDao {
 
 	String getByEmployeeAndId(@Param(value = "customerId") String customerId,
 			@Param(value = "employeeId") int employeeId);
+	
+	List<ProjectCustomer> findProjectCustomerInfo(@Param(value = "employeeId") int employeeId,@Param(value = "projectName")String projectName);
+	Customer getByProjectIdForSearch(@Param(value = "employeeId") int employeeId,@Param(value = "projectId")String projectId);
 }

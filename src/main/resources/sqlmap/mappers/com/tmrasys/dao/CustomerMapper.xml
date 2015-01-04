@@ -95,6 +95,12 @@
 		ORDER BY c.project_id,c.principal_num LIMIT #{start}, #{end};
 	</select>
 	
+	<select id="getByProjectIdForSearch" resultType="list" parameterType="map">
+		SELECT * FROM customers c
+		WHERE c.project_id = #{projectId}
+	</select>
+	
+	
 	<resultMap type="com.tmrasys.domain.Customer" id="customerMapper">
 		<id property="customerId" column="CUSTOMER_ID" />
 		<result property="projectId" column="PROJECT_ID" />

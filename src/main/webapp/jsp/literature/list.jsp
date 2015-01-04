@@ -35,7 +35,7 @@
 								<div class="row">
 									<div class="col-md-12">
 										<a href="add-redirect" target="_blank">
-										<button id="createDocument" data-toggle="modal"
+										<button id="createDocument" data-toggle="modal" id="createNewLiterature"
 											data-target="#modalCreateFolder"
 											class="btn btn-default btn-primary pull-left"
 											style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px">

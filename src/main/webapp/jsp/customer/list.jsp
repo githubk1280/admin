@@ -67,7 +67,9 @@
 										class="project_link">${customer.projectName}</a></td>
 									<td><a href="<%=request.getContextPath()%>/customer/${customer.customerId}&${customer.principalId}" target="_blank"
 										class="project_link">${customer.customerName}</a></td>
-									<td>${customer.principalId}</td>
+										<c:if test="${customer.principalId==0}"><td>主要负责人</td></c:if>
+										<c:if test="${customer.principalId==1}"><td>第一联系人</td></c:if>
+										<c:if test="${customer.principalId==2}"><td>第二联系人</td></c:if>
 									<td>${customer.workUnit}</td>
 									<td>${customer.department}</td>
 									<td>${customer.position}</td>
@@ -102,9 +104,9 @@
 													     value="{{ item.projectId }}">{{ item.projectId }}</option>
 					</select>
 					<h3>请选择负责人类型</h3>
-						<button class="btn btn-default btn-primary" id="projectPrincipal">项目主要负责人</button>
-						<button class="btn btn-default btn-primary" id="projectFirstPerson">项目第一联系人</button>
-						<button class="btn btn-default btn-primary" id="projectSecondPerson">项目第二联系人</button>
+						<button class="btn btn-default btn-primary" id="projectPrincipal" disabled>项目主要负责人</button>
+						<button class="btn btn-default btn-primary" id="projectFirstPerson" disabled>项目第一联系人</button>
+						<button class="btn btn-default btn-primary" id="projectSecondPerson" disabled>项目第二联系人</button>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>

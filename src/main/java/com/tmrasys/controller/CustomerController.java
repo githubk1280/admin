@@ -21,6 +21,7 @@ import com.tmrasys.constant.DataCheckTypeConstant;
 import com.tmrasys.constant.page.PageResourceConstant;
 import com.tmrasys.domain.Customer;
 import com.tmrasys.domain.Employee;
+import com.tmrasys.domain.ProjectCustomer;
 import com.tmrasys.domain.ProjectIdPrincipal;
 import com.tmrasys.service.customer.CustomerService;
 import com.tmrasys.service.project.ProjectService;
@@ -222,16 +223,10 @@ public class CustomerController {
 	@RequestMapping("/search")
 	public ModelAndView search(String searchStr, HttpSession session) {
 		Employee employee = (Employee) session.getAttribute("user");
-		System.out.println("::::::::::::::::::::::::"+employee.getEmployeeId());
-		System.out.println("::::::::::::::::::::::::"+searchStr);
-		
-		List<Customer> customers = customerService.getByEmployee(employee
-				.getEmployeeId());
-//		List<ProjectOutSource> outsources = outSourceService
-//				.loadOutSourceByProjectName(searchStr, employee.getEmployeeId());
+		List<ProjectCustomer> outsources =customerService.findProjectCustomerInfo(searchStr, employee.getEmployeeId());
 		ModelAndView view = new ModelAndView();
-//		view.addObject("outsources", outsources);
-//		view.setViewName(PageResourceConstant.OS_LIST);
+		view.addObject("outsources", outsources);
+		view.setViewName(PageResourceConstant.CUSTOMER_LIST);
 		return view;
 	}
 	

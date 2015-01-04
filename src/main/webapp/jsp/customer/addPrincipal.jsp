@@ -31,7 +31,7 @@
 								</h3>
 						</div>
 						<div id="panelCustomerInfo" class="panel-body">
-						<form:form action="addPrincipal" method="post" commandName="customer">
+						<form:form action="../addPrincipal" method="post" commandName="customer">
 			<div class="row">
 				<div class="col-md-6">
 					<div>

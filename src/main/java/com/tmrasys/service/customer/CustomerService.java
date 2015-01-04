@@ -3,6 +3,7 @@ package com.tmrasys.service.customer;
 import java.util.List;
 
 import com.tmrasys.domain.Customer;
+import com.tmrasys.domain.ProjectCustomer;
 
 public interface CustomerService {
 	List<Customer> getByProjectId(String projectId);
@@ -28,4 +29,6 @@ public interface CustomerService {
 	int countProjectSecond(String projectId);
 
 	String getByEmployeeAndId(String id, int employeeId);
+	
+	List<ProjectCustomer> findProjectCustomerInfo(String projectName,int employeeId);
 }

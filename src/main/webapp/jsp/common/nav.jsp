@@ -179,7 +179,9 @@
 			$("#customerBasicDataLi").css('display','none');
 			$("#customerTotalPanel").css('display','none');
 			$("#assignBasicDataLi").css('display','none');
-			$("#create").css('display','none'); 
+			$("#create").css('display','none');
+			$("#createOutsource").css('display','none');
+			$("#createFolder").css('display','none');
 			$("#assignBasicDataLi").css('display','none');
 			//$("#projectBasicDataLi").addClass("active");
 		}
@@ -204,6 +206,17 @@
 			$("#projectBasicDataLi").removeClass("active");
 		}
 		*/
+		if(<%=session.getAttribute("role")%>=="4"){
+			$("#createUserLi").css('display','none');
+			$("#assignBasicDataLi").css('display','none');
+			$("#outsourceTotalPanel").css('display','none');
+			$("#customerTotalPanel").css('display','none');
+			$("#modifyProBasicData").css('display','none');
+			$("#modifyOutsource").css('display','none');
+			$("#modifyCustomInfo").css('display','none');
+			$("#createOutsource").css('display','none');
+			$("#createFolder").css('display','none');
+		}
 	};
 
 	
