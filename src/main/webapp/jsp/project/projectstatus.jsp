@@ -30,7 +30,7 @@
 				</div>
 			</div>
 			<div class="row row-margin">
-				<div class="col-md-6 col-sm-12 col-xs-12">
+				<div class="col-md-4 col-sm-12 col-xs-12">
 					<div>
 						<label>项目编号</label>
 					</div>
@@ -41,11 +41,11 @@
 				</div>
 			</div>
 			<div class="row row-margin">
-				<div class="col-md-6 col-sm-12 col-xs-12">
+				<div class="col-md-4 col-sm-12 col-xs-12">
 					<div>
-						<label>项目当前进度 </label>
+						<label>项目当前进度 </label> 
 					</div>
-					<div class="progress">
+					<div class="progress"> 
 						<div id="progressBarStyle" class="progress-bar " role="progressbar"
 							aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
 							style="width: {{progress.percentage}}%">
@@ -115,18 +115,18 @@
 <!----------------------------------------project status end ------------------------->
 
 <script type="text/javascript">
-$("#radioProStatus1").click(function(){
-	$("#progressBarStyle").removeClass().addClass("progress-bar progress-bar-danger");
-});
-$("#radioProStatus2").click(function(){
-	$("#progressBarStyle").removeClass().addClass("progress-bar progress-bar-warning");
-});
-$("#radioProStatus3").click(function(){
-	$("#progressBarStyle").removeClass().addClass("progress-bar progress-bar-primary");
-});
-$("#radioProStatus4").click(function(){
-	$("#progressBarStyle").removeClass().addClass("progress-bar progress-bar-success");
-});
-$("#inputProStatusDate").val("");
+	$("#radioProStatus1").click(function(){
+		$("#progressBarStyle").removeClass().addClass("progress-bar progress-bar-danger");
+	});
+	$("#radioProStatus2").click(function(){
+		$("#progressBarStyle").removeClass().addClass("progress-bar progress-bar-warning");
+	});
+	$("#radioProStatus3").click(function(){
+		$("#progressBarStyle").removeClass().addClass("progress-bar progress-bar-primary");
+	});
+	$("#radioProStatus4").click(function(){
+		$("#progressBarStyle").removeClass().addClass("progress-bar progress-bar-success");
+	});
+	$("#inputProStatusDate").val("");
 
 </script>

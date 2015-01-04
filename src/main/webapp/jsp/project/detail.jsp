@@ -54,34 +54,107 @@
 								<div id="collapseOne" class="panel-collapse collapse in">
 									<div class="panel-body" id="panelProBasicData">
 											<div class="row">
-												<div class="col-md-6 col-sm-12 col-xs-12">
+												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>项目编号 </label>
 													</div>
 													<div>
-														<form:input id="proBasicProjectID" path="projectId" class="form-control" />
+														<form:input id="proBasicProjectID" path="projectId" class="form-control input-style" />
 													</div>
 												</div>
-												<div class="col-md-6 col-sm-12 col-xs-12">
+												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>项目名 </label>
 													</div>
 													<div>
-														<form:input id="projectName" path="projectName" class="form-control" />
+														<form:input id="projectName" path="projectName" class="form-control input-style" />
 													</div>
 												</div>
-											</div>
-											<div class="row row-margin">
-												<div class="col-md-6 col-sm-12 col-xs-12">
+												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>项目类型 </label>
 														<label id="projectTypeLbl" class="warning-style">该字段不允许为空</label>
 													</div>
 													<div>
-														<form:input id="projectType" path="projectType" class="form-control" maxlength="3"/>
+														<form:input id="projectType" path="projectType" class="form-control input-style" maxlength="3"/>
 													</div>
 												</div>
-												<div class="col-md-6 col-sm-12 col-xs-12">
+											</div>
+											<div class="row row-margin">
+												<div class="col-md-4 col-sm-12 col-xs-12">
+													<div>
+														<label>开始日期 </label>
+														<label id="startDateLbl" class="warning-style">该字段不允许为空</label>
+														<label id="startDateFormatLbl" class="warning-style">日期格式不正确</label>
+														<label id="isstartDateLbl" class="warning-style">您输入的日期不存在</label>
+													</div>
+													<div>
+														<form:input id="startDate" path="startDate" class="form-control form_date input-style"  maxlength="10"/>
+													</div>
+												</div>
+												<div class="col-md-4 col-sm-12 col-xs-12">
+													<div>
+														<label>结束日期</label>
+														<label id="endDateLbl" class="warning-style">该字段不允许为空</label>
+														<label id="endDateFormatLbl" class="warning-style">日期格式不正确</label>
+														<label id="dateComparedLbl" class="warning-style">结束日期必须大于开始日期</label>
+														<label id="isendDateLbl" class="warning-style">您输入的日期不存在</label>
+													</div>
+													<div>
+														<form:input id="endDate" path="endDate" class="form-control form_date input-style"  maxlength="10"/>
+													</div>
+												</div>
+												<div class="col-md-4 col-sm-12 col-xs-12">
+													<div>
+														<label>潜在经费</label>
+														<label id="potentialExpenditureLbl" class="warning-style">该字段不允许为空</label>
+														<label id="checkAmountLbl" class="warning-style">请输入正确的金额</label>
+													</div>
+													<div>
+														<div class="input-group input-style">
+															<span class="input-group-addon">￥</span>
+															<form:input id="potentialExpenditure" path="potentialExpenditure"  maxlength="15" class="form-control" />
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row row-margin">
+												<div class="col-md-4 col-sm-12 col-xs-12">
+													<div>
+														<label>样本数量</label>
+														<label id="sampleCountLbl"  class="warning-style">该字段不允许为空</label>
+														<label id="checkSampleAmountLbl" class="warning-style">请输入正确的样本数量</label>
+													</div>
+													<div>
+														<div>
+															<form:input id="sampleCount" path="sampleCount" class="form-control input-style" maxlength="10"/>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-4 col-sm-12 col-xs-12">
+													<div>
+														<label>技术平台</label>
+														<label id="platformDemandLbl" class="warning-style">该字段不允许为空</label>
+													</div>
+													<div>
+														<div>
+															<form:input id="platformDemand" path="platformDemand" class="form-control  input-style" maxlength="10"/>
+															<form:input id="percentage" type="text" readonly="true" cssStyle="display:none" class="form-control" path="projectStatusPercentage" />
+														</div>
+													</div>
+												</div>
+												<div class="col-md-4 col-sm-12 col-xs-12">
+													<div>
+														<label>研究方向 </label>
+														<label id="researchDirectionLbl" class="warning-style">该字段不允许为空</label>
+													</div>
+													<div>
+														<form:input id="researchDirection" path="researchDirection" class="form-control input-style" maxlength="10"/>
+													</div>
+												</div>
+											</div>
+											<div class="row row-margin">
+												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>是否需要发SCI文章</label>
 													</div>
@@ -92,9 +165,7 @@
 														</label>
 													</div>
 												</div>
-											</div>
-											<div class="row row-margin">
-												<div class="col-md-6 col-sm-12 col-xs-12">
+												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>优先级</label>
 													</div>
@@ -106,7 +177,7 @@
 																value="3" />低 </label>
 													</div>
 												</div>
-												<div class="col-md-6 col-sm-12 col-xs-12">
+												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>是否需要主管协助</label>
 													</div>
@@ -118,82 +189,7 @@
 												</div>
 											</div>
 											<div class="row row-margin">
-												<div class="col-md-6 col-sm-12 col-xs-12">
-													<div>
-														<label>开始日期 </label>
-														<label id="startDateLbl" class="warning-style">该字段不允许为空</label>
-														<label id="startDateFormatLbl" class="warning-style">日期格式不正确</label>
-														<label id="isstartDateLbl" class="warning-style">您输入的日期不存在</label>
-													</div>
-													<div>
-														<form:input id="startDate" path="startDate" class="form-control form_date"  maxlength="10"/>
-													</div>
-												</div>
-												<div class="col-md-6 col-sm-12 col-xs-12">
-													<div>
-														<label>结束日期</label>
-														<label id="endDateLbl" class="warning-style">该字段不允许为空</label>
-														<label id="endDateFormatLbl" class="warning-style">日期格式不正确</label>
-														<label id="dateComparedLbl" class="warning-style">结束日期必须大于开始日期</label>
-														<label id="isendDateLbl" class="warning-style">您输入的日期不存在</label>
-													</div>
-													<div>
-														<form:input id="endDate" path="endDate" class="form-control form_date"  maxlength="10"/>
-													</div>
-												</div>
-											</div>
-											<div class="row row-margin">
-												<div class="col-md-6 col-sm-12 col-xs-12">
-													<div>
-														<label>潜在经费</label>
-														<label id="potentialExpenditureLbl" class="warning-style">该字段不允许为空</label>
-														<label id="checkAmountLbl" class="warning-style">请输入正确的金额</label>
-													</div>
-													<div>
-														<div class="input-group">
-															<span class="input-group-addon">￥</span>
-															<form:input id="potentialExpenditure" path="potentialExpenditure"  maxlength="15" class="form-control" />
-														</div>
-													</div>
-												</div>
-												<div class="col-md-6 col-sm-12 col-xs-12">
-													<div>
-														<label>样本数量</label>
-														<label id="sampleCountLbl"  class="warning-style">该字段不允许为空</label>
-														<label id="checkSampleAmountLbl" class="warning-style">请输入正确的样本数量</label>
-													</div>
-													<div>
-														<div>
-															<form:input id="sampleCount" path="sampleCount" class="form-control" maxlength="10"/>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="row row-margin">
-												<div class="col-md-6 col-sm-12 col-xs-12">
-													<div>
-														<label>技术平台</label>
-														<label id="platformDemandLbl" class="warning-style">该字段不允许为空</label>
-													</div>
-													<div>
-														<div>
-															<form:input id="platformDemand" path="platformDemand" class="form-control" maxlength="10"/>
-															<form:input id="percentage" type="text" readonly="true" cssStyle="display:none" class="form-control" path="projectStatusPercentage" />
-														</div>
-													</div>
-												</div>
-												<div class="col-md-6 col-sm-12 col-xs-12">
-													<div>
-														<label>研究方向 </label>
-														<label id="researchDirectionLbl" class="warning-style">该字段不允许为空</label>
-													</div>
-													<div>
-														<form:input id="researchDirection" path="researchDirection" class="form-control" maxlength="10"/>
-													</div>
-												</div>
-											</div>
-											<div class="row row-margin">
-												<div class="col-md-6 col-sm-12 col-xs-12">
+												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>10x1000合作 </label>
 													</div>
@@ -205,7 +201,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="col-md-6 col-sm-12 col-xs-12">
+												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>课题方案</label>
 													</div>
@@ -216,7 +212,6 @@
 																	path="needProjectPlan" value="N" />不需要 </label>
 														</div>
 													</div>
-
 												</div>
 											</div>
 											<div class="row row-margin">
@@ -377,7 +372,15 @@
 		            data: $scope.progress
 				}).success(function (data){
 					if(data.success == true){
-						alert("状态更新成功!");
+						//alert("状态更新成功!");
+						$("#proStatusDate").css('display','none');
+						$("#proStatusUpdate").css('display','none');
+						$("#proStatusContent").css('display','none');
+						$("#proStatusBtn").css('display','none');
+						$("#cancelProjectStatus").css('display','none');
+						$("#saveProjectStatus").css('display','none');
+						$("#inputProStatusDate").val("");
+						$("#inpuProStatusContent").val("");
 					}
 				}).error(function (err){
 					alert(err);
