@@ -102,9 +102,9 @@
 													     value="{{ item.projectId }}">{{ item.projectId }}</option>
 					</select>
 					<h3>请选择负责人类型</h3>
-					<button class="btn btn-default btn-primary" id="projectPrincipal">项目主要负责人</button>
-					<button class="btn btn-default btn-primary" id="projectFirstPerson">项目第一联系人</button>
-					<button class="btn btn-default btn-primary" id="projectSecondPerson">项目第二联系人</button>
+						<button class="btn btn-default btn-primary" id="projectPrincipal">项目主要负责人</button>
+						<button class="btn btn-default btn-primary" id="projectFirstPerson">项目第一联系人</button>
+						<button class="btn btn-default btn-primary" id="projectSecondPerson">项目第二联系人</button>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
