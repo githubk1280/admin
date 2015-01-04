@@ -110,13 +110,6 @@
 		      AND p.project_name LIKE "%"#{projectName}"%"
 		ORDER BY p.project_id DESC		
 	</select>
-	<select id="findProjectCustomerInfo" resultType="employeeMapper" parameterType="map">
-		SELECT p.project_id,p.project_name FROM project p,project_employee pe
-		WHERE p.project_id = pe.project_id
-		      AND pe.employee_id = #{employeeId}
-		      AND p.project_name LIKE "%"#{projectName}"%"
-	</select>
-	
 	<parameterMap type="com.tmrasys.domain.Project" id="projectParameter">
 		<parameter property="projectId" resultMap="PROJECT_ID" />
 		<parameter property="projectName" resultMap="PROJECT_NAME" />
