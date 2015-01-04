@@ -122,7 +122,7 @@
 		},
 		value:'',
 		lang:'en',
-		format:'Y/m/d H:i',
+		format:'Y/m/d',
 		formatTime:'H:i',
 		formatDate:'Y/m/d',
 		step:60,

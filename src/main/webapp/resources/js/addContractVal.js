@@ -1,14 +1,118 @@
 /**
  * 
  */
+$( "#signDate" ).datetimepicker({
+			lang:'ch',
+			timepicker:false,
+			onClose:function(){
+				var ii = $("#signDate").val();
+				if(ii!=""){
+					var date = new Date(ii);
+					var year = date.getFullYear();
+					var month = date.getMonth() + 1; 
+					if(month<10){
+						month = "0" + month;
+					}
+					var day = date.getDate();
+					if(day<10){
+						day = "0" + day;
+					}
+					formatDate = year + "-" + month + "-" + day;
+					$("#signDate").val(formatDate);
+				}
+			},
+			validateOnBlur:false
+		});
 
-$(".form_date").datetimepicker({
-	language:"zh-CN",
-	minView: "month",
-    format: "yyyy-mm-dd",
-    todayHighlight:true,
-    autoclose: true
-});
+		$( "#startDate" ).datetimepicker({
+			lang:'ch',
+			timepicker:false,
+			onClose:function(){
+				var ii = $("#startDate").val();
+				if(ii!=""){
+					var date = new Date(ii);
+					var year = date.getFullYear();
+					var month = date.getMonth() + 1; 
+					if(month<10){
+						month = "0" + month;
+					}
+					var day = date.getDate();
+					if(day<10){
+						day = "0" + day;
+					}
+					formatDate = year + "-" + month + "-" + day;
+					$("#startDate").val(formatDate);
+				}
+			},
+			validateOnBlur:false
+		});
+		
+		$( "#endDate" ).datetimepicker({
+			lang:'ch',
+			timepicker:false,
+			onClose:function(){
+				var ii = $("#endDate").val();
+				if(ii!=""){
+					var date = new Date(ii);
+					var year = date.getFullYear();
+					var month = date.getMonth() + 1; 
+					if(month<10){
+						month = "0" + month;
+					}
+					var day = date.getDate();
+					if(day<10){
+						day = "0" + day;
+					}
+					formatDate = year + "-" + month + "-" + day;
+					$("#endDate").val(formatDate);
+				}
+			},
+			validateOnBlur:false
+		});
+		$( "#advancedPaymentDate" ).datetimepicker({
+			lang:'ch',
+			timepicker:false,
+			onClose:function(){
+				var ii = $("#advancedPaymentDate").val();
+				if(ii!=""){
+					var date = new Date(ii);
+					var year = date.getFullYear();
+					var month = date.getMonth() + 1; 
+					if(month<10){
+						month = "0" + month;
+					}
+					var day = date.getDate();
+					if(day<10){
+						day = "0" + day;
+					}
+					formatDate = year + "-" + month + "-" + day;
+					$("#advancedPaymentDate").val(formatDate);
+				}
+			},
+			validateOnBlur:false
+		});
+		$( "#balPaymentDate" ).datetimepicker({
+			lang:'ch',
+			timepicker:false,
+			onClose:function(){
+				var ii = $("#balPaymentDate").val();
+				if(ii!=""){
+					var date = new Date(ii);
+					var year = date.getFullYear();
+					var month = date.getMonth() + 1; 
+					if(month<10){
+						month = "0" + month;
+					}
+					var day = date.getDate();
+					if(day<10){
+						day = "0" + day;
+					}
+					formatDate = year + "-" + month + "-" + day;
+					$("#balPaymentDate").val(formatDate);
+				}
+			},
+			validateOnBlur:false
+		});
 
 $("#save").click(function(){
 	$("#save").attr("type","submit");

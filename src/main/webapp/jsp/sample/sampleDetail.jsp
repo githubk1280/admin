@@ -121,7 +121,7 @@
 												</div>
 												<div>
 													<div>
-														<form:input id="reciveDate" path="reciveDate" class="form-control form_date" readonly="true"/>
+														<form:input id="reciveDate" path="reciveDate" class="form-control" readonly="true"/>
 													</div>
 												</div>
 											</div>
@@ -134,7 +134,7 @@
 												</div>
 												<div>
 													<div>
-														<form:input id="reportDate" path="reportDate" class="form-control form_date" readonly="true"/>
+														<form:input id="reportDate" path="reportDate" class="form-control" readonly="true"/>
 													</div>
 												</div>
 											</div>

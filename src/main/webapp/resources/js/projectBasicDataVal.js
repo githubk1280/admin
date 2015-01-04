@@ -2,6 +2,12 @@
  * 
  */
 
+
+
+
+
+
+
 $("#arrowProBasicData").click(function(){
 	    		if($(this).attr("class")==("glyphicon glyphicon-chevron-down")){
 	    			$(this).attr("class","glyphicon glyphicon-chevron-up");
@@ -10,14 +16,6 @@ $("#arrowProBasicData").click(function(){
 	    		}
 });
 
-
-$(".form_date").datetimepicker({
-	language:"zh-CN",
-	minView: "month",
-    format: "yyyy-mm-dd",
-    todayHighlight:true,
-    autoclose: true
-});
 /****button switch of project basic data start***/
 if($("#modifyProBasicData").css('display')=="block"){	
 	$("#panelProBasicData input").attr("readonly",true);
@@ -33,10 +31,56 @@ if($("#modifyProBasicData").css('display')=="block"){
 	$("#hasCorporatedIntention2").attr("disabled",true);
 	$("#needProjectPlan1").attr("disabled",true);
 	$("#needProjectPlan2").attr("disabled",true);
-	
+	$( "#startDate" ).datetimepicker("destroy");
+	$( "#endDate" ).datetimepicker("destroy");
 }else{
 	$("#panelProBasicData input").attr("readonly",false);
 	$("#panelProBasicData textarea").attr("readonly",false);
+	$( "#startDate" ).datetimepicker({
+		lang:'ch',
+		timepicker:false,
+		onClose:function(){
+			var ii = $("#startDate").val();
+			if(ii!=""){
+				var date = new Date(ii);
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1; 
+				if(month<10){
+					month = "0" + month;
+				}
+				var day = date.getDate();
+				if(day<10){
+					day = "0" + day;
+				}
+				formatDate = year + "-" + month + "-" + day;
+				$("#startDate").val(formatDate);
+			}
+		},
+		validateOnBlur:false
+	});
+	$( "#endDate" ).datetimepicker({
+		lang:'ch',
+		timepicker:false,
+		onClose:function(){
+			var ii = $("#endDate").val();
+			if(ii!=""){
+				var date = new Date(ii);
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1; 
+				if(month<10){
+					month = "0" + month;
+				}
+				var day = date.getDate();
+				if(day<10){
+					day = "0" + day;
+				}
+				formatDate = year + "-" + month + "-" + day;
+				$("#endDate").val(formatDate);
+			}
+		},
+		validateOnBlur:false
+	});
+	
 }
 
 $("#modifyProBasicData").click(function(){
@@ -58,6 +102,50 @@ $("#modifyProBasicData").click(function(){
 	$("#needProjectPlan2").attr("disabled",false);
 	$("#proBasicProjectID").attr("readonly",true);
 	$("#projectName").attr("readonly",true);
+	$( "#startDate" ).datetimepicker({
+		lang:'ch',
+		timepicker:false,
+		onClose:function(){
+			var ii = $("#startDate").val();
+			if(ii!=""){
+				var date = new Date(ii);
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1; 
+				if(month<10){
+					month = "0" + month;
+				}
+				var day = date.getDate();
+				if(day<10){
+					day = "0" + day;
+				}
+				formatDate = year + "-" + month + "-" + day;
+				$("#startDate").val(formatDate);
+			}
+		},
+		validateOnBlur:false
+	});
+	$( "#endDate" ).datetimepicker({
+		lang:'ch',
+		timepicker:false,
+		onClose:function(){
+			var ii = $("#endDate").val();
+			if(ii!=""){
+				var date = new Date(ii);
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1; 
+				if(month<10){
+					month = "0" + month;
+				}
+				var day = date.getDate();
+				if(day<10){
+					day = "0" + day;
+				}
+				formatDate = year + "-" + month + "-" + day;
+				$("#endDate").val(formatDate);
+			}
+		},
+		validateOnBlur:false
+	});
 	
 });
 
@@ -93,6 +181,8 @@ $("#cancelProBasicData").click(function(){
 	$("#platformDemandLbl").hide();
 	$("#researchDirectionLbl").hide();
 	$("#projectContentLbl").hide();
+	$( "#startDate" ).datetimepicker("destroy");
+	$( "#endDate" ).datetimepicker("destroy");
 	
 });
 

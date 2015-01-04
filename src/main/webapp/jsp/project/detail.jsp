@@ -89,7 +89,7 @@
 														<label id="isstartDateLbl" class="warning-style">您输入的日期不存在</label>
 													</div>
 													<div>
-														<form:input id="startDate" path="startDate" class="form-control form_date input-style"  maxlength="10"/>
+														<form:input id="startDate" path="startDate" class="form-control input-style"  maxlength="10"/>
 													</div>
 												</div>
 												<div class="col-md-4 col-sm-12 col-xs-12">
@@ -101,7 +101,7 @@
 														<label id="isendDateLbl" class="warning-style">您输入的日期不存在</label>
 													</div>
 													<div>
-														<form:input id="endDate" path="endDate" class="form-control form_date input-style"  maxlength="10"/>
+														<form:input id="endDate" path="endDate" class="form-control input-style"  maxlength="10"/>
 													</div>
 												</div>
 												<div class="col-md-4 col-sm-12 col-xs-12">

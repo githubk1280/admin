@@ -2,12 +2,53 @@
  * 
  */
 
-$(".form_date").datetimepicker({
-	language:"zh-CN",
-	minView: "month",
-    format: "yyyy-mm-dd",
-    todayHighlight:true,
-    autoclose: true
+//reciveDate
+//reportDate
+
+$( "#reciveDate" ).datetimepicker({
+	lang:'ch',
+	timepicker:false,
+	onClose:function(){
+		var ii = $("#reciveDate").val();
+		if(ii!=""){
+			var date = new Date(ii);
+			var year = date.getFullYear();
+			var month = date.getMonth() + 1; 
+			if(month<10){
+				month = "0" + month;
+			}
+			var day = date.getDate();
+			if(day<10){
+				day = "0" + day;
+			}
+			formatDate = year + "-" + month + "-" + day;
+			$("#reciveDate").val(formatDate);
+		}
+	},
+	validateOnBlur:false
+});
+
+$( "#reportDate" ).datetimepicker({
+	lang:'ch',
+	timepicker:false,
+	onClose:function(){
+		var ii = $("#reportDate").val();
+		if(ii!=""){
+			var date = new Date(ii);
+			var year = date.getFullYear();
+			var month = date.getMonth() + 1; 
+			if(month<10){
+				month = "0" + month;
+			}
+			var day = date.getDate();
+			if(day<10){
+				day = "0" + day;
+			}
+			formatDate = year + "-" + month + "-" + day;
+			$("#reportDate").val(formatDate);
+		}
+	},
+	validateOnBlur:false
 });
 
 $("#save").click(function(){

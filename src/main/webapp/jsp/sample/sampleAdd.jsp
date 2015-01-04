@@ -119,7 +119,7 @@
 												</div>
 												<div>
 													<div>
-														<form:input id="reciveDate" path="reciveDate" class="form-control form_date input-style" />
+														<form:input id="reciveDate" path="reciveDate" class="form-control input-style" />
 													</div>
 												</div>
 											</div>
@@ -132,7 +132,7 @@
 												</div>
 												<div>
 													<div>
-														<form:input id="reportDate" path="reportDate" class="form-control form_date input-style" />
+														<form:input id="reportDate" path="reportDate" class="form-control input-style" />
 													</div>
 												</div>
 											</div>

@@ -94,7 +94,7 @@
 																	<label id="issignDateLbl" class="warning-style">您输入的日期不存在</label>
 																</div>
 																<div>
-																	<form:input id="signDate" path="signDate" class="form-control form_date input-style" />
+																	<form:input id="signDate" path="signDate" class="form-control input-style" />
 																</div>
 															</div>
 														</div>
@@ -108,7 +108,7 @@
 																</div>
 																<div>
 																	<div>
-																		<form:input id="startDate" path="startDate" class="form-control form_date input-style" />
+																		<form:input id="startDate" path="startDate" class="form-control input-style" />
 																	</div>
 																</div>
 															</div>
@@ -122,7 +122,7 @@
 																</div>
 																<div>
 																	<div>
-																		<form:input id="endDate" path="endDate" class="form-control form_date input-style" />
+																		<form:input id="endDate" path="endDate" class="form-control input-style" />
 																	</div>
 																</div>
 															</div>
@@ -176,7 +176,7 @@
 																	<label>预付款到账日期</label>
 																</div>
 																<div>
-																	<form:input id="advancedPaymentDate" path="advancedAmountDate" class="form-control form_date input-style"/>
+																	<form:input id="advancedPaymentDate" path="advancedAmountDate" class="form-control input-style"/>
 																</div>
 															</div>
 															<div class="col-md-4 col-sm-12 col-xs-12">
@@ -225,7 +225,7 @@
 																</div>
 																<div>
 																	<div>
-																		<form:input id="balPaymentDate" path="balancedAmountDate" class="form-control form_date input-style"/>
+																		<form:input id="balPaymentDate" path="balancedAmountDate" class="form-control  input-style"/>
 																	</div>
 																</div>
 															</div>
@@ -271,6 +271,8 @@
 			window.location.replace("http://"+window.location.host+"/admin/contract/pages/1");			
 			return false;
 		});
+		
+		
 	});
 	function contractController($scope, $http) {
 		$scope.selected = '';

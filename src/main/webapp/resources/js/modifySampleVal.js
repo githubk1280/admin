@@ -1,23 +1,16 @@
 /**
  * 
  */
-$(".form_date").datetimepicker({
-	language:"zh-CN",
-	minView: "month",
-    format: "yyyy-mm-dd",
-    todayHighlight:true,
-    autoclose: true
-});
-if($("#reportDate").readOnly==true){
-	alert("come int");
-	$("#reportDate").removeClass("form_date");
-}
+
+
 
 if($("#modify").css('display')=="block"){
 	$("#sampleType1").attr("disabled",true);
 	$("#sampleType2").attr("disabled",true);
 	$("#sended1").attr("disabled",true);
 	$("#sended2").attr("disabled",true);
+	$( "#reciveDate" ).datetimepicker("destroy");
+	$( "#reportDate" ).datetimepicker("destroy");
 }
 
 $("#modify").click(function(){
@@ -35,6 +28,51 @@ $("#modify").click(function(){
 	$("#sampleType2").attr("disabled",false);
 	$("#sended1").attr("disabled",false);
 	$("#sended2").attr("disabled",false);
+	$( "#reciveDate" ).datetimepicker({
+		lang:'ch',
+		timepicker:false,
+		onClose:function(){
+			var ii = $("#reciveDate").val();
+			if(ii!=""){
+				var date = new Date(ii);
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1; 
+				if(month<10){
+					month = "0" + month;
+				}
+				var day = date.getDate();
+				if(day<10){
+					day = "0" + day;
+				}
+				formatDate = year + "-" + month + "-" + day;
+				$("#reciveDate").val(formatDate);
+			}
+		},
+		validateOnBlur:false
+	});
+
+	$( "#reportDate" ).datetimepicker({
+		lang:'ch',
+		timepicker:false,
+		onClose:function(){
+			var ii = $("#reportDate").val();
+			if(ii!=""){
+				var date = new Date(ii);
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1; 
+				if(month<10){
+					month = "0" + month;
+				}
+				var day = date.getDate();
+				if(day<10){
+					day = "0" + day;
+				}
+				formatDate = year + "-" + month + "-" + day;
+				$("#reportDate").val(formatDate);
+			}
+		},
+		validateOnBlur:false
+	});
 });
 
 $("#cancel").click(function(){
@@ -60,7 +98,8 @@ $("#cancel").click(function(){
 	$("#balancedAmountLbl").hide();
 	$("#checkBalancedAmountLbl").hide();
 	$("#balancedAmountComparedTotalAmountLbl").hide();
-	
+	$( "#reciveDate" ).datetimepicker("destroy");
+	$( "#reportDate" ).datetimepicker("destroy");
 });
 
 

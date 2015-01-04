@@ -205,7 +205,7 @@
 																	<label id="balancedAmountComparedTotalAmountLbl" class="warning-style">尾款金额不能大于合同金额</label>
 																</div>
 																<div>
-																	<div class="input-group">
+																	<div class="input-group input-style">
 																		<span class="input-group-addon">￥</span>
 																		<form:input id="balancedAmount" path="balancedAmount" class="form-control input-style"  readonly="true"/>
 																	</div>

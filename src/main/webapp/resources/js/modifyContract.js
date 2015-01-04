@@ -2,11 +2,18 @@
  * 
  */
 
+
+
 if($("#modifyBtn").css('display')=="inline-block"){
 	$("#advancedAmountStatus1").attr("disabled",true);
 	$("#advancedAmountStatus2").attr("disabled",true);
 	$("#balancedAmountStatus1").attr("disabled",true);
 	$("#balancedAmountStatus2").attr("disabled",true);
+	$( "#signDate" ).datetimepicker("destroy");
+	$( "#startDate" ).datetimepicker("destroy");
+	$( "#endDate" ).datetimepicker("destroy");
+	$( "#advancedPaymentDate" ).datetimepicker("destroy");
+	$( "#balPaymentDate" ).datetimepicker("destroy");
 }
 
 $("#modifyBtn").click(function(){
@@ -21,7 +28,51 @@ $("#modifyBtn").click(function(){
 	$("#balancedAmountStatus2").attr("disabled",false);
 	$("#advancedPaymentDate").attr("readonly",false);
 	$("#balPaymentDate").attr("readonly",false);
-
+	
+	$( "#advancedPaymentDate" ).datetimepicker({
+		lang:'ch',
+		timepicker:false,
+		onClose:function(){
+			var ii = $("#advancedPaymentDate").val();
+			if(ii!=""){
+				var date = new Date(ii);
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1; 
+				if(month<10){
+					month = "0" + month;
+				}
+				var day = date.getDate();
+				if(day<10){
+					day = "0" + day;
+				}
+				formatDate = year + "-" + month + "-" + day;
+				$("#advancedPaymentDate").val(formatDate);
+			}
+		},
+		validateOnBlur:false
+	});
+	$( "#balPaymentDate" ).datetimepicker({
+		lang:'ch',
+		timepicker:false,
+		onClose:function(){
+			var ii = $("#balPaymentDate").val();
+			if(ii!=""){
+				var date = new Date(ii);
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1; 
+				if(month<10){
+					month = "0" + month;
+				}
+				var day = date.getDate();
+				if(day<10){
+					day = "0" + day;
+				}
+				formatDate = year + "-" + month + "-" + day;
+				$("#balPaymentDate").val(formatDate);
+			}
+		},
+		validateOnBlur:false
+	});
 });
 
 $("#cancelBtn").click(function(){
