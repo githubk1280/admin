@@ -15,13 +15,13 @@ public class OutSourceServiceImpl implements OutSourceService {
 
 	@Autowired
 	private OutSourceDao outSourceDao;
-	
+
 	@Override
 	public List<OutSource> getOutSourceByProjectId(int projectId) {
 		List<OutSource> list = new ArrayList<OutSource>();
 		OutSource exOS = new OutSource(), dataOS = new OutSource();
-		for(OutSource os : outSourceDao.getByProjectId(projectId)) {
-			if("实验外包".equals(os.getOutSourceType()))
+		for (OutSource os : outSourceDao.getByProjectId(projectId)) {
+			if ("实验外包".equals(os.getOutSourceType()))
 				exOS = os;
 			else
 				dataOS = os;
@@ -30,10 +30,10 @@ public class OutSourceServiceImpl implements OutSourceService {
 		list.add(dataOS);
 		return list;
 	}
-	
+
 	@Override
-	public List<ProjectOutSource> loadOutSourceByProjectName(String projectName,
-			int employeeId) {
+	public List<ProjectOutSource> loadOutSourceByProjectName(
+			String projectName, int employeeId) {
 		// TODO Auto-generated method stub
 		return outSourceDao.getByProjectName(projectName, employeeId);
 	}
@@ -64,14 +64,19 @@ public class OutSourceServiceImpl implements OutSourceService {
 	}
 
 	@Override
-	public List<ProjectOutSource> getPagedByEmployee(int employeeId, int pageIndex) {
+	public List<ProjectOutSource> getPagedByEmployee(int employeeId,
+			int pageIndex) {
 		int start = 0;
 		int end = 10;
-		if(pageIndex > 1) {
+		if (pageIndex > 1) {
 			start = (pageIndex - 1) * 10;
 		}
 		return outSourceDao.getPagedByEmployee(employeeId, start, end);
 	}
 
-}
+	@Override
+	public String getByEmployeeAndId(String id, int employeeId) {
+		return outSourceDao.getByEmployeeAndId(id, employeeId);
+	}
 
+}

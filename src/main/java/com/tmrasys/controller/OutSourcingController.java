@@ -17,13 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
+import com.tmrasys.constant.DataCheckTypeConstant;
 import com.tmrasys.constant.page.PageResourceConstant;
 import com.tmrasys.domain.Employee;
 import com.tmrasys.domain.OutSource;
 import com.tmrasys.domain.PageOutSource;
 import com.tmrasys.domain.ProjectOutSource;
-import com.tmrasys.domain.Sample;
 import com.tmrasys.service.outSource.OutSourceService;
+import com.tmrasys.stereotype.DataAccessCheck;
 import com.tmrasys.utils.JsonResponseUtils;
 
 @Controller
@@ -37,6 +38,7 @@ public class OutSourcingController {
 	private static final String DATA_OS = "数据分析外包";
 	private static final String EXP_OS = "实验外包";
 
+	@DataAccessCheck(forWhat = { DataCheckTypeConstant.OUTSOURCE })
 	@RequestMapping("/{osId}")
 	public ModelAndView loadProjectById(@PathVariable int osId) {
 		OutSource outsource = outSourceService.getById(osId);

@@ -17,12 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
+import com.tmrasys.constant.DataCheckTypeConstant;
 import com.tmrasys.constant.page.PageResourceConstant;
 import com.tmrasys.domain.Customer;
 import com.tmrasys.domain.Employee;
 import com.tmrasys.domain.ProjectIdPrincipal;
 import com.tmrasys.service.customer.CustomerService;
 import com.tmrasys.service.project.ProjectService;
+import com.tmrasys.stereotype.DataAccessCheck;
 import com.tmrasys.utils.JsonResponseUtils;
 
 @Controller
@@ -35,6 +37,7 @@ public class CustomerController {
 	@Autowired
 	private ProjectService projectService;
 
+	@DataAccessCheck(forWhat = { DataCheckTypeConstant.CUSTOMER })
 	@RequestMapping("/{customerId}&{principalId}")
 	public ModelAndView loadProjectById(@PathVariable int customerId,@PathVariable int principalId) {
 		Customer customer = customerService.getById(customerId);

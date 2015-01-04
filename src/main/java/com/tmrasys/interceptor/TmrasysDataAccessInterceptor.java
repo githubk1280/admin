@@ -59,19 +59,24 @@ public class TmrasysDataAccessInterceptor implements HandlerInterceptor,
 						pass = checkHelper.hasAccess(projectId, name,
 								employee.getEmployeeId());
 					}
-
 					if (DataCheckTypeConstant.CONTRACT.equals(name)) {
 						String contractId = ((String) pathVariable
 								.get("contractId"));
 						pass = checkHelper.hasAccess(contractId, name,
 								employee.getEmployeeId());
 					}
-
 					if (DataCheckTypeConstant.SAMPLE.equals(name)) {
 						String sampleId = ((String) pathVariable
 								.get("sampleId"));
 						pass = checkHelper.hasAccess(sampleId, name,
 								employee.getEmployeeId());
+					}
+					if (DataCheckTypeConstant.OUTSOURCE.equals(name)) {
+						String osId = ((String) pathVariable.get("osId"));
+						pass = checkHelper.hasAccess(osId, name,
+								employee.getEmployeeId());
+					}
+					if (DataCheckTypeConstant.CUSTOMER.equals(name)) {
 					}
 
 				}
