@@ -45,12 +45,12 @@
 												</div>
 											</div>
 											<div class="row">
-												<div class="col-md-6 col-sm-12 col-xs-12">
+												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>项目编号 </label>
 													</div>
 													<div>
-														<form:select class="form-control" ng-model="selected"
+														<form:select class="form-control" ng-model="selected" style="width:80%;"
 															path="projectId">
 															<option value="">-- 请选择 --</option>
 															<option ng-repeat="item in idAndPrincipal"
@@ -59,58 +59,56 @@
 														</form:select>
 													</div>
 												</div>
-												<div class="col-md-6 col-sm-12 col-xs-12">
+												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>外包单位</label>
 													</div>
 													<div>
-														<form:input type="text" path="outSourceUnit" class="form-control"/>
+														<form:input type="text" path="outSourceUnit" class="form-control input-style"/>
 													</div>
 												</div>
-											</div>
-											<div class="row row-margin">
-												<div class="col-md-6 col-sm-12 col-xs-12">
+												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>联系人</label>
 													</div>
 													<div>
-														<form:input type="text" path="contactPerson" class="form-control"/>
+														<form:input type="text" path="contactPerson" class="form-control input-style"/>
 													</div>
 												</div>
-												<div class="col-md-6 col-sm-12 col-xs-12">
+											</div>
+											<div class="row row-margin">
+												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>联系人电话</label>
 													</div>
 													<div>
-														<form:input type="text" path="contactPhone" class="form-control"/>
+														<form:input type="text" path="contactPhone" class="form-control input-style"/>
 													</div>
 												</div>
-											</div>
-											<div class="row row-margin">
-												<div class="col-md-6 col-sm-12 col-xs-12">
+												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>地址 </label>
 													</div>
 													<div>
-														<form:input class="form-control" path="address" rows="8"/>
+														<form:input class="form-control input-style" path="address" rows="8"/>
 													</div>
 												</div>
-												<div class="col-md-6 col-sm-12 col-xs-12">
+												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>数据来源 </label>
 													</div>
 													<div>
-														<form:input class="form-control" path="dataSource" rows="8"/>
+														<form:input class="form-control input-style" path="dataSource" rows="8"/>
 													</div>
 												</div>
 											</div>
 											<div class="row row-margin">
-												<div class="col-md-6 col-sm-12 col-xs-12">
+												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>数据编号 </label>
 													</div>
 													<div>
-														<form:input class="form-control" path="dataNum" rows="8"/>
+														<form:input class="form-control input-style" path="dataNum" rows="8"/>
 													</div>
 												</div>
 											</div>

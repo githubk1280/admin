@@ -56,116 +56,112 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-6 col-sm-12 col-xs-12">
+				<div class="col-md-4 col-sm-12 col-xs-12">
 					<div>
 						<label>项目编号 </label>
 					</div>
 					<div>
-						<form:input id="projectIdForCustomerAdd" path="projectId" type="text" class="form-control" readonly="true"/>
+						<form:input id="projectIdForCustomerAdd" path="projectId" type="text" class="form-control input-style" readonly="true"/>
 					</div>
 				</div>
-				<div class="col-md-6 col-sm-12 col-xs-12">
+				<div class="col-md-4 col-sm-12 col-xs-12">
 					<div>
 						<label>姓名 </label>
 					</div>
 					<div>
-						<form:input id="customerName" path="customerName" type="text" class="form-control"   maxlength="5"/>
+						<form:input id="customerName" path="customerName" type="text" class="form-control input-style"   maxlength="5"/>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6 col-sm-12 col-xs-12">
+				<div class="col-md-4 col-sm-12 col-xs-12">
 					<div>
 						<label>性别 </label>
 					</div>
 					<div>
-						<form:input id="sex"  path="sex" type="text" class="form-control"   maxlength="1"/>
+						<form:input id="sex"  path="sex" type="text" class="form-control input-style"   maxlength="1"/>
 					</div>
 				</div>
-				<div class="col-md-6 col-sm-12 col-xs-12">
+			</div>
+			<div class="row row-margin">
+				<div class="col-md-4 col-sm-12 col-xs-12">
 					<div>
 						<label>年龄 </label>
 						<label id="principalAgeLbl" class="warning-style">请输入正确的年龄</label>
 					</div>
 					<div>
-						<form:input id="age" path="age" type="text" class="form-control"  maxlength="3"/>
+						<form:input id="age" path="age" type="text" class="form-control input-style"  maxlength="3"/>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6 col-sm-12 col-xs-12">
+				<div class="col-md-4 col-sm-12 col-xs-12">
 					<div>
 						<label>联系电话 </label>
 						<label id="principalPhoneLbl" class="warning-style">请输入正确的号码</label>
 					</div>
 					<div>
-						<form:input id="phone" path="phone" type="text" class="form-control" maxlength="15"/>
+						<form:input id="phone" path="phone" type="text" class="form-control input-style" maxlength="15"/>
 					</div>
 				</div>
-				<div class="col-md-6 col-sm-12 col-xs-12">
+				<div class="col-md-4 col-sm-12 col-xs-12">
 					<div>
 						<label>联系手机 </label>
 						<label id="principalCellPhoneLbl" class="warning-style">请输入正确的号码</label>
 					</div>
 					<div>
-						<form:input id="cellphone" path="cellphone" type="text" class="form-control"  maxlength="15"/>
+						<form:input id="cellphone" path="cellphone" type="text" class="form-control input-style"  maxlength="15"/>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-6 col-sm-12 col-xs-12">
+			<div class="row row-margin">
+				<div class="col-md-4 col-sm-12 col-xs-12">
 					<div>
 						<label>工作单位 </label>
 					</div>
 					<div>
-						<form:input id="workUnit" path="workUnit" type="text"  class="form-control"  maxlength="20"/>
+						<form:input id="workUnit" path="workUnit" type="text"  class="form-control input-style"  maxlength="20"/>
 					</div>
 				</div>
-				<div class="col-md-6 col-sm-12 col-xs-12">
+				<div class="col-md-4 col-sm-12 col-xs-12">
 					<div>
 						<label>科室/部门 </label>
 					</div>
 					<div>
-						<form:input id="department" path="department" type="text" class="form-control"  maxlength="10"/>
+						<form:input id="department" path="department" type="text" class="form-control input-style"  maxlength="10"/>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6 col-sm-12 col-xs-12">
+				<div class="col-md-4 col-sm-12 col-xs-12">
 					<div>
 						<label>职位 </label>
 					</div>
 					<div>
-						<form:input id="position" path="position" type="text" class="form-control"  maxlength="6"/>
+						<form:input id="position" path="position" type="text" class="form-control input-style"  maxlength="6"/>
 					</div>
 				</div>
-				<div class="col-md-6 col-sm-12 col-xs-12">
+			</div>
+			<div class="row">
+				<div class="col-md-4 col-sm-12 col-xs-12">
 					<div>
 						<label>电子邮件 </label>
 						<label id="principalMailLbl" class="warning-style">请输入正确的邮箱</label>
 					</div>
 					<div>
-						<form:input id="email" path="email" type="text" class="form-control"  maxlength="20"/>
+						<form:input id="email" path="email" type="text" class="form-control input-style"  maxlength="20"/>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6 col-sm-12 col-xs-12">
+				<div class="col-md-4 col-sm-12 col-xs-12">
 					<div>
 						<label>联系地址 </label>
 					</div>
 					<div>
-						<form:input id="adress" path="adress" type="text" class="form-control" maxlength="100"/>
+						<form:input id="adress" path="adress" type="text" class="form-control input-style" maxlength="100"/>
 					</div>
 				</div>
-				<div class="col-md-6 col-sm-12 col-xs-12">
+				<div class="col-md-4 col-sm-12 col-xs-12">
 					<div>
 						<label>研究方向 </label>
 					</div>
 					<div>
-						<form:input id="resarchDirection" path="resarchDirection" class="form-control"  maxlength="10"/>
+						<form:input id="resarchDirection" path="resarchDirection" class="form-control input-style"  maxlength="10"/>
 					</div>
-				</div>
+				</div> 
 			</div>
 			<div class="row row-margin" >
 				<div class="col-md-6 col-sm-12 col-xs-12">

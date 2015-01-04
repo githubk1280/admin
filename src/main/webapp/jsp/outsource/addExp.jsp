@@ -44,12 +44,12 @@
 												</div>
 											</div>
 											<div class="row">
-												<div class="col-md-6 col-sm-12 col-xs-12">
+												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>项目编号 </label>
 													</div>
 													<div>
-														<form:select class="form-control" ng-model="selected"
+														<form:select class="form-control" ng-model="selected" style="width:80%;"
 															path="projectId">
 															<option value="">-- 请选择 --</option>
 															<option ng-repeat="item in idAndPrincipal"
@@ -58,50 +58,47 @@
 														</form:select>
 													</div>
 												</div>
-												<div class="col-md-6 col-sm-12 col-xs-12">
+												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>外包单位</label>
 													</div>
 													<div>
 														<form:input type="text" maxlength="20"
-															class="form-control" path="outSourceUnit" />
+															class="form-control input-style" path="outSourceUnit" />
 													</div>
 												</div>
-											</div>
-											<div class="row row-margin">
-												<div class="col-md-6 col-sm-12 col-xs-12">
+												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>联系人</label>
 													</div>
 													<div>
-														<form:input type="text" maxlength="5" class="form-control"
+														<form:input type="text" maxlength="5" class="form-control input-style"
 															path="contactPerson" />
 													</div>
 												</div>
-												<div class="col-md-6 col-sm-12 col-xs-12">
+											</div>
+											<div class="row row-margin">
+												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>联系人电话</label> <label id="contactPhoneLbl"
 															class="warning-style">请输入正确的号码</label>
 													</div>
 													<div>
 														<form:input id="contactPhone" type="text" maxlength="15"
-															class="form-control" path="contactPhone" />
+															class="form-control input-style" path="contactPhone" />
 													</div>
 												</div>
-											</div>
-
-											<div class="row row-margin">
-												<div class="col-md-6 col-sm-12 col-xs-12">
+												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>合同金额</label> <label id="contractAmountLbl"
 															class="warning-style">请输入正确的金额</label>
 													</div>
 													<div>
 														<form:input id="contractAmount" type="text" maxlength="5"
-															class="form-control" path="contractAmount" />
+															class="form-control input-style" path="contractAmount" />
 													</div>
 												</div>
-												<div class="col-md-6 col-sm-12 col-xs-12">
+												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>送样日期</label> <label id="sendSampleDateLbl"
 															class="warning-style">日期格式不正确</label> <label
@@ -109,12 +106,23 @@
 													</div>
 													<div>
 														<form:input id="sendSampleDate" type="text" maxlength="10"
-															class="form-control form_date" path="sendSampleDate" />
+															class="form-control form_date input-style" path="sendSampleDate" />
 													</div>
 												</div>
 											</div>
 											<div class="row row-margin">
-												<div class="col-md-6 col-sm-12 col-xs-12">
+												<div class="col-md-4 col-sm-12 col-xs-12">
+													<div>
+														<label>样本数量</label>
+													</div>
+													<div>
+														<div>
+															<form:input type="text" maxlength="10"
+																class="form-control input-style" path="sendSampleCount" />
+														</div>
+													</div>
+												</div>
+												<div class="col-md-4 col-sm-12 col-xs-12">
 													<div>
 														<label>结果是否收到</label>
 													</div>
@@ -124,17 +132,6 @@
 																	value="true" path="exprResultRecived" checked="true" />是</label>
 															<label><form:radiobutton id="isDelivery2"
 																	path="exprResultRecived" value="false" />否</label>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-6 col-sm-12 col-xs-12">
-													<div>
-														<label>样本数量</label>
-													</div>
-													<div>
-														<div>
-															<form:input type="text" maxlength="10"
-																class="form-control" path="sendSampleCount" />
 														</div>
 													</div>
 												</div>
