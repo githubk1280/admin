@@ -35,7 +35,8 @@
 								</div>
 								<div id="collapseOne" class="panel-collapse collapse in">
 									<div class="panel-body">
-										<form:form action="assign" method="post" commandName="projectEmployee">
+										<form:form action="assign" method="post"
+											commandName="projectEmployee">
 											<div class="row">
 												<div class="col-md-6 col-sm-12 col-xs-12">
 													<div>
@@ -44,8 +45,10 @@
 													<div>
 														<form:select class="form-control" path="projectId">
 															<option>---请选择---</option>
-															<c:forEach items="${projects}" var="project" varStatus="status">
-																<option value="${project.projectId}">${project.projectId} &nbsp; ${project.projectName}</option>
+															<c:forEach items="${projects}" var="project"
+																varStatus="status">
+																<option value="${project.projectId}">${project.projectId}
+																	&nbsp; ${project.projectName}</option>
 															</c:forEach>
 														</form:select>
 													</div>
@@ -57,7 +60,8 @@
 													<div>
 														<form:select class="form-control" path="employeeId">
 															<option>---请选择---</option>
-															<c:forEach items="${employees}" var="employee" varStatus="status">
+															<c:forEach items="${employees}" var="employee"
+																varStatus="status">
 																<option value="${employee.employeeId}">${employee.name}</option>
 															</c:forEach>
 														</form:select>
@@ -70,14 +74,17 @@
 														<label>分配内容</label>
 													</div>
 													<div>
-														<form:textarea path="assignContent" id="assignContent" class="form-control" rows="6" style="width:80%"/>
+														<form:textarea path="assignContent" id="assignContent"
+															 rows="6" style="width:80%" />
 													</div>
 												</div>
 											</div>
-											<div class="row row-margin" style="margin-top:30px ;">
+											<div class="row row-margin" style="margin-top: 30px;">
 												<div class="col-md-12 col-sm-12 col-xs-12">
-													<button id="assignSubmit" class="btn btn-default btn-primary" type="submit">保存</button>
-													<button id="assignReset" class="btn btn-default btn-primary" type="reset">重置</button>
+													<button id="assignSubmit"
+														class="btn btn-default btn-primary" type="submit">保存</button>
+													<button id="assignReset"
+														class="btn btn-default btn-primary" type="reset">重置</button>
 												</div>
 											</div>
 										</form:form>
@@ -89,24 +96,10 @@
 					</div>
 					<!-- .panel-body -->
 				</div>
-				<!-- /.panel --> 
+				<!-- /.panel -->
 			</div>
 		</div>
 	</div>
-	<!-- /#wrapper -->
-	<%@ include file="../common/modal.jsp"%>
-
-	<%@ include file="../comm-fragement/main-js"%>
-	<%@ include file="../comm-fragement/addProjecVal-js"%>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#cancelProBasicData").click(function() {
-				window.location.replace("http://"+window.location.host+"/admin/project/pages/1");			
-				return false;
-			});
-	});
-	</script>
-
 </body>
 
 </html>
