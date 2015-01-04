@@ -148,9 +148,9 @@
 																</div>
 																<div>
 																	<div class="pull-left">
-																		<label><form:radiobutton path="advancedAmountStatus" id="advancedAmountStatus1"
-																		value="未收" checked="true"/>未收</label> <label> <form:radiobutton id="advancedAmountStatus2"
-																		path="advancedAmountStatus" value="已收" />已收
+																		<label><form:radiobutton path="advancedAmountStatus" id="advancedAmountStatus1" onChange="advanceRadioChange();"
+																		value="未收"  checked="true"/>未收</label> <label> <form:radiobutton id="advancedAmountStatus2"
+																		path="advancedAmountStatus" onChange="advanceRadioChange();" value="已收" />已收
 																		</label>
 																	</div>
 																</div>
@@ -185,7 +185,7 @@
 																</div>
 																<div>
 																	<form:input id="advancedPaymentPrincipal" path="advancedConfirmer"
-																	   class="form-control input-style"  readonly="true" value='<%=((Employee)session.getAttribute("user")).getName()%>'/>
+																	   class="form-control input-style"  />
 																</div>
 															</div>
 														</div>
@@ -236,7 +236,7 @@
 																<div>
 																	<div>
 																		<form:input id="balPaymentPrincipal" path="balancedConfirmer" 
-																		class="form-control input-style" readonly="true" value='<%=((Employee)session.getAttribute("user")).getName()%>'/>
+																		class="form-control input-style" />
 																	</div>
 																</div>
 															</div>
@@ -271,7 +271,11 @@
 			window.location.replace("http://"+window.location.host+"/admin/contract/pages/1");			
 			return false;
 		});
-		
+		if($("#advancedAmountStatus1").attr("checked")=="checked"){
+			$("#advancedPaymentDate").attr("readonly","true");
+			$("#advancedPaymentPrincipal").attr("readonly","true");
+			$( "#advancedPaymentDate" ).datetimepicker("destroy");
+		}
 		
 	});
 	function contractController($scope, $http) {
@@ -286,6 +290,39 @@
 				});
 	}
 	
+	function advanceRadioChange(){
+			if($("#advancedAmountStatus2").attr("checked")=="checked"){
+				$("#advancedPaymentDate").removeAttr("readonly");
+				$("#advancedPaymentPrincipal").removeAttr("readonly");
+				$( "#advancedPaymentDate" ).datetimepicker({
+					lang:'ch',
+					timepicker:false,
+					onClose:function(){
+						var ii = $("#advancedPaymentDate").val();
+						if(ii!=""){
+							var date = new Date(ii);
+							var year = date.getFullYear();
+							var month = date.getMonth() + 1; 
+							if(month<10){
+								month = "0" + month;
+							}
+							var day = date.getDate();
+							if(day<10){
+								day = "0" + day;
+							}
+							formatDate = year + "-" + month + "-" + day;
+							$("#advancedPaymentDate").val(formatDate);
+						}
+					},
+					validateOnBlur:false
+				});
+			}
+			if($("#advancedAmountStatus1").attr("checked")=="checked"){
+				$("#advancedPaymentDate").attr("readonly","true");
+				$("#advancedPaymentPrincipal").attr("readonly","true");
+				$( "#advancedPaymentDate" ).datetimepicker("destroy");
+			}
+	}
 	</script>
 </body>
 </html>
