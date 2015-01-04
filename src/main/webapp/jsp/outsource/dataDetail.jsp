@@ -101,7 +101,7 @@
 						<label>数据来源 </label>
 					</div>
 					<div>
-						<form:input class="form-control"  path="" />
+						<form:input class="form-control"  path="dataSource" />
 					</div>
 				</div>
 			</div>
@@ -111,7 +111,7 @@
 						<label>数据编号</label>
 					</div>
 					<div>
-						<form:input class="form-control"  path="" />
+						<form:input class="form-control"  path="dataNum" />
 					</div>
 				</div>
 			</div>
@@ -121,7 +121,7 @@
 						<label>需要分析内容</label>
 					</div>
 					<div>
-						<form:textarea class="form-control" rows="8" path="" style="width:100%" />
+						<form:textarea class="form-control" rows="8" path="analyzeInfo" style="width:100%" />
 					</div>
 				</div>
 			</div>

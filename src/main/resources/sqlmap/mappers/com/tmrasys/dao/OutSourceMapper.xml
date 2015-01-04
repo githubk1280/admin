@@ -119,11 +119,13 @@
 		`out_source`
 		(`OUT_SOURCE_UNIT`,`ADRESS`,`SEND_SAMPLE_DATE`,`SEND_SAMPLE_COUNT`,`IS_EXPERIMENT_RESULT_RECIVED`,
 		`OUT_SOURCE_STATUS`,`FK_PROJECT_ID`,`OUT_SOURCE_TYPE`
-		,`CONTACT_PERSON`,`CONTACT_PHONE`,`CONTRACT_AMOUNT`,`CONTRACT_INFO`)
+		,`CONTACT_PERSON`,`CONTACT_PHONE`,`CONTRACT_AMOUNT`,`CONTRACT_INFO`
+		,`DATA_SOURCE`,`DATA_NUM`,`ANALYZE_INFO`)
 		VALUES
 		(#{outSourceUnit},#{address},#{sendSampleDate},#{sendSampleCount},#{exprResultRecived},#{outSourceStatus}
 		,#{projectId},#{outSourceType},
-		#{contactPerson},#{contactPhone},#{contractAmount},#{contactInfo});
+		#{contactPerson},#{contactPhone},#{contractAmount},#{contactInfo}
+		,#{dataSource},#{dataNum},#{analyzeInfo});
 	</insert>
 	
 	<update id="updateOutSource" parameterMap="outSourceParameter" flushCache="true">
@@ -134,6 +136,7 @@
 		`OUT_SOURCE_STATUS`=#{outSourceStatus},`FK_PROJECT_ID`=#{projectId},`OUT_SOURCE_TYPE`=#{outSourceType},
 		`CONTACT_PERSON`=#{contactPerson},`CONTACT_PHONE`=#{contactPhone},
 		`CONTRACT_AMOUNT`=#{contractAmount},`CONTRACT_INFO`=#{contactInfo}
+		,`DATA_SOURCE`=#{dataSource},`DATA_NUM`=#{dataNum},`ANALYZE_INFO`=#{analyzeInfo}
 		WHERE OUT_SOURCE_ID=#{outSourceId}
 	</update>
 
@@ -164,6 +167,9 @@
 		<parameter property="contactPhone" resultMap="CONTACT_PHONE" />
 		<parameter property="contractAmount" resultMap="CONTRACT_AMOUNT" />
 		<parameter property="contactInfo" resultMap="CONTRACT_INFO" />
+		<parameter property="dataSource" resultMap="DATA_SOURCE" />
+		<parameter property="dataNum" resultMap="DATA_NUM" />
+		<parameter property="analyzeInfo" resultMap="ANALYZE_INFO" />
 	</parameterMap>
 
 	<resultMap type="com.tmrasys.domain.OutSource" id="outSourceMapper">
@@ -180,6 +186,9 @@
 		<result property="contactPhone" column="CONTACT_PHONE" />
 		<result property="contractAmount" column="CONTRACT_AMOUNT" />
 		<result property="contactInfo" column="CONTRACT_INFO" />
+		<result property="dataSource" column="DATA_SOURCE" />
+		<result property="dataNum" column="DATA_NUM" />
+		<result property="analyzeInfo" column="ANALYZE_INFO" />
 	</resultMap>
 
 </mapper>

@@ -23,4 +23,7 @@ public class OutSource {
 	private String contactPhone;
 	private BigDecimal contractAmount;
 	private String contactInfo;
+	private String dataSource;
+	private String dataNum;
+	private String analyzeInfo;
 }
