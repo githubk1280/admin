@@ -220,6 +220,7 @@ public class ProjectController {
 			success = 2;
 		} else {
 			projectEmployeeService.addReference(projectEmployee);
+			projectService.addContent(projectEmployee.getProjectId(), projectEmployee.getAssignContent());
 		}
 		ModelAndView view = new ModelAndView();
 		view.addObject("success", success);

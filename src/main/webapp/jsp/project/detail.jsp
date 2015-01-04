@@ -249,7 +249,7 @@
 														<label>分配内容 </label>
 													</div>
 													<div>
-														<form:textarea path="" class="form-control"
+														<form:textarea path="assignContent" class="form-control"
 															rows="8" />
 													</div>
 												</div>

@@ -42,4 +42,8 @@ public class Project {
 	 * 项目百分比
 	 */
 	private int projectStatusPercentage;
+	/**
+	 * 分配内容
+	 */
+	private String assignContent;
 }

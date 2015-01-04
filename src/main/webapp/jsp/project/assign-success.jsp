@@ -33,8 +33,8 @@
 								<div id="collapseOne">
 									<div class="panel-body">
 										<c:choose>
-										<c:when test="${success==1}"><h3>分配项目成功！</h3></c:when>
-										<c:otherwise><h3>分配项目失败！该项目已经分配给所选员工了!</h3></c:otherwise>
+											<c:when test="${success==1}"><h3>分配项目成功！</h3></c:when>
+											<c:otherwise><h3>分配项目失败！该项目已经分配给所选员工了!</h3></c:otherwise>
 										</c:choose>
 									</div>
 								</div>

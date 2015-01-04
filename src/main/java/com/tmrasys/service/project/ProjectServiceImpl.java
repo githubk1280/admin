@@ -147,4 +147,11 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectDao.countCompletedProjectsByEmployee(employeeId);
 	}
 
+	@Override
+	public void addContent(String projectId, String content) {
+		Project project = projectDao.loadProjectById(projectId);
+		project.setAssignContent(content);
+		projectDao.updateProject(project);
+	}
+
 }

@@ -30,4 +30,6 @@ public interface ProjectService {
 	List<Project> loadCompletedProjectsPagination(int userId, int pageIndex);
 	
 	int countCompletedProjectsByEmployee(int employeeId);
+	
+	void addContent(String projectId, String content);
 }

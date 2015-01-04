@@ -70,7 +70,7 @@
 														<label>分配内容</label>
 													</div>
 													<div>
-														<form:textarea path="" id="assignContent" class="form-control" rows="6" style="width:80%"/>
+														<form:textarea path="assignContent" id="assignContent" class="form-control" rows="6" style="width:80%"/>
 													</div>
 												</div>
 											</div>

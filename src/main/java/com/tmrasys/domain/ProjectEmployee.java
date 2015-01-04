@@ -6,7 +6,8 @@ import lombok.Data;
 public class ProjectEmployee {
 	private String projectId;
 	private int employeeId;
-
+	private String assignContent;
+	
 	public ProjectEmployee(String projectId, int employeeId) {
 		super();
 		this.projectId = projectId;

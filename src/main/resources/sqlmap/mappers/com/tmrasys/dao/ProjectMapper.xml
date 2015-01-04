@@ -73,11 +73,11 @@
 		INSERT INTO `project` 
 		(`PROJECT_ID`,`NEED_PRINCPAL_ASSIST`,`PRIORITY`,`START_DATE`,`END_DATE`,`PROJECT_CONTENT`,`POTENTIAL_EXPENDITURE`,
 		`SAMPLE_COUNT`,`RESEARCH_DIRECTION`,`TECHNOLOGY_PLATFORM_DEMAND`,`HAS_CORPORATED_INTENTION`,`NEED_PROJECT_PLAN`,
-		`NEED_SCI`,`PROJECT_NOTE`,`PROJECT_NAME`,`PROJECT_TYPE`,`PROJECT_PERCENTAGE`)
+		`NEED_SCI`,`PROJECT_NOTE`,`PROJECT_NAME`,`PROJECT_TYPE`,`PROJECT_PERCENTAGE`,`ASSIGN_CONTENT`)
 		VALUES
 		(#{projectId},#{needPrincipalAssist},#{priority},#{startDate},#{endDate},#{projectContent},#{potentialExpenditure},
 		#{sampleCount},#{researchDirection},#{platformDemand},#{hasCorporatedIntention},#{needProjectPlan},
-		#{needSCI},#{projectNote},#{projectName},#{projectType},#{projectStatusPercentage});
+		#{needSCI},#{projectNote},#{projectName},#{projectType},#{projectStatusPercentage},#{assignContent});
 	</insert>
 	
 	<update id="updateProject" parameterMap="projectParameter" flushCache="true">
@@ -98,7 +98,8 @@
 		NEED_SCI =#{needSCI},
 		PROJECT_NOTE = #{projectNote},
 		PROJECT_TYPE = #{projectType},
-		PROJECT_PERCENTAGE = #{projectStatusPercentage}
+		PROJECT_PERCENTAGE = #{projectStatusPercentage},
+		ASSIGN_CONTENT = #{assignContent}
 		WHERE project.PROJECT_ID = #{projectId};
 	</update>
 	<select id="findProjectByProjectName" resultMap="employeeMapper"
@@ -128,6 +129,7 @@
 		<parameter property="projectNote" resultMap="PROJECT_NOTE" />
 		<parameter property="projectType" resultMap="PROJECT_TYPE" />
 		<parameter property="projectStatusPercentage" resultMap="PROJECT_PERCENTAGE" />
+		<parameter property="assignContent" resultMap="ASSIGN_CONTENT" />
 	</parameterMap>
 
 	<resultMap type="com.tmrasys.domain.Project" id="employeeMapper">
@@ -148,6 +150,7 @@
 		<result property="projectNote" column="PROJECT_NOTE" />
 		<result property="projectType" column="PROJECT_TYPE" />
 		<result property="projectStatusPercentage" column="PROJECT_PERCENTAGE" />
+		<result property="assignContent" column="ASSIGN_CONTENT" />
 	</resultMap>
 
 </mapper>
