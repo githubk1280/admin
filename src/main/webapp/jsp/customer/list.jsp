@@ -96,7 +96,7 @@
 			<div class="modal-content" style="top:-100px"  >
 				<div class="modal-body" align="center">
 					<h3>请选择项目</h3>
-					<select class="form-control" ng-change="myChange()" ng-model="selected" ng-controller="customerController">
+					<select id="proId" class="form-control" ng-change="myChange()" ng-model="selected" ng-controller="customerController">
 						<option value="">---请选择---</option>
 						<option id="projectId" ng-repeat="item in idAndPrincipal"  
 													     value="{{ item.projectId }}">{{ item.projectId }}</option>
@@ -123,9 +123,11 @@
 			});
 			$('#createNewCustomer').click(function(){
 				//validate  which create user button will be displayed
+				alert(("#projectId").val());
 			});
 			$("#projectPrincipal").click(function() {
-				window.location.replace("http://"+window.location.host+"/admin/customer/addPrincipal-redirect");
+				var a = $("#proId").val();
+				window.location.replace("http://"+window.location.host+"/admin/customer/addPrincipal-redirect/" + a);
 				return false;
 			});
 			$("#projectFirstPerson").click(function() {

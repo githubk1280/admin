@@ -185,10 +185,11 @@ public class CustomerController {
 		JsonResponseUtils.returnJsonResponse(response, "", true, 200);
 	}
 	
-	@RequestMapping("/addPrincipal-redirect")
-	public ModelAndView addPrincipalRedirect() {
+	@RequestMapping("/addPrincipal-redirect/{projectId}")
+	public ModelAndView addPrincipalRedirect(@PathVariable String projectId) {
 		Customer cust = new Customer();
 		ModelAndView view = new ModelAndView();
+		cust.setProjectId(projectId);
 		view.addObject(cust);
 		view.setViewName(PageResourceConstant.CUSTOMER_ADDPRINCIPAL);
 		return view;
