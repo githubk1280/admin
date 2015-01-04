@@ -7,16 +7,25 @@
 		INSERT INTO
 		literature
 		(TITLE, AUTHOR,
-		PUBLICATION_YEAR,
-		LOCATIONS, ABSTRACT,DISK_URL)
+		PUBLICATION_YEAR, LOCATIONS, ABSTRACT, DISK_URL, DIRECTION,
+		BACKGROUND, TECHNOLOGYWAY, TECHNOLOGY_PLATFORM, CONCLUSION,
+		LIGHT_SPOT, RESEARCHENLIGHTENMENT, PRODUCTENLIGHTENMENT,
+		PLATFORMENLIGHTENMENT, COMMENTS, PROBLEM, ATTACHEDHOTSPOT, addTime)
 		VALUES
-		(#{title},#{author},#{publishDate},#{location},#{abstracts},#{filePath})
+		(#{title},#{author},#{publishDate},#{location},#{abstracts},#{filePath},
+		#{direction}, #{background}, #{technicalWay},
+		#{technicalPlatform},
+		#{conclusion}, #{lightPoint},
+		#{researchEnlightenment},#{productEnlightenment},
+		#{platformEnlightenment},#{comments},#{problem},
+		#{attachedHotSpot},now())
 	</insert>
 	<select id="loadAllLiteratures" resultMap="lteResult"
 		parameterType="map">
 		SELECT * FROM literature
 		ORDER BY addTime DESC
-		LIMIT #{start},#{offset}
+		LIMIT
+		#{start},#{offset}
 	</select>
 	<select id="loadById" resultMap="lteResult" parameterType="int">
 		SELECT * FROM literature
@@ -24,7 +33,8 @@
 		LITERATURE_ID=#{id}
 	</select>
 	<select id="totalCount" resultType="int">
-		SELECT count(LITERATURE_ID) FROM literature
+		SELECT count(LITERATURE_ID)
+		FROM literature
 	</select>
 	<resultMap type="com.tmrasys.domain.Literature" id="lteResult">
 		<id property="id" column="LITERATURE_ID" />

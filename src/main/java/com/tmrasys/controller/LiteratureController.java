@@ -57,8 +57,8 @@ public class LiteratureController {
 	@RequestMapping("/add-redirect")
 	public ModelAndView addRedirect() {
 		ModelAndView view = new ModelAndView();
-		Literature lte = new Literature();
-		view.addObject("lte", lte);
+		// Literature lte = new Literature();
+		// view.addObject("lte", lte);
 		view.setViewName(PageResourceConstant.LTS_ADD);
 		return view;
 	}
@@ -66,8 +66,12 @@ public class LiteratureController {
 	@RequestMapping("/add")
 	public ModelAndView uploadFile(@RequestParam("file") MultipartFile file,
 			String title, String author, String publishDate, String location,
-			String abstracts) throws IllegalStateException, IOException,
-			ParseException {
+			String abstracts, String filePath, String direction,
+			String background, String technicalWay, String technicalPlatform,
+			String conclusion, String lightPoint, String researchEnlightenment,
+			String productEnlightenment, String platformEnlightenment,
+			String comments, String problem, String attachedHotSpot)
+			throws IllegalStateException, IOException, ParseException {
 		ModelAndView view = new ModelAndView();
 		view.setViewName("redirect:/literature/list?pageIndex=1");
 
@@ -77,6 +81,7 @@ public class LiteratureController {
 		File targetFile = new File(path, fileName);
 		if (targetFile.exists()) {
 			// 文件存在
+			view.setViewName("redirect:/literature/add-redirect?reason=文件已经存在");
 			return view;
 		} else {
 			targetFile.mkdirs();
@@ -85,13 +90,11 @@ public class LiteratureController {
 			logger.info("upload success !");
 		}
 
-		Literature lte = new Literature();
-		lte.setTitle(title);
-		lte.setAuthor(author);
-		lte.setPublishDate(parse(publishDate));
-		lte.setLocation(location);
-		lte.setAbstracts(abstracts);
-		lte.setFilePath(targetFile.getAbsolutePath());
+		Literature lte = new Literature(title, author, parse(publishDate),
+				location, abstracts, targetFile.getAbsolutePath(), direction,
+				background, technicalWay, technicalPlatform, conclusion,
+				lightPoint, researchEnlightenment, productEnlightenment,
+				platformEnlightenment, comments, problem, attachedHotSpot);
 		literatureService.insert(lte);
 
 		logger.info("upload Literature file add to db success !");
@@ -145,16 +148,17 @@ public class LiteratureController {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return sdf.parse(publishDate);
 	}
-	
+
 	@RequestMapping("/literature/{literatureId}")
 	public ModelAndView literatureDetail(@PathVariable("id") int literatureId) {
-//		List<Literature> lts = literatureService.loadAllLiteratures(pageIndex,
-//				PaginationConstant.DEFAULT_PAGE_SIZE);
-//		int totalCount = literatureService.getTotalCount();
+		// List<Literature> lts =
+		// literatureService.loadAllLiteratures(pageIndex,
+		// PaginationConstant.DEFAULT_PAGE_SIZE);
+		// int totalCount = literatureService.getTotalCount();
 		ModelAndView view = new ModelAndView();
 		view.setViewName(PageResourceConstant.LTS_DETAIL);
-//		view.addObject("lts", lts);
-//		view.addObject("total", totalCount);
+		// view.addObject("lts", lts);
+		// view.addObject("total", totalCount);
 		return view;
 	}
 }

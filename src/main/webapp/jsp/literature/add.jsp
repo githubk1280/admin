@@ -97,7 +97,7 @@
 												<label>文章研究内容和方向</label>
 											</div>
 											<div>
-												<input type="text" class="form-control" name="articleDirection">
+												<input type="text" class="form-control" name="direction">
 											</div>
 										</div>
 										<div class="col-md-6 col-sm-12 col-xs-12">
@@ -105,7 +105,7 @@
 												<label>文章背景</label>
 											</div>
 											<div>
-												<input type="text" class="form-control" name="articleBg">
+												<input type="text" class="form-control" name="background">
 											</div>
 										</div>
 									</div>
@@ -115,7 +115,7 @@
 												<label>技术路线</label>
 											</div>
 											<div>
-												<input type="text" class="form-control" name="tecPath">
+												<input type="text" class="form-control" name="technicalWay">
 											</div>
 										</div>
 										<div class="col-md-6 col-sm-12 col-xs-12">
@@ -123,7 +123,7 @@
 												<label>技术平台</label>
 											</div>
 											<div>
-												<input type="text" class="form-control" name="tecPlatform">
+												<input type="text" class="form-control" name="technicalPlatform">
 											</div>
 										</div>
 									</div>
@@ -133,7 +133,7 @@
 												<label>文章结论</label>
 											</div>
 											<div>
-												<input type="text" class="form-control" name="articleRes">
+												<input type="text" class="form-control" name="conclusion">
 											</div>
 										</div>
 										<div class="col-md-6 col-sm-12 col-xs-12">
@@ -141,7 +141,7 @@
 												<label>文章亮点</label>
 											</div>
 											<div>
-												<input type="text" class="form-control" name="articleLight">
+												<input type="text" class="form-control" name="lightPoint">
 											</div>
 										</div>
 									</div>
@@ -151,7 +151,7 @@
 												<label>对于科研项目的启示</label>
 											</div>
 											<div>
-												<input type="text" class="form-control" name="tipForResearch">
+												<input type="text" class="form-control" name="researchEnlightenment">
 											</div>
 										</div>
 										<div class="col-md-6 col-sm-12 col-xs-12">
@@ -159,7 +159,7 @@
 												<label>对于产品研发的启示</label>
 											</div>
 											<div>
-												<input type="text" class="form-control" name="tipForProduct">
+												<input type="text" class="form-control" name="productEnlightenment">
 											</div>
 										</div>
 									</div>
@@ -169,7 +169,7 @@
 												<label>对于技术平台建设的启示</label>
 											</div>
 											<div>
-												<input type="text" class="form-control" name="tipForTec">
+												<input type="text" class="form-control" name="platformEnlightenment">
 											</div>
 										</div>
 										<div class="col-md-6 col-sm-12 col-xs-12">
@@ -187,7 +187,7 @@
 												<label>相关问题与解答</label>
 											</div>
 											<div>
-												<input type="text" class="form-control" name="qa">
+												<input type="text" class="form-control" name="problem">
 											</div>
 										</div>
 										<div class="col-md-6 col-sm-12 col-xs-12">
@@ -195,7 +195,7 @@
 												<label>附件研究热点</label>
 											</div>
 											<div>
-												<input type="text" class="form-control" name="hotPoint">
+												<input type="text" class="form-control" name="attachedHotSpot">
 											</div>
 										</div>
 									</div>
