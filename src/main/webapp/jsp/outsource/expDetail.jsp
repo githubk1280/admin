@@ -25,6 +25,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<!-- .panel-heading -->
+					<form:form action="updateExp" method="post" commandName="outSource">
 					<div class="panel-body">
 						<!----------------------------------------outsource start ------------------------->
 						<div class="panel panel-default">
@@ -53,7 +54,8 @@
 						<label>项目编号 </label>
 					</div>
 					<div>
-						<input id="outsourceProjectID" type="text" readonly="true" class="form-control" ng-model="pgos.experimentOS.projectId" value="${project.projectId }">
+						<form:input id="outsourceProjectID" type="text" readonly="true" class="form-control" path="projectId" />
+						<form:input id="osID" type="text" readonly="true" cssStyle="display:none" class="form-control" path="outSourceId" />
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -61,7 +63,7 @@
 						<label>外包单位</label>
 					</div>
 					<div>
-						<input type="text" maxlength="20" class="form-control" ng-model="pgos.experimentOS.outSourceUnit">
+						<form:input type="text" maxlength="20" class="form-control" path="outSourceUnit" />
 					</div>
 				</div>
 			</div>
@@ -71,7 +73,7 @@
 						<label>联系人</label>
 					</div>
 					<div>
-						<input type="text" maxlength="5" class="form-control" ng-model="pgos.experimentOS.contactPerson">
+						<form:input type="text" maxlength="5" class="form-control" path="contactPerson" />
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -80,7 +82,7 @@
 						<label id="contactPhoneLbl" class="warning-style">请输入正确的号码</label>
 					</div>
 					<div>
-						<input id="contactPhone" type="text" maxlength="15" class="form-control" ng-model="pgos.experimentOS.contactPhone">
+						<form:input id="contactPhone" type="text" maxlength="15" class="form-control" path="contactPhone" />
 					</div>
 				</div>
 			</div>
@@ -92,7 +94,7 @@
 						<label id="contractAmountLbl" class="warning-style">请输入正确的金额</label>
 					</div>
 					<div>
-						<input id="contractAmount" type="text" maxlength="5" class="form-control" ng-model="pgos.experimentOS.contractAmount">
+						<form:input id="contractAmount" type="text" maxlength="5" class="form-control" path="contractAmount"/>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
@@ -102,7 +104,7 @@
 						<label id="issendSampleDateLbl" class="warning-style">您输入的日期不存在</label>
 					</div>
 					<div>
-						<input id="sendSampleDate" type="text"  maxlength="10" class="form-control form_date" ng-model="pgos.experimentOS.sendSampleDate"> 
+						<form:input id="sendSampleDate" type="text"  maxlength="10" class="form-control form_date" path="sendSampleDate" /> 
 					</div>
 				</div>
 			</div>
@@ -113,10 +115,9 @@
 					</div>
 					<div>
 						<div class="pull-left">
-							<label><input type="radio" name="optionsRadios6"
-								id="resultReceived1" value="1" ng-model="pgos.experimentOS.exprResultRecived">是 </label> <label><input
-								id="resultReceived2" type="radio" name="optionsRadios7" id="optionsRadios7"
-								value="2" ng-model="pgos.experimentOS.exprResultRecived">否 </label>
+							<label><form:radiobutton id="isDelivery1"
+											value="true" path="exprResultRecived" checked="true" />是</label> <label><form:radiobutton
+													id="isDelivery2" path="exprResultRecived" value="false" />否</label>
 						</div>
 					</div>
 				</div>
@@ -126,7 +127,7 @@
 					</div>
 					<div>
 						<div>
-							<input type="text"  maxlength="10" class="form-control" ng-model="pgos.experimentOS.sendSampleCount">
+							<form:input type="text"  maxlength="10" class="form-control" path="sendSampleCount"/>
 						</div>
 					</div>
 				</div>
@@ -137,7 +138,7 @@
 						<label>合同信息</label>
 					</div>
 					<div>
-						<textarea class="form-control" rows="8" ng-model="pgos.experimentOS.contactInfo"></textarea>
+						<form:textarea class="form-control" rows="8" path="contactInfo" />
 					</div>
 				</div>
 			</div>
@@ -147,7 +148,7 @@
 						<label>地址 </label>
 					</div>
 					<div>
-						<textarea class="form-control" rows="8" ng-model="pgos.experimentOS.address"></textarea>
+						<form:textarea class="form-control" rows="8" path="address" />
 					</div>
 				</div>
 			</div>
@@ -155,7 +156,7 @@
 						</div>
 						<!----------------------------------------outsource end ------------------------->
 					</div>
-
+				</form:form>
 					<!-- .panel-body -->
 				</div>
 				<!-- /.panel -->

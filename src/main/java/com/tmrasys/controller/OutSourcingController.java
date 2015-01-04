@@ -21,8 +21,8 @@ import com.tmrasys.constant.page.PageResourceConstant;
 import com.tmrasys.domain.Employee;
 import com.tmrasys.domain.OutSource;
 import com.tmrasys.domain.PageOutSource;
-import com.tmrasys.domain.Project;
 import com.tmrasys.domain.ProjectOutSource;
+import com.tmrasys.domain.Sample;
 import com.tmrasys.service.outSource.OutSourceService;
 import com.tmrasys.utils.JsonResponseUtils;
 
@@ -33,13 +33,20 @@ public class OutSourcingController {
 
 	@Autowired
 	private OutSourceService outSourceService;
+	
+	private static final String DATA_OS = "数据分析外包";
+	private static final String EXP_OS = "实验外包";
 
 	@RequestMapping("/{osId}")
 	public ModelAndView loadProjectById(@PathVariable int osId) {
 		OutSource outsource = outSourceService.getById(osId);
 		ModelAndView view = new ModelAndView();
-		 view.addObject("outsource", outsource);
-		view.setViewName(PageResourceConstant.OS_EXPDETAIL);
+		view.addObject("outSource", outsource);
+		if(DATA_OS.equals(outsource.getOutSourceType())) {
+			view.setViewName(PageResourceConstant.OS_DATADETAIL);
+		} else {
+			view.setViewName(PageResourceConstant.OS_EXPDETAIL);
+		}
 		return view;
 
 	}
@@ -149,4 +156,38 @@ public class OutSourcingController {
 
 	}
 
+	@RequestMapping("/addData")
+	public ModelAndView addData(OutSource os, HttpSession session) {
+		os.setOutSourceType(DATA_OS);
+		outSourceService.addOutSource(os);
+		return new ModelAndView("redirect:pages/1");
+	}
+	
+	@RequestMapping("/addExp")
+	public ModelAndView addExp(OutSource os, HttpSession session) {
+		os.setOutSourceType(EXP_OS);
+		outSourceService.addOutSource(os);
+		return new ModelAndView("redirect:pages/1");
+	}
+	
+	@RequestMapping("/updateData")
+	public ModelAndView updateData(OutSource os) {
+		os.setOutSourceType(DATA_OS);
+		outSourceService.updateOutSource(os);
+		ModelAndView view = new ModelAndView();
+		view.addObject(os);
+		view.setViewName(PageResourceConstant.OS_DATADETAIL);
+		return view;
+	}
+	
+	@RequestMapping("/updateExp")
+	public ModelAndView updateExp(OutSource os) {
+		os.setOutSourceType(EXP_OS);
+		outSourceService.updateOutSource(os);
+		ModelAndView view = new ModelAndView();
+		view.addObject(os);
+		view.setViewName(PageResourceConstant.OS_EXPDETAIL);
+		return view;
+	}
+	
 }

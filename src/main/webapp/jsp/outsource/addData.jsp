@@ -23,96 +23,125 @@
 		<div id="page-wrapper" class="detailPage">
 			<div class="row">
 				<div class="col-lg-12">
-					<div class="panel-body">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title">
-									<strong>外包信息</strong>
-								</h3>
-						</div>
-						<div id="collapseThree" class="panel-collapse collapse in" style="">
+					<form:form action="addData" method="post" commandName="outSource">
+						<div class="panel-body" ng-controller="addDataController">
 							<div class="panel-body">
-								<div class="row">
-											<div class="col-md-12">
-												<div class="pull-left page-header">
-													<h5>
-														<strong>数据分析外包信息</strong>
-													</h5>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h3 class="panel-title">
+											<strong>外包信息</strong>
+										</h3>
+									</div>
+									<div id="collapseThree" class="panel-collapse collapse in"
+										style="">
+										<div class="panel-body">
+											<div class="row">
+												<div class="col-md-12">
+													<div class="pull-left page-header">
+														<h5>
+															<strong>数据分析外包信息</strong>
+														</h5>
+													</div>
 												</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6 col-sm-12 col-xs-12">
-												<div>
-													<label>项目编号 </label>
+											<div class="row">
+												<div class="col-md-6 col-sm-12 col-xs-12">
+													<div>
+														<label>项目编号 </label>
+													</div>
+													<div>
+														<form:select class="form-control" ng-model="selected"
+															path="projectId">
+															<option value="">-- 请选择 --</option>
+															<option ng-repeat="item in idAndPrincipal"
+																value="{{ item.projectId }}">{{ item.projectId
+																}}</option>
+														</form:select>
+													</div>
 												</div>
-												<div>
-													<input type="text" class="form-control">
-												</div>
-											</div>
-											<div class="col-md-6 col-sm-12 col-xs-12">
-												<div>
-													<label>外包单位</label>
-												</div>
-												<div>
-													<input type="text" class="form-control">
-												</div>
-											</div>
-										</div>
-										<div class="row row-margin">
-											<div class="col-md-6 col-sm-12 col-xs-12">
-												<div>
-													<label>联系人</label>
-												</div>
-												<div>
-													<input type="text" class="form-control" >
+												<div class="col-md-6 col-sm-12 col-xs-12">
+													<div>
+														<label>外包单位</label>
+													</div>
+													<div>
+														<form:input type="text" path="outSourceUnit" class="form-control"/>
+													</div>
 												</div>
 											</div>
-											<div class="col-md-6 col-sm-12 col-xs-12">
-												<div>
-													<label>联系人电话</label>
+											<div class="row row-margin">
+												<div class="col-md-6 col-sm-12 col-xs-12">
+													<div>
+														<label>联系人</label>
+													</div>
+													<div>
+														<form:input type="text" path="contactPerson" class="form-control"/>
+													</div>
 												</div>
-												<div>
-													<input type="text" class="form-control" >
+												<div class="col-md-6 col-sm-12 col-xs-12">
+													<div>
+														<label>联系人电话</label>
+													</div>
+													<div>
+														<form:input type="text" path="contactPhone" class="form-control"/>
+													</div>
 												</div>
 											</div>
-										</div>
-										<div class="row row-margin">
-											<div class="col-md-6 col-sm-12 col-xs-12">
-												<div>
-													<label>地址 </label>
-												</div>
-												<div>
-													<textarea class="form-control" rows="8"></textarea>
+											<div class="row row-margin">
+												<div class="col-md-6 col-sm-12 col-xs-12">
+													<div>
+														<label>地址 </label>
+													</div>
+													<div>
+														<form:textarea class="form-control" path="address" rows="8"/>
+													</div>
 												</div>
 											</div>
-										</div>	
-									<div class="row row-margin" >
-										<div class="col-md-6 col-sm-12 col-xs-12">
-											<button id="saveOutSource" class="btn btn-default btn-primary" type="submit">保存</button>
-											<button id="cancelOutSource" class="btn btn-default btn-primary" type="button">取消</button>
+											<div class="row row-margin">
+												<div class="col-md-6 col-sm-12 col-xs-12">
+													<button id="saveOutSource"
+														class="btn btn-default btn-primary" type="submit">保存</button>
+													<button id="cancelOutSource"
+														class="btn btn-default btn-primary" type="button">取消</button>
+												</div>
+											</div>
 										</div>
 									</div>
-									</div>
-									</div>
-					</div>
+								</div>
+							</div>
+						</div>
 				</div>
+				</form:form>
 			</div>
 		</div>
 	</div>
-	</div>
-	
+
 	<!-- /#wrapper -->
 	<%@ include file="../common/modal.jsp"%>
 
 	<%@ include file="../comm-fragement/main-js"%>
 	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#cancelOutSource").click(function() {
-				window.location.replace("http://"+window.location.host+"/admin/outsource/pages/1");			
-				return false;
+		$(document).ready(
+				function() {
+					$("#cancelOutSource").click(
+							function() {
+								window.location.replace("http://"
+										+ window.location.host
+										+ "/admin/outsource/pages/1");
+								return false;
+							});
+				});
+
+		function addDataController($scope, $http) {
+			$scope.selected = '';
+			$http.get("/admin/sample/ajax/projectIdPrincipal").success(
+					function(data) {
+						if (data.success == true) {
+							$scope.idAndPrincipal = JSON.parse(data.data);
+						}
+					}).error(function(err) {
+				alert("获取失败，请重试!");
 			});
-	});
+		}
 	</script>
 
 </body>
