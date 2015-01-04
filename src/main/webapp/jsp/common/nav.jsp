@@ -137,7 +137,7 @@
 			$("#outsourceBasicDataLi").css('display','block');
 			$("#assignBasicDataLi").css('display','block');
 		}
-		if(activeTabUrlStr.indexOf("outsource")>0){
+		if(activeTabUrlStr.indexOf("outsource")>0){			
 			$("#tab1").addClass("active");
 			$("#tab1").siblings().removeClass();
 			$("#outsourceBasicDataLi").addClass("active");
@@ -181,7 +181,7 @@
 			$("#assignBasicDataLi").css('display','none');
 			$("#create").css('display','none'); 
 			$("#assignBasicDataLi").css('display','none');
-			$("#projectBasicDataLi").removeClass("active");
+			//$("#projectBasicDataLi").addClass("active");
 		}
 		
 		/*
