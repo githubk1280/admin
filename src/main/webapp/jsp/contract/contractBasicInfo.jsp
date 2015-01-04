@@ -43,8 +43,8 @@
             <table class="table table-hover">
               <thead>
                 <tr>
-                  <th>合同编号</th>
                   <th>项目编号</th>
+                  <th>合同编号</th>
                   <th>合同状态</th>
                   <th>合同签订人</th>
                   <th>签订日期</th>
@@ -54,8 +54,8 @@
               <tbody>
               	<c:forEach items="${contracts}" var="contract" varStatus="status">
               		<tr>
+              			<td>${contract.projectId}</td>
 						<td><a href="<%=request.getContextPath()%>/contract/${contract.contractId}" target="_blank" class="project_link">${contract.contractId}</a></td>
-						<td>${contract.projectId}</td>
 						<td>${contract.contractType}</td>
 						<td>${contract.signPersonNameB}</td>
 						<td><fmt:formatDate value="${contract.signDate}"

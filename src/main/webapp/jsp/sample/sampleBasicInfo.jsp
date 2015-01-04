@@ -40,8 +40,8 @@
             <table class="table table-hover">
               <thead>
                 <tr>
-                  <th>样本编号</th>
                   <th>项目编号</th>
+                  <th>样本编号</th>
                   <th>项目负责人</th>
                   <th>收样日期</th>
                   <th>存放位置</th>
@@ -50,8 +50,8 @@
               <tbody>
               	<c:forEach items="${samples}" var="sample" varStatus="status">
               		<tr>
+              			<td>${sample.projectId}</td>
 						<td><a href="<%=request.getContextPath()%>/sample/${sample.sampleId}" target="_blank" class="project_link">${sample.sampleId}</a></td>
-						<td>${sample.projectId}</td>
 						<td>${sample.projectPrincripal}</td>
 						<td><fmt:formatDate value="${sample.reciveDate}"
 											pattern="yyyy-MM-dd" /></td>

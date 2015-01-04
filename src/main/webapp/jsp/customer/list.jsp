@@ -73,7 +73,7 @@
 									<td>${customer.position}</td>
 									<td>${customer.resarchDirection}</td>
 									<td>${customer.responsibleArea}</td>
-									<td><a href="<%=request.getContextPath()%>/customer/${customer.customerId}" target="_blank"
+									<td><a href="<%=request.getContextPath()%>/customer/${customer.customerId}&${customer.principalId}"" target="_blank"
 										class="project_link">进入详情页</a></td>
 								</tr>
 							</c:forEach>

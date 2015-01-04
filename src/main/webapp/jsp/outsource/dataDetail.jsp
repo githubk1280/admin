@@ -93,7 +93,35 @@
 						<label>地址 </label>
 					</div>
 					<div>
-						<form:textarea class="form-control" rows="8" path="address" />
+						<form:input class="form-control"  path="address" />
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-12 col-xs-12">
+					<div>
+						<label>数据来源 </label>
+					</div>
+					<div>
+						<form:input class="form-control"  path="" />
+					</div>
+				</div>
+			</div>
+			<div class="row row-margin">
+				<div class="col-md-6 col-sm-12 col-xs-12">
+					<div>
+						<label>数据编号</label>
+					</div>
+					<div>
+						<form:input class="form-control"  path="" />
+					</div>
+				</div>
+			</div>
+			<div class="row row-margin">
+				<div class="col-md-6 col-sm-12 col-xs-12">
+					<div>
+						<label>需要分析内容</label>
+					</div>
+					<div>
+						<form:textarea class="form-control" rows="8" path="" style="width:100%" />
 					</div>
 				</div>
 			</div>
