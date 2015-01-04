@@ -58,7 +58,11 @@
 													<div>
 														<label><form:radiobutton path="employeeRoleId" value="1" checked="true"/>主管
 														</label> 
-														<label><form:radiobutton path="employeeRoleId" value="2" />普通员工
+														<label><form:radiobutton path="employeeRoleId" value="2" />研究员
+														</label>
+														<label><form:radiobutton path="employeeRoleId" value="3" />财务
+														</label>
+														<label><form:radiobutton path="employeeRoleId" value="4" />客户
 														</label>
 													</div>
 												</div>
