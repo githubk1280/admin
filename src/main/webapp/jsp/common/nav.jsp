@@ -92,103 +92,104 @@
 
 
 <script type="text/javascript">
-window.onload=function(){
-var activeTabUrlStr = window.location.pathname;
-	
-	if(activeTabUrlStr.indexOf("project")>0){
-		$("#tab1").addClass("active");
-		$("#tab1").siblings().removeClass();
-		$("#projectBasicDataLi").addClass("active");
-		$("#projectBasicDataLi").siblings().removeClass(); 
-		$("#projectBasicDataLi").css('display','block');
-		$("#customerBasicDataLi").css('display','block');
-		$("#outsourceBasicDataLi").css('display','block');
-		$("#assignBasicDataLi").css('display','block');
-	}
-	
-	if(activeTabUrlStr.indexOf("doc")>0){
-		$("#tab2").addClass("active");
-		$("#tab2").siblings().removeClass();
-		$("#docBasiceDataLi").css('display','block');
-	}
-	
-	if(activeTabUrlStr.indexOf("contract")>0){
-		$("#tab3").addClass("active");
-		$("#tab3").siblings().removeClass();
-		$("#contractBasicDataLi").css('display','block');
-	}
-	if(activeTabUrlStr.indexOf("sample")>0){
-		$("#tab4").addClass("active");
-		$("#tab4").siblings().removeClass();
-		$("#sampleBasicDataLi").css('display','block');
-	}
-	if(activeTabUrlStr.indexOf("literature")>0){
-		$("#tab5").addClass("active");
-		$("#tab5").siblings().removeClass();
-		$("#literatureBasicDataLi").css('display','block');
-	}
-	
-	if(activeTabUrlStr.indexOf("customer")>0){
-		$("#tab1").addClass("active");
-		$("#tab1").siblings().removeClass();
-		$("#customerBasicDataLi").addClass("active");
-		$("#customerBasicDataLi").siblings().removeClass();
-		$("#projectBasicDataLi").css('display','block');
-		$("#customerBasicDataLi").css('display','block');
-		$("#outsourceBasicDataLi").css('display','block');
-	}
-	if(activeTabUrlStr.indexOf("outsource")>0){
-		$("#tab1").addClass("active");
-		$("#tab1").siblings().removeClass();
-		$("#outsourceBasicDataLi").addClass("active");
-		$("#outsourceBasicDataLi").siblings().removeClass();
-		$("#projectBasicDataLi").css('display','block');
-		$("#customerBasicDataLi").css('display','block');
-		$("#outsourceBasicDataLi").css('display','block');
-	}
-	
-	if(activeTabUrlStr.indexOf("user")>0&&activeTabUrlStr.indexOf("modify")>0){
-		$("#sideModifyPasswordLi").css('display','block');
-		//sideModifyPassword
-	}
-	if(activeTabUrlStr.indexOf("user")>0&&activeTabUrlStr.indexOf("add")>0){
-		$("#sideCreateUserLi").css('display','block');
-		//sideModifyPassword
-	}
-	/*
-	*/
+	window.onload=function(){
+	var activeTabUrlStr = window.location.pathname;
 		
-	if(<%=session.getAttribute("role")%>=="1"){
-		$("#createUserLi").css('display','none');
-		$("#tab3").css('display','none');
-		$("#modifyProBasicData").css('display','none');
-		$("#modifyOutsource").css('display','none');
-		$("#customerBasicDataLi").css('display','none');
-		$("#customerTotalPanel").css('display','none');
-		$("#create").css('display','none'); 
-		$("#assignBasicDataLi").css('display','none');
-		$("#projectBasicDataLi").removeClass("active");
-	}
-	if(<%=session.getAttribute("role")%>=="3"){
-		$("#createUserLi").css('display','none');
-		$("#outsourceBasicDataLi").css('display','none');
-		$("#customerBasicDataLi").css('display','none');
-		$("#tab2").css('display','none');
-		$("#tab3").css('display','none');
-		$("#tab4").css('display','none');
-		$("#tab5").css('display','none');
-		//$("#messageLi").css('display','none');
-		$("#outsourceTotalPanel").css('display','none');
-		$("#customerTotalPanel").css('display','none');
-		$("#projectstatusTotalPanel").css('display','none');
-		$("#modifyProBasicData").css('display','none');
-		$("#create").css('display','none');
-		$("#assignBasicDataLi").css('display','none');
-		$("#projectBasicDataLi").removeClass("active");
-	}
+		if(activeTabUrlStr.indexOf("project")>0){
+			$("#tab1").addClass("active");
+			$("#tab1").siblings().removeClass();
+			$("#projectBasicDataLi").addClass("active");
+			$("#projectBasicDataLi").siblings().removeClass(); 
+			$("#projectBasicDataLi").css('display','block');
+			$("#customerBasicDataLi").css('display','block');
+			$("#outsourceBasicDataLi").css('display','block');
+			$("#assignBasicDataLi").css('display','block');
+		}
+		
+		if(activeTabUrlStr.indexOf("doc")>0){
+			$("#tab2").addClass("active");
+			$("#tab2").siblings().removeClass();
+			$("#docBasiceDataLi").css('display','block');
+		}
+		
+		if(activeTabUrlStr.indexOf("contract")>0){
+			$("#tab3").addClass("active");
+			$("#tab3").siblings().removeClass();
+			$("#contractBasicDataLi").css('display','block');
+		}
+		if(activeTabUrlStr.indexOf("sample")>0){
+			$("#tab4").addClass("active");
+			$("#tab4").siblings().removeClass();
+			$("#sampleBasicDataLi").css('display','block');
+		}
+		if(activeTabUrlStr.indexOf("literature")>0){
+			$("#tab5").addClass("active");
+			$("#tab5").siblings().removeClass();
+			$("#literatureBasicDataLi").css('display','block');
+		}
+		
+		if(activeTabUrlStr.indexOf("customer")>0){
+			$("#tab1").addClass("active");
+			$("#tab1").siblings().removeClass();
+			$("#customerBasicDataLi").addClass("active");
+			$("#customerBasicDataLi").siblings().removeClass();
+			$("#projectBasicDataLi").css('display','block');
+			$("#customerBasicDataLi").css('display','block');
+			$("#outsourceBasicDataLi").css('display','block');
+		}
+		if(activeTabUrlStr.indexOf("outsource")>0){
+			$("#tab1").addClass("active");
+			$("#tab1").siblings().removeClass();
+			$("#outsourceBasicDataLi").addClass("active");
+			$("#outsourceBasicDataLi").siblings().removeClass();
+			$("#projectBasicDataLi").css('display','block');
+			$("#customerBasicDataLi").css('display','block');
+			$("#outsourceBasicDataLi").css('display','block');
+		}
+		
+		if(activeTabUrlStr.indexOf("user")>0&&activeTabUrlStr.indexOf("modify")>0){
+			$("#sideModifyPasswordLi").css('display','block');
+			//sideModifyPassword
+		}
+		if(activeTabUrlStr.indexOf("user")>0&&activeTabUrlStr.indexOf("add")>0){
+			$("#sideCreateUserLi").css('display','block');
+			//sideModifyPassword
+		}
+		/*
+		*/
+			
+		if(<%=session.getAttribute("role")%>=="1"){
+			$("#createUserLi").css('display','none');
+			$("#tab3").css('display','none');
+			$("#modifyProBasicData").css('display','none');
+			$("#modifyOutsource").css('display','none');
+			$("#customerBasicDataLi").css('display','none');
+			$("#customerTotalPanel").css('display','none');
+			$("#create").css('display','none'); 
+			$("#assignBasicDataLi").css('display','none');
+			$("#projectBasicDataLi").removeClass("active");
+		}
+		if(<%=session.getAttribute("role")%>=="3"){
+			$("#createUserLi").css('display','none');
+			$("#outsourceBasicDataLi").css('display','none');
+			$("#customerBasicDataLi").css('display','none');
+			$("#tab2").css('display','none');
+			$("#tab3").css('display','none');
+			$("#tab4").css('display','none');
+			$("#tab5").css('display','none');
+			//$("#messageLi").css('display','none');
+			$("#outsourceTotalPanel").css('display','none');
+			$("#customerTotalPanel").css('display','none');
+			$("#projectstatusTotalPanel").css('display','none');
+			$("#modifyProBasicData").css('display','none');
+			$("#create").css('display','none');
+			$("#assignBasicDataLi").css('display','none');
+			$("#projectBasicDataLi").removeClass("active");
+		}
+		
 	
-	
+	};
 
-};
+	
 	
 </script>
