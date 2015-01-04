@@ -19,6 +19,8 @@ $("#modifyBtn").click(function(){
 	$("#advancedAmountStatus2").attr("disabled",false);
 	$("#balancedAmountStatus1").attr("disabled",false);
 	$("#balancedAmountStatus2").attr("disabled",false);
+	$("#advancedPaymentDate").attr("readonly",false);
+	$("#balPaymentDate").attr("readonly",false);
 
 });
 

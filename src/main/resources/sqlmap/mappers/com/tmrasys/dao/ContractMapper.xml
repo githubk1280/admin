@@ -74,13 +74,13 @@
 		`SIGN_DATE`, `ADVANCED_AMOUNT`, `ADVANCED_AMOUNT_DATE`,
 		`BALANCED_AMOUNT`, `BALANCED_AMOUNT_DATE`, `ADVANCED_AMOUNT_STATUS`,
 		`BALANCED_AMOUNT_STATUS`, `PROJECT_ID`, `CONTRACT_PAPER_ID`, `CONTRACT_TYPE`,
-		`TOTAL_AMOUNT`, `START_DATE`, `END_DATE`) 
+		`TOTAL_AMOUNT`, `START_DATE`, `END_DATE`, `AD_CONFIMER`, `BA_CONFIMER`) 
 		VALUES
 		(#{signPersonNameA}, #{signPersonNameB}, #{signDate}, #{advancedAmount}, #{advancedAmountDate}, 
 		#{balancedAmount},
 		#{balancedAmountDate}, #{advancedAmountStatus}, #{balancedAmountStatus}, #{projectId},
 		#{contractPaperId}, #{contractType},
-		#{totalAmount}, #{startDate}, #{endDate});
+		#{totalAmount}, #{startDate}, #{endDate}, #{advancedConfirmer}, #{balancedConfirmer});
 	</insert>
 	<update id="updateContract" parameterMap="contractParameter" flushCache="true">
 		UPDATE `contract`
@@ -91,6 +91,7 @@
 		`BALANCED_AMOUNT_STATUS`=#{balancedAmountStatus}, `PROJECT_ID`=#{projectId}, 
 		`CONTRACT_PAPER_ID`=#{contractPaperId}, `CONTRACT_TYPE`=#{contractType},
 		`TOTAL_AMOUNT`=#{totalAmount}, `START_DATE`=#{startDate}, `END_DATE`=#{endDate}
+		, `AD_CONFIMER`=#{advancedConfirmer}, `BA_CONFIMER`=#{balancedConfirmer}
 		WHERE contract_id = #{contractId}
 	</update>
 	<select id="findContractByProjectId" resultMap="contractMapper" parameterType="map">
@@ -118,6 +119,8 @@
 		<result property="totalAmount" column="TOTAL_AMOUNT" />
 		<result property="startDate" column="START_DATE" />
 		<result property="endDate" column="END_DATE" />
+		<result property="advancedConfirmer" column="AD_CONFIMER" />
+		<result property="balancedConfirmer" column="BA_CONFIMER" />
 	</resultMap>
 	<parameterMap type="com.tmrasys.domain.Contract" id="contractParameter">
 		<parameter property="contractId" resultMap="CONTRACT_ID" />
@@ -136,6 +139,8 @@
 		<parameter property="totalAmount" resultMap="TOTAL_AMOUNT" />
 		<parameter property="startDate" resultMap="START_DATE" />
 		<parameter property="endDate" resultMap="END_DATE" />
+		<parameter property="advancedConfirmer" resultMap="AD_CONFIMER" />
+		<parameter property="balancedConfirmer" resultMap="BA_CONFIMER" />
 	</parameterMap>
 </mapper>
 

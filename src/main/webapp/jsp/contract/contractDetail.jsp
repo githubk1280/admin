@@ -172,7 +172,7 @@
 																	<label>预付款到账日期</label>
 																</div>
 																<div class="pull-left">
-																	<form:input id="advancedPaymentDate" path="" class="form-control" style="width:150%" readonly="true"/>
+																	<form:input id="advancedPaymentDate" path="advancedAmountDate" class="form-control form_date" style="width:150%" readonly="true"/>
 																</div>
 															</div>
 															<div class="col-md-4 col-sm-12 col-xs-12">
@@ -180,8 +180,8 @@
 																	<label>预付款财务确认人</label>
 																</div>
 																<div class="pull-left">
-																	<input id="advancedPaymentPrincipal" path=""
-																	   class="form-control" style="width:150%" readonly value="<%=((Employee)session.getAttribute("user")).getName()%>"/>
+																	<form:input id="advancedPaymentPrincipal" path="advancedConfirmer"
+																	   class="form-control" style="width:150%" readonly="true" />
 																</div>
 															</div>
 														</div>
@@ -221,7 +221,7 @@
 																</div>
 																<div>
 																	<div class="pull-left">
-																		<form:input id="balPaymentDate" path="" class="form-control" style="width:150%" readonly="true"/>
+																		<form:input id="balPaymentDate" path="balancedAmountDate" class="form-control form_date" style="width:150%" readonly="true"/>
 																	</div>
 																</div>
 															</div>
@@ -231,8 +231,8 @@
 																</div>
 																<div>
 																	<div class="pull-left">
-																		<input id="balPaymentPrincipal" path="balPaymentPrincipal" 
-																		class="form-control" style="width:150%" readonly value="<%=((Employee)session.getAttribute("user")).getName()%>"/>
+																		<form:input id="balPaymentPrincipal" path="balancedConfirmer" 
+																		class="form-control" style="width:150%" readonly="true" />
 																	</div>
 																</div>
 															</div>
