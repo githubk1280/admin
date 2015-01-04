@@ -46,7 +46,7 @@
 								<div id="collapseOne" class="panel-collapse collapse in">
 									<div class="panel-body">
 										<div class="row">
-											<div class="col-md-6 col-sm-12 col-xs-12">
+											<div class="col-md-4 col-sm-12 col-xs-12">
 												<div>
 													<label>所属项目编号:</label>
 												</div>
@@ -54,9 +54,7 @@
 													<form:input  type="text"  class="form-control" path="projectId" readonly="true"/>
 												</div> 
 											</div>
-										</div>
-										<div class="row row-margin">
-											<div class="col-md-6 col-sm-12 col-xs-12">
+											<div class="col-md-4 col-sm-12 col-xs-12">
 												<div>
 													<label>样品编号 </label>
 												</div>
@@ -64,7 +62,7 @@
 													<form:input type="text" class="form-control" placeholder="自动生成" path="sampleId" readonly="true"/>
 												</div>
 											</div>
-											<div class="col-md-6 col-sm-12 col-xs-12">
+											<div class="col-md-4 col-sm-12 col-xs-12">
 												<div>
 													<label>样品来源单位 </label>
 													<label id="sourceUnitLbl" class="warning-style">该字段不允许为空</label>
@@ -76,7 +74,7 @@
 										</div>
 										
 										<div class="row row-margin">
-											<div class="col-md-6 col-sm-12 col-xs-12">
+											<div class="col-md-4 col-sm-12 col-xs-12">
 												<div>
 													<label>样品负责人</label>
 													<label id="samplePrincripalLbl" class="warning-style">该字段不允许为空</label>
@@ -85,7 +83,7 @@
 													<form:input id="samplePrincripal" path="samplePrincripal" class="form-control" readonly="true"/>
 												</div>
 											</div>
-											<div class="col-md-6 col-sm-12 col-xs-12">
+											<div class="col-md-4 col-sm-12 col-xs-12">
 												<div>
 													<label>项目负责人</label>
 												</div>
@@ -93,35 +91,7 @@
 													<form:input path="projectPrincripal" class="form-control" readonly="true"/>
 												</div>
 											</div>
-										</div>
-										
-										
-										<div class="row row-margin">
-											<div class="col-md-6 col-sm-12 col-xs-12">
-												<div>
-													<label>是否外送</label>
-												</div>
-												<div class="pull-left">
-													<label><form:radiobutton id="sended1" path="isDelivery" value="Y" />需要
-														</label> <label> <form:radiobutton id="sended2" path="isDelivery"
-																value="N" />不需要
-														</label>
-												</div>
-											</div>
-											<div class="col-md-6 col-sm-12 col-xs-12">
-												<div>
-													<label>样本类型</label>
-												</div>
-												<div class="pull-left">
-													<label><form:radiobutton id="sampleType1" path="deliveryType" value="A" />A
-														</label> <label> <form:radiobutton id="sampleType2" path="deliveryType"
-																value="B" />B
-														</label>
-												</div>
-											</div>
-										</div>
-										<div class="row row-margin">
-											<div class="col-md-6 col-sm-12 col-xs-12">
+											<div class="col-md-4 col-sm-12 col-xs-12">
 												<div>
 													<label>样品数量 </label>
 													<label id="sampleAmountLbl" class="warning-style">该字段不允许为空</label>
@@ -131,7 +101,9 @@
 													<form:input  id="sampleAmount" path="sampleAmount" class="form-control" readonly="true"/>
 												</div>
 											</div>
-											<div class="col-md-6 col-sm-12 col-xs-12">
+										</div>
+										<div class="row row-margin">
+											<div class="col-md-4 col-sm-12 col-xs-12">
 												<div>
 													<label>外送编号</label>
 													<label id="deliveryNumLbl" class="warning-style">该字段不允许为空</label>
@@ -140,9 +112,7 @@
 													<form:input id="deliveryNum" path="deliveryNum" class="form-control" readonly="true"/>
 												</div>
 											</div>
-										</div>
-										<div class="row row-margin">
-											<div class="col-md-6 col-sm-12 col-xs-12">
+											<div class="col-md-4 col-sm-12 col-xs-12">
 												<div>
 													<label>收样日期</label>
 													<label id="reciveDateLbl" class="warning-style">该字段不允许为空</label>
@@ -155,7 +125,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-md-6 col-sm-12 col-xs-12">
+											<div class="col-md-4 col-sm-12 col-xs-12">
 												<div>
 													<label>报告日期</label>
 													<label id="reportDateLbl" class="warning-style">该字段不允许为空</label>
@@ -170,13 +140,35 @@
 											</div>
 										</div>
 										<div class="row row-margin">
-											<div class="col-md-6 col-sm-12 col-xs-12">
+											<div class="col-md-4 col-sm-12 col-xs-12">
 												<div>
 													<label>存放位置</label>
 													<label id="locationLbl" class="warning-style">该字段不允许为空</label>
 												</div>
 												<div>
 													<form:input id="location" path="diskLocation" class="form-control" readonly="true"/>
+												</div>
+											</div>
+											<div class="col-md-4 col-sm-12 col-xs-12">
+												<div>
+													<label>是否外送</label>
+												</div>
+												<div class="pull-left">
+													<label><form:radiobutton id="sended1" path="isDelivery" value="Y" />需要
+														</label> <label> <form:radiobutton id="sended2" path="isDelivery"
+																value="N" />不需要
+														</label>
+												</div>
+											</div>
+											<div class="col-md-4 col-sm-12 col-xs-12">
+												<div>
+													<label>样本类型</label>
+												</div>
+												<div class="pull-left">
+													<label><form:radiobutton id="sampleType1" path="deliveryType" value="A" />A
+														</label> <label> <form:radiobutton id="sampleType2" path="deliveryType"
+																value="B" />B
+														</label>
 												</div>
 											</div>
 										</div>
