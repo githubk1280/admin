@@ -14,9 +14,11 @@ public interface LiteratureDao {
 			@Param(value = "offset") int offset);
 
 	void insert(Literature lte);
-	
+
 	int totalCount();
 
 	Literature loadById(int id);
+
+	void update(Literature literature);
 
 }

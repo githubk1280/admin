@@ -186,7 +186,7 @@ public class ProjectController {
 	}
 
 	@RequestMapping("/update")
-	public ModelAndView addRedirect(Project project) {
+	public ModelAndView update(Project project) {
 		projectService.updateProject(project);
 		ModelAndView view = new ModelAndView();
 		view.addObject(project);

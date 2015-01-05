@@ -149,16 +149,21 @@ public class LiteratureController {
 		return sdf.parse(publishDate);
 	}
 
-	@RequestMapping("/literature/{literatureId}")
-	public ModelAndView literatureDetail(@PathVariable("id") int literatureId) {
-		// List<Literature> lts =
-		// literatureService.loadAllLiteratures(pageIndex,
-		// PaginationConstant.DEFAULT_PAGE_SIZE);
-		// int totalCount = literatureService.getTotalCount();
+	@RequestMapping("/{literatureId}")
+	public ModelAndView literatureDetail(@PathVariable int literatureId) {
+		Literature lte = literatureService.loadById(literatureId);
 		ModelAndView view = new ModelAndView();
 		view.setViewName(PageResourceConstant.LTS_DETAIL);
-		// view.addObject("lts", lts);
-		// view.addObject("total", totalCount);
+		view.addObject("lte", lte);
+		return view;
+	}
+
+	@RequestMapping("/update")
+	public ModelAndView update(Literature literature) {
+		literatureService.update(literature);
+		ModelAndView view = new ModelAndView();
+		view.setViewName(PageResourceConstant.LTS_DETAIL);
+		view.addObject("lte", literature);
 		return view;
 	}
 }

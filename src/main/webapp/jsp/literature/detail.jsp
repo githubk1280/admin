@@ -22,189 +22,199 @@
 		<div id="page-wrapper" class="detailPage">
 			<div class="row">
 				<div class="col-lg-12">
-				<form action="" method="post" >
-					<!-- .panel-heading -->
-					<div class="panel-body">
-					<div class="panel-group" id="accordion">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title">
-									<strong>文献基本信息</strong>
-									<button id="modifyLiterature" class="btn btn-default btn-success" 
-										 style="margin-right: 10px;float:right; padding:1px 12px" type="button">修改</button>
-										<button id="cancelLiterature" class="btn btn-default btn-success" 
-										 style="margin-left: 10px; margin-right: 10px;float:right; padding:1px 12px; display: none" type="reset">取消</button>
-										<button id="saveLiterature" value="1"
-										  class="btn btn-default btn-success"
-										  style="margin-left: 10px; margin-right: 10px;float:right; padding:1px 12px;display:none" type="submit">保存</button>
-								</h3>
-							</div>
+					<form:form action="add" method="post" commandName="lte">
+						<!-- .panel-heading -->
+						<div class="panel-body">
+							<div class="panel-group" id="accordion">
+								<div class="panel panel-default">
 
-							<div id="collapseThree" class="panel-collapse collapse in"
-								style="">
-								<div class="panel-body">
-									<div class="row">
-										<div class="col-md-6 col-sm-12 col-xs-12">
-											<div>
-												<label>标题</label>
+									<div class="panel-heading">
+										<h3 class="panel-title">
+											<strong>文献基本信息</strong>
+										</h3>
+									</div>
+
+									<div id="collapseThree" class="panel-collapse collapse in"
+										style="">
+										<div class="panel-body">
+											<div class="row">
+												<div class="col-md-4 col-sm-12 col-xs-12">
+													<div>
+														<label>标题</label>
+													</div>
+													<div>
+														<form:input path="title" type="text" class="form-control input-style" />
+													</div>
+												</div>
+												<div class="col-md-4 col-sm-12 col-xs-12">
+													<div>
+														<label>作者</label>
+													</div>
+													<div>
+														<form:input path="author" type="text" class="form-control input-style" />
+													</div>
+												</div>
+												<div class="col-md-4 col-sm-12 col-xs-12">
+													<div>
+														<label>发布时间</label>
+													</div>
+													<div>
+														<form:input path="publishDate" type="text" class="form-control input-style" />
+													</div>
+												</div>
 											</div>
-											<div>
-												<input type="text" class="form-control" name="title">
+											<div class="row row-margin">
+												<div class="col-md-4 col-sm-12 col-xs-12">
+													<div>
+														<label>地点</label>
+													</div>
+													<div>
+														<form:input path="location" type="text" class="form-control input-style" />
+													</div>
+												</div>
+												<div class="col-md-4 col-sm-12 col-xs-12">
+													<div>
+														<label>文章研究内容和方向</label>
+													</div>
+													<div>
+														<form:input path="direction" type="text" class="form-control input-style" />
+													</div>
+												</div>
+												<div class="col-md-4 col-sm-12 col-xs-12">
+													<div>
+														<label>文章背景</label>
+													</div>
+													<div>
+														<input type="text" class="form-control input-style"
+															name="background">
+													</div>
+												</div>
 											</div>
-										</div>
-										<div class="col-md-6 col-sm-12 col-xs-12">
-											<div>
-												<label>作者</label>
+											<div class="row row-margin">
+												<div class="col-md-4 col-sm-12 col-xs-12">
+													<div>
+														<label>技术路线</label>
+													</div>
+													<div>
+														<input type="text" class="form-control input-style"
+															name="technicalWay">
+													</div>
+												</div>
+												<div class="col-md-4 col-sm-12 col-xs-12">
+													<div>
+														<label>技术平台</label>
+													</div>
+													<div>
+														<input type="text" class="form-control input-style"
+															name="technicalPlatform">
+													</div>
+												</div>
+												<div class="col-md-4 col-sm-12 col-xs-12">
+													<div>
+														<label>文章结论</label>
+													</div>
+													<div>
+														<input type="text" class="form-control input-style"
+															name="conclusion">
+													</div>
+												</div>
 											</div>
-											<div>
-												<input type="text" class="form-control" name="author">
+											<div class="row row-margin">
+												<div class="col-md-4 col-sm-12 col-xs-12">
+													<div>
+														<label>文章亮点</label>
+													</div>
+													<div>
+														<input type="text" class="form-control input-style"
+															name="lightPoint">
+													</div>
+												</div>
+												<div class="col-md-4 col-sm-12 col-xs-12">
+													<div>
+														<label>对于科研项目的启示</label>
+													</div>
+													<div>
+														<input type="text" class="form-control input-style"
+															name="researchEnlightenment">
+													</div>
+												</div>
+												<div class="col-md-4 col-sm-12 col-xs-12">
+													<div>
+														<label>对于产品研发的启示</label>
+													</div>
+													<div>
+														<input type="text" class="form-control input-style"
+															name="productEnlightenment">
+													</div>
+												</div>
+											</div>
+											<div class="row row-margin">
+												<div class="col-md-4 col-sm-12 col-xs-12">
+													<div>
+														<label>对于技术平台建设的启示</label>
+													</div>
+													<div>
+														<input type="text" class="form-control input-style"
+															name="platformEnlightenment">
+													</div>
+												</div>
+												<div class="col-md-4 col-sm-12 col-xs-12">
+													<div>
+														<label>备注信息</label>
+													</div>
+													<div>
+														<input type="text" class="form-control input-style"
+															name="comments">
+													</div>
+												</div>
+												<div class="col-md-4 col-sm-12 col-xs-12">
+													<div>
+														<label>相关问题与解答</label>
+													</div>
+													<div>
+														<input type="text" class="form-control input-style"
+															name="problem">
+													</div>
+												</div>
+											</div>
+											<div class="row row-margin">
+												<div class="col-md-4 col-sm-12 col-xs-12">
+													<div>
+														<label>附件研究热点</label>
+													</div>
+													<div>
+														<input type="text" class="form-control input-style"
+															name="attachedHotSpot">
+													</div>
+												</div>
+											</div>
+											<div class="row row-margin">
+												<div class="col-md-6 col-sm-12 col-xs-12">
+													<div>
+														<label>摘要</label>
+													</div>
+													<div>
+														<!--<input type="text" class="form-control"> -->
+														<textarea rows="6" cols="20" class="form-control"
+															name="abstracts"></textarea>
+													</div>
+												</div>
+											</div>
+											<div class="row row-margin">
+												<div class="col-md-6 col-sm-12 col-xs-12">
+													<button id="saveLiterature"
+														class="btn btn-default btn-primary" type="submit">保存</button>
+													<button id="cancelLiterature"
+														class="btn btn-default btn-primary" type="reset">取消</button>
+												</div>
 											</div>
 										</div>
 									</div>
-									<div class="row row-margin">
-										<div class="col-md-6 col-sm-12 col-xs-12">
-											<div>
-												<label>发布时间</label>
-											</div>
-											<div>
-												<input type="text" class="form-control" name="publishDate">
-											</div>
-										</div>
-										<div class="col-md-6 col-sm-12 col-xs-12">
-											<div>
-												<label>地点</label>
-											</div>
-											<div>
-												<input type="text" class="form-control" name="location">
-											</div>
-										</div>
-									</div>
-									<div class="row row-margin">
-										<div class="col-md-6 col-sm-12 col-xs-12">
-											<div>
-												<label>摘要</label>
-											</div>
-											<div>
-											<!--<input type="text" class="form-control"> -->
-											<textarea rows="6" cols="20" class="form-control" name="abstracts"></textarea>
-											</div>
-										</div>
-									</div>
-									<div class="row row-margin">
-										<div class="col-md-6 col-sm-12 col-xs-12">
-											<div>
-												<label>文章研究内容和方向</label>
-											</div>
-											<div>
-												<input type="text" class="form-control" name="articleDirection">
-											</div>
-										</div>
-										<div class="col-md-6 col-sm-12 col-xs-12">
-											<div>
-												<label>文章背景</label>
-											</div>
-											<div>
-												<input type="text" class="form-control" name="articleBg">
-											</div>
-										</div>
-									</div>
-									<div class="row row-margin">
-										<div class="col-md-6 col-sm-12 col-xs-12">
-											<div>
-												<label>技术路线</label>
-											</div>
-											<div>
-												<input type="text" class="form-control" name="tecPath">
-											</div>
-										</div>
-										<div class="col-md-6 col-sm-12 col-xs-12">
-											<div>
-												<label>技术平台</label>
-											</div>
-											<div>
-												<input type="text" class="form-control" name="tecPlatform">
-											</div>
-										</div>
-									</div>
-									<div class="row row-margin">
-										<div class="col-md-6 col-sm-12 col-xs-12">
-											<div>
-												<label>文章结论</label>
-											</div>
-											<div>
-												<input type="text" class="form-control" name="articleRes">
-											</div>
-										</div>
-										<div class="col-md-6 col-sm-12 col-xs-12">
-											<div>
-												<label>文章亮点</label>
-											</div>
-											<div>
-												<input type="text" class="form-control" name="articleLight">
-											</div>
-										</div>
-									</div>
-									<div class="row row-margin">
-										<div class="col-md-6 col-sm-12 col-xs-12">
-											<div>
-												<label>对于科研项目的启示</label>
-											</div>
-											<div>
-												<input type="text" class="form-control" name="tipForResearch">
-											</div>
-										</div>
-										<div class="col-md-6 col-sm-12 col-xs-12">
-											<div>
-												<label>对于产品研发的启示</label>
-											</div>
-											<div>
-												<input type="text" class="form-control" name="tipForProduct">
-											</div>
-										</div>
-									</div>
-									<div class="row row-margin">
-										<div class="col-md-6 col-sm-12 col-xs-12">
-											<div>
-												<label>对于技术平台建设的启示</label>
-											</div>
-											<div>
-												<input type="text" class="form-control" name="tipForTec">
-											</div>
-										</div>
-										<div class="col-md-6 col-sm-12 col-xs-12">
-											<div>
-												<label>备注信息</label>
-											</div>
-											<div>
-												<input type="text" class="form-control" name="comments">
-											</div>
-										</div>
-									</div>
-									<div class="row row-margin">
-										<div class="col-md-6 col-sm-12 col-xs-12">
-											<div>
-												<label>相关问题与解答</label>
-											</div>
-											<div>
-												<input type="text" class="form-control" name="qa">
-											</div>
-										</div>
-										<div class="col-md-6 col-sm-12 col-xs-12">
-											<div>
-												<label>附件研究热点</label>
-											</div>
-											<div>
-												<input type="text" class="form-control" name="hotPoint">
-											</div>
-										</div>
-									</div>
+
 								</div>
 							</div>
-							
 						</div>
-						</div>
-					</div>
-</form>
+					</form:form>
 					<!-- .panel-body -->
 				</div>
 				<!-- /.panel -->

@@ -64,7 +64,7 @@
 											<c:otherwise>
 												<c:forEach items="${lts}" var="lte" varStatus="status">
 													<tr>
-														<td>${lte.title }</td>
+														<td><a href="<%=request.getContextPath()%>/literature/${lte.id}" target="_blank" class="project_link">${lte.title}</a></td>
 														<td>${lte.author }</td>
 														<td><fmt:formatDate value="${lte.publishDate }"	pattern="yyyy-MM-dd" /></td>
 														<td>${lte.location }</td>
