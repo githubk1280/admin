@@ -73,7 +73,11 @@
 						<label>性别 </label>
 					</div>
 					<div>
-						<form:input id="sex"  path="sex" type="text" class="form-control input-style" readonly="true" maxlength="1"/>
+						<!--<form:input id="sex"  path="sex" type="text" class="form-control input-style" readonly="true" maxlength="1"/>-->
+						<label><form:radiobutton id="sex1"
+							path="sex" value="Y" checked="true"/>男 </label> 
+								<label><form:radiobutton id="sex2"
+							path="sex" value="N" />女 </label>
 					</div>
 				</div>
 			</div>
