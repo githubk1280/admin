@@ -256,8 +256,8 @@
 						<!-- include projectstatus page -->
 						<%@ include file="projectstatus.jsp"%>
 						<!-- include projectoutsource page -->
-						<%@ include file="projectOutSource.jsp"%>
-						<%@ include file="projectCustomer.jsp"%>
+<%-- 						<%@ include file="projectOutSource.jsp"%> --%>
+<%-- 						<%@ include file="projectCustomer.jsp"%> --%>
 				</div>
 			</div>							
       </div>
