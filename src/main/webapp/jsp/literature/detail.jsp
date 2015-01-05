@@ -22,7 +22,7 @@
 		<div id="page-wrapper" class="detailPage">
 			<div class="row">
 				<div class="col-lg-12">
-					<form:form action="add" method="post" commandName="lte">
+					<form:form action="update" method="post" commandName="lte">
 						<!-- .panel-heading -->
 						<div class="panel-body">
 							<div class="panel-group" id="accordion">
@@ -43,6 +43,7 @@
 														<label>标题</label>
 													</div>
 													<div>
+														<form:hidden path="id"/>
 														<form:input path="title" type="text" class="form-control input-style" />
 													</div>
 												</div>
@@ -59,7 +60,8 @@
 														<label>发布时间</label>
 													</div>
 													<div>
-														<form:input path="publishDate" type="text" class="form-control input-style" />
+														<fmt:formatDate value="${lte.publishDate}" var="dateString" pattern="yyyy-MM-dd" />
+														<form:input path="publishDate" type="text" class="form-control input-style" value="${dateString }"/>
 													</div>
 												</div>
 											</div>
@@ -85,8 +87,7 @@
 														<label>文章背景</label>
 													</div>
 													<div>
-														<input type="text" class="form-control input-style"
-															name="background">
+														<form:input path="background" type="text" class="form-control input-style" />
 													</div>
 												</div>
 											</div>
@@ -96,8 +97,7 @@
 														<label>技术路线</label>
 													</div>
 													<div>
-														<input type="text" class="form-control input-style"
-															name="technicalWay">
+														<form:input path="technicalWay" type="text" class="form-control input-style" />
 													</div>
 												</div>
 												<div class="col-md-4 col-sm-12 col-xs-12">
@@ -105,8 +105,7 @@
 														<label>技术平台</label>
 													</div>
 													<div>
-														<input type="text" class="form-control input-style"
-															name="technicalPlatform">
+														<form:input path="technicalPlatform" type="text" class="form-control input-style" />
 													</div>
 												</div>
 												<div class="col-md-4 col-sm-12 col-xs-12">
@@ -114,8 +113,7 @@
 														<label>文章结论</label>
 													</div>
 													<div>
-														<input type="text" class="form-control input-style"
-															name="conclusion">
+														<form:input path="conclusion" type="text" class="form-control input-style" />
 													</div>
 												</div>
 											</div>
@@ -125,8 +123,7 @@
 														<label>文章亮点</label>
 													</div>
 													<div>
-														<input type="text" class="form-control input-style"
-															name="lightPoint">
+														<form:input path="lightPoint" type="text" class="form-control input-style" />
 													</div>
 												</div>
 												<div class="col-md-4 col-sm-12 col-xs-12">
@@ -134,8 +131,7 @@
 														<label>对于科研项目的启示</label>
 													</div>
 													<div>
-														<input type="text" class="form-control input-style"
-															name="researchEnlightenment">
+														<form:input path="researchEnlightenment" type="text" class="form-control input-style" />
 													</div>
 												</div>
 												<div class="col-md-4 col-sm-12 col-xs-12">
@@ -143,8 +139,7 @@
 														<label>对于产品研发的启示</label>
 													</div>
 													<div>
-														<input type="text" class="form-control input-style"
-															name="productEnlightenment">
+														<form:input path="productEnlightenment" type="text" class="form-control input-style" />
 													</div>
 												</div>
 											</div>
@@ -154,8 +149,7 @@
 														<label>对于技术平台建设的启示</label>
 													</div>
 													<div>
-														<input type="text" class="form-control input-style"
-															name="platformEnlightenment">
+														<form:input path="platformEnlightenment" type="text" class="form-control input-style" />
 													</div>
 												</div>
 												<div class="col-md-4 col-sm-12 col-xs-12">
@@ -163,8 +157,7 @@
 														<label>备注信息</label>
 													</div>
 													<div>
-														<input type="text" class="form-control input-style"
-															name="comments">
+														<form:input path="comments" type="text" class="form-control input-style" />
 													</div>
 												</div>
 												<div class="col-md-4 col-sm-12 col-xs-12">
@@ -172,8 +165,7 @@
 														<label>相关问题与解答</label>
 													</div>
 													<div>
-														<input type="text" class="form-control input-style"
-															name="problem">
+														<form:input path="problem" type="text" class="form-control input-style" />
 													</div>
 												</div>
 											</div>
@@ -183,8 +175,7 @@
 														<label>附件研究热点</label>
 													</div>
 													<div>
-														<input type="text" class="form-control input-style"
-															name="attachedHotSpot">
+														<form:input path="attachedHotSpot" type="text" class="form-control input-style" />
 													</div>
 												</div>
 											</div>
@@ -194,9 +185,7 @@
 														<label>摘要</label>
 													</div>
 													<div>
-														<!--<input type="text" class="form-control"> -->
-														<textarea rows="6" cols="20" class="form-control"
-															name="abstracts"></textarea>
+														<form:textarea path="abstracts" type="text" class="form-control input-style" />
 													</div>
 												</div>
 											</div>
@@ -204,8 +193,8 @@
 												<div class="col-md-6 col-sm-12 col-xs-12">
 													<button id="saveLiterature"
 														class="btn btn-default btn-primary" type="submit">保存</button>
-													<button id="cancelLiterature"
-														class="btn btn-default btn-primary" type="reset">取消</button>
+<!-- 													<button id="cancelLiterature" -->
+<!-- 														class="btn btn-default btn-primary" type="reset">取消</button> -->
 												</div>
 											</div>
 										</div>

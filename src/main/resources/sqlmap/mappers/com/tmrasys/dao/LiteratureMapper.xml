@@ -6,13 +6,16 @@
 		UPDATE literature
 		SET
 		TITLE=#{title},AUTHOR=#{author},PUBLICATION_YEAR=#{publishDate},LOCATIONS=#{location},
-		ABSTRACT=#{abstracts},DISK_URL=#{filePath},
+		ABSTRACT=#{abstracts},
+<!-- 		DISK_URL=#{filePath}, -->
 		DIRECTION=#{direction},BACKGROUND=#{background},
 		TECHNOLOGYWAY=#{technicalWay},TECHNOLOGY_PLATFORM=#{technicalPlatform},
 		CONCLUSION=#{conclusion},LIGHT_SPOT=#{lightPoint},
 		RESEARCHENLIGHTENMENT=#{researchEnlightenment},PRODUCTENLIGHTENMENT=#{productEnlightenment},
 		PLATFORMENLIGHTENMENT=#{platformEnlightenment},COMMENTS=#{comments},
 		PROBLEM=#{problem},ATTACHEDHOTSPOT=#{attachedHotSpot},addTime=now()
+		WHERE
+		LITERATURE_ID=#{id}
 	</update>
 
 	<insert id="insert" keyProperty="id" parameterType="com.tmrasys.domain.Literature"
@@ -57,6 +60,19 @@
 		<result property="location" column="LOCATIONS" />
 		<result property="abstracts" column="ABSTRACT" />
 		<result property="filePath" column="DISK_URL" />
+		<result property="direction" column="DIRECTION" />
+		<result property="background" column="BACKGROUND" />
+		<result property="technicalWay" column="TECHNOLOGYWAY" />
+		<result property="technicalPlatform" column="TECHNOLOGY_PLATFORM" />
+		<result property="conclusion" column="CONCLUSION" />
+		<result property="lightPoint" column="LIGHT_SPOT" />
+		<result property="researchEnlightenment" column="RESEARCHENLIGHTENMENT" />
+		<result property="productEnlightenment" column="PRODUCTENLIGHTENMENT" />
+		<result property="platformEnlightenment" column="PLATFORMENLIGHTENMENT" />
+		<result property="comments" column="COMMENTS" />
+		<result property="problem" column="PROBLEM" />
+		<result property="attachedHotSpot" column="ATTACHEDHOTSPOT" />
+		<result property="addTime" column="addTime" />
 	</resultMap>
 	<!-- <parameterMap type="com.tmrasys.domain.Literature" id="lteParameter"> -->
 	<!-- <parameter property="id" resultMap="LITERATURE_ID" /> -->
