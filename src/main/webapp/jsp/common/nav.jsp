@@ -61,7 +61,7 @@
 						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">外包信息</strong></a></li>
 				<li  style="display:none" id="customerBasicDataLi"><a id="link_customer" href="<%=request.getContextPath()%>/customer/pages/1"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">客户基本信息</strong></a></li>
-				<li  style="display:none" id="assignBasicDataLi"><a id="link_assgin" href="<%=request.getContextPath()%>/project/assign-redirect"><i
+				<li  style="display:none" id="assignBasicDataLi"><a id="link_assgin" href="<%=request.getContextPath()%>/user/assign-redirect"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">分配项目</strong></a></li>
 				<li  style="display:none" id="docBasiceDataLi"><a id="link_doc" href="<%=request.getContextPath()%>/doc/pages/1"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">文档基本信息</strong></a></li>

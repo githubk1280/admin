@@ -195,37 +195,37 @@ public class ProjectController {
 
 	}
 
-	@RequestMapping("/assign-redirect")
-	public ModelAndView assignRedirect() {
-		ProjectEmployee projectEmployee = new ProjectEmployee("", 0);
-		List<Employee> emps = employeeService.getAllEmployees();
-		List<Project> pros = projectService.loadAllProjects();
-		ModelAndView view = new ModelAndView();
-		view.addObject("projects", pros);
-		view.addObject("employees", emps);
-		view.addObject("projectEmployee", projectEmployee);
-		view.setViewName("project/assignProjects");
-		return view;
+//	@RequestMapping("/assign-redirect")
+//	public ModelAndView assignRedirect() {
+//		ProjectEmployee projectEmployee = new ProjectEmployee("", 0);
+//		List<Employee> emps = employeeService.getAllEmployees();
+//		List<Project> pros = projectService.loadAllProjects();
+//		ModelAndView view = new ModelAndView();
+//		view.addObject("projects", pros);
+//		view.addObject("employees", emps);
+//		view.addObject("projectEmployee", projectEmployee);
+//		view.setViewName("project/assignProjects");
+//		return view;
+//
+//	}
 
-	}
-
-	@RequestMapping("/assign")
-	public ModelAndView assign(ProjectEmployee projectEmployee,
-			HttpSession session) {
-		boolean exist = projectEmployeeService
-				.getByProjectId(projectEmployee.getProjectId(),
-						projectEmployee.getEmployeeId()) != null;
-		int success = 1;
-		if (exist) {
-			success = 2;
-		} else {
-			projectEmployeeService.addReference(projectEmployee);
-			projectService.addContent(projectEmployee.getProjectId(), projectEmployee.getAssignContent());
-		}
-		ModelAndView view = new ModelAndView("project/assign-success");
-		view.addObject("success", success);
-		return view;
-	}
+//	@RequestMapping("/assign")
+//	public ModelAndView assign(ProjectEmployee projectEmployee,
+//			HttpSession session) {
+//		boolean exist = projectEmployeeService
+//				.getByProjectId(projectEmployee.getProjectId(),
+//						projectEmployee.getEmployeeId()) != null;
+//		int success = 1;
+//		if (exist) {
+//			success = 2;
+//		} else {
+//			projectEmployeeService.addReference(projectEmployee);
+//			projectService.addContent(projectEmployee.getProjectId(), projectEmployee.getAssignContent());
+//		}
+//		ModelAndView view = new ModelAndView("project/assign-success");
+//		view.addObject("success", success);
+//		return view;
+//	}
 	
 	@RequestMapping(value = "ajax/validateProjectId")
 	public void validate(String projectId, HttpServletRequest request,

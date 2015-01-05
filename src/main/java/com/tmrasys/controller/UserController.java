@@ -1,5 +1,7 @@
 package com.tmrasys.controller;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 
@@ -11,7 +13,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tmrasys.constant.page.PageResourceConstant;
 import com.tmrasys.domain.Employee;
+import com.tmrasys.domain.Project;
+import com.tmrasys.domain.ProjectEmployee;
 import com.tmrasys.service.employee.EmployeeService;
+import com.tmrasys.service.project.ProjectService;
+import com.tmrasys.service.projectEmployee.ProjectEmployeeService;
 import com.tmrasys.utils.FailedUtils;
 
 @Controller
@@ -21,6 +27,12 @@ public class UserController {
 
 	@Autowired
 	private EmployeeService employeeService;
+
+	@Autowired
+	private ProjectService projectService;
+	
+	@Autowired
+	private ProjectEmployeeService projectEmployeeService;
 
 	@PostConstruct
 	public void init() {
@@ -67,6 +79,39 @@ public class UserController {
 		ModelAndView view = new ModelAndView();
 		employeeService.updateEmployee(employee);
 		view.setViewName(PageResourceConstant.USER_MODIFY_SUCCESS);
+		return view;
+	}
+
+	@RequestMapping("/assign-redirect")
+	public ModelAndView assignRedirect() {
+		ProjectEmployee projectEmployee = new ProjectEmployee("", 0);
+		List<Employee> emps = employeeService.getAllEmployees();
+		List<Project> pros = projectService.loadAllProjects();
+		ModelAndView view = new ModelAndView();
+		view.addObject("projects", pros);
+		view.addObject("employees", emps);
+		view.addObject("projectEmployee", projectEmployee);
+		view.setViewName("usermgnt/assignProjects");
+		return view;
+
+	}
+
+	@RequestMapping("/assign")
+	public ModelAndView assign(ProjectEmployee projectEmployee,
+			HttpSession session) {
+		boolean exist = projectEmployeeService
+				.getByProjectId(projectEmployee.getProjectId(),
+						projectEmployee.getEmployeeId()) != null;
+		int success = 1;
+		if (exist) {
+			success = 2;
+		} else {
+			projectEmployeeService.addReference(projectEmployee);
+			projectService.addContent(projectEmployee.getProjectId(),
+					projectEmployee.getAssignContent());
+		}
+		ModelAndView view = new ModelAndView("usermgnt/assign-success");
+		view.addObject("success", success);
 		return view;
 	}
 
