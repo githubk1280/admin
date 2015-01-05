@@ -9,5 +9,7 @@ import com.tmrasys.domain.Privilege;
 @Repository
 public interface PrivilegeDao {
 	List<Privilege> getAllPrivileges();
+
+	String getPrivilegeByUserId(int employeeId);
 	
 }

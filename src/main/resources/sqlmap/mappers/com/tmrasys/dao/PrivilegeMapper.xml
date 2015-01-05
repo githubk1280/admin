@@ -2,14 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.tmrasys.dao.PrivilegeDao">
-	<select id="getAllPrivileges" resultMap="privilegeResult" 
+	<select id="getAllPrivileges" resultMap="privilegeResult"
 		resultType="list">
-		SELECT 
+		SELECT
 		*
 		FROM privilege
 	</select>
+
+	<select id="getPrivilegeByUserId" resultType="string" parameterType="int">
+		SELECT p.Privileges FROM privilege p , employee e
+		WHERE e.EMPLOYEE_ID = #{employeeId}
+		AND e.FK_PRIVILEGE_ID = p.PRIVILEGE_ID;
+	</select>
 	<resultMap type="com.tmrasys.domain.Privilege" id="privilegeResult">
-		<id property="privilegeId" column="PRIVILEGE_ID"/>
+		<id property="privilegeId" column="PRIVILEGE_ID" />
 		<result property="privilegeCode" column="PRIVILEGE_CODE" />
 		<result property="description" column="DESCRIPTION" />
 	</resultMap>
