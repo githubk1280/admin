@@ -14,4 +14,6 @@ public interface LiteratureService {
 
 	public Literature loadById(int id);
 
+	public void update(Literature literature);
+
 }

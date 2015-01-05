@@ -2,6 +2,8 @@ package com.tmrasys.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Data
@@ -12,6 +14,7 @@ public class Literature {
 	/**
 	 * 发布时间
 	 */
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date publishDate;
 	private String location;
 	/**
@@ -70,6 +73,8 @@ public class Literature {
 	 * 附件研究热点
 	 */
 	private String attachedHotSpot;
+	
+	private Date addTime;
 
 	public Literature(String title, String author, Date publishDate,
 			String location, String abstracts, String filePath,

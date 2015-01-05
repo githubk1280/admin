@@ -2,7 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.tmrasys.dao.LiteratureDao">
-	<insert id="insert" keyProperty="id" parameterMap="lteParameter"
+	<update id="update" parameterType="com.tmrasys.domain.Literature">
+		UPDATE literature
+		SET
+		TITLE=#{title},AUTHOR=#{author},PUBLICATION_YEAR=#{publishDate},LOCATIONS=#{location},
+		ABSTRACT=#{abstracts},
+<!-- 		DISK_URL=#{filePath}, -->
+		DIRECTION=#{direction},BACKGROUND=#{background},
+		TECHNOLOGYWAY=#{technicalWay},TECHNOLOGY_PLATFORM=#{technicalPlatform},
+		CONCLUSION=#{conclusion},LIGHT_SPOT=#{lightPoint},
+		RESEARCHENLIGHTENMENT=#{researchEnlightenment},PRODUCTENLIGHTENMENT=#{productEnlightenment},
+		PLATFORMENLIGHTENMENT=#{platformEnlightenment},COMMENTS=#{comments},
+		PROBLEM=#{problem},ATTACHEDHOTSPOT=#{attachedHotSpot},addTime=now()
+		WHERE
+		LITERATURE_ID=#{id}
+	</update>
+
+	<insert id="insert" keyProperty="id" parameterType="com.tmrasys.domain.Literature"
 		useGeneratedKeys="true">
 		INSERT INTO
 		literature
@@ -44,15 +60,28 @@
 		<result property="location" column="LOCATIONS" />
 		<result property="abstracts" column="ABSTRACT" />
 		<result property="filePath" column="DISK_URL" />
+		<result property="direction" column="DIRECTION" />
+		<result property="background" column="BACKGROUND" />
+		<result property="technicalWay" column="TECHNOLOGYWAY" />
+		<result property="technicalPlatform" column="TECHNOLOGY_PLATFORM" />
+		<result property="conclusion" column="CONCLUSION" />
+		<result property="lightPoint" column="LIGHT_SPOT" />
+		<result property="researchEnlightenment" column="RESEARCHENLIGHTENMENT" />
+		<result property="productEnlightenment" column="PRODUCTENLIGHTENMENT" />
+		<result property="platformEnlightenment" column="PLATFORMENLIGHTENMENT" />
+		<result property="comments" column="COMMENTS" />
+		<result property="problem" column="PROBLEM" />
+		<result property="attachedHotSpot" column="ATTACHEDHOTSPOT" />
+		<result property="addTime" column="addTime" />
 	</resultMap>
-	<parameterMap type="com.tmrasys.domain.Literature" id="lteParameter">
-		<parameter property="id" resultMap="LITERATURE_ID" />
-		<parameter property="title" resultMap="TITLE" />
-		<parameter property="author" resultMap="AUTHOR" />
-		<parameter property="publishDate" resultMap="PUBLICATION_YEAR" />
-		<parameter property="location" resultMap="LOCATIONS" />
-		<parameter property="abstracts" resultMap="ABSTRACT" />
-		<parameter property="filePath" resultMap="DISK_URL" />
-	</parameterMap>
+	<!-- <parameterMap type="com.tmrasys.domain.Literature" id="lteParameter"> -->
+	<!-- <parameter property="id" resultMap="LITERATURE_ID" /> -->
+	<!-- <parameter property="title" resultMap="TITLE" /> -->
+	<!-- <parameter property="author" resultMap="AUTHOR" /> -->
+	<!-- <parameter property="publishDate" resultMap="PUBLICATION_YEAR" /> -->
+	<!-- <parameter property="location" resultMap="LOCATIONS" /> -->
+	<!-- <parameter property="abstracts" resultMap="ABSTRACT" /> -->
+	<!-- <parameter property="filePath" resultMap="DISK_URL" /> -->
+	<!-- </parameterMap> -->
 </mapper>
 

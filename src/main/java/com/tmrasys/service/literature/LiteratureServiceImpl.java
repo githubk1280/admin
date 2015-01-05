@@ -35,4 +35,9 @@ public class LiteratureServiceImpl implements LiteratureService {
 		return literatureDao.loadById(id);
 	}
 
+	@Override
+	public void update(Literature literature) {
+		literatureDao.update(literature);
+	}
+
 }
