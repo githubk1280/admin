@@ -110,6 +110,7 @@
 		      AND p.project_name LIKE "%"#{projectName}"%"
 		ORDER BY p.project_id DESC		
 	</select>
+	
 	<parameterMap type="com.tmrasys.domain.Project" id="projectParameter">
 		<parameter property="projectId" resultMap="PROJECT_ID" />
 		<parameter property="projectName" resultMap="PROJECT_NAME" />
