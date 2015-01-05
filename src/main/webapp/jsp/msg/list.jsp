@@ -53,8 +53,9 @@
 																</c:otherwise>
 															</c:choose>
 															<div class="alert alert-${classLabel}"
-																style="padding: 0px; margin-bottom: 10px">${messageLabel}
+																style="padding: 0px; margin-bottom: 10px">
 																<c:set value="_" var="separtor" />
+																<span id="span${separtor}${msg.messageId}${separtor}${msg.status}">${messageLabel}</span>
 																<c:set value="${msg.messageId}${separtor}${msg.status}"
 																	var="idLabel" />
 																<label style=""><fmt:formatDate
@@ -98,6 +99,7 @@
 		});
 
 		function updateStatus(id) {
+			updateSpan(id);
 			var params = id.split("_");
 			var id = params[0];
 			var status = params[1];
@@ -109,6 +111,10 @@
 					}
 				});
 			}
+		};
+		
+		function updateSpan(id) {
+			$('#'+'span_'+id).text('已读信息');
 		};
 	</script>
 
