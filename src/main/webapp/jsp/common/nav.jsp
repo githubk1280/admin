@@ -168,9 +168,8 @@
 			$("#sideCreateUserLi").css('display','block');
 			//sideModifyPassword
 		}
+		
 		/*
-		*/
-			
 		if(<%=session.getAttribute("role")%>=="1"){
 			$("#createUserLi").css('display','none');
 			$("#tab3").css('display','none');
@@ -186,7 +185,7 @@
 			//$("#projectBasicDataLi").addClass("active");
 		}
 		
-		/*
+		
 		if(<%=session.getAttribute("role")%>=="3"){
 			$("#createUserLi").css('display','none');
 			$("#outsourceBasicDataLi").css('display','none');
@@ -205,7 +204,7 @@
 			$("#assignBasicDataLi").css('display','none');
 			$("#projectBasicDataLi").removeClass("active");
 		}
-		*/
+		
 		if(<%=session.getAttribute("role")%>=="4"){
 			$("#createUserLi").css('display','none');
 			$("#assignBasicDataLi").css('display','none');
@@ -217,8 +216,9 @@
 			$("#createOutsource").css('display','none');
 			$("#createFolder").css('display','none');
 		}
+		*/
 	};
-
+	
 	
 	
 </script>
