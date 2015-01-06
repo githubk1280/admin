@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tmrasys.base.AbstractBaseTestConfig;
+import com.tmrasys.domain.ContactRecord;
 import com.tmrasys.domain.Contract;
 import com.tmrasys.domain.Customer;
 import com.tmrasys.domain.Employee;
@@ -15,6 +16,7 @@ import com.tmrasys.domain.Project;
 import com.tmrasys.domain.ProjectEmployee;
 import com.tmrasys.domain.ProjectProgress;
 import com.tmrasys.domain.Sample;
+import com.tmrasys.service.contactRecord.ContactRecordService;
 import com.tmrasys.service.contract.ContractService;
 import com.tmrasys.service.customer.CustomerService;
 import com.tmrasys.service.employee.EmployeeService;
@@ -42,6 +44,8 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 	ContractService contractService;
 	@Autowired
 	SampleService sampleService;
+	@Autowired
+	ContactRecordService contactRecordService;
 
 	private Employee employee;
 
@@ -206,4 +210,17 @@ public class DataServiceTest extends AbstractBaseTestConfig {
 		sample.setProjectId("37");
 		sampleService.addSample(sample);
 	}
+	
+	@Test
+	public void testcontactRecord() {
+		ContactRecord record = new ContactRecord();
+		record.setContactContent("111111111111111111111111");
+		record.setContactPerson("222");
+		record.setContactPhone("111111213123");
+		record.setContactTime(new Date());
+		record.setCustomerId(41);
+		contactRecordService.addContact(record);
+		System.out.println(contactRecordService.getByCustomerId(41).size());
+	}
+	
 }

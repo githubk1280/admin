@@ -14,5 +14,6 @@
 		<mapper resource="sqlmap/mappers/com/tmrasys/dao/SampleMapper.xml" />
 		<mapper resource="sqlmap/mappers/com/tmrasys/dao/DocumentMapper.xml" />
 		<mapper resource="sqlmap/mappers/com/tmrasys/dao/LiteratureMapper.xml" />
+		<mapper resource="sqlmap/mappers/com/tmrasys/dao/ContactRecordMapper.xml" />
 	</mappers>
 </configuration>	

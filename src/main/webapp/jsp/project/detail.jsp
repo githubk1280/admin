@@ -312,7 +312,7 @@
 			$("#btnCancel").css('display','block');
 		});
 	    
-	 
+	    
 	    
 	    function projectStatusController($scope, $http) {
 			$scope.psToggle = function() {
@@ -364,7 +364,7 @@
 				result += d.getSeconds() > 11 ? d.getSeconds() : "0" + d.getSeconds();
 				return result;
 			};
-		
+		//if($("#saveProjectStatus").attr("type")=="submit"){
 			$scope.saveProjectStatus = function() {
 				if($("#saveProjectStatus").attr("type")=="submit"){
 					$http({
@@ -388,6 +388,8 @@
 					});
 				}
 			};
+		//}
+			
 			
 			$scope.cancelProjectStatus = function(){
 				$http.get("/admin/status/ajax/${project.projectId}").success(

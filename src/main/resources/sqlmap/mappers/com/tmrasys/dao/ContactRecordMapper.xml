@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tmrasys.dao.ContactRecordDao">
+	<select id="getByCustomerId" resultMap="contactRecordResult"
+		resultType="list" parameterType="int">
+		select * from `test`.`contact_record` c
+		where
+		CUSTOMER_ID=#{customerId}
+	</select>
+
+	<insert id="addContact" keyProperty="contactId" parameterMap="contactRecordParam"
+	useGeneratedKeys="true">
+	INSERT INTO `test`.`contact_record`
+	(
+	`CONTACT_TIME`,
+	`CONTACT_CONTENT`,
+	`CONTACT_PERSON`,
+	`CONTACT_PHONE`,
+	`CUSTOMER_ID`)
+	VALUES
+	(
+	#{contactTime}, #{contactContent},#{contactPerson},#{contactPhone},
+	#{customerId}
+	);
+</insert>
+
+	<resultMap type="com.tmrasys.domain.ContactRecord" id="contactRecordResult">
+		<id property="contactId" column="CONTACT_ID" />
+		<result property="contactTime" column="CONTACT_TIME" />
+		<result property="contactContent" column="CONTACT_CONTENT" />
+		<result property="contactPerson" column="CONTACT_PERSON" />
+		<result property="contactPhone" column="CONTACT_PHONE" />
+		<result property="customerId" column="CUSTOMER_ID" />
+	</resultMap>
+	<parameterMap type="com.tmrasys.domain.ContactRecord" id="contactRecordParam">
+		<parameter property="contactId" resultMap="CONTACT_ID" />
+		<parameter property="contactTime" resultMap="CONTACT_TIME" />
+		<parameter property="contactContent" resultMap="CONTACT_CONTENT" />
+		<parameter property="contactPerson" resultMap="CONTACT_PERSON" />
+		<parameter property="contactPhone" resultMap="CONTACT_PHONE" />
+		<parameter property="customerId" resultMap="CUSTOMER_ID" />
+	</parameterMap>
+</mapper>
+
