@@ -68,6 +68,7 @@
 					</div>
 					<div>
 						<form:input id="customerName" path="customerName" type="text" class="form-control input-style" readonly="true" maxlength="5"/>
+						<form:input id="customerId" type="text" readonly="true" cssStyle="display:none" class="form-control" path="customerId" />
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-12 col-xs-12">
@@ -332,6 +333,12 @@
 				isEmail($("#email"));
 			}
 		});
+	});
+	
+	$("#touchHis").click(function() {
+		window.location.replace("http://"+window.location.host+"/admin/customer/listContacts"
+				+"&"+$("#customerId").val());
+		return false;
 	});
 	/***validate positive number***/
 	function customerInfo_isPositiveInteger(obj){
