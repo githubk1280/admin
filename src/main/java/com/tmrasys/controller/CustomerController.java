@@ -2,6 +2,7 @@ package com.tmrasys.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,9 +21,11 @@ import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 import com.tmrasys.constant.DataCheckTypeConstant;
 import com.tmrasys.constant.page.PageResourceConstant;
+import com.tmrasys.domain.ContactRecord;
 import com.tmrasys.domain.Customer;
 import com.tmrasys.domain.Employee;
 import com.tmrasys.domain.ProjectIdPrincipal;
+import com.tmrasys.service.contactRecord.ContactRecordService;
 import com.tmrasys.service.customer.CustomerService;
 import com.tmrasys.service.project.ProjectService;
 import com.tmrasys.stereotype.DataAccessCheck;
@@ -37,6 +40,8 @@ public class CustomerController {
 	private CustomerService customerService;
 	@Autowired
 	private ProjectService projectService;
+	@Autowired
+	private ContactRecordService contactRecordService;
 
 	@DataAccessCheck(forWhat = { DataCheckTypeConstant.CUSTOMER })
 	@RequestMapping("/{customerId}&{principalId}")
@@ -52,9 +57,8 @@ public class CustomerController {
 		} else if (principalId == 2) {
 			view.setViewName(PageResourceConstant.CUSTOMER_SECONDDETAIL);
 		}
-
+		view.addObject("contactRecords", contactRecordService.getByCustomerId(customerId));
 		return view;
-
 	}
 
 	@RequestMapping("/list")
@@ -252,6 +256,19 @@ public class CustomerController {
 		if (!CollectionUtils.isEmpty(list)) {
 			JsonResponseUtils.returnJsonResponse(response, list, true, 200);
 		}
+	}
+	
+	@RequestMapping("/add/{contactTime}/{contactContent}/{contactPerson}/{contactPhone}/{customerId}")
+	public ModelAndView addContactRecord(@PathVariable Date contactTime, @PathVariable String contactContent,
+			@PathVariable String contactPerson,@PathVariable String contactPhone,@PathVariable int customerId, @PathVariable int principalId) {
+		ContactRecord record = new ContactRecord();
+		record.setContactContent(contactContent);
+		record.setContactTime(contactTime);
+		record.setContactPerson(contactPerson);
+		record.setContactPhone(contactPhone);
+		record.setCustomerId(customerId);
+		contactRecordService.addContact(record);
+		return new ModelAndView("customer/"+customerId+"&"+principalId);
 	}
 
 }
