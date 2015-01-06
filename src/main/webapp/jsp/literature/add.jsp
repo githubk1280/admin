@@ -39,7 +39,10 @@
 								<div class="panel-body">
 									<div class="row">
 										<div class="col-md-12">
-											<input type="file" name="file"
+											<label id="fileNameLbl" class="warning-style">该字段不允许为空</label>
+										</div>
+										<div class="col-md-12">
+											<input id="fileName" type="file" name="file"
 												class="btn btn-default btn-primary pull-left"
 												style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px" />
 										</div>
@@ -48,9 +51,10 @@
 										<div class="col-md-4 col-sm-12 col-xs-12">
 											<div>
 												<label>标题</label>
+												<label id="titleLbl" class="warning-style">该字段不允许为空</label>
 											</div>
 											<div>
-												<input type="text" class="form-control input-style" name="title">
+												<input id="title" type="text" class="form-control input-style" name="title">
 											</div>
 										</div>
 										<div class="col-md-4 col-sm-12 col-xs-12">
@@ -222,9 +226,34 @@
 
 	<%@ include file="../comm-fragement/main-js"%>
 	<script type="text/javascript">
-		$("#cancelLiterature").click(function(){
-			window.location.replace("http://"+window.location.host+"/admin/literature/list?pageIndex=1");			
-			return false;
+		
+		$(document).ready(function(){
+			$("#cancelLiterature").click(function(){
+				window.location.replace("http://"+window.location.host+"/admin/literature/list?pageIndex=1");			
+				return false;
+			});
+			
+			$("#saveLiterature").click(function(){
+				$("#saveLiterature").attr("type","submit");
+				var title = $("#title").val();
+					title = $.trim(title);
+				var	fileName = $("#fileName").val();
+					fileName = $.trim(fileName);
+				if(title.length<1){
+					$("#titleLbl").show();
+					$("#saveLiterature").attr("type","button");
+				}else{
+					$("#titleLbl").hide();
+				}
+				/*
+				if(fileName.length<1){
+					$("#fileNameLbl").show();
+					$("#saveLiterature").attr("type","button");
+				}else{
+					$("#fileNameLbl").hide();
+				}
+				*/
+			});
 		});
 	</script>
 
