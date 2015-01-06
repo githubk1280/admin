@@ -3,9 +3,7 @@ package com.tmrasys.controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
@@ -42,7 +40,7 @@ public class ProjectStatusController implements ApplicationContextAware {
 
 	private ApplicationContext applicationContext;
 
-	private Map<Integer, String> messageContentMap;
+	private String messageTemplate;
 
 	@Autowired
 	private ProjectProgressService projectProgressService;
@@ -52,16 +50,13 @@ public class ProjectStatusController implements ApplicationContextAware {
 
 	@PostConstruct
 	public void init() {
-		messageContentMap = new HashMap<Integer, String>();
-		messageContentMap.put(30, "%s 更新了状态，更新内容 ：预付款已打.当前项目进度百分比为 30");
-		messageContentMap.put(60, "%s 更新了状态，更新内容 ：xxx.当前项目进度百分比为 60");
-		messageContentMap.put(90, "%s 更新了状态，更新内容 ：尾款款已打.当前项目进度百分比为 90");
-		messageContentMap.put(100, "%s 更新了状态，更新内容 ：项目完成.当前项目进度百分比为 100");
+		messageTemplate = "%s 更新了项目编号为[%s]的状态，更新内容 ：\r\n %s。\r\n 当前项目进度百分比为 30。\r\n  \r\n 来自 %s";
 	}
 
 	@RequestMapping("/ajax/{projectId}")
-	public void load(@PathVariable String projectId, HttpServletRequest request,
-			HttpServletResponse response) throws IOException {
+	public void load(@PathVariable String projectId,
+			HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
 		List<ProjectProgress> progresses = projectProgressService
 				.getByProjectId(projectId);
 		if (!CollectionUtils.isEmpty(progresses)) {
@@ -70,10 +65,11 @@ public class ProjectStatusController implements ApplicationContextAware {
 			JsonResponseUtils.returnJsonResponse(response, progress, true, 200);
 		}
 	}
-	
+
 	@RequestMapping(value = "ajax/proHisBasic/{projectId}")
-	public void getProHisBasic(@PathVariable String projectId, HttpServletRequest request,
-			HttpServletResponse response) throws IOException {
+	public void getProHisBasic(@PathVariable String projectId,
+			HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
 		List<ProjectProgress> proProgressList = projectProgressService
 				.getBasciByProjectId(projectId);
 		if (!CollectionUtils.isEmpty(proProgressList)) {
@@ -83,7 +79,6 @@ public class ProjectStatusController implements ApplicationContextAware {
 		}
 
 	}
-		
 
 	@RequestMapping(value = "/ajax/add")
 	public void add(HttpServletRequest request, HttpServletResponse response,
@@ -108,29 +103,29 @@ public class ProjectStatusController implements ApplicationContextAware {
 		projectService.updateProject(p);
 		// 3.publish userId,projectId,percentage,content
 		int percentage = progress.getPercentage();
-		String content = String.format(messageContentMap.get(percentage),
-				progress.getEmployeeName()) + "%";
+		String url = request.getScheme() + "://" + request.getServerName()
+				+ ":" + request.getServerPort() + "/admin";
+		String content = String.format(messageTemplate,
+				progress.getEmployeeName(), progress.getProjectId(),
+				progress.getContent(), url);
 		applicationContext.publishEvent(new StatusChangedEvent(
 				new StatusMessage(employee.getEmployeeId(), projectId,
 						percentage, content)));
 		JsonResponseUtils.returnJsonResponse(response, progress, true, 200);
 	}
-	
-	
 
 	@RequestMapping(value = "proStatusHistory/{projectId}")
 	public ModelAndView loadProHis(@PathVariable String projectId) {
 		List<ProjectProgress> proProgressList = projectProgressService
 				.getByProjectId(projectId);
-		ProjectProgressPkg pppkg = new ProjectProgressPkg(projectId,proProgressList);
+		ProjectProgressPkg pppkg = new ProjectProgressPkg(projectId,
+				proProgressList);
 		ModelAndView view = new ModelAndView();
 		view.addObject("proHis", pppkg);
 		view.setViewName(PageResourceConstant.PRO_STATUS);
 
 		return view;
 	}
-	
-	
 
 	// @RequestMapping(value = "/ajax/add",consumes="application/json")
 	// public void add(@RequestBody ProjectProgress progress) {
