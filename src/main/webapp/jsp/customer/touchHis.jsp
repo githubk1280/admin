@@ -37,27 +37,27 @@
                                    		</div>		
                                    	<div class="col-md-4  col-sm-12 col-xs-12" ></div>
                                   	</div>
-                                 <c:forEach items="" var="touchHis" >
+                                 <c:forEach items="contacts" var="touchHis" >
                                   	<div class="row row-margin">
                                   		<div class="col-md-1 col-sm-12 col-xs-12">
                                   		 <!-- <div class="col-md-4  col-sm-12 col-xs-12" > -->
                                   			<div><label>联系时间</label></div>
 	                                   		<div><p style="color:red;">
-	                                   				<fmt:formatDate value="xxx" pattern="yyyy-MM-dd hh:mm:ss" />
+	                                   				<fmt:formatDate value="${touchHis.contactTime}" pattern="yyyy-MM-dd hh:mm:ss" />
 												  </p>
 										    </div>
 										</div> 
                                    	 <div class="col-md-1 col-sm-12 col-xs-12" style="margin-left:120px">
                                    			<div><label>沟通内容</label></div>
-                                   			<div><p>xxx</p></div> 
+                                   			<div><p>${touchHis.contactContent}</p></div> 
                                    	</div>
                                    	<div class="col-md-1 col-sm-12 col-xs-12" style="margin-left:120px">
                                    			<div><label>联系人</label></div>
-                                   			<div><p style="color:blue">xxx</p></div>
+                                   			<div><p style="color:blue">${touchHis.contactPerson}</p></div>
                                    	</div>
                                    	<div class="col-md-1 col-sm-12 col-xs-12" style="margin-left:120px">
                                    			<div><label>联系方式</label></div>
-                                   			<div><p>xxx</p></div>
+                                   			<div><p>${touchHis.contactPhone}</p></div>
                                    	</div>
                                   	</div>
                                   	<hr  align=center width=100% style="border-top:1px solid #178acc;margin-top:1px">

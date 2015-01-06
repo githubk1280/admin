@@ -257,18 +257,27 @@ public class CustomerController {
 			JsonResponseUtils.returnJsonResponse(response, list, true, 200);
 		}
 	}
-	
-	@RequestMapping("/add/{contactTime}/{contactContent}/{contactPerson}/{contactPhone}/{customerId}")
-	public ModelAndView addContactRecord(@PathVariable Date contactTime, @PathVariable String contactContent,
+	//@PathVariable Date contactTime, {contactTime}
+	@RequestMapping("/addContactRecord&{contactContent}&{contactPerson}&{contactPhone}&{customerId}")
+	public ModelAndView addContactRecord(@PathVariable String contactContent,
 			@PathVariable String contactPerson,@PathVariable String contactPhone,@PathVariable int customerId, @PathVariable int principalId) {
 		ContactRecord record = new ContactRecord();
 		record.setContactContent(contactContent);
-		record.setContactTime(contactTime);
+//		record.setContactTime(contactTime);
 		record.setContactPerson(contactPerson);
 		record.setContactPhone(contactPhone);
 		record.setCustomerId(customerId);
 		contactRecordService.addContact(record);
 		return new ModelAndView("customer/"+customerId+"&"+principalId);
+	}
+	
+	@RequestMapping("/listContacts&{customerId}")
+	public ModelAndView loadContacts(@PathVariable int customerId) {
+		ModelAndView view = new ModelAndView();
+		view.addObject("contacts", contactRecordService.getByCustomerId(customerId));
+		view.setViewName("customer/touchHis");
+		return view;
+
 	}
 
 }

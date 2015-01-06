@@ -80,6 +80,7 @@
 					</div>
 					<div>
 						<form:input id="customerName" path="customerName" type="text" class="form-control input-style"  readonly="true" maxlength="5"/>
+						<form:input id="customerId" type="text" readonly="true" cssStyle="display:none" class="form-control" path="customerId" />
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-12 col-xs-12">
@@ -205,7 +206,7 @@
 								<label id="touchTimeDateLbl" class="warning-style">您输入的日期不存在</label>
 							</div>
 							<div>
-								<input id="touchTime"  type="text" class="form-control"   maxlength="19"/>
+								<input id="touchTime" class="form-control input-style"  maxlength="19"/>
 							</div>
 						</div>
 						<div class="col-md-6 col-sm-12 col-xs-12">
@@ -240,7 +241,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button class="btn btn-default btn-primary" id="saveTouchRec" type="submit">保存</button>
+					<button class="btn btn-default btn-primary" id="saveTouchRec" type="button">保存</button>
 					<button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
 				</div>
 			</div>
@@ -329,8 +330,20 @@
 					isEmail($("#email"));
 				}
 			});
+			
+			$("#saveTouchRec").click(function() {
+				window.location.replace("http://"+window.location.host+"/admin/customer/addContactRecord" 
+						+"&"+$("#touchContent").val()+"&"+$("#touchPerson").val()+"&"+$("#touchStyle").val()
+						+"&"+$("#customerId").val()+"&"+0);
+				return false;
+			});
+			$("#touchHis").click(function() {
+				window.location.replace("http://"+window.location.host+"/admin/customer/listContacts"
+						+"&"+$("#customerId").val());
+				return false;
+			});
 		});
-		/***validate positive number***/
+		/***validate positive number + $("#touchTime").val()***/
 		function customerInfo_isPositiveInteger(obj){
 			var reg = /^[0-9]*[0-9][0-9]*$/;
 			if(obj.attr("id")=="age"){
