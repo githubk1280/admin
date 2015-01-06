@@ -10,8 +10,8 @@ import lombok.Data;
 public class ContactRecord {
 	private int contactId;
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
-	private Date contactTime;
-	private String contactContent;
+	private Date contactTime; 
+	private String contactContent; 
 	private String contactPerson;
 	private String contactPhone;
 	private int customerId;

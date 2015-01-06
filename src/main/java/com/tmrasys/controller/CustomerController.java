@@ -2,6 +2,9 @@ package com.tmrasys.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -258,17 +261,23 @@ public class CustomerController {
 		}
 	}
 	//@PathVariable Date contactTime, {contactTime}
-	@RequestMapping("/addContactRecord&{contactContent}&{contactPerson}&{contactPhone}&{customerId}")
-	public ModelAndView addContactRecord(@PathVariable String contactContent,
+	@RequestMapping("/addContactRecord/{contactTime}&{contactContent}&{contactPerson}&{contactPhone}&{customerId}&{principalId}")
+	public ModelAndView addContactRecord(@PathVariable String contactTime, @PathVariable String contactContent,
 			@PathVariable String contactPerson,@PathVariable String contactPhone,@PathVariable int customerId, @PathVariable int principalId) {
 		ContactRecord record = new ContactRecord();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		String s = format.format(new Date());
 		record.setContactContent(contactContent);
-//		record.setContactTime(contactTime);
+		try {
+			record.setContactTime(format.parse(contactTime));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		record.setContactPerson(contactPerson);
 		record.setContactPhone(contactPhone);
 		record.setCustomerId(customerId);
 		contactRecordService.addContact(record);
-		return new ModelAndView("customer/"+customerId+"&"+principalId);
+		return new ModelAndView("customer/add-success");
 	}
 	
 	@RequestMapping("/listContacts&{customerId}")
@@ -280,7 +289,6 @@ public class CustomerController {
 		view.addObject("contacts", trPkg);
 		view.setViewName("customer/touchHis");
 		return view;
-
 	}
 
 }

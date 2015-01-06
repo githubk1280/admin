@@ -206,7 +206,7 @@
 								<label id="touchTimeDateLbl" class="warning-style">您输入的日期不存在</label>
 							</div>
 							<div>
-								<input id="touchTime" class="form-control input-style"  maxlength="19"/>
+								<input id="touchTime" class="form-control"  maxlength="19"/>
 							</div>
 						</div>
 						<div class="col-md-6 col-sm-12 col-xs-12">
@@ -333,7 +333,7 @@
 			
 			$("#saveTouchRec").click(function() {
 				window.location.replace("http://"+window.location.host+"/admin/customer/addContactRecord" 
-						+"&"+$("#touchContent").val()+"&"+$("#touchPerson").val()+"&"+$("#touchStyle").val()
+						+"/"+$("#touchTime").val()+"&"+$("#touchContent").val()+"&"+$("#touchPerson").val()+"&"+$("#touchStyle").val()
 						+"&"+$("#customerId").val()+"&"+0);
 				return false;
 			});

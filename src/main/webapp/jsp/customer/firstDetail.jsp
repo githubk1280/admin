@@ -333,6 +333,17 @@
 				isEmail($("#email"));
 			}
 		});
+		$("#saveTouchRec").click(function() {
+			window.location.replace("http://"+window.location.host+"/admin/customer/addContactRecord" 
+					+"/"+$("#touchTime").val()+"&"+$("#touchContent").val()+"&"+$("#touchPerson").val()+"&"+$("#touchStyle").val()
+					+"&"+$("#customerId").val()+"&"+0);
+			return false;
+		});
+		$("#touchHis").click(function() {
+			window.location.replace("http://"+window.location.host+"/admin/customer/listContacts"
+					+"&"+$("#customerId").val());
+			return false;
+		});
 	});
 	
 	$("#touchHis").click(function() {
