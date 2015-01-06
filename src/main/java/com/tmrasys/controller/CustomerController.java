@@ -2,6 +2,8 @@ package com.tmrasys.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -263,18 +265,17 @@ public class CustomerController {
 	//@PathVariable Date contactTime, {contactTime}
 	@RequestMapping("/addContactRecord/{contactTime}&{contactContent}&{contactPerson}&{contactPhone}&{customerId}&{principalId}")
 	public ModelAndView addContactRecord(@PathVariable String contactTime, @PathVariable String contactContent,
-			@PathVariable String contactPerson,@PathVariable String contactPhone,@PathVariable int customerId, @PathVariable int principalId) {
+			@PathVariable String contactPerson,@PathVariable String contactPhone,@PathVariable int customerId, @PathVariable int principalId) throws UnsupportedEncodingException {
 		ContactRecord record = new ContactRecord();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		String s = format.format(new Date());
-		record.setContactContent(contactContent);
+		record.setContactContent(new String(contactContent.getBytes("iso8859-1"),"utf-8"));
 		try {
 			record.setContactTime(format.parse(contactTime));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		record.setContactPerson(contactPerson);
-		record.setContactPhone(contactPhone);
+		record.setContactPerson(new String(contactPerson.getBytes("iso8859-1"),"utf-8"));
+		record.setContactPhone(new String(contactPhone.getBytes("iso8859-1"),"utf-8"));
 		record.setCustomerId(customerId);
 		contactRecordService.addContact(record);
 		return new ModelAndView("customer/add-success");
