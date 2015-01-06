@@ -332,6 +332,42 @@
 			});
 			
 			$("#saveTouchRec").click(function() {
+				var touchTime = $("#touchTime").val();
+					touchTime = $.trim(touchTime);
+				var touchContent = $("#touchContent").val();
+					touchContent = $.trim(touchContent);
+				var touchPerson = $("#touchPerson").val();
+					touchPerson = $.trim(touchPerson);
+				var touchStyle = $("#touchStyle").val();
+					touchStyle = $.trim(touchStyle);
+				if(touchTime<1){
+					$("#touchTimeLbl").show();
+					return false;
+				}else{
+					$("#touchTimeLbl").hide();
+				}
+				
+				if(touchContent<1){
+					$("#touchContentLbl").show();
+					return false;
+				}else{
+					$("#touchContentLbl").hide();
+				}
+				
+				if(touchPerson<1){
+					$("#touchPersonLbl").show();
+					return false;
+				}else{
+					$("#touchPersonLbl").hide();
+				}
+				
+				if(touchStyle<1){
+					$("#touchStyleLbl").show();
+					return false;
+				}else{
+					$("#touchStyleLbl").hide();
+				}
+					
 				window.location.replace("http://"+window.location.host+"/admin/customer/addContactRecord" 
 						+"/"+$("#touchTime").val()+"&"+$("#touchContent").val()+"&"+$("#touchPerson").val()+"&"+$("#touchStyle").val()
 						+"&"+$("#customerId").val()+"&"+0);
