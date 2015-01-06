@@ -12,7 +12,7 @@
 		</h3>
 
 	</div>
-	<div id="collapseTwo" class="panel-collapse collapse in">
+	<div id="collapseTwo" class="panel-collapse collapse">
 		<div id="panelProStatus" class="panel-body">
 			<div class="row row-margin">
 				<div class="col-md-3 col-sm-12 col-xs-12">
@@ -96,7 +96,7 @@
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div>
 						<label>进度内容 </label>
-						<label id="proStatusLbl"  class="warning-style">该字段不允许为空</label>
+						<label id="proStatusContentLbl" class="warning-style">该字段不允许为空</label>
 					</div>
 					<div>
 						<textarea id="inpuProStatusContent" class="form-control" rows="8" ng-model="progress.content"
@@ -135,7 +135,6 @@
 	});
 	
 	$(document).ready(function(){
-		
 			$("#saveProjectStatus").click(function(){
 				var inpuProStatusContent = $("#inpuProStatusContent").val();
 					inpuProStatusContent = $.trim(inpuProStatusContent);
@@ -148,7 +147,6 @@
 					$("#proStatusLbl").hide();
 				}
 			});
-		
 	});
 
 </script>
