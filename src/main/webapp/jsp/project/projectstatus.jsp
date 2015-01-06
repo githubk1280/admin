@@ -96,6 +96,7 @@
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div>
 						<label>进度内容 </label>
+						<label id="proStatusLbl"  class="warning-style">该字段不允许为空</label>
 					</div>
 					<div>
 						<textarea id="inpuProStatusContent" class="form-control" rows="8" ng-model="progress.content"
@@ -134,86 +135,20 @@
 	});
 	
 	$(document).ready(function(){
-		var inputProStatusDate = $("#inputProStatusDate").val();
-			inputProStatusDate = $.trim(inputProStatusDate);
+		
 			$("#saveProjectStatus").click(function(){
+				var inpuProStatusContent = $("#inpuProStatusContent").val();
+					inpuProStatusContent = $.trim(inpuProStatusContent);
 				$("#saveProjectStatus").attr("type","submit");
-				if(inputProStatusDate.length<1){
-					$("#proStatusDateLbl").show();
-					//$("#startDate").focus();
+				if(inpuProStatusContent.length<1){
+					$("#proStatusLbl").show();
+					//$("#projectName").focus();
 					$("#saveProjectStatus").attr("type","button");
 				}else{
-					$("#proStatusDateLbl").hide();
-					var flag = isDateFormat($("#inputProStatusDate"));
-					if(flag=="failed"){
-						$("#inputProStatusDate").focus();
-					}
+					$("#proStatusLbl").hide();
 				}
 			});
-		/*	
-		$( "#inputProStatusDate" ).datetimepicker({
-			lang:'ch',
-			timepicker:true,
-			onClose:function(){
-				var ii = $("#inputProStatusDate").val();
-				if(ii!=""){
-					var date = new Date(ii);
-					var year = date.getFullYear();
-					var month = date.getMonth() + 1; 
-					if(month<10){
-						month = "0" + month;
-					}
-					var day = date.getDate();
-					if(day<10){
-						day = "0" + day;
-					}
-					var hour = date.getHours();
-					if(hour<10){
-						hour = "0" + hour;
-					}
-					var min = date.getMinutes();
-					if(min<10){
-						min = "0" + min;
-					}
-					
-					var sec = date.getSeconds();
-					if(sec<10){
-						sec = "0" + sec;
-					}
-					formatDate = year + "-" + month + "-" + day + " " + hour + ":" + min + ":" + sec;
-					$("#inputProStatusDate").val(formatDate);
-				}
-			},
-			validateOnBlur:false
-		});
-		*/
-	});
-	/**validate date format***/
-	function isDateFormat(dateField){
-		var dateFieldId = dateField.attr("id");
-		var DATE_FORMAT = /^[0-9]{4}-[0-1]?[0-9]{1}-[0-3]?[0-9]{1}$/;
-		if(!DATE_FORMAT.test(dateField.val())){
-			$("#"+dateFieldId+"FormatLbl").show();
-			$("#saveProjectStatus").attr("type","button");
-			return "failed";
-		}else{
-			$("#"+dateFieldId+"FormatLbl").hide();
-			isDate(dateField);
-			return "success";
-		};
-	}
-
-	/*****validate date effective or not**/
-	function isDate(dateField){
-		var regex = new RegExp("^(?:(?:([0-9]{4}(-|\/)(?:(?:0?[1,3-9]|1[0-2])(-|\/)(?:29|30)|((?:0?[13578]|1[02])(-|\/)31)))|([0-9]{4}(-|\/)(?:0?[1-9]|1[0-2])(-|\/)(?:0?[1-9]|1\\d|2[0-8]))|(((?:(\\d\\d(?:0[48]|[2468][048]|[13579][26]))|(?:0[48]00|[2468][048]00|[13579][26]00))(-|\/)0?2(-|\/)29))))$");
-		var dateValue = dateField.val();
-		var dateFieldId = dateField.attr("id");
 		
-		if(!regex.test(dateValue)){
-			$("#is"+dateFieldId+"Lbl").show();
-			$("#saveProjectStatus").attr("type","button");
-		}else{
-			$("#is"+dateFieldId+"Lbl").hide();
-		}
-	}
+	});
+
 </script>

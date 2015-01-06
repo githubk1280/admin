@@ -366,25 +366,27 @@
 			};
 		
 			$scope.saveProjectStatus = function() {
-				$http({
-		            method:'post',
-		            url:'/admin/status/ajax/add',
-		            data: $scope.progress
-				}).success(function (data){
-					if(data.success == true){
-						//alert("状态更新成功!");
-						$("#proStatusDate").css('display','none');
-						$("#proStatusUpdate").css('display','none');
-						$("#proStatusContent").css('display','none');
-						$("#proStatusBtn").css('display','none');
-						$("#cancelProjectStatus").css('display','none');
-						$("#saveProjectStatus").css('display','none');
-						$("#inputProStatusDate").val("");
-						$("#inpuProStatusContent").val("");
-					}
-				}).error(function (err){
-					alert(err);
-				});
+				if($("#saveProjectStatus").attr("type")=="submit"){
+					$http({
+			            method:'post',
+			            url:'/admin/status/ajax/add',
+			            data: $scope.progress
+					}).success(function (data){
+						if(data.success == true){
+							//alert("状态更新成功!");
+							$("#proStatusDate").css('display','none');
+							$("#proStatusUpdate").css('display','none');
+							$("#proStatusContent").css('display','none');
+							$("#proStatusBtn").css('display','none');
+							$("#cancelProjectStatus").css('display','none');
+							$("#saveProjectStatus").css('display','none');
+							$("#inputProStatusDate").val("");
+							$("#inpuProStatusContent").val("");
+						}
+					}).error(function (err){
+						alert(err);
+					});
+				}
 			};
 			
 			$scope.cancelProjectStatus = function(){
