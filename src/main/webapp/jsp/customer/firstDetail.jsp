@@ -36,6 +36,7 @@
 	                                            	<button id="modifyCustomInfo"  type="button" class="btn btn-default btn-success" style="margin-right: 10px;float:right; padding:1px 12px">修改</button>
 													<button id="cancelCustomInfo"  type="reset" class="btn btn-default btn-success" style="margin-left: 10px; margin-right: 10px;float:right; padding:1px 12px; display: none" ng-click="cancelClick()">取消</button>
 													<button id="saveCustomInfo"  class="btn btn-default btn-success" style="margin-left: 10px; margin-right: 10px;float:right; padding:1px 12px; display: none" ng-click="saveOutSource()">保存</button>
+													<button id="createTouchRec"  type="button" class="btn btn-default btn-primary" style="margin-left:20px;absolute:left; padding:1px 12px">创建新的联系记录</button>
 	                                        </h3>
 	                                    </div>
 	                                    <div id="collapseFour" class="panel-collapse collapse in" style="">
@@ -189,6 +190,62 @@
 					<!-- .panel-body -->
 				</div>
 				<!-- /.panel -->
+			</div>
+		</div>
+	</div>
+	<!-- modal box -->
+	<div class="modal fade modal-box" id="touchRecModal" tabindex="0"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" style="margin: 300px auto">
+			<div class="modal-content" style="top:-100px"  >
+				<div class="modal-body" align="center">
+					<div class="row">
+						<div class="col-md-6 col-sm-12 col-xs-12">
+							<div>
+								<label class="pull-left">联系时间 </label>
+								<label id="touchTimeLbl" class="warning-style">该字段不允许为空</label>
+								<label id="touchTimeFormatLbl" class="warning-style">日期格式不正确</label>
+								<label id="touchTimeDateLbl" class="warning-style">您输入的日期不存在</label>
+							</div>
+							<div>
+								<input id="touchTime"  type="text" class="form-control"   maxlength="19"/>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-12 col-xs-12">
+							<div>
+								<label class="pull-left">沟通内容</label>
+								<label id="touchContentLbl" class="warning-style">该字段不允许为空</label>
+							</div>
+							<div>
+								<input id="touchContent"  type="text" class="form-control"   maxlength="100"/>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-sm-12 col-xs-12">
+							<div>
+								<label class="pull-left">联系人</label>
+								<label id="touchPersonLbl" class="warning-style">该字段不允许为空</label>
+							</div>
+							<div>
+								<input id="touchPerson"  type="text" class="form-control"   maxlength="5"/>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-12 col-xs-12">
+							<div>
+								<label class="pull-left">联系方式</label>
+								<label id="touchStyleLbl" class="warning-style">该字段不允许为空</label>
+							</div>
+							<div>
+								<input id="touchStyle"  type="text" class="form-control"   maxlength="20"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-default btn-primary" id="saveTouchRec" type="submit">保存</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+				</div>
 			</div>
 		</div>
 	</div>
