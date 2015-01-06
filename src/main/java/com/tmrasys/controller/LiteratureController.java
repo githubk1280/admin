@@ -57,9 +57,14 @@ public class LiteratureController {
 	@RequestMapping("/add-redirect")
 	public ModelAndView addRedirect() {
 		ModelAndView view = new ModelAndView();
-		// Literature lte = new Literature();
-		// view.addObject("lte", lte);
 		view.setViewName(PageResourceConstant.LTS_ADD);
+		return view;
+	}
+
+	@RequestMapping("/add-error")
+	public ModelAndView addError() {
+		ModelAndView view = new ModelAndView();
+		view.setViewName(PageResourceConstant.LTS_ADD_ERROR);
 		return view;
 	}
 
@@ -81,7 +86,7 @@ public class LiteratureController {
 		File targetFile = new File(path, fileName);
 		if (targetFile.exists()) {
 			// 文件存在
-			view.setViewName("redirect:/literature/add-redirect?reason=文件已经存在");
+			view.setViewName("redirect:/literature/add-error");
 			return view;
 		} else {
 			targetFile.mkdirs();

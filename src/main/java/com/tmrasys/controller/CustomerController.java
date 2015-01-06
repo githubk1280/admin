@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
+import com.google.common.collect.Lists;
 import com.tmrasys.constant.DataCheckTypeConstant;
 import com.tmrasys.constant.page.PageResourceConstant;
 import com.tmrasys.domain.Customer;
 import com.tmrasys.domain.Employee;
-import com.tmrasys.domain.ProjectCustomer;
 import com.tmrasys.domain.ProjectIdPrincipal;
 import com.tmrasys.service.customer.CustomerService;
 import com.tmrasys.service.project.ProjectService;
@@ -40,18 +40,19 @@ public class CustomerController {
 
 	@DataAccessCheck(forWhat = { DataCheckTypeConstant.CUSTOMER })
 	@RequestMapping("/{customerId}&{principalId}")
-	public ModelAndView loadProjectById(@PathVariable int customerId,@PathVariable int principalId) {
+	public ModelAndView loadProjectById(@PathVariable int customerId,
+			@PathVariable int principalId) {
 		Customer customer = customerService.getById(customerId);
 		ModelAndView view = new ModelAndView();
 		view.addObject("customer", customer);
-		if(principalId==0){
+		if (principalId == 0) {
 			view.setViewName(PageResourceConstant.CUSTOMER_PRINCIPALDETAIL);
-		}else if(principalId==1){
+		} else if (principalId == 1) {
 			view.setViewName(PageResourceConstant.CUSTOMER_FIRSTDETAIL);
-		}else if(principalId==2){
+		} else if (principalId == 2) {
 			view.setViewName(PageResourceConstant.CUSTOMER_SECONDDETAIL);
 		}
-		
+
 		return view;
 
 	}
@@ -67,10 +68,9 @@ public class CustomerController {
 		return view;
 
 	}
-	
+
 	@RequestMapping("/addPrincipal")
-	public ModelAndView addPrincipal(Customer customer,HttpSession session) {
-		Employee employee = (Employee) session.getAttribute("user");
+	public ModelAndView addPrincipal(Customer customer, HttpSession session) {
 		customer.setPrincipalId(0);
 		customer.setPrincipalNumber(0);
 		customerService.addCustomer(customer);
@@ -78,10 +78,9 @@ public class CustomerController {
 		view.setViewName("redirect:pages/1");
 		return view;
 	}
-	
+
 	@RequestMapping("/addFirst")
-	public ModelAndView addFirst(Customer customer,HttpSession session) {
-		Employee employee = (Employee) session.getAttribute("user");
+	public ModelAndView addFirst(Customer customer, HttpSession session) {
 		customer.setPrincipalId(1);
 		customer.setPrincipalNumber(1);
 		customerService.addCustomer(customer);
@@ -89,10 +88,9 @@ public class CustomerController {
 		view.setViewName("redirect:pages/1");
 		return view;
 	}
-	
+
 	@RequestMapping("/addSecond")
-	public ModelAndView addSecond(Customer customer,HttpSession session) {
-		Employee employee = (Employee) session.getAttribute("user");
+	public ModelAndView addSecond(Customer customer, HttpSession session) {
 		customer.setPrincipalId(2);
 		customer.setPrincipalNumber(2);
 		customerService.addCustomer(customer);
@@ -100,20 +98,20 @@ public class CustomerController {
 		view.setViewName("redirect:pages/1");
 		return view;
 	}
-	
+
 	@RequestMapping("/updatePrincipal/{customerId}")
-	public ModelAndView updatePrincipal(Customer customer,HttpSession session,@PathVariable int customerId) {
-		Employee employee = (Employee) session.getAttribute("user");
+	public ModelAndView updatePrincipal(Customer customer, HttpSession session,
+			@PathVariable int customerId) {
 		customer.setCustomerId(customerId);
 		customerService.updateCustomer(customer);
 		ModelAndView view = new ModelAndView();
 		view.setViewName(PageResourceConstant.CUSTOMER_PRINCIPALDETAIL);
 		return view;
 	}
-	
+
 	@RequestMapping("/updateFirst/{customerId}")
-	public ModelAndView updateFirst(Customer customer,HttpSession session,@PathVariable int customerId) {
-		Employee employee = (Employee) session.getAttribute("user");
+	public ModelAndView updateFirst(Customer customer, HttpSession session,
+			@PathVariable int customerId) {
 		customer.setCustomerId(customerId);
 		customer.setPrincipalId(1);
 		customer.setPrincipalNumber(1);
@@ -122,10 +120,10 @@ public class CustomerController {
 		view.setViewName(PageResourceConstant.CUSTOMER_FIRSTDETAIL);
 		return view;
 	}
-	
+
 	@RequestMapping("/updateSecond/{customerId}")
-	public ModelAndView updateSecond(Customer customer,HttpSession session,@PathVariable int customerId) {
-		Employee employee = (Employee) session.getAttribute("user");
+	public ModelAndView updateSecond(Customer customer, HttpSession session,
+			@PathVariable int customerId) {
 		customer.setCustomerId(customerId);
 		customer.setPrincipalId(2);
 		customer.setPrincipalNumber(2);
@@ -134,19 +132,22 @@ public class CustomerController {
 		view.setViewName(PageResourceConstant.CUSTOMER_SECONDDETAIL);
 		return view;
 	}
-	
+
 	@RequestMapping("/pages/{page}")
-	public ModelAndView loadAllCustomersByUser(@PathVariable int page, HttpSession session) {
+	public ModelAndView loadAllCustomersByUser(@PathVariable int page,
+			HttpSession session) {
 		Employee employee = (Employee) session.getAttribute("user");
 		int count = customerService.countByEmployee(employee.getEmployeeId());
-		List<Customer> customers = customerService.getPagedByEmployee(employee.getEmployeeId(), page);
-		for(int i=0;i<customers.size();i++){
-			String projectName = customerService.getProjectName(customers.get(i).getProjectId());
+		List<Customer> customers = customerService.getPagedByEmployee(
+				employee.getEmployeeId(), page);
+		for (int i = 0; i < customers.size(); i++) {
+			String projectName = customerService.getProjectName(customers
+					.get(i).getProjectId());
 			customers.get(i).setProjectName(projectName);
 		}
 		ModelAndView view = new ModelAndView();
 		int pages = 1;
-		if(count > 10) {
+		if (count > 10) {
 			pages = (count + 9) / 10;
 		}
 		view.addObject("customers", customers);
@@ -157,8 +158,9 @@ public class CustomerController {
 	}
 
 	@RequestMapping("/ajax/{projectId}")
-	public void load(@PathVariable String projectId, HttpServletRequest request,
-			HttpServletResponse response) throws IOException {
+	public void load(@PathVariable String projectId,
+			HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
 		List<Customer> customers = customerService.getByProjectId(projectId);
 		if (!CollectionUtils.isEmpty(customers)) {
 			JsonResponseUtils
@@ -176,19 +178,20 @@ public class CustomerController {
 			sb.append(s);
 			s = in.readLine();
 		}
-		List<Customer>customers = JSON.parseArray(sb.toString(), Customer.class);
+		List<Customer> customers = JSON.parseArray(sb.toString(),
+				Customer.class);
 		if (!CollectionUtils.isEmpty(customers)) {
-			for(Customer c : customers){
-				if(customerService.getById(c.getCustomerId()) == null){
+			for (Customer c : customers) {
+				if (customerService.getById(c.getCustomerId()) == null) {
 					customerService.addCustomer(c);
-				}else{
+				} else {
 					customerService.updateCustomer(c);
 				}
 			}
 		}
 		JsonResponseUtils.returnJsonResponse(response, "", true, 200);
 	}
-	
+
 	@RequestMapping("/addPrincipal-redirect/{projectId}")
 	public ModelAndView addPrincipalRedirect(@PathVariable String projectId) {
 		Customer cust = new Customer();
@@ -199,7 +202,7 @@ public class CustomerController {
 		return view;
 
 	}
-	
+
 	@RequestMapping("/addFirst-redirect/{projectId}")
 	public ModelAndView addFirstRedirect(@PathVariable String projectId) {
 		Customer cust = new Customer();
@@ -209,7 +212,7 @@ public class CustomerController {
 		view.setViewName(PageResourceConstant.CUSTOMER_ADDFIRST);
 		return view;
 	}
-	
+
 	@RequestMapping("/addSecond-redirect/{projectId}")
 	public ModelAndView addSecondRedirect(@PathVariable String projectId) {
 		Customer cust = new Customer();
@@ -219,17 +222,27 @@ public class CustomerController {
 		view.setViewName(PageResourceConstant.CUSTOMER_ADDSECOND);
 		return view;
 	}
-	
+
 	@RequestMapping("/search")
 	public ModelAndView search(String searchStr, HttpSession session) {
 		Employee employee = (Employee) session.getAttribute("user");
-		List<ProjectCustomer> outsources =customerService.findProjectCustomerInfo(searchStr, employee.getEmployeeId());
+		List<Customer> customers = customerService.getByEmployee(employee
+				.getEmployeeId());
+		List<Customer> filtedCustomers = Lists.newArrayList();
+		for (Customer c : customers) {
+			String projectName = customerService.getProjectName(c.getProjectId());
+			c.setProjectName(projectName);
+			if (null != c.getProjectName()
+					&& c.getProjectName().indexOf(searchStr) != -1) {
+				filtedCustomers.add(c);
+			}
+		}
 		ModelAndView view = new ModelAndView();
-		view.addObject("outsources", outsources);
+		view.addObject("customers", filtedCustomers);
 		view.setViewName(PageResourceConstant.CUSTOMER_LIST);
 		return view;
 	}
-	
+
 	@RequestMapping("/ajax/projectIdPrincipal")
 	public void load(HttpSession session, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {

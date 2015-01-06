@@ -47,7 +47,7 @@
 												style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px" />
 										</div>
 									</div>
-									${request.getQueryString()}---
+									<span style="color:red;font-size:25px">此文献已经存在,请选择其它文献！</span>
 									<div class="row">
 										<div class="col-md-4 col-sm-12 col-xs-12">
 											<div>
