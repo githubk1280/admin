@@ -110,4 +110,10 @@ public class CustomerServiceImpl implements CustomerService {
 		return pcList;
 	}
 
+	@Override
+	public String getCustomerName(int customerId) {
+		// TODO Auto-generated method stub
+		return customerDao.getCustomerName(customerId);
+	}
+
 }

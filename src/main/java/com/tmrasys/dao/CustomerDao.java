@@ -39,4 +39,6 @@ public interface CustomerDao {
 	
 	List<ProjectCustomer> findProjectCustomerInfo(@Param(value = "employeeId") int employeeId,@Param(value = "projectName")String projectName);
 	Customer getByProjectIdForSearch(@Param(value = "employeeId") int employeeId,@Param(value = "projectId")String projectId);
+	
+	String getCustomerName(@Param(value = "customerId") int customerId);
 }

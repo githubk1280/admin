@@ -33,11 +33,11 @@
                                   	<div class="row row-margin" style="align:center">
                                   		<div class="col-md-4  col-sm-12 col-xs-12" >
                                   				<div><label>客户姓名</label></div>
-                                  				<div><p>xxx</p></div> 
+                                  				<div><p>${contacts.customerName}</p></div> 
                                    		</div>		
                                    	<div class="col-md-4  col-sm-12 col-xs-12" ></div>
                                   	</div>
-                                 <c:forEach items="contacts" var="touchHis" >
+                                 <c:forEach items="${contacts.crList}" var="touchHis" >
                                   	<div class="row row-margin">
                                   		<div class="col-md-1 col-sm-12 col-xs-12">
                                   		 <!-- <div class="col-md-4  col-sm-12 col-xs-12" > -->

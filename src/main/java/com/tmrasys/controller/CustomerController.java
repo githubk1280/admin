@@ -2,7 +2,6 @@ package com.tmrasys.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +24,7 @@ import com.tmrasys.domain.ContactRecord;
 import com.tmrasys.domain.Customer;
 import com.tmrasys.domain.Employee;
 import com.tmrasys.domain.ProjectIdPrincipal;
+import com.tmrasys.domain.TouchRecPkg;
 import com.tmrasys.service.contactRecord.ContactRecordService;
 import com.tmrasys.service.customer.CustomerService;
 import com.tmrasys.service.project.ProjectService;
@@ -274,7 +274,10 @@ public class CustomerController {
 	@RequestMapping("/listContacts&{customerId}")
 	public ModelAndView loadContacts(@PathVariable int customerId) {
 		ModelAndView view = new ModelAndView();
-		view.addObject("contacts", contactRecordService.getByCustomerId(customerId));
+		String customerName = customerService.getCustomerName(customerId);
+		List<ContactRecord> crList = contactRecordService.getByCustomerId(customerId);
+		TouchRecPkg trPkg = new TouchRecPkg(customerId,crList,customerName);
+		view.addObject("contacts", trPkg);
 		view.setViewName("customer/touchHis");
 		return view;
 

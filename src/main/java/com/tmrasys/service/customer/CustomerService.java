@@ -31,4 +31,7 @@ public interface CustomerService {
 	String getByEmployeeAndId(String id, int employeeId);
 	
 	List<ProjectCustomer> findProjectCustomerInfo(String projectName,int employeeId);
+	
+	String getCustomerName(int customerId);
+	
 }

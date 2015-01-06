@@ -100,6 +100,10 @@
 		WHERE c.project_id = #{projectId}
 	</select>
 	
+	<select id="getCustomerName" resultType="String" parameterType="int">
+		SELECT customer_name FROM customers WHERE customer_id = #{customerId}
+	</select>
+	
 	
 	<resultMap type="com.tmrasys.domain.Customer" id="customerMapper">
 		<id property="customerId" column="CUSTOMER_ID" />
