@@ -140,8 +140,8 @@
 																	<label>预付款状态</label>
 																</div>
 																<div class="pull-left">
-																	<label><form:radiobutton path="advancedAmountStatus" id="advancedAmountStatus1"
-																		value="未收" checked="true"/>未收</label> <label> <form:radiobutton id="advancedAmountStatus2"
+																	<label><form:radiobutton path="advancedAmountStatus" id="advancedAmountStatus1" disabled="true" onChange="advanceRadioChange1();"
+																		value="未收" checked="true"/>未收</label> <label> <form:radiobutton id="advancedAmountStatus2" disabled="true" onChange="advanceRadioChange2();"
 																		path="advancedAmountStatus" value="已收" />已收
 																	</label>
 																</div>
@@ -188,8 +188,8 @@
 																</div>
 																<div>
 																	<div>
-																		<label><form:radiobutton path="balancedAmountStatus" id="balancedAmountStatus1"
-																			value="未收" checked="true"/>未收</label> <label> <form:radiobutton id="balancedAmountStatus2"
+																		<label><form:radiobutton path="balancedAmountStatus" id="balancedAmountStatus1" disabled="true" onChange="balancedRadioChange1();"
+																			value="未收" checked="true"/>未收</label> <label> <form:radiobutton id="balancedAmountStatus2" disabled="true" onChange="balancedRadioChange2();"
 																			path="balancedAmountStatus" value="已收" />已收
 																		</label>
 																	</div>

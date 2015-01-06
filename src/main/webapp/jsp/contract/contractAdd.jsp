@@ -148,9 +148,9 @@
 																</div>
 																<div>
 																	<div class="pull-left">
-																		<label><form:radiobutton path="advancedAmountStatus" id="advancedAmountStatus1" onChange="advanceRadioChange();"
+																		<label><form:radiobutton path="advancedAmountStatus" id="advancedAmountStatus1" onChange="advanceRadioChange1();"
 																		value="未收"  checked="true"/>未收</label> <label> <form:radiobutton id="advancedAmountStatus2"
-																		path="advancedAmountStatus" onChange="advanceRadioChange();" value="已收" />已收
+																		path="advancedAmountStatus" onChange="advanceRadioChange2();" value="已收" />已收
 																		</label>
 																	</div>
 																</div>
@@ -196,8 +196,8 @@
 																</div>
 																<div>
 																	<div class="pull-left">
-																		<label><form:radiobutton path="balancedAmountStatus" id="balancedAmountStatus1"
-																			value="未收" checked="true"/>未收</label> <label> <form:radiobutton id="balancedAmountStatus2"
+																		<label><form:radiobutton path="balancedAmountStatus" id="balancedAmountStatus1" onChange="balancedRadioChange1();"
+																			value="未收" checked="true"/>未收</label> <label> <form:radiobutton id="balancedAmountStatus2" onChange="balancedRadioChange2();"
 																			path="balancedAmountStatus" value="已收" />已收
 																		</label>
 																	</div>
@@ -276,6 +276,11 @@
 			$("#advancedPaymentPrincipal").attr("readonly","true");
 			$( "#advancedPaymentDate" ).datetimepicker("destroy");
 		}
+		if($("#balancedAmountStatus1").attr("checked")=="checked"){
+			$("#balPaymentDate").attr("readonly","true");
+			$("#balPaymentPrincipal").attr("readonly","true");
+			$( "#balPaymentDate" ).datetimepicker("destroy");
+		}
 		
 	});
 	function contractController($scope, $http) {
@@ -290,39 +295,81 @@
 				});
 	}
 	
-	function advanceRadioChange(){
-			if($("#advancedAmountStatus2").attr("checked")=="checked"){
-				$("#advancedPaymentDate").removeAttr("readonly");
-				$("#advancedPaymentPrincipal").removeAttr("readonly");
-				$( "#advancedPaymentDate" ).datetimepicker({
-					lang:'ch',
-					timepicker:false,
-					onClose:function(){
-						var ii = $("#advancedPaymentDate").val();
-						if(ii!=""){
-							var date = new Date(ii);
-							var year = date.getFullYear();
-							var month = date.getMonth() + 1; 
-							if(month<10){
-								month = "0" + month;
-							}
-							var day = date.getDate();
-							if(day<10){
-								day = "0" + day;
-							}
-							formatDate = year + "-" + month + "-" + day;
-							$("#advancedPaymentDate").val(formatDate);
-						}
-					},
-					validateOnBlur:false
-				});
-			}
-			if($("#advancedAmountStatus1").attr("checked")=="checked"){
-				$("#advancedPaymentDate").attr("readonly","true");
-				$("#advancedPaymentPrincipal").attr("readonly","true");
-				$( "#advancedPaymentDate" ).datetimepicker("destroy");
-			}
+	function advanceRadioChange1(){
+		$("#advancedAmountStatus2").removeAttr("checked","false");
+		$("#advancedAmountStatus1").attr("checked","true");
+		$("#advancedPaymentDate").attr("readonly","true");
+		$("#advancedPaymentPrincipal").attr("readonly","true");
+		$( "#advancedPaymentDate" ).datetimepicker("destroy");
 	}
+	
+	function advanceRadioChange2(){
+		$("#advancedAmountStatus1").removeAttr("checked","false");
+		$("#advancedAmountStatus2").attr("checked","true");
+		$("#advancedPaymentDate").removeAttr("readonly");
+		$("#advancedPaymentPrincipal").removeAttr("readonly");
+		$( "#advancedPaymentDate" ).datetimepicker({
+			lang:'ch',
+			timepicker:false,
+			onClose:function(){
+				var ii = $("#advancedPaymentDate").val();
+				if(ii!=""){
+					var date = new Date(ii);
+					var year = date.getFullYear();
+					var month = date.getMonth() + 1; 
+					if(month<10){
+						month = "0" + month;
+					}
+					var day = date.getDate();
+					if(day<10){
+						day = "0" + day;
+					}
+					formatDate = year + "-" + month + "-" + day;
+					$("#advancedPaymentDate").val(formatDate);
+				}
+			},
+			validateOnBlur:false
+		});
+	}
+	
+	function balancedRadioChange1(){
+		$("#balancedAmountStatus2").removeAttr("checked","false");
+		$("#balancedAmountStatus1").attr("checked","true");
+		$("#balPaymentDate").attr("readonly","true");
+		$("#balPaymentPrincipal").attr("readonly","true");
+		$( "#balPaymentDate" ).datetimepicker("destroy");
+	}
+	
+	function balancedRadioChange2(){
+		$("#balancedAmountStatus1").removeAttr("checked","false");
+		$("#balancedAmountStatus2").attr("checked","true");
+		$("#balPaymentDate").removeAttr("readonly");
+		$("#balPaymentPrincipal").removeAttr("readonly");
+		$( "#balPaymentDate" ).datetimepicker({
+			lang:'ch',
+			timepicker:false,
+			onClose:function(){
+				var ii = $("#balPaymentDate").val();
+				if(ii!=""){
+					var date = new Date(ii);
+					var year = date.getFullYear();
+					var month = date.getMonth() + 1; 
+					if(month<10){
+						month = "0" + month;
+					}
+					var day = date.getDate();
+					if(day<10){
+						day = "0" + day;
+					}
+					formatDate = year + "-" + month + "-" + day;
+					$("#balPaymentDate").val(formatDate);
+				}
+			},
+			validateOnBlur:false
+		});
+	}
+	//balancedAmountStatus1
+	
 	</script>
 </body>
 </html>

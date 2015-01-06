@@ -5,6 +5,7 @@
 
 
 if($("#modifyBtn").css('display')=="inline-block"){
+	alert("aaa");
 	$("#advancedAmountStatus1").attr("disabled",true);
 	$("#advancedAmountStatus2").attr("disabled",true);
 	$("#balancedAmountStatus1").attr("disabled",true);
@@ -26,9 +27,21 @@ $("#modifyBtn").click(function(){
 	$("#advancedAmountStatus2").attr("disabled",false);
 	$("#balancedAmountStatus1").attr("disabled",false);
 	$("#balancedAmountStatus2").attr("disabled",false);
-	$("#advancedPaymentDate").attr("readonly",false);
-	$("#balPaymentDate").attr("readonly",false);
+	if($("#advancedAmountStatus2").attr("checked")=="checked"){
+		$("#advancedPaymentDate").attr("readonly",false);
+		$("#advancedPaymentPrincipal").attr("readonly",false);
+	}
+	if($("#balancedAmountStatus2").attr("checked")=="checked"){
+		$("#balPaymentDate").attr("readonly",false);
+		$("#balPaymentPrincipal").attr("readonly",false);
+	}
 	
+	
+	//$("#advancedPaymentDate").attr("readonly",false);
+	//$("#balPaymentDate").attr("readonly",false);
+	//$("#advancedPaymentPrincipal").attr("readonly",false);
+	//$("#balPaymentPrincipal").attr("readonly",false);
+
 	$( "#advancedPaymentDate" ).datetimepicker({
 		lang:'ch',
 		timepicker:false,
@@ -81,6 +94,12 @@ $("#cancelBtn").click(function(){
 	$("#modifyBtn").css('display','block');
 	$("#advancedAmount").attr("readonly",true);
 	$("#balancedAmount").attr("readonly",true);
+	$("#advancedPaymentPrincipal").attr("readonly",true);
+	$("#balPaymentPrincipal").attr("readonly",true);
+	$("#advancedPaymentDate").attr("readonly",true);
+	$("#balPaymentDate").attr("readonly",true);
+	$( "#advancedPaymentDate" ).datetimepicker("destroy");
+	$( "#balPaymentDate" ).datetimepicker("destroy");
 	$("#advancedAmountStatus1").attr("disabled",true);
 	$("#advancedAmountStatus2").attr("disabled",true);
 	$("#balancedAmountStatus1").attr("disabled",true);
@@ -194,4 +213,78 @@ $("#balancedAmount").blur(function(){
 	$("#balancedAmount").val(amount);
 	
 });
+
+function advanceRadioChange1(){
+	$("#advancedAmountStatus2").removeAttr("checked","false");
+	$("#advancedAmountStatus1").attr("checked","true");
+	$("#advancedPaymentDate").attr("readonly","true");
+	$("#advancedPaymentPrincipal").attr("readonly","true");
+	$( "#advancedPaymentDate" ).datetimepicker("destroy");
+}
+
+function advanceRadioChange2(){
+	$("#advancedAmountStatus1").removeAttr("checked","false");
+	$("#advancedAmountStatus2").attr("checked","true");
+	$("#advancedPaymentDate").removeAttr("readonly");
+	$("#advancedPaymentPrincipal").removeAttr("readonly");
+	$( "#advancedPaymentDate" ).datetimepicker({
+		lang:'ch',
+		timepicker:false,
+		onClose:function(){
+			var ii = $("#advancedPaymentDate").val();
+			if(ii!=""){
+				var date = new Date(ii);
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1; 
+				if(month<10){
+					month = "0" + month;
+				}
+				var day = date.getDate();
+				if(day<10){
+					day = "0" + day;
+				}
+				formatDate = year + "-" + month + "-" + day;
+				$("#advancedPaymentDate").val(formatDate);
+			}
+		},
+		validateOnBlur:false
+	});
+}
+
+function balancedRadioChange1(){
+	$("#balancedAmountStatus2").removeAttr("checked","false");
+	$("#balancedAmountStatus1").attr("checked","true");
+	$("#balPaymentDate").attr("readonly","true");
+	$("#balPaymentPrincipal").attr("readonly","true");
+	$( "#balPaymentDate" ).datetimepicker("destroy");
+}
+
+function balancedRadioChange2(){
+	$("#balancedAmountStatus1").removeAttr("checked","false");
+	$("#balancedAmountStatus2").attr("checked","true");
+	$("#balPaymentDate").removeAttr("readonly");
+	$("#balPaymentPrincipal").removeAttr("readonly");
+	$( "#balPaymentDate" ).datetimepicker({
+		lang:'ch',
+		timepicker:false,
+		onClose:function(){
+			var ii = $("#balPaymentDate").val();
+			if(ii!=""){
+				var date = new Date(ii);
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1; 
+				if(month<10){
+					month = "0" + month;
+				}
+				var day = date.getDate();
+				if(day<10){
+					day = "0" + day;
+				}
+				formatDate = year + "-" + month + "-" + day;
+				$("#balPaymentDate").val(formatDate);
+			}
+		},
+		validateOnBlur:false
+	});
+}
 
