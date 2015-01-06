@@ -36,7 +36,7 @@
 	                                            	<button id="modifyCustomInfo"  type="button" class="btn btn-default btn-success" style="margin-right: 10px;float:right; padding:1px 12px">修改</button>
 													<button id="cancelCustomInfo"  type="reset" class="btn btn-default btn-success" style="margin-left: 10px; margin-right: 10px;float:right; padding:1px 12px; display: none" ng-click="cancelClick()">取消</button>
 													<button id="saveCustomInfo"  class="btn btn-default btn-success" style="margin-left: 10px; margin-right: 10px;float:right; padding:1px 12px; display: none" ng-click="saveOutSource()">保存</button>
-													<button id="createTouchRec"  type="button" class="btn btn-default btn-primary" style="margin-left:20px;absolute:left; padding:1px 12px">创建新的联系记录</button>
+													<button id="createTouchRec"  type="button" class="btn btn-default btn-primary" style="margin-left:20px;absolute:left; padding:1px 12px" data-toggle="modal" data-target="#touchRecModal">创建新的联系记录</button>
 	                                        </h3>
 	                                    </div>
 	                                    <div id="collapseFour" class="panel-collapse collapse in" style="">
