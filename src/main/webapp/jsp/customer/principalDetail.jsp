@@ -331,6 +331,35 @@
 				}
 			});
 			
+			
+			$( "#touchTime" ).datetimepicker({
+				lang:'ch',
+				format:'Y/m/d H:m:s',
+				onClose:function(){
+					var ii = $("#touchTime").val();
+					if(ii!=""){
+						var date = new Date(ii);
+						var year = date.getFullYear();
+						var month = date.getMonth() + 1; 
+						if(month<10){
+							month = "0" + month;
+						}
+						var day = date.getDate();
+						if(day<10){
+							day = "0" + day;
+						}
+						var hour = date.getHours();
+						if(hour<10){
+							hour = "0" + hour;
+						}
+						
+						formatDate = year + "-" + month + "-" + day + " " + hour + ":00:00";
+						$("#touchTime").val(formatDate);
+					}
+				},
+				validateOnBlur:false
+			});
+			
 			$("#saveTouchRec").click(function() {
 				var touchTime = $("#touchTime").val();
 					touchTime = $.trim(touchTime);
@@ -345,6 +374,10 @@
 					return false;
 				}else{
 					$("#touchTimeLbl").hide();
+					var flag = dateFormat(touchTime);
+					if(flag=="1"){
+						return false;
+					}
 				}
 				
 				if(touchContent<1){
@@ -425,6 +458,23 @@
 				}
 			}
 		} 
+		
+		function dateFormat(dateString){
+			  if(dateString.trim()=="")return true;
+			  //年月日时分秒正则表达式
+			  var r=dateString.match(/^(\d{1,4})\-(\d{1,2})\-(\d{1,2}) (\d{1,2}):(\d{1,2}):(\d{1,2})$/); 
+			        if(r==null){
+			   $("#touchTimeFormatLbl").show();
+			   return 1;
+			  }
+			 // var d=new Date(r[1],r[2]-1,r[3],r[4],r[5],r[6]);     
+			 // var num = (d.getFullYear()==r[1]&&(d.getMonth()+1)==r[2]&&d.getDate()==r[3]&&d.getHours()==r[4]&&d.getMinutes()==r[5]&&d.getSeconds()==r[6]);
+			 // if(num==0){
+			  // alert("请输入格式正确的日期\n\r日期格式：yyyy-mm-dd\n\r例    如：2008-08-08\n\r");
+			 // }
+			 // return (num!=0);
+			  
+			} 
 	</script>
 </body>
 

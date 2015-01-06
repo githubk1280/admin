@@ -6,7 +6,7 @@
 		resultType="list" parameterType="int">
 		select * from `test`.`contact_record` c
 		where
-		CUSTOMER_ID=#{customerId}
+		CUSTOMER_ID=#{customerId} ORDER BY contact_time DESC
 	</select>
 
 	<insert id="addContact" keyProperty="contactId" parameterMap="contactRecordParam"
