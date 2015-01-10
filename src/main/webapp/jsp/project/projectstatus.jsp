@@ -45,6 +45,9 @@
 					<div>
 						<label>项目当前进度 </label> 
 					</div>
+					<div id="loadingPs" style="display:none">
+							<img alt="loading" src="../resources/image/loading.gif">
+					</div>
 					<div class="progress"> 
 						<div id="progressBarStyle" class="progress-bar " role="progressbar"
 							aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"

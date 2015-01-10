@@ -318,8 +318,10 @@
 	    
 	    function projectStatusController($scope, $http) {
 	    	$scope.$watch('$viewContentLoaded', function() {
-	    		$scope.psToggle();
 	    		$("#collapseTwo").addClass("in");
+	    		$("#loadingPs").show();
+	    		$scope.psToggle();
+	    		$("#loadingPs").hide();
 	    	});
 			$scope.psToggle = function() {
 				var target = $("#arrowProStatus");
