@@ -25,7 +25,7 @@
 				<div class="col-md-3 col-sm-12 col-xs-12">
 					<div>
 						<a id="link_newStatus"><label id="newStatus" class="a-color"
-							style="margin-left: -20px;">添加新的进度记录 </label></a>
+							style="margin-left: -20px;">更新项目进度 </label></a>
 					</div>
 				</div>
 			</div>

@@ -12,14 +12,9 @@ http://www.springframework.org/schema/context
 
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/project/**" />
-			<mvc:mapping path="/doc/**" />
-			<mvc:mapping path="/contract/**" />
-			<mvc:mapping path="/sample/**" />
-			<mvc:mapping path="/customer/**" />
-			<mvc:mapping path="/outsource/**" />
-			<mvc:mapping path="/literature/**" />
-			<mvc:mapping path="/message/**" />
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/login"/>
+			<mvc:exclude-mapping path="/logout"/>
 			<bean class="com.tmrasys.interceptor.LoginInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>

@@ -63,7 +63,7 @@
 						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">客户基本信息</strong></a></li>
 				<li  style="display:none" id="assignBasicDataLi"><a id="link_assgin" href="<%=request.getContextPath()%>/user/assign-redirect"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">分配项目</strong></a></li>
-				<li  style="display:none" id="docBasiceDataLi"><a id="link_doc" href="<%=request.getContextPath()%>/doc/pages/1"><i
+				<li  style="display:none" id="docBasiceDataLi"><a id="link_doc" href="<%=request.getContextPath()%>/doc/load"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">文档基本信息</strong></a></li>
 				<li  style="display:none" id="contractBasicDataLi"><a id="link_contract" href="<%=request.getContextPath()%>/contract/pages/1"><i
 						class="fa fa-bar-chart-o fa-fw"></i> <strong style="font-size:17px">财务合同基本信息</strong></a></li>

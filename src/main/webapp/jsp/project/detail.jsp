@@ -29,7 +29,7 @@
 				<div class="col-lg-12">
 					<!-- .panel-heading -->
 					<div class="panel-body">
-					
+						<%@ include file="projectstatus.jsp"%>
 						<!----------------------------------------project basic data start ------------------------->
 						<form:form action="update" method="post" commandName="project">
 						<div class="panel-group" id="accordion">
@@ -42,6 +42,7 @@
 										<a  data-toggle="collapse"  href="#collapseOne" class="panel_a" >
 											<span id="arrowProBasicData" class="glyphicon glyphicon-chevron-up" style="color: rgb(0, 0, 0);"></span>
 	                                    </a>
+	                                    <c:if test="${roleId<=1}">
 	                                    <button id="modifyProBasicData" class="btn btn-default btn-success" 
 										 style="margin-right: 10px;float:right; padding:1px 12px" type="button">修改</button>
 										<button id="cancelProBasicData" class="btn btn-default btn-success" 
@@ -49,6 +50,7 @@
 										<button id="saveProBasicData" value="1"
 										  class="btn btn-default btn-success"
 										  style="margin-left: 10px; margin-right: 10px;float:right; padding:1px 12px;display:none" type="submit">保存</button>
+										</c:if>
 									</h3>
 								</div>
 								<div id="collapseOne" class="panel-collapse collapse in">
@@ -254,7 +256,7 @@
 						 </div>
 						</form:form>
 						<!-- include projectstatus page -->
-						<%@ include file="projectstatus.jsp"%>
+						
 						<!-- include projectoutsource page -->
 <%-- 						<%@ include file="projectOutSource.jsp"%> --%>
 <%-- 						<%@ include file="projectCustomer.jsp"%> --%>
@@ -315,6 +317,10 @@
 	    
 	    
 	    function projectStatusController($scope, $http) {
+	    	$scope.$watch('$viewContentLoaded', function() {
+	    		$scope.psToggle();
+	    		$("#collapseTwo").addClass("in");
+	    	});
 			$scope.psToggle = function() {
 				var target = $("#arrowProStatus");
 				if (target.attr("class") == ("glyphicon glyphicon-chevron-down")) {

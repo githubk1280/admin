@@ -50,7 +50,7 @@ public class ProjectStatusController implements ApplicationContextAware {
 
 	@PostConstruct
 	public void init() {
-		messageTemplate = "%s 更新了项目编号为[%s]的状态，更新内容 ：\r\n %s。\r\n 当前项目进度百分比为 30。\r\n  \r\n 来自 %s";
+		messageTemplate = "%s 更新了项目编号为[%s]的状态，更新内容 ：\r\n %s。\r\n 当前项目进度百分比为 %s。\r\n  \r\n 来自 %s";
 	}
 
 	@RequestMapping("/ajax/{projectId}")
@@ -107,7 +107,7 @@ public class ProjectStatusController implements ApplicationContextAware {
 				+ ":" + request.getServerPort() + "/admin";
 		String content = String.format(messageTemplate,
 				progress.getEmployeeName(), progress.getProjectId(),
-				progress.getContent(), url);
+				progress.getContent(),progress.getPercentage(), url);
 		applicationContext.publishEvent(new StatusChangedEvent(
 				new StatusMessage(employee.getEmployeeId(), projectId,
 						percentage, content)));
