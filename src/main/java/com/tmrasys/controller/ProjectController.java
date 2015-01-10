@@ -92,15 +92,15 @@ public class ProjectController {
 		view.setViewName(PageResourceConstant.PROJECT_LIST);
 		return view;
 	}
-	
+
 	@RequestMapping("/completedPages/{page}")
 	public ModelAndView loadCompletedProjectByPage(@PathVariable int page,
 			HttpSession session) {
 		Employee employee = (Employee) session.getAttribute("user");
 		int count = projectService.countCompletedProjectsByEmployee(employee
 				.getEmployeeId());
-		List<Project> projectsReturn = projectService.loadCompletedProjectsPagination(
-				employee.getEmployeeId(), page);
+		List<Project> projectsReturn = projectService
+				.loadCompletedProjectsPagination(employee.getEmployeeId(), page);
 		ModelAndView view = new ModelAndView();
 		int pages = 1;
 		if (count > 10) {
@@ -195,38 +195,39 @@ public class ProjectController {
 
 	}
 
-//	@RequestMapping("/assign-redirect")
-//	public ModelAndView assignRedirect() {
-//		ProjectEmployee projectEmployee = new ProjectEmployee("", 0);
-//		List<Employee> emps = employeeService.getAllEmployees();
-//		List<Project> pros = projectService.loadAllProjects();
-//		ModelAndView view = new ModelAndView();
-//		view.addObject("projects", pros);
-//		view.addObject("employees", emps);
-//		view.addObject("projectEmployee", projectEmployee);
-//		view.setViewName("project/assignProjects");
-//		return view;
-//
-//	}
+	// @RequestMapping("/assign-redirect")
+	// public ModelAndView assignRedirect() {
+	// ProjectEmployee projectEmployee = new ProjectEmployee("", 0);
+	// List<Employee> emps = employeeService.getAllEmployees();
+	// List<Project> pros = projectService.loadAllProjects();
+	// ModelAndView view = new ModelAndView();
+	// view.addObject("projects", pros);
+	// view.addObject("employees", emps);
+	// view.addObject("projectEmployee", projectEmployee);
+	// view.setViewName("project/assignProjects");
+	// return view;
+	//
+	// }
 
-//	@RequestMapping("/assign")
-//	public ModelAndView assign(ProjectEmployee projectEmployee,
-//			HttpSession session) {
-//		boolean exist = projectEmployeeService
-//				.getByProjectId(projectEmployee.getProjectId(),
-//						projectEmployee.getEmployeeId()) != null;
-//		int success = 1;
-//		if (exist) {
-//			success = 2;
-//		} else {
-//			projectEmployeeService.addReference(projectEmployee);
-//			projectService.addContent(projectEmployee.getProjectId(), projectEmployee.getAssignContent());
-//		}
-//		ModelAndView view = new ModelAndView("project/assign-success");
-//		view.addObject("success", success);
-//		return view;
-//	}
-	
+	// @RequestMapping("/assign")
+	// public ModelAndView assign(ProjectEmployee projectEmployee,
+	// HttpSession session) {
+	// boolean exist = projectEmployeeService
+	// .getByProjectId(projectEmployee.getProjectId(),
+	// projectEmployee.getEmployeeId()) != null;
+	// int success = 1;
+	// if (exist) {
+	// success = 2;
+	// } else {
+	// projectEmployeeService.addReference(projectEmployee);
+	// projectService.addContent(projectEmployee.getProjectId(),
+	// projectEmployee.getAssignContent());
+	// }
+	// ModelAndView view = new ModelAndView("project/assign-success");
+	// view.addObject("success", success);
+	// return view;
+	// }
+
 	@RequestMapping(value = "ajax/validateProjectId")
 	public void validate(String projectId, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {

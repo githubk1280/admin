@@ -32,10 +32,12 @@
 							<div class="panel-body">
 								<div class="row">
 									<div class="col-md-12">
-										<button id="createFolder" data-toggle="modal"
-											data-target="#modalCreateFolder"
-											class="btn btn-default btn-primary pull-left"
-											style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px">创建文件夹</button>
+										<c:if test="${roleId<=1}">
+											<button id="createFolder" data-toggle="modal"
+												data-target="#modalCreateFolder"
+												class="btn btn-default btn-primary pull-left"
+												style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px">创建文件夹</button>
+										</c:if>
 									</div>
 								</div>
 								<div class="table-responsive">
@@ -126,12 +128,13 @@
 		<div class="modal-dialog" style="margin: 300px auto">
 			<div class="modal-content" style="top:-100px">
 				<div class="modal-body" align="center">
-					<h3>确认删除文件?</h3>
+<!-- 					<h3>确认删除文件?</h3> -->
+						<h3>文件夹不允许删除!</h3>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
-					<a href="#" ><button type="button" id="confirmModalBtn"
-							class="btn btn-primary" data-dismiss="modal">确认</button></a>
+<!-- 					<a href="#" ><button type="button" id="confirmModalBtn" -->
+<!-- 							class="btn btn-primary" data-dismiss="modal">确认</button></a> -->
 				</div>
 			</div>
 		</div>

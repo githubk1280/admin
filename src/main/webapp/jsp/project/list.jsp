@@ -27,10 +27,12 @@
 					<div class="col-lg-12 col-md-12">
 						<h2 class="page-header form-group input-group">
 							<strong>项目基本信息</strong>
-							<button class="btn btn-default btn-primary" id="create"
-								style="margin-left: 10px;" type="button">创建新的项目</button> 
+							<c:if test="${roleId<=1}">
+								<button class="btn btn-default btn-primary" id="create"
+									style="margin-left: 10px;" type="button">创建新的项目</button> 
+							</c:if>
 							<c:choose>
-							<c:when  test="${flag==1}">
+							<c:when test="${flag==1}">
 								<button class="btn btn-default btn-primary" id="completed"
 								style="margin-left: 10px;" type="button">已完成的项目</button> 
 							</c:when>
