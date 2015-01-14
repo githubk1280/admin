@@ -69,9 +69,9 @@
 														<label>用户角色</label>
 													</div>
 													<div>
-														<label><form:radiobutton path="employeeRoleId" value="2" checked="true"/>主管
+														<label><form:radiobutton path="employeeRoleId" value="1" checked="true"/>主管
 														</label> 
-														<label><form:radiobutton path="employeeRoleId" value="1" />研究员
+														<label><form:radiobutton path="employeeRoleId" value="2" />研究员
 														</label>
 														<label><form:radiobutton path="employeeRoleId" value="4" />财务
 														</label>
