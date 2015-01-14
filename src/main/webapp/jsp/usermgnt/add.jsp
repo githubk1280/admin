@@ -55,6 +55,7 @@
 													<div>
 														<label>邮箱</label>
 														<label id="emailLbl" class="warning-style">该字段不允许为空</label>
+														<label id="firstMailLbl" class="warning-style">请输入正确的邮箱</label>
 													</div>
 													<div>
 														<form:input id="email" path="email" class="form-control" />
@@ -175,6 +176,7 @@
 					$("#save").attr("type","button");
 				}else{
 					$("#emailLbl").hide();
+					isEmail($("#email"));
 				}
 				
 			});
@@ -184,6 +186,18 @@
 				return false;
 			});
 		});
+		
+		function isEmail(obj){ 
+			var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/; 
+			if(obj.attr("id")=="email"){
+				if(!reg.test(obj.val())){
+					$("#firstMailLbl").show();
+					$("#save").attr("type","button");
+				}else{
+					$("#firstMailLbl").hide();
+				}
+			}
+		} 
 	</script>
 
 
