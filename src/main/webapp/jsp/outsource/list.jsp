@@ -60,9 +60,9 @@
 							<c:forEach items="${outsources}" var="outsource"
 								varStatus="status">
 								<tr>
-									<td>${outsource.projectId}</td>
 									<td><a href="<%=request.getContextPath()%>/project/${outsource.projectId}" target="_blank"
-										class="project_link">${outsource.projectName}</a></td>
+										class="project_link">${outsource.projectId}</a></td>
+									<td>${outsource.projectName}</td>
 									<td><a href="<%=request.getContextPath()%>/outsource/${outsource.outSourceId}" target="_blank"
 										class="project_link">${outsource.outSourceId}</a></td>
 									<td>${outsource.outSourceType}</td>

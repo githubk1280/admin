@@ -3,11 +3,6 @@
  */
 
 
-
-
-
-
-
 $("#arrowProBasicData").click(function(){
 	    		if($(this).attr("class")==("glyphicon glyphicon-chevron-down")){
 	    			$(this).attr("class","glyphicon glyphicon-chevron-up");

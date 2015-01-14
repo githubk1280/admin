@@ -40,7 +40,6 @@
                                  <c:forEach items="${proHis.ppList}" var="projectHis" >
                                   	<div class="row row-margin">
                                   		<div class="col-md-1 col-sm-12 col-xs-12">
-                                  		 <!-- <div class="col-md-4  col-sm-12 col-xs-12" > -->
                                   			<div><label>日期</label></div>
 	                                   		<div><p style="color:red;">
 	                                   				<fmt:formatDate value="${projectHis.progressDate}" pattern="yyyy-MM-dd hh:mm:ss" />

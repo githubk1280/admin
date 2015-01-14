@@ -62,9 +62,9 @@
 							<c:forEach items="${customers}" var="customer"
 								varStatus="status">
 								<tr>
-									<td>${customer.projectId}</td>
 									<td><a href="<%=request.getContextPath()%>/project/${customer.projectId}" target="_blank"
-										class="project_link">${customer.projectName}</a></td>
+										class="project_link">${customer.projectId}</a></td>
+									<td>${customer.projectName}</td>
 									<td><a href="<%=request.getContextPath()%>/customer/${customer.customerId}&${customer.principalId}" target="_blank"
 										class="project_link">${customer.customerName}</a></td>
 										<c:if test="${customer.principalId==0}"><td>主要负责人</td></c:if>

@@ -197,7 +197,7 @@
 			$("#projectBasicDataLi").css('display', 'block');
 			$("#customerBasicDataLi").css('display', 'block');
 			$("#outsourceBasicDataLi").css('display', 'block');
-			//$("#assignBasicDataLi").css('display','block');
+			$("#assignBasicDataLi").css('display','block');
 		}
 
 		if (activeTabUrlStr.indexOf("user") > 0

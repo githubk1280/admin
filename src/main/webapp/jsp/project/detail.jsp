@@ -288,6 +288,23 @@
 	    	if($("#percentage").val() == 100){
 	    		$("#modifyProBasicData").css('display','none');
 	    	}
+	    	
+    		$("#panelProBasicData input").attr("readonly",true);
+    		$("#panelProBasicData textarea").attr("readonly",true);
+    		$("#needSCI1").attr("disabled",true);
+    		$("#needSCI2").attr("disabled",true);
+    		$("#priority1").attr("disabled",true);
+    		$("#priority2").attr("disabled",true);
+    		$("#priority3").attr("disabled",true);
+    		$("#needPrincipalAssist1").attr("disabled",true);
+    		$("#needPrincipalAssist2").attr("disabled",true);
+    		$("#hasCorporatedIntention1").attr("disabled",true);
+    		$("#hasCorporatedIntention2").attr("disabled",true);
+    		$("#needProjectPlan1").attr("disabled",true);
+    		$("#needProjectPlan2").attr("disabled",true);
+    		$( "#startDate" ).datetimepicker("destroy");
+    		$( "#endDate" ).datetimepicker("destroy");
+	    	
 	   	});
 	    
 	    $("#link_newStatus").click(function(){
