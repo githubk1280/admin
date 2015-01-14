@@ -116,7 +116,7 @@
 			});
 			
 			$("#cancel").click(function() {
-				window.location.replace("http://"+window.location.host+"/admin/project/list");			
+				window.location.replace("http://"+window.location.host+"/admin/project/pages/1");			
 				return false;
 			});
 		});
