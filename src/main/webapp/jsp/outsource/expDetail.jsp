@@ -101,7 +101,7 @@
 						<label id="issendSampleDateLbl" class="warning-style">您输入的日期不存在</label>
 					</div>
 					<div>
-						<form:input id="sendSampleDate" type="text"  maxlength="10" class="form-control form_date input-style" path="sendSampleDate" /> 
+						<form:input id="sendSampleDate" type="text"  maxlength="10" class="form-control input-style" path="sendSampleDate" /> 
 					</div>
 				</div>
 			</div>

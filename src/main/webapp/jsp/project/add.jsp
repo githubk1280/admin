@@ -42,6 +42,7 @@
 														<label>项目编号 </label>
 														<label id="proBasicProjectIDLbl" class="warning-style">该字段不允许为空</label>
 														<label id="projectIdInvalidated" class="warning-style">该项目编号已存在</label>
+														<label id="projectIdCorrectedLbl" class="warning-style">只能输入字母，数字，或下划线</label>
 													</div>
 													<div>
 														<form:input id="proBasicProjectID" path="projectId" type="text" class="form-control input-style" maxlength ="20" />

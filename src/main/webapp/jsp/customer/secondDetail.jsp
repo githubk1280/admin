@@ -259,15 +259,13 @@
 		if($("#modifyCustomInfo").css('display')=="block"){
 			$("#panelCustomerInfo input").attr("readonly",true);
 			$("#panelCustomerInfo textarea").attr("readonly",true);
-			$("#customerLevel0").attr("disabled",true);
-			$("#customerLevel1").attr("disabled",true);
-			$("#customerLevel2").attr("disabled",true);
-			$("#customerLevel3").attr("disabled",true);
-			$("#customerLevel4").attr("disabled",true);
-			
+			$("#sex1").attr("disabled",true);
+			$("#sex2").attr("disabled",true);
 		}else{
 			$("#panelCustomerInfo input").attr("readonly",false);
 			$("#panelCustomerInfo textarea").attr("readonly",false);
+			$("#sex1").attr("disabled",false);
+			$("#sex2").attr("disabled",false);
 		}
 
 		$("#modifyCustomInfo").click(function(){
@@ -276,11 +274,8 @@
 			$("#modifyCustomInfo").css('display','none');
 			$("#panelCustomerInfo input").attr("readonly",false);
 			$("#panelCustomerInfo textarea").attr("readonly",false);
-			$("#customerLevel0").attr("disabled",false);
-			$("#customerLevel1").attr("disabled",false);
-			$("#customerLevel2").attr("disabled",false);
-			$("#customerLevel3").attr("disabled",false);
-			$("#customerLevel4").attr("disabled",false);
+			$("#sex1").attr("disabled",false);
+			$("#sex2").attr("disabled",false);
 			$("#projectIdForCustomerAdd").attr("readonly",true);
 			$("#firstCustomerProjectId").attr("readonly",true);
 			$("#secondCustomerProjectId").attr("readonly",true);
@@ -294,11 +289,8 @@
 			$("#cancelCustomInfo").css('display','none');
 			$("#panelCustomerInfo input").attr("readonly",true);
 			$("#panelCustomerInfo textarea").attr("readonly",true);
-			$("#customerLevel0").attr("disabled",true);
-			$("#customerLevel1").attr("disabled",true);
-			$("#customerLevel2").attr("disabled",true);
-			$("#customerLevel3").attr("disabled",true);
-			$("#customerLevel4").attr("disabled",true);
+			$("#sex1").attr("disabled",true);
+			$("#sex2").attr("disabled",true);
 			$("#secondAgeLbl").hide();
 			$("#secondPhoneLbl").hide();
 			$("#secondCellphoneLbl").hide();

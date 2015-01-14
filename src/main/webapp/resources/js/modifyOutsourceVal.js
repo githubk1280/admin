@@ -16,12 +16,39 @@ if($("#modifyOutsource").css('display')=="block"){
 	$("#panelOutsource textarea").attr("readonly",true);
 	$("#resultReceived1").attr("disabled",true);
 	$("#resultReceived2").attr("disabled",true);
-	
+	$("#isDelivery1").attr("disabled",true);
+	$("#isDelivery2").attr("disabled",true);
+	//sendSampleDate
+	$( "#sendSampleDate" ).datetimepicker("destroy");
 }else{
 	$("#panelOutsource input").attr("readonly",false);
 	$("#panelOutsource textarea").attr("readonly",false);
 	$("#resultReceived1").attr("disabled",false);
 	$("#resultReceived2").attr("disabled",false);
+	$("#isDelivery1").attr("disabled",false);
+	$("#isDelivery2").attr("disabled",false);
+	$( "#sendSampleDate" ).datetimepicker({
+		lang:'ch',
+		timepicker:false,
+		onClose:function(){
+			var ii = $("#sendSampleDate").val();
+			if(ii!=""){
+				var date = new Date(ii);
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1; 
+				if(month<10){
+					month = "0" + month;
+				}
+				var day = date.getDate();
+				if(day<10){
+					day = "0" + day;
+				}
+				formatDate = year + "-" + month + "-" + day;
+				$("#sendSampleDate").val(formatDate);
+			}
+		},
+		validateOnBlur:false
+	});
 }
 
 $("#modifyOutsource").click(function(){
@@ -32,9 +59,32 @@ $("#modifyOutsource").click(function(){
 	$("#panelOutsource textarea").attr("readonly",false);
 	$("#resultReceived1").attr("disabled",false);
 	$("#resultReceived2").attr("disabled",false);
+	$("#isDelivery1").attr("disabled",false);
+	$("#isDelivery2").attr("disabled",false);
 	$("#outsourceProjectID").attr("readonly",true);
 	$("#dataProjectID").attr("readonly",true);
-	
+	$( "#sendSampleDate" ).datetimepicker({
+		lang:'ch',
+		timepicker:false,
+		onClose:function(){
+			var ii = $("#sendSampleDate").val();
+			if(ii!=""){
+				var date = new Date(ii);
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1; 
+				if(month<10){
+					month = "0" + month;
+				}
+				var day = date.getDate();
+				if(day<10){
+					day = "0" + day;
+				}
+				formatDate = year + "-" + month + "-" + day;
+				$("#sendSampleDate").val(formatDate);
+			}
+		},
+		validateOnBlur:false
+	});
 });
 
 $("#saveOutsource").click(function(){
@@ -89,13 +139,14 @@ $("#cancelOutsource").click(function(){
 	$("#modifyOutsource").css('display','block');
 	$("#panelOutsource input").attr("readonly",true);
 	$("#panelOutsource textarea").attr("readonly",true);
-	$("#resultReceived1").attr("disabled",true);
-	$("#resultReceived2").attr("disabled",true);
+	$("#isDelivery1").attr("disabled",true);
+	$("#isDelivery2").attr("disabled",true);
 	$("#contactPhoneLbl").hide();
 	$("#contractAmountLbl").hide();
 	$("#sendSampleDateLbl").hide();
 	$("#issendSampleDateLbl").hide();
 	$("#dataContactPhoneLbl").hide();
+	$( "#sendSampleDate" ).datetimepicker("destroy");
 	
 });
 

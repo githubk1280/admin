@@ -93,6 +93,7 @@ $("#saveProBasicData").click(function(){
 		$("#saveProBasicData").attr("type","button");
 	}else{
 		$("#proBasicProjectIDLbl").hide();
+		projectIdVal();
 	}
 		
 	if(projectName.length<1){
@@ -290,3 +291,14 @@ function isEndDateComparedStartDate(startDate,endDate){
 		$("#dateComparedLbl").hide();
 	}
 };
+
+
+function projectIdVal(){
+	var regex =  /^[a-zA-Z0-9_]{1,}$/;
+	if(!regex.test($("#proBasicProjectID").val())){
+		$("#projectIdCorrectedLbl").show();
+		$("#saveProBasicData").attr("type","button");
+	}else{
+		$("#projectIdCorrectedLbl").hide();
+	}
+}
