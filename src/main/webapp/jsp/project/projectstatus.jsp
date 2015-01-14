@@ -143,11 +143,11 @@
 					inpuProStatusContent = $.trim(inpuProStatusContent);
 				$("#saveProjectStatus").attr("type","submit");
 				if(inpuProStatusContent.length<1){
-					$("#proStatusLbl").show();
+					$("#proStatusContentLbl").show();
 					//$("#projectName").focus();
 					$("#saveProjectStatus").attr("type","button");
 				}else{
-					$("#proStatusLbl").hide();
+					$("#proStatusContentLbl").hide();
 				}
 			});
 	});
