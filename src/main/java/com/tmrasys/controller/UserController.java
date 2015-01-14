@@ -35,13 +35,15 @@ public class UserController {
 	
 	@Autowired
 	private ProjectEmployeeService projectEmployeeService;
-	
+	/**
+	 * role_privilege mapping 
+	 */
 	private final Map<Integer, Integer> role_privilege = new HashMap<Integer, Integer>();
 
 	@PostConstruct
 	public void init() {
-		role_privilege.put(1, 2);
-		role_privilege.put(2, 1);
+		role_privilege.put(1, 1);
+		role_privilege.put(2, 2);
 		role_privilege.put(3, 3);
 		role_privilege.put(4, 4);
 	}
