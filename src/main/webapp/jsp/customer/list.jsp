@@ -151,7 +151,7 @@
 							$scope.idAndPrincipal = JSON.parse(data.data);
 						}
 					}).error(function(err) {
-					alert("获取失败，请重试!");
+					//alert("获取失败，请重试!");
 					});
 			/* $scope.change(function() {
 				alert("dd");
