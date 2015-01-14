@@ -32,15 +32,15 @@
 	<insert id="addEmployee" keyProperty="employeeId" parameterMap="employeeParameter"
 		useGeneratedKeys="true">
 		INSERT INTO `employee`
-		(`EMPLOYEE_NAME`,`FK_EMPLOYEE_ROLE_ID`,`FK_PRIVILEGE_ID`,`PASSWORD`)
-		VALUES (#{name}, #{employeeRoleId}, #{privilege}, #{password});
+		(`EMPLOYEE_NAME`,`FK_EMPLOYEE_ROLE_ID`,`FK_PRIVILEGE_ID`,`PASSWORD`,`EMAIL`)
+		VALUES (#{name}, #{employeeRoleId}, #{privilege}, #{password}, #{email});
 	</insert>
 	<update id="updateEmployee" parameterMap="employeeParameter"
 		flushCache="true">
 		UPDATE employee
 		SET EMPLOYEE_NAME = #{name}, PASSWORD =
 		#{password} ,FK_PRIVILEGE_ID = #{privilege} ,FK_EMPLOYEE_ROLE_ID =
-		#{employeeRoleId}
+		#{employeeRoleId}, EMAIL = #{email}
 		WHERE employee.EMPLOYEE_ID = #{employeeId}
 		;
 	</update>
@@ -50,6 +50,7 @@
 		<result property="password" column="PASSWORD" />
 		<result property="privilege" column="FK_PRIVILEGE_ID" />
 		<result property="employeeRoleId" column="FK_EMPLOYEE_ROLE_ID" />
+		<result property="email" column="EMAIL" />
 	</resultMap>
 	<parameterMap type="com.tmrasys.domain.Employee" id="employeeParameter">
 		<parameter property="employeeId" resultMap="EMPLOYEE_ID" />
@@ -57,6 +58,7 @@
 		<parameter property="password" resultMap="PASSWORD" />
 		<parameter property="privilege" resultMap="FK_PRIVILEGE_ID" />
 		<parameter property="employeeRoleId" resultMap="FK_EMPLOYEE_ROLE_ID" />
+		<parameter property="email" resultMap="EMAIL" />
 	</parameterMap>
 </mapper>
 

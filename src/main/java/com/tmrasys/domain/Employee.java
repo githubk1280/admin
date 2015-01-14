@@ -9,4 +9,5 @@ public class Employee {
 	private String password;
 	private int privilege;
 	private int employeeRoleId;
+	private String email;
 }

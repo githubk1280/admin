@@ -1,6 +1,8 @@
 package com.tmrasys.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
@@ -33,9 +35,15 @@ public class UserController {
 	
 	@Autowired
 	private ProjectEmployeeService projectEmployeeService;
+	
+	private final Map<Integer, Integer> role_privilege = new HashMap<Integer, Integer>();
 
 	@PostConstruct
 	public void init() {
+		role_privilege.put(1, 2);
+		role_privilege.put(2, 1);
+		role_privilege.put(3, 3);
+		role_privilege.put(4, 4);
 	}
 
 	@RequestMapping("/add")
@@ -43,6 +51,7 @@ public class UserController {
 		Employee exist = employeeService.getEmployeeByName(employee.getName());
 		ModelAndView view = new ModelAndView();
 		if (null == exist) {
+			employee.setPrivilege(role_privilege.get(employee.getEmployeeRoleId()));
 			employeeService.addEmployee(employee);
 			view.addObject("newuser", employee);
 		} else {
