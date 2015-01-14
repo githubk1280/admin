@@ -59,8 +59,8 @@ $("#save").click(function(){
 		sourceUnit = $.trim(sourceUnit);
 	var samplePrincripal = $("#samplePrincripal").val();
 		samplePrincripal = $.trim(samplePrincripal);
-	var projectPrincripal = $("#projectPrincripal").val();
-		projectPrincripal = $.trim(projectPrincripal);
+	//var projectPrincripal = $("#projectPrincripal").val();
+		//projectPrincripal = $.trim(projectPrincripal);
 	var sampleCount = $("#sampleCount").val();
 		sampleCount = $.trim(sampleCount);
 	var deliveryNum = $("#deliveryNum").val();
@@ -87,6 +87,7 @@ $("#save").click(function(){
 		}else{
 			$("#sourceUnitLbl").hide();
 		}
+		
 		if(samplePrincripal.length<1){
 			$("#samplePrincripalLbl").show();
 			//$("#projectName").focus();
@@ -94,6 +95,7 @@ $("#save").click(function(){
 		}else{
 			$("#samplePrincripalLbl").hide();
 		}
+		/*
 		if(projectPrincripal.length<1){
 			$("#projectPrincripalLbl").show();
 			//$("#projectName").focus();
@@ -101,6 +103,7 @@ $("#save").click(function(){
 		}else{
 			$("#projectPrincripalLbl").hide();
 		}
+		*/
 		if(sampleAmount.length<1){
 			$("#sampleAmountLbl").show();
 			//$("#projectName").focus();
