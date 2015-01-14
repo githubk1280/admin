@@ -47,7 +47,6 @@
 												style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px" />
 										</div>
 									</div>
-									${request.getQueryString()}---
 									<div class="row">
 										<div class="col-md-4 col-sm-12 col-xs-12">
 											<div>
