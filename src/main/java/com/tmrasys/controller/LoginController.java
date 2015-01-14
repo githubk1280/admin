@@ -26,11 +26,11 @@ public class LoginController {
 		ModelAndView view = new ModelAndView();
 		if (null == user) {
 			view.setViewName("redirect:"
-					+ FailedUtils.getLoginErrorMessage("!!!"));
+					+ FailedUtils.getLoginErrorMessage("用户名密码错误"));
 			return view;
 		} else if (password == null || !password.equals(user.getPassword())) {
 			view.setViewName("redirect:"
-					+ FailedUtils.getLoginErrorMessage("!!!!"));
+					+ FailedUtils.getLoginErrorMessage("用户名密码错误"));
 			return view;
 		}
 		session.setAttribute("user", user);
