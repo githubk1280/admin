@@ -32,30 +32,40 @@
                                   <div class="panel-body">
                                   	<div class="row row-margin" style="align:center">
                                   		<div class="col-md-4  col-sm-12 col-xs-12" >
-                                  				<div><label>项目编号</label></div>
-                                  				<div><p>${proHis.projectId}</p></div> 
+                                  				<span style="font-size: 20px; background-color: rgb(245, 245, 245);">项目编号 <b>${proHis.projectId}</b></span>
                                    		</div>		
                                    	<div class="col-md-4  col-sm-12 col-xs-12" ></div>
                                   	</div>
+                                 <div class="row row-margin">
+                                  		<div class="col-md-1 col-sm-12 col-xs-12">
+                                  			<div><label>日期</label></div>
+										</div> 
+                                   	 <div class="col-md-1 col-sm-12 col-xs-12" style="margin-left:120px">
+                                   			<div><label>撰写人员</label></div>
+                                   	</div>
+                                   	<div class="col-md-1 col-sm-12 col-xs-12" style="margin-left:120px">
+                                   			<div><label>当时进度</label></div>
+                                   	</div>
+                                   	<div class="col-md-1 col-sm-12 col-xs-12" style="margin-left:120px">
+                                   			<div><label>进度内容</label></div>
+                                   	</div>
+                                  	</div>
+                                  	<hr  align=center width=100% style="border-top:1px solid #178acc;margin-top:1px">
                                  <c:forEach items="${proHis.ppList}" var="projectHis" >
                                   	<div class="row row-margin">
                                   		<div class="col-md-1 col-sm-12 col-xs-12">
-                                  			<div><label>日期</label></div>
 	                                   		<div><p style="color:red;">
 	                                   				<fmt:formatDate value="${projectHis.progressDate}" pattern="yyyy-MM-dd hh:mm:ss" />
 												  </p>
 										    </div>
 										</div> 
                                    	 <div class="col-md-1 col-sm-12 col-xs-12" style="margin-left:120px">
-                                   			<div><label>撰写人员</label></div>
                                    			<div><p>${projectHis.employeeName}</p></div> 
                                    	</div>
                                    	<div class="col-md-1 col-sm-12 col-xs-12" style="margin-left:120px">
-                                   			<div><label>当时进度</label></div>
                                    			<div><p style="color:blue">${projectHis.percentage}%</p></div>
                                    	</div>
                                    	<div class="col-md-1 col-sm-12 col-xs-12" style="margin-left:120px">
-                                   			<div><label>进度内容</label></div>
                                    			<div><l>${projectHis.content}</l></div>
                                    	</div>
                                   	</div>
