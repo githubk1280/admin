@@ -1,15 +1,6 @@
 /**
  * 
  */
-$(".form_date").datetimepicker({
-	language:"zh-CN",
-	minView: "month",
-    format: "yyyy-mm-dd",
-    todayHighlight:true,
-    autoclose: true
-});
-
-
 
 if($("#modifyOutsource").css('display')=="block"){
 	$("#panelOutsource input").attr("readonly",true);
