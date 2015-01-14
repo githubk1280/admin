@@ -37,7 +37,7 @@
                                    	<div class="col-md-4  col-sm-12 col-xs-12" ></div>
                                   	</div>
                                  <div class="row row-margin">
-                                  		<div class="col-md-1 col-sm-12 col-xs-12">
+                                  		<div class="col-md-2 col-sm-12 col-xs-12">
                                   			<div><label>日期</label></div>
 										</div> 
                                    	 <div class="col-md-1 col-sm-12 col-xs-12" style="margin-left:120px">
@@ -53,17 +53,16 @@
                                   	<hr  align=center width=100% style="border-top:1px solid #178acc;margin-top:1px">
                                  <c:forEach items="${proHis.ppList}" var="projectHis" >
                                   	<div class="row row-margin">
-                                  		<div class="col-md-1 col-sm-12 col-xs-12">
-	                                   		<div><p style="color:red;">
-	                                   				<fmt:formatDate value="${projectHis.progressDate}" pattern="yyyy-MM-dd hh:mm:ss" />
-												  </p>
+                                  		<div class="col-md-2 col-sm-12 col-xs-12">
+	                                   		<div>
+	                                   			<fmt:formatDate value="${projectHis.progressDate}" pattern="yyyy-MM-dd hh:mm:ss" />
 										    </div>
 										</div> 
                                    	 <div class="col-md-1 col-sm-12 col-xs-12" style="margin-left:120px">
                                    			<div><p>${projectHis.employeeName}</p></div> 
                                    	</div>
                                    	<div class="col-md-1 col-sm-12 col-xs-12" style="margin-left:120px">
-                                   			<div><p style="color:blue">${projectHis.percentage}%</p></div>
+                                   			<div>${projectHis.percentage}%</div>
                                    	</div>
                                    	<div class="col-md-1 col-sm-12 col-xs-12" style="margin-left:120px">
                                    			<div><l>${projectHis.content}</l></div>
