@@ -49,6 +49,19 @@
 												</div>
 												<div class="col-md-4  col-sm-12 col-xs-12"></div>
 											</div>
+											<div class="row row-margin" style="align: center">
+												<div class="col-md-4  col-sm-12 col-xs-12"></div>
+												<div class="col-md-4  col-sm-12 col-xs-12">
+													<div>
+														<label>邮箱</label>
+														<label id="emailLbl" class="warning-style">该字段不允许为空</label>
+													</div>
+													<div>
+														<form:input id="email" path="email" class="form-control" />
+													</div>
+												</div>
+												<div class="col-md-4  col-sm-12 col-xs-12"></div>
+											</div>
 											<div class="row row-margin">
 												<div class="col-md-4  col-sm-12 col-xs-12"></div>
 												<div class="col-md-4 col-sm-12 col-xs-12">
@@ -127,6 +140,7 @@
 				$("#save").attr("type","submit");
 				var password = $("#password").val();
 				var retryPassword = $("#retryPassword").val();
+				var email = $("#email").val();
 				var name = $("#name").val();
 					name = $.trim(name);
 				if(name.length<1){
@@ -155,6 +169,14 @@
 						$("#notEqualLbl").hide();
 					}
 				}
+				
+				if(email.length<1){
+					$("#emailLbl").show();
+					$("#save").attr("type","button");
+				}else{
+					$("#emailLbl").hide();
+				}
+				
 			});
 			
 			$("#cancel").click(function() {
