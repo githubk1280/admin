@@ -29,6 +29,7 @@ public class ContractController {
 
 	@PostConstruct
 	public void init() {
+		
 	}
 
 	@DataAccessCheck(forWhat = { DataCheckTypeConstant.CONTRACT })
@@ -53,15 +54,17 @@ public class ContractController {
 		return view;
 
 	}
-	
+
 	@RequestMapping("/pages/{page}")
-	public ModelAndView loadAllContractsByUser(@PathVariable int page, HttpSession session) {
+	public ModelAndView loadAllContractsByUser(@PathVariable int page,
+			HttpSession session) {
 		Employee employee = (Employee) session.getAttribute("user");
 		int count = contractService.countByEmployee(employee.getEmployeeId());
-		List<Contract> contracts = contractService.getPagedByEmployee(employee.getEmployeeId(), page);
+		List<Contract> contracts = contractService.getPagedByEmployee(
+				employee.getEmployeeId(), page);
 		ModelAndView view = new ModelAndView();
 		int pages = 1;
-		if(count > 10) {
+		if (count > 10) {
 			pages = (count + 9) / 10;
 		}
 		view.addObject("contracts", contracts);
@@ -85,7 +88,7 @@ public class ContractController {
 		view.setViewName(PageResourceConstant.CONTRACT_ADD);
 		return view;
 	}
-	
+
 	@RequestMapping("/update")
 	public ModelAndView update(Contract contract) {
 		contractService.updateContract(contract);
@@ -94,11 +97,12 @@ public class ContractController {
 		view.setViewName(PageResourceConstant.CONTRACT_DETAIL);
 		return view;
 	}
-	
+
 	@RequestMapping("/search")
-	public ModelAndView search(String searchStr,HttpSession session){
-		Employee employee = (Employee)session.getAttribute("user");
-		List<Contract> contracts = contractService.findContractByProjectId(searchStr, employee.getEmployeeId());
+	public ModelAndView search(String searchStr, HttpSession session) {
+		Employee employee = (Employee) session.getAttribute("user");
+		List<Contract> contracts = contractService.findContractByProjectId(
+				searchStr, employee.getEmployeeId());
 		ModelAndView view = new ModelAndView();
 		view.addObject("contracts", contracts);
 		view.setViewName(PageResourceConstant.CONTRACT_LIST);

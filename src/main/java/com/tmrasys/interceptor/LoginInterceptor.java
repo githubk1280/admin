@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.core.Ordered;
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,11 +18,13 @@ public class LoginInterceptor implements HandlerInterceptor, Ordered {
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		HttpSession session = request.getSession();
-		if (null == session.getAttribute("user")) {
-			response.sendRedirect(request.getContextPath()
-					+ FailedUtils.getLoginErrorMessage("请先登录!"));
-			return false;
+		if (handler instanceof HandlerMethod) {
+			HttpSession session = request.getSession();
+			if (null == session.getAttribute("user")) {
+				response.sendRedirect(request.getContextPath()
+						+ FailedUtils.getLoginErrorMessage("请先登录!"));
+				return false;
+			}
 		}
 		return true;
 	}
