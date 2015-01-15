@@ -48,11 +48,11 @@
 						<label>客户级别</label>
 					</div>
 					<div class="pull-left">
-						<label><form:radiobutton path="customerLevel"   value="0" />VIP-1</label> 
-						<label><form:radiobutton path="customerLevel"   value="1" />VIP-2</label> 
-						<label><form:radiobutton path="customerLevel"   value="2" />VIP-3</label>
-						<label><form:radiobutton path="customerLevel"   value="3" />VIP-4</label>
-						<label><form:radiobutton path="customerLevel"   value="4" />VIP-5</label> 
+						<label><form:radiobutton id="customerLevel0" path="customerLevel"   value="0" />VIP-1</label> 
+						<label><form:radiobutton id="customerLevel1" path="customerLevel"   value="1" />VIP-2</label> 
+						<label><form:radiobutton id="customerLevel2" path="customerLevel"   value="2" />VIP-3</label>
+						<label><form:radiobutton id="customerLevel3" path="customerLevel"   value="3" />VIP-4</label>
+						<label><form:radiobutton id="customerLevel4" path="customerLevel"   value="4" />VIP-5</label> 
 					</div>
 				</div>
 			</div>
@@ -262,10 +262,18 @@
 				$("#customerLevel2").attr("disabled",true);
 				$("#customerLevel3").attr("disabled",true);
 				$("#customerLevel4").attr("disabled",true);
-				
+				$("#sex1").attr("disabled",true);
+				$("#sex2").attr("disabled",true);
 			}else{
 				$("#panelCustomerInfo input").attr("readonly",false);
 				$("#panelCustomerInfo textarea").attr("readonly",false);
+				$("#customerLevel0").attr("disabled",false);
+				$("#customerLevel1").attr("disabled",false);
+				$("#customerLevel2").attr("disabled",false);
+				$("#customerLevel3").attr("disabled",false);
+				$("#customerLevel4").attr("disabled",false);
+				$("#sex1").attr("disabled",false);
+				$("#sex2").attr("disabled",false);
 			}
 
 			$("#modifyCustomInfo").click(function(){
@@ -279,6 +287,8 @@
 				$("#customerLevel2").attr("disabled",false);
 				$("#customerLevel3").attr("disabled",false);
 				$("#customerLevel4").attr("disabled",false);
+				$("#sex1").attr("disabled",false);
+				$("#sex2").attr("disabled",false);
 				$("#projectIdForCustomerAdd").attr("readonly",true);
 				$("#firstCustomerProjectId").attr("readonly",true);
 				$("#secondCustomerProjectId").attr("readonly",true);
@@ -297,6 +307,8 @@
 				$("#customerLevel2").attr("disabled",true);
 				$("#customerLevel3").attr("disabled",true);
 				$("#customerLevel4").attr("disabled",true);
+				$("#sex1").attr("disabled",true);
+				$("#sex2").attr("disabled",true);
 				$("#principalAgeLbl").hide();
 				$("#principalPhoneLbl").hide();
 				$("#principalCellPhoneLbl").hide();
