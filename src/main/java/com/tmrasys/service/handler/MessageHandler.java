@@ -61,10 +61,10 @@ public class MessageHandler implements Handler {
 					message.setSendTime(new Date());
 					message.setStatus(MessageStatusEnum.UNREAD.getValue());
 					messageService.addMessage(message);
+					// invalidate cache
+					cacheService.invalidate(String.format(
+							CacheNames.MESSAGE_COUNT, employeeId));
 				}
-				//invalidate cache
-				cacheService.invalidate(String.format(CacheNames.MESSAGE_COUNT,
-						((StatusMessage) obj).getOperatorId()));
 				logger.info("Send message to all employees Success !");
 			}
 

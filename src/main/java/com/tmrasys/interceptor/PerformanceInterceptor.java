@@ -38,7 +38,7 @@ public class PerformanceInterceptor implements HandlerInterceptor, Ordered {
 			HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		end.set(System.currentTimeMillis());
-		logger.info("postHandle --" + request.getRequestURI()
+		logger.debug("postHandle --" + request.getRequestURI()
 				+ " Method Cost ----------"
 				+ (System.currentTimeMillis() - start.get()) + "ms");
 	}
@@ -47,7 +47,7 @@ public class PerformanceInterceptor implements HandlerInterceptor, Ordered {
 	public void afterCompletion(HttpServletRequest request,
 			HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		logger.info("afterCompletion --" + request.getRequestURI()
+		logger.debug("afterCompletion --" + request.getRequestURI()
 				+ " Render Cost -----"
 				+ (System.currentTimeMillis() - end.get()) + "ms");
 	}
